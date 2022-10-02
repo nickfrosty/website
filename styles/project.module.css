@@ -1,0 +1,66 @@
+.card {
+  @apply relative top-0 block mb-3 overflow-hidden transition-all duration-75 ease-in-out;
+  @apply border rounded-xl lg:text-left;
+  @apply border-white md:hover:border-indigo-200;
+  @apply border-gray-800 md:hover:border-indigo-700;
+
+  @apply border-0 space-y-4;
+  @apply md:p-6 md:border md:shadow-md;
+  /* @apply md:hover:-top-2 md:hover:shadow-lg; */
+}
+
+.h2 {
+  @apply text-2xl font-bold leading-tight line-clamp-1;
+}
+
+.inner {
+  @apply flex gap-4 items-center;
+}
+
+.description {
+  /* @apply mt-1; */
+}
+
+.meta {
+  @apply flex flex-grow justify-between;
+}
+
+.link {
+  @apply text-2xl font-bold text-gray-700 dark:text-gray-300;
+  /* @apply link hover:text-hot-pink; */
+}
+
+.icon {
+  @apply overflow-hidden w-12 h-12 rounded;
+}
+
+.minor,
+.date {
+  @apply block text-sm text-gray-500;
+}
+
+/* Style the status pills */
+.status {
+  @apply absolute right-0 top-0 mr-4 mt-4;
+  @apply px-3 py-1 place-self-center;
+  @apply text-xs font-medium rounded-lg font-mono;
+}
+.status-init {
+  @apply text-gray-900 bg-purple-200;
+}
+.status-active {
+  @apply text-gray-900 bg-green-300;
+}
+.status-autopilot {
+  @apply text-gray-900 bg-indigo-500;
+}
+.status-opensource {
+  @apply text-gray-900 bg-yellow-200;
+}
+.status-backburner {
+  @apply text-gray-900 bg-slate-500;
+}
+.status-graveyard,
+.status-sold {
+  @apply text-gray-900 bg-red-200;
+}

@@ -1,0 +1,353 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* * {
+  outline: solid 1px red;
+} */
+
+.scroller {
+  @apply scrollbar-thin dark:scrollbar-thumb-indigo-500 dark:scrollbar-track-slate-500;
+}
+
+body {
+  @apply scroller;
+  @apply leading-normal tracking-normal font-body;
+  @apply text-gray-700 bg-white;
+  @apply dark:text-gray-300 dark:bg-gray-900;
+}
+
+/* Default form elements */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea,
+textbox {
+  @apply block px-4 py-3 bg-white border border-gray-200 rounded dark:border-gray-700 dark:bg-gray-800;
+}
+
+button,
+input[type="submit"],
+input[type="button"],
+.button {
+  @apply block px-4 py-3 text-white bg-indigo-500 rounded cursor-pointer hover:bg-indigo-600;
+}
+
+/* Define the custom component styles for use on the site */
+.underline {
+  text-decoration-color: rgba(99, 102, 241, 1) !important;
+  text-decoration: underline;
+}
+
+/*
+.nuxt-content-highlight {
+  @apply mb-8;
+}
+p code,
+li code,
+blockquote code,
+h1 code,
+h2 code,
+h3 code {
+  @apply text-white bg-indigo-500 rounded shadow drop-shadow-sm;
+}
+*/
+
+/* Common blog post componenets */
+/*
+.tag-simple {
+  @apply relative text-xs font-medium text-gray-900 dark:text-gray-400;
+}
+.tag {
+  @apply relative px-3 py-1 text-xs font-medium text-gray-900 rounded-full dark:text-gray-400;
+}
+.tag.green {
+  @apply hover:bg-green-200;
+}
+.tag.indigo {
+  @apply hover:bg-indigo-400 hover:text-white;
+}
+*/
+
+.flexer {
+  @apply flex items-center;
+  /* @apply whitespace-nowrap; */
+}
+.flexer .icon {
+  @apply inline-block w-4 h-4;
+}
+
+.flexer-spacer {
+  @apply flexer;
+  @apply space-x-2;
+}
+
+.container-inner {
+  @apply md:max-w-6xl md:mx-auto;
+}
+.container {
+  @apply container-inner;
+  @apply gap-8 p-5 mx-auto space-y-4 md:space-y-8 md:py-10 md:px-4;
+  @apply justify-between;
+}
+
+.focus-area {
+  @apply container-inner;
+  @apply w-full items-center text-center md:text-left;
+  @apply grid gap-8 md:flex justify-between;
+  @apply mx-auto space-y-10 md:space-y-0 md:space-x-8 md:flex;
+  @apply px-4 py-8;
+}
+.focus-image {
+  @apply block px-10 md:max-h-76 md:px-0;
+}
+
+.social-icon {
+  @apply text-gray-800 dark:text-white;
+  @apply hover:text-hot-pink;
+}
+/*
+svg {
+  @apply inline w-8 h-8;
+}
+*/
+
+hr {
+  /* @apply my-3 text-indigo-500; */
+  @apply w-2/3 h-px mx-auto my-10 md:my-20 text-indigo-500 transform bg-indigo-500 md:w-2/3 rotate-1;
+}
+
+/*
+.link,
+ */
+/* article a {
+  @apply cursor-pointer hover:underline;
+  @apply text-indigo-500 hover:text-hot-pink;
+  @apply dark:text-hot-pink hover:underline hover:text-indigo-400;
+  @apply group-hover:underline group-hover:text-hot-pink;
+} */
+.underline-none {
+  @apply no-underline !important;
+}
+.reverse-link {
+  @apply cursor-pointer underline font-semibold;
+  @apply hover:text-yellow-500;
+}
+.link,
+.summary a,
+article a {
+  @apply cursor-pointer underline font-semibold;
+  @apply hover:text-indigo-500 text-yellow-500;
+}
+.link-active {
+  @apply link;
+  @apply hover:text-indigo-500 text-yellow-500 !important;
+}
+.link-passive {
+  @apply link;
+  @apply text-indigo-500 hover:text-yellow-500 !important;
+}
+.link-muted {
+  @apply cursor-pointer hover:underline !important;
+  @apply text-gray-500 hover:text-yellow-500 !important;
+}
+
+.avatar {
+  @apply rounded-full;
+  @apply block overflow-hidden flex-shrink-0 bg-gray-400;
+}
+.avatar img {
+  @apply w-full;
+}
+.avatar-sm {
+  @apply w-16 h-16;
+}
+.avatar-base {
+  @apply w-24 h-24;
+}
+.avatar-md {
+  @apply w-16 h-16 md:w-32 md:h-32;
+}
+.avatar-lg {
+  @apply w-22 h-22 md:w-48 md:h-48;
+}
+.avatar-xl {
+  @apply md:w-80 md:h-80;
+  @apply w-full;
+  /* @apply w-22 h-22; */
+}
+
+.default-view-small {
+  @apply block lg:hidden;
+}
+.default-view-big {
+  @apply hidden lg:block;
+}
+
+.icon {
+  @apply icon-base;
+  /* @apply text-gray-100 hover:text-gray-100; */
+  @apply text-gray-800 hover:text-gray-800;
+}
+.icon-xs {
+  @apply w-3 h-3;
+}
+.icon-sm {
+  @apply w-5 h-5;
+}
+.icon-base,
+.icon-md {
+  @apply w-6 h-6;
+}
+.icon-lg {
+  @apply w-9 h-9;
+}
+
+/*
+
+*/
+.card {
+  @apply w-full block rounded-xl overflow-hidden;
+  @apply border border-gray-800;
+}
+
+.card-error {
+  @apply border-red-600;
+}
+
+.hover-outline {
+  @apply hover:outline hover:outline-offset-4 hover:outline-2 hover:outline-yellow-500 hover:border-transparent;
+}
+.featured-outline {
+  @apply border-2 border-yellow-500;
+}
+.double-wide-cards {
+  @apply grid gap-5 grid-cols-1 lg:grid-cols-2;
+}
+.side-heavy-cards {
+  @apply grid gap-5 grid-cols-1 lg:grid-cols-5;
+}
+.card-listing {
+  @apply grid gap-5 grid-cols-1;
+  @apply sm:grid-cols-2 md:grid-cols-3;
+}
+
+/* 
+
+*/
+
+.tag {
+  @apply px-3 py-1 rounded-xl mr-3 cursor-pointer;
+  @apply border border-gray-800;
+  @apply bg-transparent;
+  @apply hover:border-gray-500;
+}
+.inline-code {
+  @apply px-3 py-1 ml-1 mr-2 rounded-lg;
+  @apply text-base tracking-wide font-mono;
+  @apply bg-slate-800 border border-slate-700 text-white !important;
+}
+
+.inline-code-link {
+  @apply inline-code;
+  @apply hover:bg-slate-700 hover:border-slate-500 !important;
+}
+
+/* Inline `msg` boxes used throughout the site */
+.btn,
+.msg {
+  @apply px-4 py-4 rounded-lg;
+  @apply shadow-xl border;
+  /* @apply text-2xl; */
+  @apply bg-slate-800 border-slate-700;
+  @apply my-5;
+  @apply text-white;
+  @apply text-lg !important;
+}
+.msg h2,
+.msg h3,
+.msg h4,
+.msg h5 {
+  @apply pt-0 !important;
+}
+.msg p {
+  @apply mt-0 !important;
+}
+
+.msg.grey,
+.msg.gray {
+  @apply bg-slate-800 border-slate-700;
+}
+.msg.note,
+.msg.purple,
+.msg.indigo {
+  @apply bg-indigo-900 border-indigo-700;
+}
+
+.msg.blue {
+  @apply bg-blue-900 border-blue-700;
+}
+.msg.red,
+.msg.error {
+  @apply bg-red-900 border-red-700;
+}
+.msg.green,
+.msg.good,
+.msg.success {
+  @apply bg-green-900 border-green-700;
+}
+.msg.yellow,
+.msg.caution,
+.msg.warn,
+.msg.warning {
+  @apply bg-yellow-900 border-yellow-700;
+}
+
+.msg.text::before {
+  @apply block;
+  @apply text-white;
+  @apply uppercase font-mono;
+  @apply font-semibold;
+}
+.msg.note.text::before {
+  content: "Note:";
+}
+.msg.warn.text::before {
+  content: "Warning:";
+}
+.msg.caution.text::before {
+  content: "Caution:";
+}
+.msg.danger.text::before {
+  content: "Danger:";
+}
+
+.box {
+  @apply p-8 rounded-2xl sm:p-6 xl:p-8;
+  @apply border-2 border-gray-700;
+}
+.box .inner-box {
+  @apply space-y-4 text-lg text-center;
+  /* @apply sm:p-6 xl:p-8 2xl:col-span-2; */
+}
+.heading {
+  @apply text-xl font-bold leading-none tracking-wide;
+}
+.heading-md {
+  @apply text-2xl;
+}
+.heading-lg {
+  @apply text-3xl;
+}
+.heading-xl {
+  @apply text-5xl;
+}
+
+.label {
+  @apply block mb-2 font-semibold tracking-wide;
+  /* @apply text-gray-600; */
+  /* @apply text-gray-200; */
+}
+.box .label {
+  /* @apply text-gray-100; */
+}

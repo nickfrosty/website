@@ -1,0 +1,7 @@
+{"rule":"PREPOSITION_VERB","sentence":"^\\QPeriodically as your deploy/interact with Solana programs, you will need to fund your wallet with SOL (the native Solana token).\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QTo check the balance your CLI configured wallet address (aka the one you have set with your file system keyfile):\\E$"}
+{"rule":"YOUR","sentence":"^\\QIf you have not already setup your Solana development environment, you can view our other articles that go in depth on getting setup and all your tooling installed for Anchor and Solana program development.\\E$"}
+{"rule":"PRP_MD_NN","sentence":"^\\QYou can browser over to your Ghost blog by navigating to the localhost url that is given in your terminal window.\\E$"}
+{"rule":"TYPO_FORM_FROM","sentence":"^\\QI am not generating money form the list to make it worth paying to have the list.\\E$"}
+{"rule":"A_INFINITIVE","sentence":"^\\QTyping in the delete confirmation words as needed.\\E$"}
+{"rule":"A_INFINITIVE","sentence":"^\\QIn the delete popup, you will need to type in the correct words in order to confirm your decision to delete these contacts from MailChimp.\\E$"}

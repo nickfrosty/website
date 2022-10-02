@@ -1,0 +1,15 @@
+{
+  "spellright.language": ["en_US"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext", "javascript"],
+  "cSpell.words": [
+    "backlinks",
+    "lockscreen",
+    "mailchimp",
+    "opensource",
+    "pubkey",
+    "signup",
+    "signups",
+    "Spacebird",
+    "xampp"
+  ]
+}

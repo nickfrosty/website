@@ -1,0 +1,150 @@
+.article {
+  @apply break-words;
+
+  a {
+    /* @apply font-bold; */
+    @apply font-semibold underline;
+
+    &:hover {
+      @apply text-indigo-500;
+      /* @apply text-hot-pink; */
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  b,
+  strong,
+  i,
+  em {
+    @apply text-white !important;
+  }
+
+  em > strong,
+  strong > em {
+    @apply underline;
+  }
+
+  h1,
+  h1 a {
+    @apply font-bold leading-none no-underline uppercase font-display text-4xl;
+    /* @apply capitalize; */
+    @apply text-yellow-500;
+
+    /* font-size: min(max(3rem, 5.25vw), 6rem); */
+    /* @supports (font-size: clamp(3rem, 5.25vw, 7rem)) {
+      font-size: clamp(3rem, 5.25vw, 7rem);
+    } */
+  }
+
+  h2,
+  h2 a {
+    @apply py-6  leading-none tracking-tight no-underline;
+    @apply font-bold text-4xl;
+    @apply text-indigo-400;
+
+    /* @apply text-indigo-500; */
+    /* @apply capitalize; */
+
+    /* text-shadow: 0 0 5px rgb(79 70 229 / 60%); */
+  }
+
+  h3 {
+    @apply py-6 text-2xl font-bold leading-none;
+    @apply text-indigo-400;
+    /* @apply text-yellow-400; */
+
+    /* @apply capitalize; */
+
+    /* text-shadow: 0 0 5px rgb(254 211 24 / 50%); */
+  }
+
+  h4 {
+    @apply py-6 font-bold leading-none tracking-widest uppercase;
+    /* @apply capitalize; */
+  }
+
+  p {
+    @apply my-4 text-lg leading-relaxed;
+    /* @apply capitalize; */
+  }
+  > p:first-of-type {
+    @apply text-xl md:text-2xl;
+  }
+
+  blockquote > p {
+    @apply px-6 py-4 text-2xl italic font-semibold leading-tight;
+    @apply rounded-xl shadow-xl;
+    @apply md:mx-14 my-10;
+    @apply bg-indigo-900 text-white border-2 border-indigo-500;
+  }
+
+  > blockquote > blockquote > p {
+    @apply text-xl leading-tight;
+  }
+
+  > p > img,
+  > img {
+    @apply mx-auto my-10;
+    @apply rounded-xl;
+  }
+
+  ul:not(.list-none) {
+    @apply pl-0 mb-8 ml-10 text-lg list-disc;
+    li {
+      @apply mb-1;
+    }
+  }
+
+  ol {
+    @apply pl-0 mb-8 ml-10 text-lg list-decimal;
+    li {
+      @apply mb-1;
+    }
+  }
+
+  p code,
+  ul li *:not(pre) code,
+  ul li > code,
+  ol li *:not(pre) code,
+  ol li > code {
+    /* @apply inline-block p-2 font-mono text-sm leading-none text-white align-baseline whitespace-nowrap; */
+  }
+
+  /* pre code,
+  pre code&,
+  > ul li pre code,
+  > ol li pre code {
+    @apply p-5;
+  } */
+
+  pre,
+  pre&,
+  > ul li pre,
+  > ol li pre {
+    @apply p-0 mb-5 leading-loose rounded-md;
+  }
+
+  table {
+    @apply w-full mb-8 text-sm text-left border-2 border-collapse;
+    th {
+      @apply p-4 text-xl font-bold border-t-4 border-b;
+    }
+
+    td {
+      @apply p-4 border-b;
+    }
+
+    p {
+      @apply leading-normal;
+    }
+  }
+}
+
+.content section > *:first-child {
+  @apply pt-0 mt-0;
+}
