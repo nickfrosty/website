@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import clsx from "clsx";
 import Image from "next/image";
 import { displayDate } from "zumo";
 import { FloatLabel } from "./FloatLabel";
@@ -12,12 +13,12 @@ export function ArticleMeta({
 }) {
   return (
     <section className={`space-y-3 ${className}`}>
-      <p className="space-x-2 tracking-wider text-gray-500 flexer">
+      <p className="items-center tracking-wider text-gray-500 md:space-x-4 md:flex">
         <a
           href="https://twitter.com/nickfrosty"
           target="_blank"
           rel="noreferrer"
-          className="space-x-3 link flexer"
+          className={clsx("space-x-3 font-mono link flexer", "no-underline")}
         >
           <Image
             className="place-self-center avatar"
@@ -29,13 +30,15 @@ export function ArticleMeta({
           <span>Nick Frostbutter</span>
         </a>
 
-        <span className="block w-1 h-1 bg-gray-500 rounded-full"></span>
+        <div className="mt-4 md:mt-0 flexer">
+          <span className="hidden mr-2 w-1 h-1 bg-gray-500 rounded-full md:block"></span>
 
-        <DisplayDate
-          date={meta?.date}
-          updatedAt={meta?.updatedAt}
-          createdAt={meta?.createdAt}
-        />
+          <DisplayDate
+            date={meta?.date}
+            updatedAt={meta?.updatedAt}
+            createdAt={meta?.createdAt}
+          />
+        </div>
       </p>
 
       {/* Post tags and `draft` status */}
