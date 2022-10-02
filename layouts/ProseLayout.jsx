@@ -12,6 +12,8 @@ export default function ProseLayout({
   post,
   next,
   prev,
+  breadcrumbParents = null,
+  breadcrumbShowHome = true,
   parentPage = "/",
   // children
 }) {
@@ -29,7 +31,12 @@ export default function ProseLayout({
   return (
     <ColumnLayout seo={{ ...meta, ...seo }}>
       {/* Bread crumbs area */}
-      <Breadcrumbs meta={meta} parent={parentPage} href={href} />
+      <Breadcrumbs
+        meta={meta}
+        includeHome={breadcrumbShowHome}
+        parents={breadcrumbParents}
+        href={href}
+      />
 
       {/* Primary content area */}
       <main className="space-y-5">

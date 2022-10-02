@@ -13,6 +13,11 @@ const metaData = {
   contentDir: "blog",
 };
 
+const breadcrumbParents = {
+  href: "/blog",
+  label: "Blog",
+};
+
 // get the listing of all of the markdown files
 export async function getStaticPaths() {
   return generateStaticPaths(metaData.contentDir, false);
@@ -52,5 +57,12 @@ export async function getStaticProps({ params }) {
 }
 
 export default function SingleBlogPage(props) {
-  return <ProseLayout {...props} config={config} />;
+  return (
+    <ProseLayout
+      {...props}
+      config={config}
+      breadcrumbParents={breadcrumbParents}
+      breadcrumbShowHome={false}
+    />
+  );
 }
