@@ -340,7 +340,7 @@ article a {
   @apply text-3xl;
 }
 .heading-xl {
-  @apply text-5xl;
+  @apply text-4xl md:text-5xl;
 }
 
 .label {
