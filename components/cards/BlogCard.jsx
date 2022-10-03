@@ -61,7 +61,7 @@ function TagsListing({ tags }) {
   // };
 
   return (
-    <div className="flex justify-evenly">
+    <div className="flex">
       {tags?.slice(0, config.maxTagCount)?.map((tag) => {
         return (
           <span className="cursor-default inline-code-link" key={tag}>
