@@ -22,11 +22,6 @@ const metaData = {
   // paginationTemplate: "{{baseHref}}/{{id}}",
 };
 
-// export async function getStaticPaths() {
-//   // get the listing of all of the markdown files
-//   return generateStaticPaths("tags", false);
-// }
-
 export async function preparePage(slug, currentPage = 1) {
   // give the 404 page when no `slug` was found
   if (!slug) return { notFound: true };
@@ -101,8 +96,11 @@ export async function preparePage(slug, currentPage = 1) {
   };
 }
 
-export async function getServerSideProps({ params }) {
-  console.warn(params);
+export async function getStaticPaths() {
+  return generateStaticPaths("tags", false);
+}
+
+export async function getStaticProps({ params }) {
   return await preparePage(params?.slug, params?.page);
 }
 
