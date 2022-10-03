@@ -27,15 +27,17 @@ const metaData = {
 //   return generateStaticPaths("tags", false);
 // }
 
-export async function preparePage(currentPage, slug) {
+export async function preparePage(slug, currentPage = 1) {
   // give the 404 page when no `slug` was found
   if (!slug) return { notFound: true };
+  console.warn(slug, currentPage);
 
   // retrieve the current `tag` document, when on exists
   let page = (await getDocBySlug(slug, "tags")) || {
     meta: { slug, title: slug },
     content: false,
   };
+  console.log(page);
 
   // parse and update the `baseHref` to include the current tag
   metaData.baseHref = parseTemplate(metaData?.baseHref, {
@@ -101,7 +103,7 @@ export async function preparePage(currentPage, slug) {
 
 export async function getServerSideProps({ params }) {
   console.warn(params);
-  return await preparePage(params?.page, params?.slug);
+  return await preparePage(params?.slug, params?.page);
 }
 
 export default function TagPage({
