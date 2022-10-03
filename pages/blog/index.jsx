@@ -48,7 +48,7 @@ export default function BlogIndex({ posts, featured }) {
           </p>
         </header>
 
-        <section className="space-y-4">
+        <section className="space-y-10">
           {posts?.slice(0, counter)?.map((post) => {
             if (!post?.meta) return;
             return <BlogCard {...post.meta} key={post.slug} />;

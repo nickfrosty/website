@@ -98,7 +98,7 @@ export default function HomePage({ projects }) {
                 My Current Projects
               </h2>
 
-              <div className="grid grid-cols-1 gap-4 mb-3 lg:block md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-8 mb-3 lg:block md:grid-cols-2">
                 {projects?.map((item) => {
                   return (
                     <ProjectCard

@@ -1,10 +1,10 @@
 .card {
-  @apply relative top-0 block mb-3 overflow-hidden transition-all duration-75 ease-in-out;
+  @apply relative top-0 block mb-3  transition-all duration-75 ease-in-out;
   @apply border rounded-xl lg:text-left;
   @apply border-white md:hover:border-indigo-200;
   @apply border-gray-800 md:hover:border-indigo-700;
 
-  @apply border-0 space-y-4;
+  @apply border-0 space-y-2 md:space-y-4;
   @apply md:p-6 md:border md:shadow-md;
   /* @apply md:hover:-top-2 md:hover:shadow-lg; */
 }

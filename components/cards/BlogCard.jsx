@@ -31,12 +31,14 @@ export function BlogCard({
         </Link>
       </h2>
 
-      <div className="flex justify-between items-center mt-4 space-x-5 text-gray-600 dark:text-gray-400">
-        <span className="block whitespace-nowrap md:inline-block">
+      <div className="justify-between items-center space-y-4 text-gray-600 md:space-x-5 md:space-y-0 md:flex dark:text-gray-400">
+        <div className="block whitespace-nowrap md:inline-block">
           {displayDate(date)}
-        </span>
+        </div>
 
-        <TagsListing tags={tags} />
+        <div className="line-clamp-1">
+          <TagsListing tags={tags} />
+        </div>
       </div>
     </div>
   );
@@ -59,7 +61,7 @@ function TagsListing({ tags }) {
   // };
 
   return (
-    <span>
+    <div className="flex justify-evenly">
       {tags?.slice(0, config.maxTagCount)?.map((tag) => {
         return (
           <span className="cursor-default inline-code-link" key={tag}>
@@ -73,6 +75,6 @@ function TagsListing({ tags }) {
         //   </Link>
         // );
       })}
-    </span>
+    </div>
   );
 }
