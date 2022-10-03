@@ -32,7 +32,7 @@ export function HeroSection({
   if (!href) href = `${baseHref || ""}/${slug || generateSlug(title)}`;
 
   return (
-    <section className="grid grid-cols-2 gap-12 mb-30">
+    <section className="grid-cols-2 gap-12 space-y-10 md:space-y-0 md:grid md:mb-30">
       <section className="place-content-start place-self-center space-y-6 w-full">
         {heading && (
           <h4 className="text-sm font-semibold uppercase">{heading}</h4>
