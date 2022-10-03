@@ -4,6 +4,7 @@ import Layout from "~/layouts/default";
 import Link from "next/link";
 import NowDetailsItem from "~/components/NowDetailsItem";
 import NowMessageNotice from "~/components/NowMessageNotice";
+import AvatarImage from "~/components/AvatarImage";
 
 // construct the meta data for the page
 // const metaData = basicMeta({
@@ -21,12 +22,8 @@ export default function HomePage() {
           <div className="justify-center items-center mx-auto md:flex md:space-x-5">
             <div className="flex justify-center items-center mx-auto space-x-5">
               <Link href="/now">
-                <a className="block overflow-hidden flex-shrink-0 rounded-full border border-gray-600 shadow w-30 h-30">
-                  <img
-                    alt="Nick Frostbutter"
-                    className="w-full h-full"
-                    src="/img/nick.jpg"
-                  />
+                <a className="">
+                  <AvatarImage sizeClass={"w-30 h-30"} />
                 </a>
               </Link>
 

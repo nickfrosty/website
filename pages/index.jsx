@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Layout from "~/layouts/default";
+import AvatarImage from "~/components/AvatarImage";
 // import { basicMeta } from "~/utils/seoMetaData";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import Link from "next/link";
@@ -37,12 +38,8 @@ export default function HomePage({ projects }) {
         <section className="grid grid-cols-2 gap-10 items-center md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
           <Link href="/">
             <a className="block col-span-2 auto-cols-auto mx-auto mb-5 text-center sm:col-span-1 md:text-left">
-              <img
-                src="/img/nick.jpg"
-                alt="Nick Frostbutter"
-                width={256}
-                height={256}
-                className="w-60 h-60 rounded-full border border-transparent shadow md:w-48 md:h-48 lg:w-32 lg:h-32"
+              <AvatarImage
+                sizeClass={"w-60 h-60 md:w-48 md:h-48 lg:w-32 lg:h-32"}
               />
             </a>
           </Link>

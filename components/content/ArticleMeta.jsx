@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import { displayDate } from "zumo";
+import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
 import { Tag } from "./Tag";
 
@@ -20,13 +20,7 @@ export function ArticleMeta({
           className={"space-x-3 text-lg md:text-base reverse-link flexer"}
           style={{ textDecoration: "none" }}
         >
-          <Image
-            className="place-self-center avatar"
-            src="/img/nick.jpg"
-            width={48}
-            height={48}
-            alt={"Nick Frostbutter"}
-          />
+          <AvatarImage sizeClass={"w-12 h-12"} />
           <span>Nick Frostbutter</span>
         </a>
 

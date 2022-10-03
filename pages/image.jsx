@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import AvatarImage from "~/components/AvatarImage";
 
 export default function ImagePage() {
   return (
@@ -19,13 +20,10 @@ export default function ImagePage() {
 
           <section className="flex justify-between place-items-center w-full">
             <div className="flex place-items-center space-x-5">
-              <div className="overflow-hidden w-32 h-32 rounded-full border-4 border-white shadow">
-                <img
-                  src="/img/nick.jpg"
-                  className=""
-                  alt={"Nick Frostbutter"}
-                />
-              </div>
+              <AvatarImage
+                sizeClass={"w-32 h-32"}
+                className="border-4 border-white"
+              />
 
               <div className="space-y-2">
                 <h3 className="text-5xl font-semibold text-yellow-500">
