@@ -22,7 +22,8 @@
 }
 
 .meta {
-  @apply flex flex-grow justify-between;
+  @apply flex-grow justify-between;
+  @apply w-full;
 }
 
 .link {
@@ -36,12 +37,15 @@
 
 .minor,
 .date {
-  @apply block text-sm text-gray-500;
+  @apply block md:text-sm text-gray-500;
+}
+
+.floater {
+  @apply absolute right-0 top-0 mr-4 mt-4;
 }
 
 /* Style the status pills */
 .status {
-  @apply absolute right-0 top-0 mr-4 mt-4;
   @apply px-3 py-1 place-self-center;
   @apply text-xs font-medium rounded-lg font-mono;
 }

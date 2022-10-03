@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "~/styles/project.module.css";
@@ -31,15 +32,30 @@ export default function ProjectCard({ project, showDateRange = true }) {
                 {project.title}
               </h3>
 
-              {showDateRange && (
-                <div className={styles.date}>{project.dateRange}</div>
-              )}
+              <div className="justify-between w-full flexer">
+                {showDateRange && (
+                  <div className={styles.date}>{project.dateRange}</div>
+                )}
+
+                <span
+                  className={clsx(
+                    "md:hidden block",
+                    styles.status,
+                    styles[`status-${project.status}`],
+                  )}
+                >
+                  {project.status}
+                </span>
+              </div>
             </div>
 
             <span
-              className={`${styles.status} ${
-                styles[`status-${project.status}`]
-              }`}
+              className={clsx(
+                "hidden md:block",
+                styles.floater,
+                styles.status,
+                styles[`status-${project.status}`],
+              )}
             >
               {project.status}
             </span>
