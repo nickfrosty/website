@@ -24,10 +24,7 @@ export function Breadcrumbs({
 
   return (
     <section
-      className={clsx(
-        `flex justify-start items-center space-x-2 text-base font-bold tracking-wide`,
-        className,
-      )}
+      className={clsx(`space-x-2 text-base font-bold tracking-wide`, className)}
     >
       {parents?.length &&
         parents.map((item) => {
@@ -39,7 +36,7 @@ export function Breadcrumbs({
                 </a>
               </Link>
 
-              <ChevronDoubleRightIcon className="icon-xs" />
+              <ChevronDoubleRightIcon className="inline-block icon-xs" />
             </>
           );
         })}
