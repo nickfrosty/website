@@ -100,6 +100,7 @@ export async function preparePage(currentPage, slug) {
 }
 
 export async function getServerSideProps({ params }) {
+  console.warn(params);
   return await preparePage(params?.page, params?.slug);
 }
 
