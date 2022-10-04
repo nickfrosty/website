@@ -1,11 +1,9 @@
 ---
-draft: false
 date: 2022-03-10 00:00 EST
 title: "First week off in 2022"
-# description: ''
-intro: ""
+description: "After a long first two months of 2022, the time has finally come to take some time off. Time to cooldown."
+# intro: ""
 # image: '/media/blog/'
-# hero_image: '/media/blog/'
 tags: newsletter, 2022, devlog
 ---
 

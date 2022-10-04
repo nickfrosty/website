@@ -1,11 +1,8 @@
 ---
-draft: false
 date: 2022-02-13 00:00 EST
-title: "January in Review: One month down and almost an MVP out the door"
-# description: ''
-intro: "It has been a crazy month to kick off the this year. There have already been some ups and downs for sure; from going micro viral on twitter to having some personal medical problems slowing me down. Progress has still been really solid."
+title: "One month down and an MVP out the door (almost)"
+description: "It has been a crazy month to kick off the this year. From going micro viral on twitter to having some personal medical problems slowing me down."
 # image: '/media/blog/'
-# hero_image: '/media/blog/'
 category: devlog
 tags: newsletter, 2022, review
 ---

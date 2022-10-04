@@ -1,11 +1,13 @@
 ---
 draft: false
 title: "Creating a personal brand"
-intro: 'I have been tossing and turning on the idea for basically years. Swaying back and forth, with varying levels of commitment, on building a "personal brand" for all of my content online.'
+description: 'For years I have been swaying back and forth (with varying levels of commitment) on building one single "personal brand". It is time to commit.'
 category: blog
 date: 2021-11-11 00:00 EST
 tags: personal, branding
 ---
+
+I have been tossing and turning on the idea for basically years. Swaying back and forth, with varying levels of commitment, on building a "personal brand" for all of my content online.
 
 The biggest problem I think I have is a mental one.
 

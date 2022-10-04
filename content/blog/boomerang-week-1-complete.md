@@ -2,11 +2,14 @@
 draft: false
 date: 2021-10-25 00:00 EST
 title: "Boomerang: Week 1 complete"
-intro: 'With the first week of building Boomerang.link coming to a close, I think I have made some really good progress. A good portion of the basic functionality and design complete, there is really only once "major" portion left. Actually sending the "boomerang" reminders. You know, the core product...'
-hero_image: /media/blog/boomerang/week-1-complete/boomerang.link---landing-page.png
+description: "With the first week of building Boomerang.link coming to a close, I have made some really good progress."
 category: devlog
 tags: devlog, boomerang
 ---
+
+With the first week of building Boomerang.link coming to a close, I think I have made some really good progress. A good portion of the basic functionality and design complete, there is really only once "major" portion left. Actually sending the "boomerang" reminders. You know, the core product...
+
+![](/media/blog/boomerang/week-1-complete/boomerang.link---landing-page.png)
 
 Here is the (mostly full) list of things I got done in Week 1. Some are more "manger" some more "maker" style tasks. But all move me towards the 2 week launch goal:
 

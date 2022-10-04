@@ -1,12 +1,14 @@
 ---
-draft: false
 date: 2020-01-13 00:00 EST
 title: "First 3 Steps to Financial Freedom"
-hero_image: "/media/blog/3-steps-to-financial-freedom.jpg"
-intro: "Get a head start on your financial goals with these first 3 steps to financial freedom. Simple steps to figure out what you earn, keep, and spend."
+description: "Get a head start on your financial goals with these first 3 steps to financial freedom. Simple steps to figure out what you earn, keep, and spend."
 category: personal
-tags: finance, personal
+tags: personal, finance
 ---
+
+Get a head start on your financial goals with these first 3 steps to financial freedom. Simple steps to figure out what you earn, keep, and spend.
+
+![take the steps to gain financial freedom](/media/blog/3-steps-to-financial-freedom.jpg)
 
 Without a doubt, the biggest and most important 3 steps to financial freedom is knowing what you earn, what you take home, and what you spend. The before and after tax numbers are so very important to know, and even more so, how much you spend each and every month.
 

@@ -11,7 +11,8 @@ import { useState } from "react";
 const metaData = {
   title: "Blog",
   baseHref: "/blog",
-  description: "",
+  description:
+    "Building in public 👷. Writing down and sharing my thoughts and experiences as I go (and other goodies too).",
 };
 
 export async function getStaticProps({ params }) {

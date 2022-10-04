@@ -1,11 +1,12 @@
 ---
-draft: false
 date: 2021-10-13 00:00 EST
 title: "Time off work means more time to work"
-intro: 'For a few weeks now, I have been kicking around he idea for a straightforward app that will let me send "link reminders" to myself. Knowing that I had about 2 weeks off of work approaching, I decided to pull the trigger and start planning.'
+description: "I have been kicking around the idea for a straightforward app that will let me send 'link reminders' to myself. I had about 2 weeks off of work. Let's go!"
 category: devlog
 tags: devlog, boomerang, personal
 ---
+
+For a few weeks now, I have been kicking around the idea for a straightforward app that will let me send "link reminders" to myself. Knowing that I had about 2 weeks off of work approaching, I decided to pull the trigger and start planning.
 
 Enter [Boomerang.link](https://boomerang.link)
 

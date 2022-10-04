@@ -2,11 +2,13 @@
 date: 2022-01-26 00:00 EST
 title: "A micro viral tweet and a marketing fail"
 description: 'With a single tweet and single IndieHackers post, I went "micro viral". This is the breakdown of how I failed at marketing.'
-intro: 'With a single tweet and single IndieHackers post, I went "micro viral". This is the breakdown of how I failed at marketing.'
 image: "/media/blog/micro-viral/thumb-micro-viral-tweet-and-a-marketing-fail.jpg"
-hero_image: "/media/blog/micro-viral/twitter-followers.png"
 tags: 2022, marketing, twitter
 ---
+
+With a single tweet and single IndieHackers post, I went "micro viral". This is the breakdown of how I failed at marketing.
+
+![micro viral from a single tweet - my twitter stats](/media/blog/micro-viral/twitter-followers.png)
 
 So here is the gist:
 

@@ -1,14 +1,19 @@
 ---
-draft: false
 date: 2020-10-04 00:00 EST
 title: "Why I started finbab. Building a personal finance app"
-hero_image: /media/blog/finbab/finbab-why-i-decided-to-create-the-personal-finance-app-finbabcom.jpg
+description: "The past few years I have found so much enjoyment in the world of finance. So I decided to make my own personal finance app, named finbab."
 category: devlog
-tags: personal, finbab
-intro: "The past few years I have found so much enjoyment in the world of finance. So I decided to make my own personal finance app, named finbab."
+tags: personal, finbab, finance
 ---
 
 Most web developers spend their free time writing code. We love working on projects. So why not make a personal finance app?
+
+<div class="msg note">
+<h4>Update:</h4>
+Turns out, building a finance app is hard and time consuming. So I changed my mind and decided not to build this. At least for now 😅 (updated some time in early 2021)
+</div>
+
+![building a personal finance app](/media/blog/finbab/finbab-why-i-decided-to-create-the-personal-finance-app-finbabcom.jpg)
 
 Always having had a passion for web dev and coding, over the past few years I have found so much enjoyment in the world of finance. So I decided to bootstrap my own personal finance app, named [finbab](https://finbab.com). So here is the story of why I decided to create a personal finance app.
 

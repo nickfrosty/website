@@ -2,11 +2,13 @@
 draft: false
 title: "July 2021: Relaunched my blog with more stuff"
 slug: "july-2021-relaunched-my-blog-with-more-stuff"
-intro: "More geared towards my goals of building in public, this updated personal blog actually has a blog. And articles and a newsletter."
+description: "More geared towards my goals of building in public, this updated personal blog actually has a blog. And articles and a newsletter."
 date: 2021-07-02 00:00 EST
 updatedAt: 2021-07-05 00:00 EST
 tags: updates, blog, personal
 ---
+
+More geared towards my goals of building in public, this updated personal blog actually has a blog. And articles and a newsletter.
 
 After spending the last several months of building things in quite, and out of sight of others, I am going to making more of a conscious effort to building in public.
 

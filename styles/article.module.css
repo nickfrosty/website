@@ -91,6 +91,7 @@
   > img {
     @apply mx-auto my-10;
     @apply rounded-xl;
+    @apply shadow-lg border border-gray-800;
   }
 
   ul:not(.list-none) {

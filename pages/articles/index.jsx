@@ -9,7 +9,7 @@ import { SmallCard } from "~/components/cards/SmallCard";
 // const metaData = basicMeta({
 const metaData = {
   title: "Articles",
-  description: "",
+  description: `Collection of "how-to" style tutorials and technical writings. Mostly centered around coding, devops, and content creators.`,
   baseHref: "/articles",
   // paginationTemplate: "/page/{id}",
 };
