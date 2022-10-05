@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function AvatarImage({ className = null, sizeClass = null }) {
   return (
-    <div
+    <span
       className={clsx(
-        "overflow-hidden rounded-full shadow",
+        "block overflow-hidden rounded-full shadow",
         sizeClass,
         className,
       )}
@@ -17,6 +17,6 @@ export default function AvatarImage({ className = null, sizeClass = null }) {
         height={256}
         alt="Nick Frostbutter"
       />
-    </div>
+    </span>
   );
 }
