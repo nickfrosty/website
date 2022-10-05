@@ -56,13 +56,13 @@
   @apply text-gray-900 bg-green-300;
 }
 .status-autopilot {
-  @apply text-gray-900 bg-indigo-500;
+  @apply text-white bg-indigo-500;
 }
 .status-opensource {
   @apply text-gray-900 bg-yellow-200;
 }
 .status-backburner {
-  @apply text-gray-900 bg-slate-500;
+  @apply text-white bg-slate-500;
 }
 .status-graveyard,
 .status-sold {

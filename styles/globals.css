@@ -114,7 +114,7 @@ svg {
 
 hr {
   /* @apply my-3 text-indigo-500; */
-  @apply w-2/3 h-px mx-auto my-10 md:my-20 text-indigo-500 transform bg-indigo-500 md:w-2/3 rotate-1;
+  @apply w-2/3 h-px mx-auto my-14 md:my-20 text-indigo-500 transform bg-indigo-500 md:w-2/3 rotate-1;
 }
 
 /*

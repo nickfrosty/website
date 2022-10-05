@@ -8,7 +8,7 @@ export default function ProjectCard({ project, showDateRange = true }) {
 
   return (
     <Link href={project.url} passHref>
-      <div className={styles.card}>
+      <a className={styles.card}>
         <div className={styles.inner}>
           {project?.logo && (
             <Link href={project.url}>
@@ -65,7 +65,7 @@ export default function ProjectCard({ project, showDateRange = true }) {
         {project?.description && (
           <p className={styles.description}>{project.description}</p>
         )}
-      </div>
+      </a>
     </Link>
   );
 }
