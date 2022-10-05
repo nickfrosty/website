@@ -1,12 +1,12 @@
 ---
+date: 2021-07-08 00:00 EST
+updatedAt: false
 title: "Quickly delete unsubscribed contacts in MailChimp"
 # blurb:
 description: "Trim the fat off your MailChimp email list by removing the unsubscribed or bounced contacts."
 # keywords:
 image: /media/articles/mailchimp/delete-unsubscribed-contacts-in-mailchimp2.jpg
-date: 2021-07-08 00:00 EST
 tags: mailchimp, newsletters
-updatedAt: false
 imageFocus: center
 # nextPage:
 ---

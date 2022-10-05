@@ -1,10 +1,10 @@
 ---
+date: 2022-01-01 00:00 EST
 title: "Current year with JavaScript getFullYear()"
 # blurb:
 description: "Did you hard code the year in your footer? New year, new problems. Get the current year in Javascript with the getFullYear() function."
 image: /media/articles/javascript/getfullyear-javascript-current-year-new-years.png
 imageFocus: right
-date: 2022-01-01 00:00 EST
 tags: javascript, vue, nuxt, snippets
 ---
 

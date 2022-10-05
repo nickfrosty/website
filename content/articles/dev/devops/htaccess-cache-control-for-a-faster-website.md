@@ -1,9 +1,9 @@
 ---
+date: 2021-07-15 00:00 EST
 title: "htaccess cache control for a faster website"
 # blurb:
-description: Edit a single config file to make your website load faster.
+description: Make your website load faster by adding these snippets to your .htaccess file
 image: /media/articles/htaccess/enable-htaccess-cache-control.jpg
-date: 2021-07-15 00:00 EST
 tags: htaccess, cache
 # nextPage:
 ---

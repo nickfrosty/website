@@ -6,9 +6,7 @@ description: Get started with Solana development by setting up your dev environm
 blurb: Get your Solana development environment setup on Linux.
 keywords: "solana cli, install rust, rustup, anchor framework"
 # image:
-tags:
-  - solana
-  - linux
+tags: solana, linux
 nextPage: intro-to-solana-cli
 # prevPage:
 ---

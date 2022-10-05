@@ -1,15 +1,15 @@
 ---
+date: 2021-07-06 00:00 EST
 title: "Add CSS Scroll Animation and Smooth Scrolling"
 # blurb:
 description: "Quick UX tips: turn jerky scrolling into smooth scrolling with a the CSS scroll-behavior property."
 image: "/media/articles/ux-tips/css-scroll-behavior-scroll-animation-and-smooth-scrolling.jpg"
-date: 2021-07-06 00:00 EST
 tags: css, ux-tips
 ---
 
 Make your website's scroll animation _buttery_ smooth with the CSS scroll animation property.
 
-![](/media/articles/ux-tips/css-scroll-behavior-scroll-animation-and-smooth-scrolling.jpg)
+![Add CSS Scroll Animation and Smooth Scrolling to a website](/media/articles/ux-tips/css-scroll-behavior-scroll-animation-and-smooth-scrolling.jpg)
 
 ## TLDR;
 

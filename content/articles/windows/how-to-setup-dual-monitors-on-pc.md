@@ -1,10 +1,10 @@
 ---
+date: 2020-06-26 00:00 EST
+updatedAt: false
 title: "Setup dual monitors on Windows"
 description: "How to split screen on two monitors and create a dual monitor setup on Windows."
 image: /media/articles/windows/how-to-setup-dual-monitors-on-pc/how-to-setup-dual-Monitors-in-Windows.jpg
 tags: windows, monitors
-date: 2020-06-26 00:00 EST
-updatedAt: false
 # keywords:
 imageFocus: center
 # nextPage: "deploy-an-anchor-program"

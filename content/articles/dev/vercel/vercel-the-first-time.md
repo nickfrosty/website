@@ -11,7 +11,7 @@ tags: vercel, devops, nuxt, prisma
 
 Recently, a friend turned me onto Vercel. Well, I guess it has been a few months now. A mix of good, and less than good, things I learned while deploying a project to Vercel for the first time. Mostly good, but some...weird ones...
 
-![](/media/articles/vercel/vercel-the-first-time-thumb.jpg)
+![deploying to Vercel the first time](/media/articles/vercel/vercel-the-first-time-thumb.jpg)
 
 For starters, I am loving it. But, like everything in life, it is not without its hiccups.
 

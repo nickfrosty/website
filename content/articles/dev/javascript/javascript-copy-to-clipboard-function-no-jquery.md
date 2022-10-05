@@ -1,9 +1,9 @@
 ---
+date: 2021-06-18 00:00 EST
 title: "JavaScript copy to clipboard function (no jQuery)"
 # blurb:
 description: "Copy to clipboard with the click of a button. No jQuery, just vanilla JavaScript. Simple. Lightweight."
 image: /media/articles/javascript/JavaScript-copy-to-clipboard-function-lightweight-and-with-no-jQuery-2.jpg
-date: 2021-06-18 00:00 EST
 tags: javascript, snippets
 ---
 

@@ -1,11 +1,11 @@
 ---
+date: 2020-07-30 00:00 EST
+updatedAt: false
 title: "How to record your screen in Windows for free"
 blurb: "Record your desktop screen and capture screen video for free using OBS Studio."
 description: "Record your desktop screen and capture screen video for free using OBS Studio. This free software is cross platform and works on Windows, Linux, or Mac."
 image: "/media/articles/windows/screen-capture-with-OBS-studios/OBS_STUDIOS-featured.png"
 tags: obs-studio, windows
-date: 2020-07-30 00:00 EST
-updatedAt: false
 # keywords:
 imageFocus: center
 # nextPage:

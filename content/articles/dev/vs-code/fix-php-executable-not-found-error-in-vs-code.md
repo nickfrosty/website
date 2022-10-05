@@ -1,6 +1,6 @@
 ---
 title: 'Fix "PHP executable not found" error in VS Code'
-# blurb: ""
+blurb: 'Get rid of that pesky "PHP executable not found" error message in VS Code'
 description: 'Good news: you can easily get rid of that pesky "PHP executable not found" error message in VS Code in a few minutes. Install PHP then, add it to your PATH variable, then error-be-gone!'
 image: /media/articles/vs-code/fix-php-executable-not-found/Fix-PHP-executable-not-found-error-in-Visual-Studio-Code-VS-Code.png
 date: 2021-04-05 00:00 EST

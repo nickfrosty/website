@@ -1,9 +1,9 @@
 ---
+date: 2019-07-19 00:00 EST
 title: "Install PHP on Windows | Setup a local web server"
 blurb: "Have better MySQL server security. Update your MySQL server password, directly from the command line."
 description: "Whether you are trying to learn how to create websites, or trying to learn WordPress, the best way to learn web development is to setup a local web server."
 image: /media/articles/php/install-php-on-windows/Setup-a-local-web-server-Install-XAMPP-0-featured.png
-date: 2019-07-19 00:00 EST
 tags: php, windows, mysql
 ---
 

@@ -1,8 +1,8 @@
 ---
+date: 2020-06-17 00:00 EST
 title: "Change MySQL root password from the command line"
 blurb: "Have better MySQL server security. Update your MySQL server password, directly from the command line."
 description: "Learning how to change your MySQL password is a must for basic website security. For starters, change the root password of your localhost server."
-date: 2020-06-17 00:00 EST
 image: /media/articles/phpmyadmin/change-password/thumbnail_Change-phpMyAdmin-and-MySQL-account-passwords.png
 tags: mysql, phpmyadmin, xampp, php
 ---
@@ -10,6 +10,8 @@ tags: mysql, phpmyadmin, xampp, php
 It is easy and quick, especially if you are running an [XAMPP](https://www.apachefriends.org/) localhost web server.
 
 One of the best things about running your own localhost XAMPP web server is being able to do all the testing and projects you want for no charge at all. One of the things that gets forgot about in a lot of these cases is some basic security practices, like not using the default password.
+
+![How to change your MySQL root password from the command line](/media/articles/phpmyadmin/change-password/thumbnail_Change-phpMyAdmin-and-MySQL-account-passwords.png)
 
 For almost every XAMPP installation, people tend to keep their default _BLANK_ password. That's not very security conscious of us now is it? The good news is that you can change the root password (aka admin password) for your localhost phpMyAdmin/MySQL account in just a few minutes. Here's How!
 

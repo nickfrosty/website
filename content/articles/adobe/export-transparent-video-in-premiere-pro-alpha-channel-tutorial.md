@@ -1,17 +1,14 @@
 ---
+date: 2021-03-20 00:00 EST
+updatedAt: false
 title: "Export Transparent Video in Premiere Pro"
 blurb: Use alpha channels and ultra keys in Premiere Pro
 description: 'How to export a transparent video in Adobe Premiere Pro, using a video "alpha channel" or "ultra key" methods. This is similar to using a green screen.'
 image: /media/articles/adobe/transparent-video/premiere_pro-transparent_background-0-thumbnail.png
 # keywords:
-date: 2021-03-20 00:00 EST
-updatedAt: false
 # imageFocus: left
 # nextPage: "deploy-an-anchor-program"
-tags:
-  - green screen
-  - video editing
-  - adobe premiere
+tags: green screen, video editing, adobe premiere
 ---
 
 Sometimes you have a video editing project and you just need to "**export transparent video**". This is how to do it in Adobe Premiere Pro.

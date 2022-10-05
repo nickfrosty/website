@@ -1,4 +1,5 @@
 ---
+date: 2021-03-27 00:00 EST
 title: Green screen effect in Adobe Premiere Pro
 blurb: Work with green screens using the "chroma key" effect
 description: 'Edit a video with a green screen (aka "chroma key") effect in Adobe Premiere Pro. This method also works for blue screens.'
@@ -6,11 +7,7 @@ keywords:
 image: /media/articles/adobe/green-screen/premiere_pro-green-screen-thumbnail.png
 # imageFocus: left
 # nextPage: "deploy-an-anchor-program"
-date: 2021-03-27 00:00 EST
-tags:
-  - chroma key
-  - video editing
-  - adobe premiere
+tags: chroma key, video editing, adobe premiere
 # social_image: /media/articles/vercel/vercel-the-first-time.jpg
 ---
 

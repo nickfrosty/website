@@ -1,9 +1,9 @@
 ---
+date: 2021-07-09 00:00 EST
 title: "Create a custom Laravel Valet driver"
 blurb: 'This custom Valet driver can get those sweet ".test" websites on any Laravel site'
-description: 'Valet is wonderful. So wonderful that I use it on custom apps that do NOT use Laravel. For my custom web apps, I created a custom Valet driver to get those sweet ".test" websites. Works like a charm.'
+description: 'Laravel Valet is wonderful, but I don't use Laravel. This is how to created a custom Valet driver to get those sweet ".test" websites. Works like a charm.'
 image: /media/articles/laravel/create-a-custom-laravel-valet-driver-hide-php-extensions.jpg
-date: 2021-07-09 00:00 EST
 tags: laravel, valet, php
 ---
 
@@ -12,7 +12,7 @@ For my custom web apps, I created a custom Valet driver to get those sweet `.tes
 
 I mean it. Valet is the best! Perfect for a solid, lightweight, and minimal development environment. You can link your project's directory then browse to the project using a ".test" domain. So clean.
 
-![](/media/articles/laravel/create-a-custom-laravel-valet-driver-hide-php-extensions.jpg)
+![Create a custom Laravel Valet driver to get .test domains](/media/articles/laravel/create-a-custom-laravel-valet-driver-hide-php-extensions.jpg)
 
 The problem that I faced was that I don't use Laravel. A sin for a php developer I know. So in order to be able to use Valet style ".test" domains for my custom web apps, I must create a custom Valet driver for your app. Luckily, if you write it once (or use mine) then you will be set until Valet or Laravel changes a bunch. So basically, forever 🤞
 

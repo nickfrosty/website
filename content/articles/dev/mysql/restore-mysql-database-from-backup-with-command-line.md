@@ -1,15 +1,15 @@
 ---
+date: 2022-01-10 00:00 EST
 title: "Backup and restore MySQL databases (from the command line)"
 blurb: "Database backups are important, especially being able to actually restore a database backup to your server quickly can be the difference is uptime."
 description: "Database backups are important, but so is being able to quickly restore a database backup. And what is quicker than the command line?"
 image: /media/articles/mysql/backup-and-restore-mysql-databasse-from-command-line.jpg
-date: 2022-01-10 00:00 EST
 tags: mysql, database, backups
 ---
 
 The simplest and most effective way to backup and restore your MySQL database is with the command line. Using the `mysqldump` and `mysql` commands.
 
-![](/media/articles/mysql/backup-and-restore-mysql-databasse-from-command-line.jpg)
+![how to backup and restore MySQL databases (from the command line)](/media/articles/mysql/backup-and-restore-mysql-databasse-from-command-line.jpg)
 
 The last few days, I have been migrating [my side projects](/projects) between two different servers. I needed a quick way to also [backup and restore the MySQL databases](/articles/restore-mysql-database-from-backup-with-command-line).
 

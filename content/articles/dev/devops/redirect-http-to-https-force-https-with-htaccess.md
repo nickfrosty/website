@@ -1,14 +1,16 @@
 ---
 title: "Redirect http to https: force https with htaccess"
 blurb: "Fact: if your site does not force https then it is not secure. So fix it."
-description: "These days, if your site does not force https then it may not be secure. Chrome, Brave, and Firefox will give nasty security warnings to your users if you site is not secured with https/ssl."
+description: "Don't live pre-Y2K. Force https and SSL on your website using this .htaccess code snippet"
 image: /media/articles/htaccess/force-https-with-htaccess-redirect-http-to-https.jpg
 date: 2021-07-10 00:00 EST
 tags: htaccess, litespeed
 # nextPage: "deploy-an-anchor-program"
 ---
 
-Using your website's .htaccess file, you can **force https** to all of your users. Securing your site, and getting rid of the annoying "insecure website" message.
+These days, if your site does not force https then it may not be secure. Chrome, Brave, and Firefox will give nasty security warnings to your users if you site is not secured with https/ssl.
+
+Using your website's `.htaccess` file, you can **force https** to all of your users. Securing your site, and getting rid of the annoying "insecure website" message.
 
 ![force your website to always have https/ssl](/media/articles/htaccess/force-https-with-htaccess-redirect-http-to-https.jpg)
 

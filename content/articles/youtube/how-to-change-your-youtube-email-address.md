@@ -1,10 +1,10 @@
 ---
+date: 2021-06-31 00:00 EST
 title: "How to change your YouTube email address"
 blurb: "This was an annoying process to do, so here is how."
 description: "Whether you are new to YouTube or been around for years, their may come a time to change your YouTube email address. Here is how."
 # keywords:
 image: "/media/articles/youtube/change-youtube-email-address/Change-YouTube-Email-Address-0.png"
-date: 2021-06-31 00:00 EST
 updatedAt: false
 imageFocus: center
 tags: youtube
@@ -13,7 +13,7 @@ tags: youtube
 
 You can change your YouTube email quick and easy, right on the YouTube and Google websites. Also know that this method of changing your YouTube email works for **both a personal account and a YouTube brand account**. So fear not whichever type of YouTube account you have!
 
-![](/media/articles/youtube/change-youtube-email-address/Change-YouTube-Email-Address-0.png)
+![Home to change your YouTube email address](/media/articles/youtube/change-youtube-email-address/Change-YouTube-Email-Address-0.png)
 
 ### Steps to Change Your YouTube Email Address:
 

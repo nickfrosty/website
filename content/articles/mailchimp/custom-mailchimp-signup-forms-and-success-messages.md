@@ -1,15 +1,13 @@
 ---
+date: 2021-03-21 00:00 EST
+updatedAt: false
 title: "Custom MailChimp signup forms and success messages"
 # blurb:
 description: "Improve your email marketing efforts with custom MailChimp signup forms? Yes please!"
 # keywords:
 image: /media/articles/mailchimp/custom-mailchimp-signup-forms-and-success-messages-3.jpg
-date: 2021-03-21 00:00 EST
-updatedAt: false
 # imageFocus: right
-tags:
-  - mailchimp
-  - newsletters
+tags: mailchimp, newsletters
 # nextPage:
 ---
 

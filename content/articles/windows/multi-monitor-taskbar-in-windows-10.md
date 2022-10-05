@@ -1,10 +1,10 @@
 ---
+date: 2020-07-12 00:00 EST
+updatedAt: false
 title: "Multi Monitor Taskbar in Windows 10"
 # blurb:
 description: "Quickly setup and show a multi monitor taskbar in Windows 10. Follow these steps to show your Windows 10 taskbar on all your monitors for your computer."
 image: "/media/articles/windows/multi-monitor-taskbar-in-windows-10/multi-monitor-taskbar-monitor-connected.png"
-date: 2020-07-12 00:00 EST
-updatedAt: false
 tags: windows, monitors
 # keywords:
 imageFocus: center

@@ -6,10 +6,7 @@ blurb: The go to settings and plugins for Solana program development
 keywords:
 imageFocus: right
 # image:
-# tags:
-#   - solana
-#   - nft
-#   - spl token
+# tags: solana, nft, spl token
 ---
 
 ## VS Codium Tips

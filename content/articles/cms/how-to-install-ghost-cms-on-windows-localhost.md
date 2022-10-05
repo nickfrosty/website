@@ -1,17 +1,13 @@
 ---
+date: 2021-11-29 00:00 EST
 title: "How to Install Ghost CMS on Windows localhost"
 blurb: "Open source, creator-centric, and built with NodeJS: the Ghost CMS is wonderful."
-description: 'How to export a transparent video in Adobe Premiere Pro, using a video "alpha channel" or "ultra key" methods. This is similar to using a green screen.'
+description: "Install Ghost CMS locally on Windows is a great way to give it a test drive to see if it is right for you."
 # keywords:
-imageFocus: right
-# intro: "Open source, creator-centric, and build with NodeJS: the Ghost CMS is wonderful. Installing Ghost locally on Windows is a great way to give it a test drive to see if it is right for you."
 image: "/media/articles/ghost/How-to-Install-Ghost-CMS-on-Windows-localhost.jpg"
-date: 2021-11-29 00:00 EST
+imageFocus: right
 updatedAt: false
-tags:
-  - ghost
-  - windows
-  - npm
+tags: ghost, windows, npm
 # nextPage:
 ---
 

@@ -5,11 +5,7 @@ description: Get started with Solana development by setting up your dev environm
 blurb: Get your Solana development environment setup on Windows.
 keywords: ""
 image:
-tags:
-  - solana
-  - linux
-  - rust
-  - rustup
+tags: solana, linux, rust, rustup
 next: intro-to-solana-cli
 ---
 
