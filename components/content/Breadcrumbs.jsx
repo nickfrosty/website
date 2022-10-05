@@ -23,21 +23,19 @@ export function Breadcrumbs({
   }
 
   return (
-    <section
-      className={clsx(`space-x-2 text-base font-bold tracking-wide`, className)}
-    >
+    <section className={clsx(`text-base font-bold tracking-wide`, className)}>
       {parents?.length &&
         parents.map((item) => {
           return (
-            <>
+            <span key={item.href}>
               <Link href={item.href}>
                 <a className="link-muted">
                   {item?.label || item?.title || "Parent"}
                 </a>
               </Link>
 
-              <ChevronDoubleRightIcon className="inline-block icon-xs" />
-            </>
+              <ChevronDoubleRightIcon className="inline-block mx-2 icon-xs" />
+            </span>
           );
         })}
 
