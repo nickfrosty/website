@@ -12,7 +12,7 @@ export function ArticleMeta({
 }) {
   return (
     <section className={`space-y-3 ${className}`}>
-      <p className="items-center font-mono tracking-wide text-gray-500 md:space-x-4 md:flex">
+      <div className="items-center font-mono tracking-wide text-gray-500 md:space-x-4 md:flex">
         <a
           href="https://twitter.com/nickfrosty"
           target="_blank"
@@ -34,7 +34,7 @@ export function ArticleMeta({
           />
           {/* <span>{parseInt("456789").toLocaleString()} views</span> */}
         </div>
-      </p>
+      </div>
 
       {/* Post tags and `draft` status */}
       <p className="flexer">
