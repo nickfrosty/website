@@ -24,7 +24,7 @@ export default function ErrorPage() {
         </p>
 
         <p>
-          You probably shouldn't try to look for it,
+          You probably should not try to look for it,
           <br /> just move on.
         </p>
       </main>
