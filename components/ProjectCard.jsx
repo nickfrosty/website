@@ -7,24 +7,24 @@ export default function ProjectCard({ project, showDateRange = true }) {
   const isLocalPage = true;
 
   return (
-    <Link href={project.url} passHref>
+    <Link href={project.url}>
       <a className={styles.card}>
-        <div className={styles.inner}>
+        <span className={styles.inner}>
           {project?.logo && (
             <Link href={project.url}>
-              <a className={styles.icon}>
+              <span className={styles.icon}>
                 <Image
                   src={project.logo}
                   alt={project.title}
                   width={96}
                   height={96}
                 />
-              </a>
+              </span>
             </Link>
           )}
 
-          <div className={styles.meta}>
-            <div className="block items-center space-y-1">
+          <span className={styles.meta}>
+            <span className="block items-center space-y-1">
               <h3
                 className={styles.link}
                 target={!isLocalPage ? "_blank" : undefined}
@@ -32,9 +32,9 @@ export default function ProjectCard({ project, showDateRange = true }) {
                 {project.title}
               </h3>
 
-              <div className="justify-between w-full flexer">
+              <span className="justify-between w-full flexer">
                 {showDateRange && (
-                  <div className={styles.date}>{project.dateRange}</div>
+                  <span className={styles.date}>{project.dateRange}</span>
                 )}
 
                 <span
@@ -46,8 +46,8 @@ export default function ProjectCard({ project, showDateRange = true }) {
                 >
                   {project.status}
                 </span>
-              </div>
-            </div>
+              </span>
+            </span>
 
             <span
               className={clsx(
@@ -59,8 +59,8 @@ export default function ProjectCard({ project, showDateRange = true }) {
             >
               {project.status}
             </span>
-          </div>
-        </div>
+          </span>
+        </span>
 
         {project?.description && (
           <p className={styles.description}>{project.description}</p>
