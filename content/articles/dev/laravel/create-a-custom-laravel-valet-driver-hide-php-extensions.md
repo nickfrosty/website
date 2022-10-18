@@ -1,8 +1,8 @@
 ---
 date: 2021-07-09 00:00 EST
 title: "Create a custom Laravel Valet driver"
-blurb: 'This custom Valet driver can get those sweet ".test" websites on any Laravel site'
-description: 'Laravel Valet is wonderful, but I don't use Laravel. This is how to created a custom Valet driver to get those sweet ".test" websites. Works like a charm.'
+blurb: This custom Valet driver can get those sweet ".test" websites on any Laravel site
+description: Laravel Valet is wonderful, but I don't use Laravel. This is how to created a custom Valet driver to get those sweet ".test" websites. Works like a charm.
 image: /media/articles/laravel/create-a-custom-laravel-valet-driver-hide-php-extensions.jpg
 tags: laravel, valet, php
 ---
