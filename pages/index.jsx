@@ -39,7 +39,7 @@ export default function HomePage({ projects }) {
           <Link href="/">
             <a className="block col-span-2 auto-cols-auto mx-auto mb-5 text-center sm:col-span-1 md:text-left">
               <AvatarImage
-                sizeClass={"w-60 h-60 md:w-48 md:h-48 lg:w-32 lg:h-32"}
+                sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"}
               />
             </a>
           </Link>
