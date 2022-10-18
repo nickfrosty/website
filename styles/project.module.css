@@ -1,6 +1,6 @@
 .card {
-  @apply block w-full h-full;
-  @apply relative top-0 mb-3  transition-all duration-75 ease-in-out;
+  @apply block w-full;
+  @apply relative top-0 mb-5 lg:mb-8 transition-all duration-75 ease-in-out;
   @apply border rounded-xl lg:text-left;
   @apply border-white md:hover:border-indigo-200;
   @apply border-gray-800 md:hover:border-indigo-700;
