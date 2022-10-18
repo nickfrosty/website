@@ -1,4 +1,4 @@
-import { paginateStaticPaths } from "zumo";
+// import { paginateStaticPaths } from "zumo";
 
 // import the parent page and its `prepare` action
 import ParentPage from "../index";

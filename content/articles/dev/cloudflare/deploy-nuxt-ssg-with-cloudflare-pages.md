@@ -83,7 +83,7 @@ To build **only the specific potion** of your monorepo, like a "docs" site, then
 
 ![Deploy a monorepo with Cloudflare Pages](/media/articles/cloudflare/deploy-nuxtjs-ssg/deploy-monorepo-with-cloudflare-pages.png)
 
-In my case of the [npm nuxt-seo](https://npmjs.org/nuxt-seo) package, the [nuxt-seo docs](https://nuxt-seo.frostbutter.com) site is located in the "docs" directory. So my `path` is set to "docs" to only generate the static docs site with Cloudflare Pages.
+In my case of the [npm nuxt-seo](https://npmjs.org/nuxt-seo) package, the [nuxt-seo docs](https://nuxt-seo.nick.af) site is located in the "docs" directory. So my `path` is set to "docs" to only generate the static docs site with Cloudflare Pages.
 
 ### Nuxt generate with env vars
 

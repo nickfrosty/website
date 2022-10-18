@@ -11,6 +11,32 @@ next: intro-to-solana-cli
 
 ## Install WSL
 
-## Install the Solana CLI
+## Inside WSL
+
+### install Node via NVM
+
+install via the bash script, then restart the terminal to load the bashrc path
+
+install the LTS
+
+```
+nvm install --lts
+```
+
+### Install yarn package manager
 
 ## Install Rust and Cargo
+
+## Install the Solana CLI
+
+## Install Anchor
+
+install the pre-packages
+
+including libssl-dev (from APT, then also from the manual version)
+
+then install AVM
+
+then install anchor
+
+## Install git

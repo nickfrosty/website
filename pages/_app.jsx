@@ -15,11 +15,11 @@ export default class MyApp extends App {
           defaultTitle="Nick Frostbutter"
           openGraph={{
             type: "website",
-            url: "https://frostbutter.com/",
+            url: "https://nick.af/",
             site_name: "Nick Frostbutter",
             images: [
               {
-                url: "https://frostbutter.com/img/nick.jpg",
+                url: "https://nick.af/img/nick.jpg",
                 width: 256,
                 height: 256,
                 alt: "Nick Frostbutter",

@@ -14,14 +14,12 @@ const configDev = {
 };
 
 const vercelURL = `https://${
-  process.env.NEXT_PUBLIC_VERCEL_URL ||
-  process.env.VERCEL_URL ||
-  "frostbutter.com"
+  process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL || "nick.af"
 }`;
 
 const configProd = {
   ...configBase,
-  BASE_URL: vercelURL || "https://frostbutter.com",
+  BASE_URL: vercelURL || "https://nick.af",
   apiUrl: `${vercelURL}/api`,
 };
 

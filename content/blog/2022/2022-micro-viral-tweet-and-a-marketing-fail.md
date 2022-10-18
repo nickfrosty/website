@@ -114,11 +114,11 @@ Even though I did not "directly share" the link for Boomerang, it was in my Twit
 
 Am I failing at marketing yet? just wait...
 
-### Another link I did NOT share: frostbutter.com
+### Another link I did NOT share: nick.af
 
-Again, I never directly shared the link for my personal site, [frostbutter.com](/), but I also got a boost in traffic to it.
+Again, I never directly shared the link for my personal site, [nick.af](/), but I also got a boost in traffic to it.
 
-![traffic stats for frostbutter.com](/media/blog/micro-viral/frostbutter-1-month-views.png)
+![traffic stats for nick.af](/media/blog/micro-viral/frostbutter-1-month-views.png)
 
 I is a little harder to see the direct spike on the graph above, but their is a noticeable inflection point on in the "unique visitors" and "total requests". This basic view of my site's traffic seem to have an upward trend!
 

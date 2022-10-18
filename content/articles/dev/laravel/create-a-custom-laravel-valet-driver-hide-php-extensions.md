@@ -117,10 +117,10 @@ The complete working version of my custom Valet driver is below. Of course feel 
 <?php
 /**
 *  Local valet driver for a custom framework or web app
-*  by Nick Frostbutter (https://frostbutter.com)
+*  by Nick Frostbutter (https://nick.af)
 *      - loads index.php file by default in all directories
 *      - hides "php" extensions by default
-*  Tutorial: https://frostbutter.com/articles/create-a-custom-laravel-valet-driver-hide-php-extensions
+*  Tutorial: https://nick.af/articles/create-a-custom-laravel-valet-driver-hide-php-extensions
 */
 
 class LocalValetDriver extends LaravelValetDriver {

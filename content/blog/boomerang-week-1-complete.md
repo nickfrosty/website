@@ -46,13 +46,13 @@ I refactored a lot of the initial dynamic PHP drive code into JavaScript and Alp
 
 ## It's a wrap
 
-That basically sums up the first week of this [2 week SaaS challenge](https://frostbutter.com/blog/time-off-work-means-more-time-to-work).
+That basically sums up the first week of this [2 week SaaS challenge](https://nick.af/blog/time-off-work-means-more-time-to-work).
 
 If you stop reading here, then that's cool.
 
 Further down, I dive into more details about the progress and my thoughts.
 
-If you want to share your thoughts on my thoughts (how meta?) then DM on twitter ([@nickfrosty](https://twitter.com/nickfrosty)) or email me (nick at frostbutter.com). Thanks!
+If you want to share your thoughts on my thoughts (how meta?) then DM on twitter ([@nickfrosty](https://twitter.com/nickfrosty)) or email me (nick at nick.af). Thanks!
 
 ---
 
