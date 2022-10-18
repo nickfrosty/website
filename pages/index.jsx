@@ -16,7 +16,7 @@ const metaData = {
   title: "Nick Frostbutter",
   titleTemplate: "%s",
   description:
-    "Hi! I'm Nick, an indie full stack developer and submariner working on various projects. In my free time I write software, technical articles, and build things.",
+    "Hi! I'm Nick, a full stack developer and submariner working on various projects. In my free time I write software, technical articles, and build things.",
 };
 
 export async function getStaticProps({ params }) {
