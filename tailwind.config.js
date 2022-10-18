@@ -5,7 +5,7 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
     "./layouts/**/*.{js,jsx,ts,tsx}",
   ],
-  darkMode: "media",
+  // darkMode: "media",
   plugins: [
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/typography"),
