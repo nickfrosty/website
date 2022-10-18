@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 // import { StarIcon } from "@heroicons/react/solid";
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import { generateSlug } from "zumo";
 import { FloatLabel } from "../content/FloatLabel";
@@ -50,7 +51,7 @@ export function SmallCard({
             <FloatLabel label={"draft"} overlay={true} />
           )}
           {image && (
-            <img
+            <Image
               src={image}
               className={clsx(
                 `object-cover`,
