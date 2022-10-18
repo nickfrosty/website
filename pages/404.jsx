@@ -6,7 +6,8 @@ import Layout from "~/layouts/default";
 const metaData = {
   title: "Nope, couldn't find that page...",
   titleTemplate: "%s",
-  description: "I swear this never happens.",
+  description:
+    "I swear this never happens. You found a page that does not exist, or I moved it. Or am hiding it from you?? 🙃",
 };
 
 export default function ErrorPage() {

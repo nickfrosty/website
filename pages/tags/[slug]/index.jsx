@@ -17,7 +17,7 @@ import { CardGrid } from "~/components/cards/CardGrid";
 // const metaData = basicMeta({
 const metaData = {
   title: "Tags",
-  description: "",
+  description: "Explore all my articles with written about this topic.",
   baseHref: "/tags/{{tag}}",
   // paginationTemplate: "{{baseHref}}/{{id}}",
 };
@@ -80,6 +80,7 @@ export async function preparePage(slug, currentPage = 1) {
 
   // set the on page metaData meta settings
   metaData.title = page.meta.title;
+  metaData.description = `Explore all my articles with written about ${page.meta.title}. They are pretty great :)`;
 
   // chunk out the posts for the current page
   posts = posts.slice(pagination.start, pagination.end);

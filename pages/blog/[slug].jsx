@@ -9,7 +9,7 @@ const config = require("~/zumo.config").content.blog;
 // const metaData = basicMeta({
 const metaData = {
   title: "Blog",
-  description: "",
+  description: "Read more from this blog post as part of my online anthology.",
   contentDir: "blog",
 };
 

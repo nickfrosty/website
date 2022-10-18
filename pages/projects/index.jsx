@@ -10,7 +10,8 @@ import ProjectCard from "~/components/ProjectCard";
 const metaData = {
   title: "Projects",
   baseHref: "/projects",
-  description: "",
+  description:
+    "I'm always working on something. These are my main active projects, and previous projects. All in various states.",
   contentDir: "projects",
 };
 

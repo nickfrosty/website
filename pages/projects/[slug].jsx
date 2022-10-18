@@ -9,7 +9,8 @@ const config = require("~/zumo.config").content.projects;
 // const metaData = basicMeta({
 const metaData = {
   title: "Projects",
-  description: "",
+  description:
+    "I'm always working on something. These are my main active projects, and previous projects. All in various states.",
   contentDir: "projects",
 };
 

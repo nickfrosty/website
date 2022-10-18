@@ -12,7 +12,7 @@ const config = require("~/zumo.config").content.articles;
 // const metaData = basicMeta({
 const metaData = {
   title: "Articles",
-  description: "",
+  description: "Read more about this super cool article I wrote.",
   contentDir: "articles",
 };
 

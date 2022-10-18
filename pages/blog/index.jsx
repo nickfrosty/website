@@ -12,7 +12,7 @@ const metaData = {
   title: "Blog",
   baseHref: "/blog",
   description:
-    "Building in public 👷. Writing down and sharing my thoughts and experiences as I go (and other goodies too).",
+    "An anthology of me building in public 👷. Writing down and sharing my thoughts and experiences as I go (plus some other goodies too).",
 };
 
 export async function getStaticProps({ params }) {
