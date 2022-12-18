@@ -8,7 +8,6 @@ import Link from "next/link";
 import ProjectCard from "~/components/ProjectCard";
 
 import { getDocsByPath, filterDocs } from "zumo";
-// import Image from "next/image";
 
 // construct the meta data for the page
 // const metaData = basicMeta({

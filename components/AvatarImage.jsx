@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import Image from "next/image";
 
 export default function AvatarImage({ className = null, sizeClass = null }) {
   return (
@@ -10,7 +9,7 @@ export default function AvatarImage({ className = null, sizeClass = null }) {
         className,
       )}
     >
-      <Image
+      <img
         className={clsx("place-self-center avatar", sizeClass, className)}
         src="/img/nick.jpg"
         width={256}

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function SocialIcons() {
@@ -13,7 +12,7 @@ export default function SocialIcons() {
             target="_blank"
             rel="noopener"
           >
-            <Image
+            <img
               src={"/img/social-icons/twitter.svg"}
               alt="@nickfrosty on Twitter"
               width={32}
@@ -30,7 +29,7 @@ export default function SocialIcons() {
             target="_blank"
             rel="noopener"
           >
-            <Image
+            <img
               src={"/img/social-icons/github.svg"}
               alt="@nickfrosty on GitHub"
               width={32}
@@ -47,7 +46,7 @@ export default function SocialIcons() {
             target="_blank"
             rel="noopener"
           >
-            <Image
+            <img
               src={"/img/social-icons/linkedin.svg"}
               alt="Nick Frostbutter on LinkedIn"
               width={32}
@@ -64,7 +63,7 @@ export default function SocialIcons() {
             target="_blank"
             rel="noopener"
           >
-            <Image
+            <img
               src={"/img/social-icons/youtube.svg"}
               alt="Nick Frostbutter on YouTube"
               width={32}
@@ -81,7 +80,7 @@ export default function SocialIcons() {
             target="_blank"
             rel="noopener"
           >
-            <Image
+            <img
               src={"/img/social-icons/indiehackers.svg"}
               alt="@nickfrosty on IndieHackers"
               width={32}
@@ -96,7 +95,7 @@ export default function SocialIcons() {
             title="My Personal Newsletter"
             aria-label="Personal Newsletter"
           >
-            <Image
+            <img
               src={"/img/social-icons/email.svg"}
               alt="My Personal Newsletter"
               width={32}

@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "~/styles/project.module.css";
 
@@ -13,7 +12,7 @@ export default function ProjectCard({ project, showDateRange = true }) {
           {project?.logo && (
             <Link href={project.url}>
               <span className={styles.icon}>
-                <Image
+                <img
                   src={project.logo}
                   alt={project.title}
                   width={96}
