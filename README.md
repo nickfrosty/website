@@ -16,9 +16,11 @@ The current home for my personal site is [nick.af](https://nick.af), but it has 
 
 ## The stack
 
-This website is written with `Next.JS` using `TailwindCSS`.
+- `Next.JS` - JS framework to handle the frontend routing
+- `TailwindCSS` - styles, color schemes, and designs
+- Deployed to [Cloudflare Pages](https://pages.cloudflare.com/) as a static site
 
-It is built to be primary a static website powered by markdown files using a helper library I am working on called [`zumo`](https://www.npmjs.com/package/zumo)
+PS: This site is meant to be a markdown powered static website. It uses a helper library I am working on called [`zumo`](https://www.npmjs.com/package/zumo) that adds assorted helper utilities for generating, filtering, and parsing the markdown files.
 
 ## Build Setup
 
