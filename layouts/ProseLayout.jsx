@@ -57,7 +57,7 @@ export default function ProseLayout({
         <ArticleContent content={content} />
       </main>
 
-      <NextPrevSection next={next} prev={prev} hrefBase={parentPage?.href} />
+      <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} />
     </ColumnLayout>
   );
 }

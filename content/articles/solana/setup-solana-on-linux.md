@@ -168,7 +168,7 @@ solana balance
 
 ## Install the Solfate CLI
 
-The Solfate CLI gives developers a "hot reload" (aka auto builds) of your Solana programs as you are developing them. Just like most JavaScript frameworks do for the frontend:
+The [Solfate CLI](https://solfate.com/cli) gives developers a "hot reload" (aka auto builds) of your Solana programs as you are developing them. Just like most JavaScript frameworks do for the frontend:
 
 ```bash
 npm i -g solfate
