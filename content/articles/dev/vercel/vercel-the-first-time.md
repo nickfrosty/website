@@ -1,5 +1,5 @@
 ---
-featured: true
+# featured: true
 title: "24 things I learned deploying to Vercel"
 blurb: "A mix of good, and less than good, things I learned while deploying a project to Vercel for the first time."
 description: "A mix of good, and less than good, things I learned while deploying a project to Vercel for the first time. Mostly good, but some...weird ones..."

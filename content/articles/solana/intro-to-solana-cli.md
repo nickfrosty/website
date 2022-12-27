@@ -1,12 +1,12 @@
 ---
-featured: true
+# featured: true
 title: Introduction to the Solana CLI
 blurb: Learn the basics and how to get around in the Solana CLI
 description: Learn how to use the Solana CLI. From creating Solana wallets, airdrop free SOL, and running the test validator.
 keywords:
 image: "/media/articles/solana/intro-to-solana-cli/thumbnail.png"
 date: Oct 04, 2022
-tags: solana, nft, spl token
+tags: solana
 ---
 
 As part of your Solana development journey, you will need to get comfortable with the Solana CLI.

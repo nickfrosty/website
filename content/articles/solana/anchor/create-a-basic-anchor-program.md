@@ -1,5 +1,5 @@
 ---
-draft: true
+# draft: true
 featured: true
 title: Create a Basic Anchor Program
 # blurb:
@@ -7,11 +7,12 @@ description: Create your very first Solana program with the Anchor framework.
 keywords:
 image: /media/articles/solana/anchor/get-started/get-started-with-anchor-solana-development.png
 imageFocus: left
-nextPage: "deploy-an-anchor-program"
+# nextPage: deploy-an-anchor-program
 tags:
   - solana
   - anchor
-  - rust
+  # - rust
+date: Dec 27, 2022
 ---
 
 The **Anchor framework** is the most popular rust framework for developing the on-chain Solana smart contracts called **programs**.
