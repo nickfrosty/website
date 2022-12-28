@@ -22,7 +22,11 @@ export async function getStaticProps({ params }) {
   const featured = filterDocs(posts, { featured: true }, 2);
 
   // remove the `featured` from the `posts`
-  posts = posts?.filter((item) => !item?.meta?.featured);
+  posts = posts?.filter(
+    (item) =>
+      item.slug !==
+      featured.filter((ft) => ft.slug === item?.slug)?.[0]?.meta.slug,
+  );
 
   // give the 404 page when the post is not found
   // if (!posts || !posts?.length) return { notFound: true };
