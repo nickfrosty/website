@@ -1022,6 +1022,13 @@ fault@^1.0.0:
   dependencies:
     format "^0.2.0"
 
+feed@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/feed/-/feed-4.2.2.tgz#865783ef6ed12579e2c44bbef3c9113bc4956a7e"
+  integrity sha512-u5/sxGfiMfZNtJ3OvQpXcvotFpYkL0n9u9mM2vkui2nGo8b4wvDkJ8gAkYqbA8QpGyFCv3RK0Z+Iv+9veCS9bQ==
+  dependencies:
+    xml-js "^1.6.11"
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-6.0.1.tgz"
@@ -2647,6 +2654,11 @@ sade@^1.7.3:
   dependencies:
     mri "^1.1.0"
 
+sax@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+  integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
+
 scheduler@^0.23.0:
   version "0.23.0"
   resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.23.0.tgz"
@@ -3069,6 +3081,13 @@ wrappy@1:
   resolved "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
+xml-js@^1.6.11:
+  version "1.6.11"
+  resolved "https://registry.yarnpkg.com/xml-js/-/xml-js-1.6.11.tgz#927d2f6947f7f1c19a316dd8eea3614e8b18f8e9"
+  integrity sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==
+  dependencies:
+    sax "^1.2.4"
+
 xtend@^4.0.0, xtend@^4.0.2:
   version "4.0.2"
   resolved "https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz"
@@ -3084,10 +3103,10 @@ yaml@^1.10.2:
   resolved "https://registry.npmjs.org/yaml/-/yaml-1.10.2.tgz"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
-zumo@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/zumo/-/zumo-0.0.6.tgz#9d95d8e14d3c62bbdcac3f83c33d0c1d0b19fd51"
-  integrity sha512-7ZviUNf4kgYPZYljP2aeAN3XO/ynZWJeESEtVeByO3jaafVg3wAjEkPI6SPwmUjHp2iJcqh0prNgXQYLkegpxw==
+zumo@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/zumo/-/zumo-0.0.8.tgz#72ec9795c4de9529fb27b951fdbee40cc4a741aa"
+  integrity sha512-zz9XW8McRbRuuvHmHlhpuvTIBMCgB01hCPJWWlNnj9eP0VL6hkQjb9h171wIWQ5yk/DaxfrXczHu6KiBrVK1ow==
   dependencies:
     gray-matter "^4.0.3"
     luxon "^3.0.4"

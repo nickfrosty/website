@@ -42,7 +42,10 @@ export async function preparePage(slug, currentPage = 1) {
 
   // get the listing of `posts` for the current `tag`
   let posts = await getDocsByPath("articles", {
-    tags: { contains: slug },
+    metaOnly: true,
+    filter: {
+      tags: { contains: slug },
+    },
   });
 
   // give the 404 page when no `posts` was found
