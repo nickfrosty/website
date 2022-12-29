@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Nick Frostbutter</title>
+        <link>https://nick.af</link>
+        <description>Hi! I'm Nick, a full stack developer and submariner working on various projects. In my free time I write software, technical articles, and build things.</description>
+        <lastBuildDate>Thu, 29 Dec 2022 02:49:35 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>All rights reserved then, now, and forever, Nick Frostbutter</copyright>
+        <item>
+            <title><![CDATA[Create a Basic Anchor Program]]></title>
+            <link>https://nick.af/articles/create-a-basic-anchor-program</link>
+            <guid>https://nick.af/articles/create-a-basic-anchor-program</guid>
+            <pubDate>Thu, 29 Dec 2022 02:26:25 GMT</pubDate>
+            <description><![CDATA[Create your very first Solana program with the Anchor framework.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>solana</category>
+            <category>anchor</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/solana/anchor/get-started/get-started-with-anchor-solana-development.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introduction to the Solana CLI]]></title>
+            <link>https://nick.af/articles/intro-to-solana-cli</link>
+            <guid>https://nick.af/articles/intro-to-solana-cli</guid>
+            <pubDate>Tue, 04 Oct 2022 04:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to use the Solana CLI. From creating Solana wallets, airdrop free SOL, and running the test validator.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>solana</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/solana/intro-to-solana-cli/thumbnail.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[24 things I learned deploying to Vercel]]></title>
+            <link>https://nick.af/articles/vercel-the-first-time</link>
+            <guid>https://nick.af/articles/vercel-the-first-time</guid>
+            <pubDate>Wed, 09 Mar 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[A mix of good, and less than good, things I learned while deploying a project to Vercel for the first time. Mostly good, but some...weird ones...]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>vercel</category>
+            <category>devops</category>
+            <category>nuxt</category>
+            <category>prisma</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/vercel/vercel-the-first-time-thumb.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Deploy NuxtJS SSG with Cloudflare Pages]]></title>
+            <link>https://nick.af/articles/deploy-nuxt-ssg-with-cloudflare-pages</link>
+            <guid>https://nick.af/articles/deploy-nuxt-ssg-with-cloudflare-pages</guid>
+            <pubDate>Mon, 17 Jan 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[Effortless static site generation directly from your Git repo, with automated deployments and git previews? All for free? Sounds perfect!]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>nuxt</category>
+            <category>ssg</category>
+            <category>cloudflare</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/cloudflare/deploy-nuxtjs-ssg/deploy-nuxtjs-ssg-with-cloudflare-pages-light3.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Backup and restore MySQL databases (from the command line)]]></title>
+            <link>https://nick.af/articles/restore-mysql-database-from-backup-with-command-line</link>
+            <guid>https://nick.af/articles/restore-mysql-database-from-backup-with-command-line</guid>
+            <pubDate>Mon, 10 Jan 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[Database backups are important, but so is being able to quickly restore a database backup. And what is quicker than the command line?]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>mysql</category>
+            <category>database</category>
+            <category>backups</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/mysql/backup-and-restore-mysql-databasse-from-command-line.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Current year with JavaScript getFullYear()]]></title>
+            <link>https://nick.af/articles/getfullyear-javascript-current-year-new-years</link>
+            <guid>https://nick.af/articles/getfullyear-javascript-current-year-new-years</guid>
+            <pubDate>Sat, 01 Jan 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[Did you hard code the year in your footer? New year, new problems. Get the current year in Javascript with the getFullYear() function.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>javascript</category>
+            <category>vue</category>
+            <category>nuxt</category>
+            <category>snippets</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/javascript/getfullyear-javascript-current-year-new-years.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Setup font awesome in Vue and NuxtJS]]></title>
+            <link>https://nick.af/articles/setup-font-awesome-in-vue-and-nuxt-js</link>
+            <guid>https://nick.af/articles/setup-font-awesome-in-vue-and-nuxt-js</guid>
+            <pubDate>Fri, 03 Dec 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Fontawesome is pure awesome. Vue and Nuxt are awesome. So why not use Fontawesome with Vue JS or Nuxt JS? Here is how.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>vue</category>
+            <category>font-awesome</category>
+            <category>nuxt</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/vue/font-aweseome-in-vue-and-nuxt-js.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[How to Install Ghost CMS on Windows localhost]]></title>
+            <link>https://nick.af/articles/how-to-install-ghost-cms-on-windows-localhost</link>
+            <guid>https://nick.af/articles/how-to-install-ghost-cms-on-windows-localhost</guid>
+            <pubDate>Mon, 29 Nov 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Install Ghost CMS locally on Windows is a great way to give it a test drive to see if it is right for you.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>ghost</category>
+            <category>windows</category>
+            <category>npm</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/ghost/How-to-Install-Ghost-CMS-on-Windows-localhost.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[htaccess cache control for a faster website]]></title>
+            <link>https://nick.af/articles/htaccess-cache-control-for-a-faster-website</link>
+            <guid>https://nick.af/articles/htaccess-cache-control-for-a-faster-website</guid>
+            <pubDate>Thu, 15 Jul 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Make your website load faster by adding these snippets to your .htaccess file]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>htaccess</category>
+            <category>cache</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/htaccess/enable-htaccess-cache-control.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Redirect http to https: force https with htaccess]]></title>
+            <link>https://nick.af/articles/redirect-http-to-https-force-https-with-htaccess</link>
+            <guid>https://nick.af/articles/redirect-http-to-https-force-https-with-htaccess</guid>
+            <pubDate>Sat, 10 Jul 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Don't live pre-Y2K. Force https and SSL on your website using this .htaccess code snippet]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>htaccess</category>
+            <category>litespeed</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/htaccess/force-https-with-htaccess-redirect-http-to-https.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Create a custom Laravel Valet driver]]></title>
+            <link>https://nick.af/articles/create-a-custom-laravel-valet-driver-hide-php-extensions</link>
+            <guid>https://nick.af/articles/create-a-custom-laravel-valet-driver-hide-php-extensions</guid>
+            <pubDate>Fri, 09 Jul 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Laravel Valet is wonderful, but I don't use Laravel. This is how to created a custom Valet driver to get those sweet ".test" websites. Works like a charm.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>laravel</category>
+            <category>valet</category>
+            <category>php</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/laravel/create-a-custom-laravel-valet-driver-hide-php-extensions.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Quickly delete unsubscribed contacts in MailChimp]]></title>
+            <link>https://nick.af/articles/quickly-delete-unsubscribed-contacts-in-mailchimp</link>
+            <guid>https://nick.af/articles/quickly-delete-unsubscribed-contacts-in-mailchimp</guid>
+            <pubDate>Thu, 08 Jul 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Trim the fat off your MailChimp email list by removing the unsubscribed or bounced contacts.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>mailchimp</category>
+            <category>newsletters</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/mailchimp/delete-unsubscribed-contacts-in-mailchimp2.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Add CSS Scroll Animation and Smooth Scrolling]]></title>
+            <link>https://nick.af/articles/css-scroll-animation-and-smooth-scrolling-with-scroll-behavior</link>
+            <guid>https://nick.af/articles/css-scroll-animation-and-smooth-scrolling-with-scroll-behavior</guid>
+            <pubDate>Tue, 06 Jul 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Quick UX tips: turn jerky scrolling into smooth scrolling with a the CSS scroll-behavior property.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>css</category>
+            <category>ux-tips</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/ux-tips/css-scroll-behavior-scroll-animation-and-smooth-scrolling.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[How to change your YouTube email address]]></title>
+            <link>https://nick.af/articles/how-to-change-your-youtube-email-address</link>
+            <guid>https://nick.af/articles/how-to-change-your-youtube-email-address</guid>
+            <pubDate>Thu, 01 Jul 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Whether you are new to YouTube or been around for years, their may come a time to change your YouTube email address. Here is how.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>youtube</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/youtube/change-youtube-email-address/Change-YouTube-Email-Address-0.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[JavaScript copy to clipboard function (no jQuery)]]></title>
+            <link>https://nick.af/articles/javascript-copy-to-clipboard-function-no-jquery</link>
+            <guid>https://nick.af/articles/javascript-copy-to-clipboard-function-no-jquery</guid>
+            <pubDate>Fri, 18 Jun 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Copy to clipboard with the click of a button. No jQuery, just vanilla JavaScript. Simple. Lightweight.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>javascript</category>
+            <category>snippets</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/javascript/JavaScript-copy-to-clipboard-function-lightweight-and-with-no-jQuery-2.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Use Laravel Mix without Laravel (using npm)]]></title>
+            <link>https://nick.af/articles/use-laravel-mix-without-laravel-using-npm</link>
+            <guid>https://nick.af/articles/use-laravel-mix-without-laravel-using-npm</guid>
+            <pubDate>Mon, 03 May 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Laravel Mix is a great tool. But I don't use Laravel. But you can still get the magic sauce of Laravel Mix without Laravel, using npm.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>laravel</category>
+            <category>npm</category>
+            <category>tailwind</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/laravel/laravel-mix-without-laravel-with-npm.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Fix "PHP executable not found" error in VS Code]]></title>
+            <link>https://nick.af/articles/fix-php-executable-not-found-error-in-vs-code</link>
+            <guid>https://nick.af/articles/fix-php-executable-not-found-error-in-vs-code</guid>
+            <pubDate>Mon, 05 Apr 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Good news: you can easily get rid of that pesky "PHP executable not found" error message in VS Code in a few minutes. Install PHP then, add it to your PATH variable, then error-be-gone!]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>vs-code</category>
+            <category>php</category>
+            <category>windows</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/vs-code/fix-php-executable-not-found/Fix-PHP-executable-not-found-error-in-Visual-Studio-Code-VS-Code.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Fix PHP fatal error "allowed memory size of"]]></title>
+            <link>https://nick.af/articles/fix-php-fatal-error-allowed-memory-size-of</link>
+            <guid>https://nick.af/articles/fix-php-fatal-error-allowed-memory-size-of</guid>
+            <pubDate>Thu, 01 Apr 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Fix the "allowed memory size of" usually only takes a single edit. Even on WordPress. PS: Running out of "allowed memory" can cause your website to crash.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>php</category>
+            <category>wordpress</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/php-errors/php-memory-limit-thumbnail-1.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Green screen effect in Adobe Premiere Pro]]></title>
+            <link>https://nick.af/articles/green-screen-tutorial-aka-ultra-key-effect-with-adobe-premiere-pro</link>
+            <guid>https://nick.af/articles/green-screen-tutorial-aka-ultra-key-effect-with-adobe-premiere-pro</guid>
+            <pubDate>Sat, 27 Mar 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Edit a video with a green screen (aka "chroma key") effect in Adobe Premiere Pro. This method also works for blue screens.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>chroma key</category>
+            <category>video editing</category>
+            <category>adobe premiere</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/adobe/green-screen/premiere_pro-green-screen-thumbnail.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Custom MailChimp signup forms and success messages]]></title>
+            <link>https://nick.af/articles/custom-mailchimp-signup-forms-and-success-messages</link>
+            <guid>https://nick.af/articles/custom-mailchimp-signup-forms-and-success-messages</guid>
+            <pubDate>Sun, 21 Mar 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Improve your email marketing efforts with custom MailChimp signup forms? Yes please!]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>mailchimp</category>
+            <category>newsletters</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/mailchimp/custom-mailchimp-signup-forms-and-success-messages-3.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Export Transparent Video in Premiere Pro]]></title>
+            <link>https://nick.af/articles/export-transparent-video-in-premiere-pro-alpha-channel-tutorial</link>
+            <guid>https://nick.af/articles/export-transparent-video-in-premiere-pro-alpha-channel-tutorial</guid>
+            <pubDate>Sat, 20 Mar 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[How to export a transparent video in Adobe Premiere Pro, using a video "alpha channel" or "ultra key" methods. This is similar to using a green screen.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>green screen</category>
+            <category>video editing</category>
+            <category>adobe premiere</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/adobe/transparent-video/premiere_pro-transparent_background-0-thumbnail.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[How to record your screen in Windows for free]]></title>
+            <link>https://nick.af/articles/how-to-record-your-screen-in-windows-10-for-free</link>
+            <guid>https://nick.af/articles/how-to-record-your-screen-in-windows-10-for-free</guid>
+            <pubDate>Thu, 30 Jul 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[Record your desktop screen and capture screen video for free using OBS Studio. This free software is cross platform and works on Windows, Linux, or Mac.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>obs-studio</category>
+            <category>windows</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/windows/screen-capture-with-OBS-studios/OBS_STUDIOS-featured.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Download Windows spotlight image]]></title>
+            <link>https://nick.af/articles/download-windows-spotlight-images</link>
+            <guid>https://nick.af/articles/download-windows-spotlight-images</guid>
+            <pubDate>Thu, 23 Jul 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[Save your favorite Windows spotlight images right to your computer. This method works for both Windows 10 and Windows 11 in 2021 and 2022.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>windows</category>
+            <category>spotlight</category>
+            <category>images</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/windows/download-windows-spotlight-images/download-windows-spotlight-images-lockscreen.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Multi Monitor Taskbar in Windows 10]]></title>
+            <link>https://nick.af/articles/multi-monitor-taskbar-in-windows-10</link>
+            <guid>https://nick.af/articles/multi-monitor-taskbar-in-windows-10</guid>
+            <pubDate>Sun, 12 Jul 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[Quickly setup and show a multi monitor taskbar in Windows 10. Follow these steps to show your Windows 10 taskbar on all your monitors for your computer.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>windows</category>
+            <category>monitors</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/windows/multi-monitor-taskbar-in-windows-10/multi-monitor-taskbar-monitor-connected.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Setup dual monitors on Windows]]></title>
+            <link>https://nick.af/articles/how-to-setup-dual-monitors-on-pc</link>
+            <guid>https://nick.af/articles/how-to-setup-dual-monitors-on-pc</guid>
+            <pubDate>Fri, 26 Jun 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[How to split screen on two monitors and create a dual monitor setup on Windows.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>windows</category>
+            <category>monitors</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/windows/how-to-setup-dual-monitors-on-pc/how-to-setup-dual-Monitors-in-Windows.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Change MySQL root password from the command line]]></title>
+            <link>https://nick.af/articles/change-mysql-password-from-command-line</link>
+            <guid>https://nick.af/articles/change-mysql-password-from-command-line</guid>
+            <pubDate>Wed, 17 Jun 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[Learning how to change your MySQL password is a must for basic website security. For starters, change the root password of your localhost server.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>mysql</category>
+            <category>phpmyadmin</category>
+            <category>xampp</category>
+            <category>php</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/phpmyadmin/change-password/thumbnail_Change-phpMyAdmin-and-MySQL-account-passwords.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Install PHP on Windows | Setup a local web server]]></title>
+            <link>https://nick.af/articles/setup-a-local-web-server-install-php-and-mysql-with-xampp</link>
+            <guid>https://nick.af/articles/setup-a-local-web-server-install-php-and-mysql-with-xampp</guid>
+            <pubDate>Fri, 19 Jul 2019 05:00:00 GMT</pubDate>
+            <description><![CDATA[Whether you are trying to learn how to create websites, or trying to learn WordPress, the best way to learn web development is to setup a local web server.]]></description>
+            <author>hello@frostbutter.com (Nick Frostbutter)</author>
+            <category>php</category>
+            <category>windows</category>
+            <category>mysql</category>
+            <enclosure url="https://nick.af/media/articles/media/articles/php/install-php-on-windows/Setup-a-local-web-server-Install-XAMPP-0-featured.png" length="0" type="image/png"/>
+        </item>
+    </channel>
+</rss>
