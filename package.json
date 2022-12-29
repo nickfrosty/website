@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
-    "generate": "next build && next-sitemap && next export"
+    "generate": "next build && next-sitemap && next export",
+    "rss": "node utils/rss.js"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
@@ -24,7 +25,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
-    "zumo": "^0.0.8"
+    "zumo": "^0.0.10"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",

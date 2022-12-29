@@ -3103,10 +3103,10 @@ yaml@^1.10.2:
   resolved "https://registry.npmjs.org/yaml/-/yaml-1.10.2.tgz"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
-zumo@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/zumo/-/zumo-0.0.8.tgz#72ec9795c4de9529fb27b951fdbee40cc4a741aa"
-  integrity sha512-zz9XW8McRbRuuvHmHlhpuvTIBMCgB01hCPJWWlNnj9eP0VL6hkQjb9h171wIWQ5yk/DaxfrXczHu6KiBrVK1ow==
+zumo@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/zumo/-/zumo-0.0.10.tgz#7c81b0b0f2f799f4ad9da243ffa5760a841c5ea7"
+  integrity sha512-0j+mTInarGIwsMGWVeey8ngflFKrEo+zfp0ZgdSmI69lhoGnyXhVThUMItXE3YzCdn+k4XsMe3k8WK3ADpBNmQ==
   dependencies:
     gray-matter "^4.0.3"
     luxon "^3.0.4"

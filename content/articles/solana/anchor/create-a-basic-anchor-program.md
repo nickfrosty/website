@@ -12,7 +12,6 @@ tags:
   - solana
   - anchor
   # - rust
-date: Dec 27, 2022
 ---
 
 The **Anchor framework** is the most popular rust framework for developing the on-chain Solana smart contracts called **programs**.

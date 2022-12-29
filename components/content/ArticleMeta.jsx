@@ -64,7 +64,7 @@ function DisplayDate({
   className = "",
 }) {
   if (date) return <span className={className}>{displayDate(date)}</span>;
-  else if (date && updatedAt && updatedAt !== createdAt)
+  else if (updatedAt && updatedAt !== createdAt)
     return <span className={className}>Updated {displayDate(updatedAt)}</span>;
   else if (!date && createdAt)
     return (
