@@ -64,7 +64,7 @@ function TagsListing({ tags }) {
     <div className="flex">
       {tags?.slice(0, config.maxTagCount)?.map((tag) => {
         return (
-          <span className="cursor-default inline-code-link" key={tag}>
+          <span className="cursor-default inline-code" key={tag}>
             {tag}
           </span>
         );
