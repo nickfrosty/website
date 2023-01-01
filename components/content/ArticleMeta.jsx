@@ -40,7 +40,7 @@ export function ArticleMeta({
       <p className="flexer">
         {meta?.draft === true && <FloatLabel overlay={false} />}
 
-        {meta?.tags?.length && Array.isArray(meta.tags) && (
+        {Array.isArray(meta?.tags) && meta.tags?.length > 0 && (
           <>
             {meta.tags.map((tag) => (
               <Tag

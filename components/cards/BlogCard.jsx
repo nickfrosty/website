@@ -48,21 +48,11 @@ export function BlogCard({
   Quick formatter for displaying a single `tag`
 */
 function TagsListing({ tags }) {
-  // split string `tags` into an array
-  if (tags && typeof tags === "string")
-    tags = tags.split(",").map((tag) => tag.trim());
-
-  // construct a reusable function to compute the `href` for tag links
-  // const computeHref = (tag) => {
-  //   return parseTemplate(config.tagHrefTemplate, {
-  //     baseHref: config.baseHref,
-  //     tag: generateSlug(tag),
-  //   });
-  // };
+  if (!tags || !Array.isArray(tags) || tags.length <= 0) return;
 
   return (
     <div className="flex">
-      {tags?.slice(0, config.maxTagCount)?.map((tag) => {
+      {tags.slice(0, config.maxTagCount)?.map((tag) => {
         return (
           <span className="cursor-default inline-code" key={tag}>
             {tag}
