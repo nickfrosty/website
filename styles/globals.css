@@ -250,6 +250,7 @@ article a {
 
 .inline-code-link {
   @apply inline-code;
+  @apply cursor-pointer;
   @apply hover:bg-slate-700 hover:border-slate-500 !important;
 }
 
