@@ -1,9 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # public/robots*
-# public/rss*
-# public/sitemap*
-# src/public/sitemap*
+public/rss*
+public/sitemap*
 
 # dependencies
 /node_modules
