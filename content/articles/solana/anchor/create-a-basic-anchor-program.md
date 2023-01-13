@@ -1,6 +1,6 @@
 ---
-# draft: true
 featured: true
+date: 2023-01-03 00:00 EST
 title: Create a Basic Anchor Program
 # blurb:
 description: Create your very first Solana program with the Anchor framework.

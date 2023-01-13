@@ -1,11 +1,11 @@
 ---
-draft: true
+# featured: true
+date: 2023-01-12 00:00 EST
 title: Derive Solana Addresses
-featured: true
 description: Technical deep dive into how Solana addresses are "generated" for use on the blockchain. Mnemonic, to private key (with a derivation path), to public key.
 # blurb:
 keywords: "derivation path, mnemonic to public address, generate wallet address, vanity address"
-# image:
+image: /media/articles/solana/deriving-solana-addresses.jpg
 tags: solana
 prevPage: intro-to-solana-cli
 nextPage: solana-vanity-addresses

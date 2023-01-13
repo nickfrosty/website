@@ -1,11 +1,11 @@
 ---
-draft: true
+featured: true
+date: 2023-01-13 00:00 EST
 title: Generate Vanity Addresses on Solana
-# featured: true
 description: Generate custom Solana wallet addresses that have any word you want. Including how to set the derivation path to use in web and browser wallets.
 # blurb: Generate custom Solana wallet addresses that have any word you want. Including how to set the derivation path to use in web and browser wallets.
 keywords: "custom address, name service, sns, ans, derivation path, web wallet"
-# image:
+image: /media/articles/solana/generate-solana-vanity-addresses.jpg
 tags: solana
 # nextPage: intro-to-solana-cli
 prevPage: derive-solana-addresses
