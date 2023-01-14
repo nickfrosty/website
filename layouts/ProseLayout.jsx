@@ -20,13 +20,36 @@ export default function ProseLayout({
   // TODO: support setting a canonical tag, likely via a util function to standardize the data
 
   // const { post, next, prev } = props
-  let { meta = {}, content = null, seo = {} } = post;
+  let { meta = {}, content = null } = post;
 
   // compute the `href` based on the template
   const href = parseTemplate(config.hrefTemplate, {
     baseHref: config.baseHref,
     slug: post.slug,
   });
+
+  // define the base data
+  let seo = {};
+
+  // add the image to the article, when defined
+  if (post?.meta?.image)
+    seo = {
+      twitter: {
+        cardType: "summary_large_image",
+      },
+      openGraph: {
+        type: "website",
+        url: `https://nick.af${href}`,
+        images: [
+          {
+            url: `https://nick.af${post.meta.image}`,
+            width: 1200,
+            height: 728,
+            alt: post.meta.title,
+          },
+        ],
+      },
+    };
 
   return (
     <ColumnLayout seo={{ ...meta, ...seo }}>
