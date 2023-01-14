@@ -29,7 +29,11 @@ export default function ProseLayout({
   });
 
   // define the base data
-  let seo = {};
+  let seo = {
+    openGraph: {
+      title: post.meta.title,
+    },
+  };
 
   // add the image to the article, when defined
   if (post?.meta?.image)
@@ -40,6 +44,7 @@ export default function ProseLayout({
       openGraph: {
         type: "website",
         url: `https://nick.af${href}`,
+        title: post.meta.title,
         images: [
           {
             url: `https://nick.af${post.meta.image}`,
