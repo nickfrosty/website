@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-// import { StarIcon } from "@heroicons/react/solid";
+// import { StarIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import Link from "next/link";
 import { generateSlug } from "zumo";

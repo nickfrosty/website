@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { ArrowRightIcon } from "@heroicons/react/solid";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { generateSlug } from "zumo";
 import { FloatLabel } from "../content/FloatLabel";
 import clsx from "clsx";

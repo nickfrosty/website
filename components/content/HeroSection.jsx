@@ -6,7 +6,7 @@ import {
   CalendarIcon,
   DocumentTextIcon,
   HeartIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 import { SmallCard } from "~/components/cards/SmallCard";
 import { DateTime } from "luxon";
 

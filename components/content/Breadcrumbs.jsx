@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { ChevronDoubleRightIcon } from "@heroicons/react/solid";
+import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 
 export function Breadcrumbs({

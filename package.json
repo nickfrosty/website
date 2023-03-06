@@ -13,7 +13,7 @@
     "rss": "node utils/rss.js"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.16",
     "clsx": "^1.2.1",
     "luxon": "^3.3.0",
     "next": "12.2.3",
