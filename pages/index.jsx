@@ -33,14 +33,15 @@ export async function getStaticProps({ params }) {
 export default function HomePage({ projects }) {
   return (
     <Layout footer={false} seo={metaData} className="md:space-y-16">
-      <section className="grid grid-cols-1 gap-10 items-center mx-auto mt-4 max-w-6xl lg:mt-30 md:gap-32 sm:mt-8 lg:grid-cols-2">
-        <section className="grid grid-cols-2 gap-10 items-center md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
-          <Link href="/">
-            <a className="block col-span-2 auto-cols-auto mx-auto mb-5 text-center sm:col-span-1 md:text-left">
-              <AvatarImage
-                sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"}
-              />
-            </a>
+      <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 lg:mt-30 md:gap-32 sm:mt-8 lg:grid-cols-2">
+        <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
+          <Link
+            href="/"
+            className="block col-span-2 mx-auto mb-5 text-center auto-cols-auto sm:col-span-1 md:text-left"
+          >
+            <AvatarImage
+              sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"}
+            />
           </Link>
 
           <p className="col-span-2 text-2xl font-medium whitespace-pre-line sm:text-2xl sm:col-span-2">
@@ -48,26 +49,29 @@ export default function HomePage({ projects }) {
               Hi! I&apos;m Nick,
             </span>
             <br className="lg:hidden" /> a{" "}
-            <Link href="https://github.com/nickfrosty">
-              <a
-                target="_blank"
-                className="link-active"
-                title="@nickfrosty on GitHub"
-              >
-                full stack developer
-              </a>
+            <Link
+              href="https://github.com/nickfrosty"
+              target="_blank"
+              className="link-active"
+              title="@nickfrosty on GitHub"
+            >
+              full stack developer
             </Link>{" "}
             and submarine veteran. In my free time, I write{" "}
-            <Link href="/projects">
-              <a className="link-active" title="View a list of my projects">
-                software
-              </a>
+            <Link
+              href="/projects"
+              className="link-active"
+              title="View a list of my projects"
+            >
+              software
             </Link>{" "}
             and{" "}
-            <Link href="/articles">
-              <a className="link-active" title="View my technical articles">
-                technical articles
-              </a>
+            <Link
+              href="/articles"
+              className="link-active"
+              title="View my technical articles"
+            >
+              technical articles
             </Link>
             .
           </p>
@@ -78,8 +82,8 @@ export default function HomePage({ projects }) {
 
           <p className="col-span-2 space-y-5 text-lg font-medium text-center md:mt-10 xl:mt-14 lg:text-left">
             Here, you can find{" "}
-            <Link href="/now">
-              <a className="link-active">what I am working on now</a>
+            <Link href="/now" className="link-active">
+              what I am working on now
             </Link>
             .
           </p>
@@ -106,11 +110,12 @@ export default function HomePage({ projects }) {
                 })}
               </div>
 
-              <Link href="/projects">
-                <a className="inline-flex ml-10 space-x-3 text-lg font-medium flexer link-active">
-                  <span>View more projects</span>
-                  <ArrowRightIcon className="w-5 h-5" />
-                </a>
+              <Link
+                href="/projects"
+                className="inline-flex ml-10 space-x-3 text-lg font-medium flexer link-active"
+              >
+                <span>View more projects</span>
+                <ArrowRightIcon className="w-5 h-5" />
               </Link>
             </div>
           )}

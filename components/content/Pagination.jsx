@@ -20,22 +20,18 @@ export function Pagination({
   const prevPage = parseInt(page) - 1;
 
   return (
-    <section className="justify-center mx-auto space-x-5 w-full text-center flexer">
+    <section className="justify-center w-full mx-auto space-x-5 text-center flexer">
       {prevPage >= 1 && (
-        <Link href={href(prevPage)}>
-          <a className="space-x-3 btn flexer">
-            <ArrowLeftIcon className="w-5 h-5" />
-            <span>Prev</span>
-          </a>
+        <Link href={href(prevPage)} className="space-x-3 btn flexer">
+          <ArrowLeftIcon className="w-5 h-5" />
+          <span>Prev</span>
         </Link>
       )}
 
       {nextPage <= totalPages && (
-        <Link href={href(nextPage)}>
-          <a className={`space-x-3 btn flexer`}>
-            <span>Next</span>
-            <ArrowRightIcon className="w-5 h-5" />
-          </a>
+        <Link href={href(nextPage)} className={`space-x-3 btn flexer`}>
+          <span>Next</span>
+          <ArrowRightIcon className="w-5 h-5" />
         </Link>
       )}
     </section>

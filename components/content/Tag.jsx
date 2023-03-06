@@ -21,15 +21,12 @@ export function Tag({
 
   if (tag) {
     return (
-      <Link href={href}>
-        <a>
-          <span
-            className={`w-min font-semibold whitespace-nowrap tag flexer ${className}`}
-          >
-            {icon && <HashtagIcon className="mx-auto w-4 h-4" />}
-            <span>{tag}</span>
-          </span>
-        </a>
+      <Link
+        href={href}
+        className={`w-min font-semibold whitespace-nowrap tag flexer ${className}`}
+      >
+        {icon && <HashtagIcon className="w-4 h-4 mx-auto" />}
+        <span>{tag}</span>
       </Link>
     );
   }

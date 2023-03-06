@@ -26,12 +26,15 @@ export function BlogCard({
   return (
     <div className={styles.card}>
       <h2 className={styles.h2}>
-        <Link href={href}>
-          <a className="underline-none link-active hover:underline">{title}</a>
+        <Link
+          href={href}
+          className="underline-none link-active hover:underline"
+        >
+          {title}
         </Link>
       </h2>
 
-      <div className="justify-between items-center space-y-4 text-gray-600 md:space-x-5 md:space-y-0 md:flex dark:text-gray-400">
+      <div className="items-center justify-between space-y-4 text-gray-600 md:space-x-5 md:space-y-0 md:flex dark:text-gray-400">
         <div className="block whitespace-nowrap md:inline-block">
           {displayDate(date)}
         </div>

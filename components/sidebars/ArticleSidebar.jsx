@@ -2,20 +2,20 @@
 // import { SmallCard } from "~/components/cards/SmallCard";
 import {
   // HeartIcon,
-  ThumbUpIcon,
+  HandThumbUpIcon,
   ShareIcon,
-  DuplicateIcon,
-  ChatAlt2Icon,
+  DocumentDuplicateIcon,
+  ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 
 export default function ArticleSidebar() {
   return (
-    <aside className="sticky col-span-3 place-self-start space-y-10 w-full top-34">
+    <aside className="sticky w-full col-span-3 space-y-10 place-self-start top-34">
       {/* Reaction buttons */}
-      <section className="grid grid-cols-2 gap-6 w-full">
-        <button className="items-center px-4 py-7 space-y-3 text-center bg-gray-700 rounded-2xl hover-outline">
+      <section className="grid w-full grid-cols-2 gap-6">
+        <button className="items-center px-4 space-y-3 text-center bg-gray-700 py-7 rounded-2xl hover-outline">
           <div className="mx-auto text-white icon-base">
-            <ThumbUpIcon className="mx-auto" />
+            <HandThumbUpIcon className="mx-auto" />
           </div>
           <p className="text-xl font-bold">
             {"32"}
@@ -23,9 +23,9 @@ export default function ArticleSidebar() {
           </p>
           <p className="font-semibold uppercase">Like</p>
         </button>
-        <button className="items-center px-4 py-7 space-y-3 text-center bg-gray-700 rounded-2xl hover-outline">
+        <button className="items-center px-4 space-y-3 text-center bg-gray-700 py-7 rounded-2xl hover-outline">
           <div className="mx-auto text-white icon-base">
-            <ChatAlt2Icon className="mx-auto" />
+            <ChatBubbleBottomCenterTextIcon className="mx-auto" />
             {/* <HeartIcon className="mx-auto" /> */}
           </div>
           <p className="text-xl font-bold">
@@ -38,12 +38,12 @@ export default function ArticleSidebar() {
       </section>
 
       {/* Share buttons */}
-      <section className="flex justify-center space-x-4 w-full">
+      <section className="flex justify-center w-full space-x-4">
         <button className="text-gray-500 hover:text-white">
           <ShareIcon className="mx-auto icon-base" />
         </button>
         <button className="text-gray-500 hover:text-white">
-          <DuplicateIcon className="mx-auto icon-base" />
+          <DocumentDuplicateIcon className="mx-auto icon-base" />
         </button>
       </section>
 

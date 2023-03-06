@@ -33,13 +33,13 @@ export function HeroSection({
 
   return (
     <section className="grid-cols-2 gap-12 space-y-10 md:space-y-0 md:grid md:mb-30">
-      <section className="place-content-start place-self-center space-y-6 w-full">
+      <section className="w-full space-y-6 place-content-start place-self-center">
         {heading && (
           <h4 className="text-sm font-semibold uppercase">{heading}</h4>
         )}
         <h1 className="text-6xl font-semibold first-letter:uppercase">
           <Link href={href}>
-            <a>{title || slug?.toString().replace("-", " ") || "[unknown]"}</a>
+            {title || slug?.toString().replace("-", " ") || "[unknown]"}
           </Link>
         </h1>
         <p className="text-2xl">{description}</p>
@@ -72,7 +72,7 @@ export function HeroSection({
 
       {/* featured / image area */}
       {featured && featured?.meta && (
-        <section className="place-content-start place-self-center w-full">
+        <section className="w-full place-content-start place-self-center">
           <SmallCard {...featured.meta} baseHref={"/articles"} />
         </section>
       )}

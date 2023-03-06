@@ -3,7 +3,7 @@ import Layout from "~/layouts/default";
 // import { basicMeta } from "~/utils/seoMetaData";
 import Link from "next/link";
 import NowDetailsItem from "~/components/NowDetailsItem";
-import NowMessageNotice from "~/components/NowMessageNotice";
+// import NowMessageNotice from "~/components/NowMessageNotice";
 import AvatarImage from "~/components/AvatarImage";
 
 // construct the meta data for the page
@@ -17,28 +17,22 @@ const metaData = {
 export default function HomePage() {
   return (
     <Layout seo={metaData} className="md:space-y-16">
-      <main className="mx-auto space-y-12 max-w-3xl text-lg">
-        <div className="mx-auto space-y-8 max-w-xl">
-          <div className="justify-center items-center mx-auto md:flex md:space-x-5">
-            <div className="flex justify-center items-center mx-auto space-x-5">
+      <main className="max-w-3xl mx-auto space-y-12 text-lg">
+        <div className="max-w-xl mx-auto space-y-8">
+          <div className="items-center justify-center mx-auto md:flex md:space-x-5">
+            <div className="flex items-center justify-center mx-auto space-x-5">
               <Link href="/now">
-                <a className="">
-                  <AvatarImage sizeClass={"w-30 h-30"} />
-                </a>
+                <AvatarImage sizeClass={"w-30 h-30"} />
               </Link>
 
               <Link href="/now">
-                <a>
-                  <h1 className="text-6xl font-bold md:hidden">/now</h1>
-                </a>
+                <h1 className="text-6xl font-bold md:hidden">/now</h1>
               </Link>
             </div>
 
             <div className="space-y-3">
-              <Link href="/now">
-                <a className="hidden text-6xl font-bold md:block">
-                  <h1 className="">/now</h1>
-                </a>
+              <Link href="/now" className="hidden text-6xl font-bold md:block">
+                <h1 className="">/now</h1>
               </Link>
 
               <p className="">
@@ -77,7 +71,7 @@ export default function HomePage() {
               target="_blank"
               rel="noreferrer"
             >
-              Solana blockchain's documentation
+              Solana blockchain&apos;s documentation
             </a>
             . From writing new articles and content, to reorganizing the content
             itself. And yes, even the janitorial tasks like updating npm
@@ -110,10 +104,13 @@ export default function HomePage() {
               Solfate Podcast
             </a>{" "}
             is an audio commentary from{" "}
-            <Link href="https://twitter.com/jamesrp13">
-              <a className="link" target="_blank" rel="noreferrer">
-                @jamesrp13
-              </a>
+            <Link
+              href="https://twitter.com/jamesrp13"
+              className="link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @jamesrp13
             </Link>{" "}
             and myself. Each week we are discussing assorted news in the broader
             Solana ecosystem, as well as giving periodic updates on the projects
@@ -142,7 +139,7 @@ export default function HomePage() {
                 rel="noreferrer"
                 href="https://feeds.transistor.fm/solfate"
               >
-                Good ole' fashion RSS
+                Good ole&apos; fashion RSS
               </a>
             </li>
           </ul>

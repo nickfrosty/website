@@ -23,16 +23,16 @@ export function SmallCard({
   if (!href) href = `${baseHref || ""}/${slug || generateSlug(title)}`;
 
   return (
-    <Link href={href || ""}>
-      <a
-        className={clsx(
-          `p-0 card`,
-          className,
-          "hover-outline",
-          // featured ? "featured-outline" : "",
-        )}
-      >
-        {/* {featured && (
+    <Link
+      href={href || ""}
+      className={clsx(
+        `p-0 card`,
+        className,
+        "hover-outline",
+        // featured ? "featured-outline" : "",
+      )}
+    >
+      {/* {featured && (
           <span className="absolute z-10">
             <div
               className={clsx(
@@ -44,33 +44,32 @@ export function SmallCard({
           </span>
         )} */}
 
-        <div className="block flex-shrink-0 w-full h-60 bg-gray-900">
-          {/* TODO: onerror load a default image, or remove the image? */}
-          {draft && draft === true && (
-            <FloatLabel label={"draft"} overlay={true} />
-          )}
-          {image && (
-            <img
-              src={image}
-              className={clsx(
-                `object-cover`,
-                `object-${imageFocus}`,
-                `relative left-0 w-full h-full`,
-              )}
-              alt={title || "[unknown]"}
-            />
-          )}
-        </div>
-        <div className="p-5 space-y-3">
-          <h2 className="text-2xl font-bold">{title || "[unknown]"}</h2>
+      <div className="flex-shrink-0 block w-full bg-gray-900 h-60">
+        {/* TODO: onerror load a default image, or remove the image? */}
+        {draft && draft === true && (
+          <FloatLabel label={"draft"} overlay={true} />
+        )}
+        {image && (
+          <img
+            src={image}
+            className={clsx(
+              `object-cover`,
+              `object-${imageFocus}`,
+              `relative left-0 w-full h-full`,
+            )}
+            alt={title || "[unknown]"}
+          />
+        )}
+      </div>
+      <div className="p-5 space-y-3">
+        <h2 className="text-2xl font-bold">{title || "[unknown]"}</h2>
 
-          {children || blurb || description ? (
-            <p className="text-gray-500">{children || blurb || description}</p>
-          ) : (
-            ""
-          )}
-        </div>
-      </a>
+        {children || blurb || description ? (
+          <p className="text-gray-500">{children || blurb || description}</p>
+        ) : (
+          ""
+        )}
+      </div>
     </Link>
   );
 }

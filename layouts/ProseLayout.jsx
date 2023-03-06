@@ -68,13 +68,14 @@ export default function ProseLayout({
 
       {/* Primary content area */}
       <main className="space-y-5">
-        <Link href={href}>
-          <a>
-            <h1 className="text-yellow-400 heading heading-xl hover:underline">
-              {meta?.title}
-            </h1>
-          </a>
-        </Link>
+        <h1>
+          <Link
+            href={href}
+            className="text-yellow-400 heading heading-xl hover:underline"
+          >
+            {meta?.title}
+          </Link>
+        </h1>
 
         <ArticleMeta
           meta={meta}
