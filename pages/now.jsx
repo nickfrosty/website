@@ -48,24 +48,36 @@ export default function HomePage() {
             </div>
           </div>
 
-          <NowMessageNotice />
+          {/* <NowMessageNotice /> */}
         </div>
 
         <NowDetailsItem
           id="solana"
           href="#solana"
-          title="Solana Blockchain (Core Docs)"
+          title="Solana Foundation (DevRel)"
         >
           <p>
-            As an <i>&quot;external developer advocate&quot;</i> for the Solana
-            foundation, I am actively working on improving the official{" "}
+            I{" "}
+            <a
+              href="https://twitter.com/nickfrosty/status/1630207372479045637"
+              target="_blank"
+              className="link"
+              rel="noreferrer"
+            >
+              recently started
+            </a>{" "}
+            full time at the Solana Foundation, joining the Developer Relations
+            team.{" "}
+          </p>
+          <p>
+            I am actively working on improving the official{" "}
             <a
               href="https://docs.solana.com"
               className="link"
               target="_blank"
               rel="noreferrer"
             >
-              Solana documentation
+              Solana blockchain's documentation
             </a>
             . From writing new articles and content, to reorganizing the content
             itself. And yes, even the janitorial tasks like updating npm
