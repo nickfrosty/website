@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
   eslint: {
@@ -14,5 +15,13 @@ module.exports = {
     config.resolve.fallback = { fs: false, path: false };
 
     return config;
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 };
