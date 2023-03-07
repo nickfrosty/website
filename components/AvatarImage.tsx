@@ -1,6 +1,11 @@
 import clsx from "clsx";
 
-export default function AvatarImage({ className = null, sizeClass = null }) {
+type ComponentProps = {
+  className?: string;
+  sizeClass?: string;
+};
+
+export default function AvatarImage({ className, sizeClass }: ComponentProps) {
   return (
     <span
       className={clsx(

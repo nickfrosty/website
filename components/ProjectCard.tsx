@@ -2,7 +2,16 @@ import clsx from "clsx";
 import Link from "next/link";
 import styles from "~/styles/project.module.css";
 
-export default function ProjectCard({ project, showDateRange = true }) {
+type ComponentProps = {
+  className?: string;
+  project: ProjectRecord;
+  showDateRange?: boolean;
+};
+
+export default function ProjectCard({
+  project,
+  showDateRange = true,
+}: ComponentProps) {
   const isLocalPage = true;
 
   return (
@@ -20,12 +29,7 @@ export default function ProjectCard({ project, showDateRange = true }) {
 
         <span className={styles.meta}>
           <span className="items-center block space-y-1">
-            <h3
-              className={styles.link}
-              target={!isLocalPage ? "_blank" : undefined}
-            >
-              {project.title}
-            </h3>
+            <h3 className={styles.link}>{project.title}</h3>
 
             <span className="justify-between w-full flexer">
               {showDateRange && (

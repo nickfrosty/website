@@ -1,4 +1,8 @@
-export default function NowNotice({}) {
+type CustomProps = {
+  className?: string;
+};
+
+export default function NowNotice({}: CustomProps) {
   return (
     <section className="px-8 text-gray-500 border-l-4 border-indigo-600">
       <p className="">

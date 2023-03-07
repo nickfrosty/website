@@ -1,4 +1,3 @@
-// import Link from "next/link";
 // import { SmallCard } from "~/components/cards/SmallCard";
 import {
   // HeartIcon,
@@ -8,7 +7,11 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/outline";
 
-export default function ArticleSidebar() {
+type ComponentProps = {
+  className?: string;
+};
+
+export default function ArticleSidebar({}: ComponentProps) {
   return (
     <aside className="sticky w-full col-span-3 space-y-10 place-self-start top-34">
       {/* Reaction buttons */}
@@ -49,15 +52,12 @@ export default function ArticleSidebar() {
 
       {/* Related article */}
       {/* <section className="">
-						<h3 className="mb-4 text-base font-bold text-center uppercase">
-							Related Article
-						</h3>
+        <h3 className="mb-4 text-base font-bold text-center uppercase">
+          Related Article
+        </h3>
 
-						<SmallCard
-							title="Example related article"
-							href="/articles/derp"
-						/>
-					</section> */}
+        <SmallCard title="Example related article" href="/articles/derp" />
+      </section> */}
     </aside>
   );
 }

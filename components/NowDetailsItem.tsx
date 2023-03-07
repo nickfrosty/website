@@ -1,12 +1,20 @@
 import Link from "next/link";
 
+type ComponentProps = {
+  className?: string;
+  children: React.ReactNode;
+  id: number | string;
+  href: string;
+  title: string;
+};
+
 export default function NowDetailsItem({
+  className,
   children,
-  className = "",
   id,
   href,
   title,
-}) {
+}: ComponentProps) {
   return (
     <section className="space-y-3" id={`#${id}`}>
       <h2>
