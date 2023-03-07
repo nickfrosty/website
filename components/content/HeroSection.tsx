@@ -5,29 +5,49 @@ import { generateSlug } from "zumo";
 import {
   CalendarIcon,
   DocumentTextIcon,
-  HeartIcon,
+  // HeartIcon,
 } from "@heroicons/react/24/outline";
 import { SmallCard } from "~/components/cards/SmallCard";
 import { DateTime } from "luxon";
 
+type ComponentProps = {
+  className?: string;
+  children?: React.ReactNode;
+  featured?: PostRecord;
+
+  heading?: string;
+  draft?: string;
+  title?: string;
+  image?: string;
+  slug?: string;
+  baseHref?: string;
+  href?: string;
+  description?: string;
+  blurb?: string;
+  publishDate?: string;
+  count?: string;
+  countLabel?: string;
+  imageFocus: "center";
+};
+
 export function HeroSection({
-  className = "",
-  featured = null,
-  heading = null,
-  draft = null,
-  title = null,
-  image = null,
-  slug = null,
-  baseHref = null,
-  href = null,
-  description = null,
-  blurb = null,
-  children = null,
+  className,
+  children,
+  featured,
+  heading,
+  draft,
+  title,
+  image,
+  slug,
+  baseHref,
+  href,
+  description,
+  blurb,
+  count,
+  publishDate,
   imageFocus = "center",
-  count = null,
   countLabel = "articles",
-  publishDate = null,
-}) {
+}: ComponentProps) {
   // construct the `href` location, when not provided
   if (!href) href = `${baseHref || ""}/${slug || generateSlug(title)}`;
 

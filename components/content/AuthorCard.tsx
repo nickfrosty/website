@@ -1,12 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 // import Link from "next/link";
 
+type ComponentProps = {
+  className?: string;
+  children?: React.ReactNode;
+};
+
 export function AuthorCard({
-  data = null,
-  image = null,
-  children = null,
-  className = "",
-}) {
+  children,
+  // data = null,
+  // image = null,
+  className,
+}: ComponentProps) {
   return (
     <section className={`mx-auto space-x-5 max-w-2xl ${className} flexer box`}>
       <div className="avatar avatar-base"></div>

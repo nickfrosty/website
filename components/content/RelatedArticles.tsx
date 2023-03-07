@@ -2,7 +2,12 @@
 // import Link from "next/link";
 import { SmallCard } from "../cards/SmallCard";
 
-export function RelatedArticles({ className = "" }) {
+type ComponentProps = {
+  className?: string;
+  children?: React.ReactNode;
+};
+
+export function RelatedArticles({ className = "" }: ComponentProps) {
   return (
     <section className={`mt-8 ${className} card-listing lg:grid-cols-3`}>
       <SmallCard

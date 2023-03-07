@@ -47,12 +47,12 @@ type CardComponentProps = {
   baseHref?: string;
   title: string;
   href: string;
-  slug: string;
+  slug?: string;
   description?: string;
   draft?: boolean;
   image?: string;
   date?: string;
-  tags?: string[];
+  tags?: string[] | string;
   featured?: boolean;
   blurb?: string;
   imageFocus?: "center" | "left" | "right";

@@ -48,18 +48,20 @@ export function BlogCard({
 }
 
 type TagsListingProps = {
-  tags?: string[];
+  tags?: string[] | string;
 };
 
 /*
   Quick formatter for displaying a single `tag`
 */
 function TagsListing({ tags }: TagsListingProps) {
+  if (tags && typeof tags == "string") tags = tags.split(",");
   if (!tags || !Array.isArray(tags) || tags.length <= 0) return <></>;
 
   return (
     <div className="flex">
       {tags.slice(0, config.maxTagCount)?.map((tag) => {
+        tag = tag.trim();
         return (
           <span className="cursor-default inline-code" key={tag}>
             {tag}
