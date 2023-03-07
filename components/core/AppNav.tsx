@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function AppNav({ className }) {
+type CustomProps = {
+  className?: string;
+};
+
+export default function AppNav({}: CustomProps) {
   return (
     <nav
       id="navigation"
@@ -16,7 +20,12 @@ export default function AppNav({ className }) {
   );
 }
 
-function LinkItem({ href, title }) {
+type LinkItemProps = {
+  href: string;
+  title: string;
+};
+
+function LinkItem({ href, title }: LinkItemProps) {
   return (
     <li>
       <Link href={href} className="hover:text-yellow-500">

@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function AppFooter() {
+type CustomProps = {
+  className?: string;
+};
+
+export default function AppFooter({}: CustomProps) {
   return (
     <footer className="w-full pt-5 pb-8 mt-5 mb-2 overflow-hidden text-lg text-center text-gray-600 dark:text-gray-500">
       <div

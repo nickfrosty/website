@@ -1,16 +1,24 @@
+import { NextSeo, NextSeoProps } from "next-seo";
 import clsx from "clsx";
-import { NextSeo } from "next-seo";
-import AppFooter from "~/components/core/AppFooter";
-import AppHeader from "~/components/core/AppHeader";
-import ArticleSidebar from "~/components/sidebars/ArticleSidebar";
+import AppHeader from "@/components/core/AppHeader";
+import AppFooter from "@/components/core/AppFooter";
+
+import ArticleSidebar from "@/components/sidebars/ArticleSidebar";
+
+type LayoutProps = {
+  seo?: NextSeoProps;
+  children?: React.ReactNode;
+  className?: string;
+  footer?: boolean;
+};
 
 const SHOW_SIDEBAR = false;
 
 export default function ColumnLayout({
-  seo = null,
-  children = null,
-  className = "",
-}) {
+  seo,
+  children,
+  className,
+}: LayoutProps) {
   return (
     <>
       <NextSeo {...seo} />

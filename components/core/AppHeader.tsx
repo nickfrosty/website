@@ -1,7 +1,11 @@
 import Link from "next/link";
-import AppNav from "./AppNav";
+import AppNav from "@/components/core/AppNav";
 
-export default function AppHeader() {
+type CustomProps = {
+  className?: string;
+};
+
+export default function AppHeader({}: CustomProps) {
   return (
     <>
       <AppNav />
@@ -16,7 +20,7 @@ export default function AppHeader() {
 
       <div
         id="header-divider"
-        className="my-4 w-full h-px bg-indigo-500 transform -rotate-1"
+        className="w-full h-px my-4 transform bg-indigo-500 -rotate-1"
       ></div>
     </>
   );
