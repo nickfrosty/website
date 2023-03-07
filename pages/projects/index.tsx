@@ -15,8 +15,8 @@ const metaData = {
   contentDir: "projects",
 };
 
-export async function getStaticProps({ params }) {
-  let projects = await getDocsByPath(metaData.contentDir);
+export async function getStaticProps() {
+  let projects: ProjectRecord[] = await getDocsByPath(metaData.contentDir);
 
   // extract the `active` projects
   const featured = filterDocs(projects, { status: "active" });
@@ -31,7 +31,9 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function ArticlesIndex({ projects, featured }) {
+type PageProps = { projects: ProjectRecord[]; featured?: ProjectRecord[] };
+
+export default function Page({ projects, featured }: PageProps) {
   return (
     <DefaultLayout seo={metaData} className="space-y-16">
       <section className="mb-12 text-center">
@@ -44,10 +46,10 @@ export default function ArticlesIndex({ projects, featured }) {
       </section>
 
       {featured && (
-        <section className="grid grid-cols-1 gap-5 mx-auto mt-4 mb-3 max-w-5xl md:grid-cols-2 sm:mt-8">
-          {featured?.map((item) => {
-            return <ProjectCard key={item.meta.title} project={item?.meta} />;
-          })}
+        <section className="grid max-w-5xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 md:grid-cols-2 sm:mt-8">
+          {featured?.map((item) => (
+            <ProjectCard key={item.meta.title} metadata={item?.meta} />
+          ))}
         </section>
       )}
 
@@ -55,7 +57,7 @@ export default function ArticlesIndex({ projects, featured }) {
         <hr />
       </section>
 
-      <section className="mx-auto mb-12 max-w-2xl text-center">
+      <section className="max-w-2xl mx-auto mb-12 text-center">
         <h1 className="mb-5 text-4xl font-bold">
           Other Projects, <br className="block sm:hidden" />
           Various States
@@ -68,10 +70,10 @@ export default function ArticlesIndex({ projects, featured }) {
         </p>
       </section>
 
-      <section className="grid grid-cols-1 gap-5 mx-auto mt-4 mb-3 max-w-2xl sm:mt-8">
-        {projects?.map((item) => {
-          return <ProjectCard key={item.meta.title} project={item?.meta} />;
-        })}
+      <section className="grid max-w-2xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 sm:mt-8">
+        {projects?.map((item) => (
+          <ProjectCard key={item.meta.title} metadata={item?.meta} />
+        ))}
       </section>
     </DefaultLayout>
   );

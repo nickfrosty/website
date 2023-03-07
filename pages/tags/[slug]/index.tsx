@@ -11,18 +11,22 @@ import {
 import Layout from "~/layouts/default";
 import { HeroSection } from "~/components/content/HeroSection";
 import { CardGrid } from "~/components/cards/CardGrid";
+import { NextSeoProps } from "next-seo";
 
 // import { basicMeta } from "~/utils/seoMetaData";
 // construct the meta data for the page
 // const metaData = basicMeta({
-const metaData = {
+const seo: NextSeoProps = {
   title: "Tags",
   description: "Explore all my articles with written about this topic.",
-  baseHref: "/tags/{{tag}}",
-  // paginationTemplate: "{{baseHref}}/{{id}}",
 };
 
-export async function preparePage(slug, currentPage = 1) {
+const metaData = {
+  baseHref: "/tags/{{tag}}",
+  paginationTemplate: "{{baseHref}}/{{id}}",
+};
+
+export async function preparePage(slug: string, currentPage: number = 1) {
   // give the 404 page when no `slug` was found
   if (!slug) return { notFound: true };
   // console.warn(slug, currentPage);
@@ -82,14 +86,15 @@ export async function preparePage(slug, currentPage = 1) {
   //   return { notFound: true };
 
   // set the on page metaData meta settings
-  metaData.title = page.meta.title;
-  metaData.description = `Explore all my articles with written about ${page.meta.title}. They are pretty great :)`;
+  seo.title = page.meta.title;
+  seo.description = `Explore all my articles with written about ${page.meta.title}. They are pretty great :)`;
 
   // chunk out the posts for the current page
   posts = posts.slice(pagination.start, pagination.end);
 
   return {
     props: {
+      seo,
       metaData,
       meta: page?.meta,
       content: page?.content,
@@ -104,28 +109,42 @@ export async function getStaticPaths() {
   return generateStaticPaths("tags", false);
 }
 
-export async function getStaticProps({ params }) {
-  return await preparePage(params?.slug, params?.page);
+type PageStaticProps = {
+  params: { page: number; slug: string };
+};
+
+export async function getStaticProps({
+  params: { page, slug },
+}: PageStaticProps) {
+  return await preparePage(slug, page ?? 1);
 }
 
-export default function TagPage({
-  metaData,
+type PageProps = {
+  seo: NextSeoProps;
+  posts: PostRecord[];
+  meta: PostMetadata;
+  featured?: PostRecord;
+  pagination: PaginationProps;
+};
+
+export default function Page({
+  seo,
   meta,
   // content,
   posts,
   featured,
   pagination,
-}) {
+}: PageProps) {
   // TODO: support setting a canonical tag, likely via a util function to standardize the data
   // if (!meta?.canonical) meta.canonical = `${href}`;
 
   return (
-    <Layout seo={metaData}>
+    <Layout seo={seo}>
       <HeroSection
-        {...meta}
-        href={metaData?.baseHref}
+        metadata={meta}
+        baseHref={metaData?.baseHref}
         heading="tag"
-        featured={featured && featured}
+        featured={featured}
       />
 
       <CardGrid posts={posts} baseHref={"/articles"} pagination={pagination} />

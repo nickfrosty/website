@@ -3,21 +3,12 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { parseTemplate } from "zumo";
 
-type ComponentProps = {
-  className?: string;
-  children?: React.ReactNode;
-  page?: number;
-  totalPages?: number;
-  baseHref?: string;
-  template?: string;
-};
-
 export function Pagination({
   page = 1,
   totalPages = 1,
   baseHref = "",
   template = "",
-}: ComponentProps) {
+}: PaginationProps) {
   // compute the href for the links
   const href = (id: number) => {
     if (id <= 1) return baseHref;

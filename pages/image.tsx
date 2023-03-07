@@ -1,25 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
 import AvatarImage from "~/components/AvatarImage";
 
-export default function ImagePage() {
+type PageProps = {};
+
+export default function Page({}: PageProps) {
   return (
     <main className="h-[720px] w-[1280px] mx-auto my-8 rounded-3xl border-8 border-indigo-500 static">
       <section className="relative h-full">
         <section className="p-8">
-          {/* <p className="flex place-items-center text-xl text-gray-500">
+          {/* <p className="flex text-xl text-gray-500 place-items-center">
             <span className="">January 21, 2022</span>
           </p> */}
 
-          <h1 className="text-8xl font-semibold">
+          <h1 className="font-semibold text-8xl">
             This is the title of this article
           </h1>
         </section>
 
-        <section className="absolute bottom-0 p-8 w-full">
+        <section className="absolute bottom-0 w-full p-8">
           <hr className="border-2" />
 
-          <section className="flex justify-between place-items-center w-full">
-            <div className="flex place-items-center space-x-5">
+          <section className="flex justify-between w-full place-items-center">
+            <div className="flex space-x-5 place-items-center">
               <AvatarImage
                 sizeClass={"w-32 h-32"}
                 className="border-4 border-white"

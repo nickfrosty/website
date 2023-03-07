@@ -1,0 +1,37 @@
+import { paginateStaticPaths } from "zumo";
+
+// import the parent page and its `prepare` action
+import ParentPage from "../index";
+import { preparePage } from "../index";
+
+type PageStaticProps = {
+  params: { slug: string; page: number };
+};
+
+// compute the static paths for all the pagination pages
+export async function getStaticPaths({
+  params: { slug, page },
+}: PageStaticProps) {
+  console.log("=================", slug);
+  const pagination = await preparePage(slug, page).then(
+    (res) => res?.props?.pagination,
+  );
+  const paths = paginateStaticPaths(pagination);
+
+  // console.log(paths);
+  return paths;
+}
+
+// prepare the current pagination page for viewing
+export async function getStaticProps({
+  params: { slug, page },
+}: PageStaticProps) {
+  console.log("=================", slug);
+
+  return await preparePage(slug, page);
+}
+
+// render the actual page content
+export default function PaginationPage2(props: any) {
+  return ParentPage(props);
+}

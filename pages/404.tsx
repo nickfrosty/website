@@ -10,14 +10,16 @@ const metaData = {
     "I swear this never happens. You found a page that does not exist, or I moved it. Or am hiding it from you?? 🙃",
 };
 
-export default function ErrorPage() {
+type PageProps = {};
+
+export default function ErrorPage({}: PageProps) {
   return (
     <Layout seo={metaData} className="my-20 text-center md:space-y-16">
       <h1 className="text-5xl font-bold md:block">
         Well, this is embarrassing...
       </h1>
 
-      <main className="mx-auto space-y-12 max-w-xl text-2xl">
+      <main className="max-w-xl mx-auto space-y-12 text-2xl">
         <p>
           You found a page that does not exist, or I moved it.
           <br />

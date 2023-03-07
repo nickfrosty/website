@@ -14,7 +14,9 @@ const metaData = {
     "I am always working on various projects. Here are some high level snapshots of what I am working on now.",
 };
 
-export default function HomePage() {
+type PageProps = {};
+
+export default function Page({}: PageProps) {
   return (
     <Layout seo={metaData} className="md:space-y-16">
       <main className="max-w-3xl mx-auto space-y-12 text-lg">

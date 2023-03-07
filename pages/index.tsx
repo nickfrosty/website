@@ -18,9 +18,9 @@ const metaData = {
     "Hi! I'm Nick, a full stack developer and submariner working on various projects. In my free time I write software, technical articles, and build things.",
 };
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps() {
   // extract the `homepage` projects
-  let projects = await getDocsByPath("projects");
+  let projects: ProjectRecord[] = await getDocsByPath("projects");
   projects = filterDocs(projects, {
     homepage: true,
   })?.slice(0, 3);
@@ -30,7 +30,11 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function HomePage({ projects }) {
+type PageProps = {
+  projects: ProjectRecord[];
+};
+
+export default function Page({ projects }: PageProps) {
   return (
     <Layout footer={false} seo={metaData} className="md:space-y-16">
       <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 lg:mt-30 md:gap-32 sm:mt-8 lg:grid-cols-2">
@@ -99,15 +103,13 @@ export default function HomePage({ projects }) {
               </h2>
 
               <div className="grid grid-cols-1 gap-8 mb-3 lg:block md:grid-cols-2">
-                {projects?.map((item) => {
-                  return (
-                    <ProjectCard
-                      key={item.meta.title}
-                      project={item?.meta}
-                      showDateRange={false}
-                    />
-                  );
-                })}
+                {projects?.map((item) => (
+                  <ProjectCard
+                    key={item.meta.title}
+                    metadata={item.meta}
+                    showDateRange={false}
+                  />
+                ))}
               </div>
 
               <Link

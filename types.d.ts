@@ -10,6 +10,19 @@ type ProjectRecord = {
   logo?: string;
   dateRange: string;
   status: "";
+  meta: PostMetadata;
+  //   slug: string;
+  //   href: string;
+  //   title: string;
+
+  //   date?: string;
+  //   createdAt?: string;
+  //   updatedAt?: string;
+
+  //   url?: string;
+  //   dateRange?: string;
+  //   status?: string;
+  // };
 };
 
 //
@@ -23,15 +36,20 @@ type PostRecord = {
 type PostMetadata = {
   slug: string;
   href: string;
+  title: string;
 
   date?: string;
   createdAt?: string;
   updatedAt?: string;
 
+  url?: string;
+  dateRange?: string;
+  status?: string;
+
   draft?: boolean;
-  title: string;
   blurb?: string;
   description?: string;
+  logo?: string;
   image?: string;
   keywords?: string;
   imageFocus?: "left" | "right" | "center";
@@ -67,4 +85,13 @@ type SimpleLinkItem = {
   title?: string;
   href: string;
   label: string;
+};
+
+type PaginationProps = {
+  className?: string;
+  children?: React.ReactNode;
+  page?: number;
+  totalPages?: number;
+  baseHref?: string;
+  template?: string;
 };

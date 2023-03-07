@@ -1,27 +1,27 @@
 import clsx from "clsx";
 import Link from "next/link";
-import styles from "~/styles/project.module.css";
+import styles from "@/styles/project.module.css";
 
 type ComponentProps = {
   className?: string;
-  project: ProjectRecord;
+  metadata: PostMetadata;
   showDateRange?: boolean;
 };
 
-export default function ProjectCard({
-  project,
+export default function metadataCard({
+  metadata,
   showDateRange = true,
 }: ComponentProps) {
   const isLocalPage = true;
 
   return (
-    <Link href={project.url} className={styles.card}>
+    <Link href={metadata?.url ?? "#"} className={styles.card}>
       <span className={styles.inner}>
-        {project?.logo && (
+        {metadata?.logo && (
           <img
             className={styles.icon}
-            src={project.logo}
-            alt={project.title}
+            src={metadata.logo}
+            alt={metadata.title}
             width={96}
             height={96}
           />
@@ -29,21 +29,21 @@ export default function ProjectCard({
 
         <span className={styles.meta}>
           <span className="items-center block space-y-1">
-            <h3 className={styles.link}>{project.title}</h3>
+            <h3 className={styles.link}>{metadata?.title}</h3>
 
             <span className="justify-between w-full flexer">
-              {showDateRange && (
-                <span className={styles.date}>{project.dateRange}</span>
+              {showDateRange && metadata.dateRange && (
+                <span className={styles.date}>{metadata.dateRange}</span>
               )}
 
               <span
                 className={clsx(
                   "md:hidden block",
                   styles.status,
-                  styles[`status-${project.status}`],
+                  styles[`status-${metadata?.status}`],
                 )}
               >
-                {project.status}
+                {metadata?.status}
               </span>
             </span>
           </span>
@@ -53,16 +53,16 @@ export default function ProjectCard({
               "hidden md:block",
               styles.floater,
               styles.status,
-              styles[`status-${project.status}`],
+              styles[`status-${metadata?.status}`],
             )}
           >
-            {project.status}
+            {metadata?.status}
           </span>
         </span>
       </span>
 
-      {project?.description && (
-        <p className={styles.description}>{project.description}</p>
+      {metadata?.description && (
+        <p className={styles.description}>{metadata.description}</p>
       )}
     </Link>
   );
