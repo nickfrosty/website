@@ -1,11 +1,11 @@
 import Link from "next/link";
 import AppNav from "@/components/core/AppNav";
 
-type CustomProps = {
+type ComponentProps = {
   className?: string;
 };
 
-export default function AppHeader({}: CustomProps) {
+export default function AppHeader({}: ComponentProps) {
   return (
     <>
       <AppNav />

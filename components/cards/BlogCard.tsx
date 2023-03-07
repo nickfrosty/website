@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import { displayDate, generateSlug, parseTemplate } from "zumo";
-
 import Link from "next/link";
-import styles from "~/styles/project.module.css";
+import styles from "@/styles/project.module.css";
+
+import { displayDate, generateSlug, parseTemplate } from "zumo";
 
 // load the config/constants file
 const config = require("~/zumo.config").content.blog;
 
 export function BlogCard({
   title,
-  draft = null,
-  tags = null,
-  slug = null,
-  date = null,
-  href = null,
-}) {
+  draft,
+  slug,
+  tags,
+  date,
+  href,
+}: CardComponentProps) {
   if (draft === true && process?.env?.NODE_ENV !== "development") return;
 
   if (!href)
@@ -47,11 +47,15 @@ export function BlogCard({
   );
 }
 
+type TagsListingProps = {
+  tags?: string[];
+};
+
 /*
   Quick formatter for displaying a single `tag`
 */
-function TagsListing({ tags }) {
-  if (!tags || !Array.isArray(tags) || tags.length <= 0) return;
+function TagsListing({ tags }: TagsListingProps) {
+  if (!tags || !Array.isArray(tags) || tags.length <= 0) return <></>;
 
   return (
     <div className="flex">

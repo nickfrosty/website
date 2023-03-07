@@ -2,23 +2,23 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { generateSlug } from "zumo";
-import { FloatLabel } from "../content/FloatLabel";
+import { FloatLabel } from "@/components/content/FloatLabel";
 import clsx from "clsx";
 
 export function LargeCard({
+  children,
+  className,
   title,
-  image = null,
+  image,
   baseHref = "",
   href = "",
   slug = "",
-  description = null,
-  blurb = null,
-  draft = null,
-  children = null,
-  actionButton = null,
-  className = "",
+  description,
+  blurb,
+  draft,
+  actionButton,
   imageFocus = "center",
-}) {
+}: CardComponentProps) {
   // construct the `href` location, when not provided
   if (!href) href = `${baseHref || ""}/${slug || generateSlug(title)}`;
 

@@ -3,22 +3,22 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { generateSlug } from "zumo";
-import { FloatLabel } from "../content/FloatLabel";
+import { FloatLabel } from "@/components/content/FloatLabel";
 
 export function SmallCard({
-  draft = null,
+  children,
+  className,
+  draft = false,
   title,
-  image = null,
-  slug = null,
-  baseHref = null,
-  href = null,
-  featured = false,
-  description = null,
-  blurb = null,
-  children = null,
-  className = "",
+  image,
+  slug,
+  baseHref,
+  href,
+  featured,
+  description,
+  blurb,
   imageFocus = "center",
-}) {
+}: CardComponentProps) {
   // construct the `href` location, when not provided
   if (!href) href = `${baseHref || ""}/${slug || generateSlug(title)}`;
 

@@ -1,8 +1,8 @@
-type CustomProps = {
+type ComponentProps = {
   className?: string;
 };
 
-export default function NowNotice({}: CustomProps) {
+export default function NowNotice({}: ComponentProps) {
   return (
     <section className="px-8 text-gray-500 border-l-4 border-indigo-600">
       <p className="">

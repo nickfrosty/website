@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-type CustomProps = {
+type ComponentProps = {
   className?: string;
 };
 
-export default function AppNav({}: CustomProps) {
+export default function AppNav({}: ComponentProps) {
   return (
     <nav
       id="navigation"
