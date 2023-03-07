@@ -93,8 +93,8 @@ h3 code {
 
 .focus-area {
   @apply container-inner;
-  @apply w-full items-center text-center md:text-left;
-  @apply grid gap-8 md:flex justify-between;
+  @apply items-center w-full text-center md:text-left;
+  @apply grid justify-between gap-8 md:flex;
   @apply mx-auto space-y-10 md:space-y-0 md:space-x-8 md:flex;
   @apply px-4 py-8;
 }
@@ -114,7 +114,7 @@ svg {
 
 hr {
   /* @apply my-3 text-indigo-500; */
-  @apply w-2/3 h-px mx-auto my-14 md:my-20 text-indigo-500 transform bg-indigo-500 md:w-2/3 rotate-1;
+  @apply w-2/3 h-px mx-auto text-indigo-500 transform bg-indigo-500 my-14 md:my-20 md:w-2/3 rotate-1;
 }
 
 /*
@@ -130,14 +130,14 @@ hr {
   @apply no-underline !important;
 }
 .reverse-link {
-  @apply cursor-pointer underline font-semibold;
+  @apply font-semibold underline cursor-pointer;
   @apply hover:text-yellow-500;
 }
 .link,
 .summary a,
 article a {
-  @apply cursor-pointer underline font-semibold;
-  @apply hover:text-indigo-500 text-yellow-500;
+  @apply font-semibold underline cursor-pointer;
+  @apply text-yellow-500 hover:text-indigo-500;
 }
 .link-active {
   @apply link;
@@ -154,7 +154,7 @@ article a {
 
 .avatar {
   @apply rounded-full;
-  @apply block overflow-hidden flex-shrink-0 bg-gray-400;
+  @apply flex-shrink-0 block overflow-hidden bg-gray-400;
 }
 .avatar img {
   @apply w-full;
@@ -207,7 +207,7 @@ article a {
 
 */
 .card {
-  @apply w-full block rounded-xl overflow-hidden;
+  @apply block w-full overflow-hidden rounded-xl;
   @apply border border-gray-800;
 }
 
@@ -222,13 +222,13 @@ article a {
   @apply border-2 border-yellow-500;
 }
 .double-wide-cards {
-  @apply grid gap-5 grid-cols-1 lg:grid-cols-2;
+  @apply grid grid-cols-1 gap-5 lg:grid-cols-2;
 }
 .side-heavy-cards {
-  @apply grid gap-5 grid-cols-1 lg:grid-cols-5;
+  @apply grid grid-cols-1 gap-5 lg:grid-cols-5;
 }
 .card-listing {
-  @apply grid gap-5 grid-cols-1;
+  @apply grid grid-cols-1 gap-5;
   @apply sm:grid-cols-2 md:grid-cols-3;
 }
 
@@ -237,14 +237,14 @@ article a {
 */
 
 .tag {
-  @apply px-3 py-1 rounded-xl mr-3 cursor-pointer;
+  @apply px-3 py-1 mr-3 cursor-pointer rounded-xl;
   @apply border border-gray-800;
   @apply bg-transparent;
   @apply hover:border-gray-500;
 }
 .inline-code {
   @apply px-3 py-1 ml-1 mr-2 rounded-lg;
-  @apply text-base tracking-wide font-mono;
+  @apply font-mono text-base tracking-wide;
   @apply bg-slate-800 border border-slate-700 text-white !important;
 }
 
@@ -258,7 +258,7 @@ article a {
 .btn,
 .msg {
   @apply px-4 py-4 rounded-lg;
-  @apply shadow-xl border;
+  @apply border shadow-xl;
   /* @apply text-2xl; */
   @apply bg-slate-800 border-slate-700;
   @apply my-5;
@@ -307,7 +307,7 @@ article a {
 .msg.text::before {
   @apply block;
   @apply text-white;
-  @apply uppercase font-mono;
+  @apply font-mono uppercase;
   @apply font-semibold;
 }
 .msg.note.text::before {
