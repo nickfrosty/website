@@ -6,7 +6,12 @@ import remarkGfm from "remark-gfm";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
-export function ArticleContent({ content = null, className = "" }) {
+type ComponentProps = {
+  className?: string;
+  content?: any;
+};
+
+export function ArticleContent({ className, content }: ComponentProps) {
   return (
     <article className={styles.article}>
       <ReactMarkdown
@@ -19,10 +24,12 @@ export function ArticleContent({ content = null, className = "" }) {
   );
 }
 
+type CodeBlockProps = { className?: string; inline?: boolean; children: any };
+
 /*
   Define a custom reusable code block component
 */
-const CodeBlock = ({ className = "", inline = false, children }) => {
+function CodeBlock({ className, inline, children }: CodeBlockProps) {
   // trim white space and extra lines at the end
   if (Array.isArray(children)) {
     for (let i = 0; i < children.length; i++) {
@@ -32,7 +39,7 @@ const CodeBlock = ({ className = "", inline = false, children }) => {
   } else if (typeof children === "string") children = children.trim();
 
   // compute the `language`
-  let language = className?.slice("language-".length).toLowerCase() || "";
+  let language = className?.slice("language-".length).toLowerCase() ?? "";
 
   if (language === "sh") language = "bash";
 
@@ -48,4 +55,4 @@ const CodeBlock = ({ className = "", inline = false, children }) => {
         {children}
       </SyntaxHighlighter>
     );
-};
+}

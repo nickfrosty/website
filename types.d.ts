@@ -17,15 +17,18 @@ type PostRecord = {
   slug: string;
   href: string;
   meta: PostMetadata;
+  content: string;
 };
 
 type PostMetadata = {
   slug: string;
   href: string;
 
-  draft?: boolean;
   date?: string;
+  createdAt?: string;
   updatedAt?: string;
+
+  draft?: boolean;
   title: string;
   blurb?: string;
   description?: string;
@@ -57,4 +60,11 @@ type CardComponentProps = {
     href: string;
     label: string;
   };
+};
+
+//
+type SimpleLinkItem = {
+  title?: string;
+  href: string;
+  label: string;
 };

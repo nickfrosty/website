@@ -4,12 +4,19 @@ import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
 import { Tag } from "./Tag";
 
+type ComponentProps = {
+  className?: string;
+  meta: PostMetadata;
+  baseHref?: string;
+  tagHrefTemplate?: string;
+};
+
 export function ArticleMeta({
-  meta = null,
+  meta,
   className = "",
   baseHref = "/",
-  tagHrefTemplate = undefined,
-}) {
+  tagHrefTemplate,
+}: ComponentProps) {
   return (
     <section className={`space-y-3 ${className}`}>
       <div className="items-center font-mono tracking-wide text-gray-500 md:space-x-4 md:flex">
@@ -24,7 +31,7 @@ export function ArticleMeta({
           <span>Nick Frostbutter</span>
         </a>
 
-        <span className="hidden mr-2 w-1 h-1 bg-gray-500 rounded-full md:block"></span>
+        <span className="hidden w-1 h-1 mr-2 bg-gray-500 rounded-full md:block"></span>
 
         <div className="justify-between mt-4 md:mt-0 flexer">
           <DisplayDate
@@ -57,12 +64,19 @@ export function ArticleMeta({
   );
 }
 
+type DisplayDateProps = {
+  className?: string;
+  date?: string;
+  updatedAt?: string;
+  createdAt?: string;
+};
+
 function DisplayDate({
-  date = null,
-  updatedAt = null,
-  createdAt = null,
   className = "",
-}) {
+  date,
+  updatedAt,
+  createdAt,
+}: DisplayDateProps) {
   if (date) return <span className={className}>{displayDate(date)}</span>;
   else if (updatedAt && updatedAt !== createdAt)
     return <span className={className}>Updated {displayDate(updatedAt)}</span>;
@@ -70,5 +84,5 @@ function DisplayDate({
     return (
       <span className={className}>Published {displayDate(createdAt)}</span>
     );
-  else return;
+  else return <></>;
 }

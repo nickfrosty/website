@@ -1,20 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
+import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
+
+type ComponentProps = {
+  className?: string;
+  href: string;
+  meta: PostMetadata;
+  parents?: SimpleLinkItem[];
+  includeHome?: boolean;
+};
 
 export function Breadcrumbs({
-  parents = null,
+  className,
+  parents,
   includeHome = true,
-  href = null,
-  meta = null,
-  className = "",
-}) {
-  if (!href) href = `${parent?.href || ""}/${meta.slug}`;
+  href,
+  meta,
+}: ComponentProps) {
+  // if (!href) href = `${parent?.href || ""}/${meta.slug}`;
 
-  if (!Array.isArray(parents) && typeof parents === "object")
-    parents = [parents];
+  // if (!Array.isArray(parents) && typeof parents === "object")
+  //   parents = [parents];
 
+  // auto add a "Home" record to the breadcrumbs
   if (includeHome) {
     const home = { href: "/", label: "Home" };
 
@@ -24,7 +33,8 @@ export function Breadcrumbs({
 
   return (
     <section className={clsx(`text-base font-bold tracking-wide`, className)}>
-      {parents?.length &&
+      {parents &&
+        parents?.length > 0 &&
         parents.map((item) => {
           return (
             <span key={item.href}>
@@ -38,7 +48,7 @@ export function Breadcrumbs({
         })}
 
       <Link href={href} className="link-muted">
-        {meta?.label || meta?.title || "[unknown]"}
+        {meta?.title || "[unknown]"}
       </Link>
     </section>
   );
