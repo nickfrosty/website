@@ -10,12 +10,18 @@ export async function getStaticPaths() {
   return paginateStaticPaths(pagination);
 }
 
+type PageStaticProps = {
+  params: {
+    page?: number;
+  };
+};
+
 // prepare the current pagination page for viewing
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: PageStaticProps) {
   return await preparePage(params?.page);
 }
 
 // render the actual page content
-export default function PaginationPage(props) {
+export default function PaginationPage(props: any) {
   return ParentPage(props);
 }

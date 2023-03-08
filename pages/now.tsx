@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Layout from "~/layouts/default";
-// import { basicMeta } from "~/utils/seoMetaData";
 import Link from "next/link";
 import NowDetailsItem from "~/components/NowDetailsItem";
-// import NowMessageNotice from "~/components/NowMessageNotice";
 import AvatarImage from "~/components/AvatarImage";
+// import NowMessageNotice from "~/components/NowMessageNotice";
 
 // construct the meta data for the page
-// const metaData = basicMeta({
 const metaData = {
   title: "What I'm working on now",
   description:

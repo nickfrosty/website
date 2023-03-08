@@ -2,12 +2,9 @@
 import { getDocsByPath, filterDocs } from "zumo";
 import DefaultLayout from "~/layouts/default";
 import { BlogCard } from "~/components/cards/BlogCard";
-// import { basicMeta } from "~/utils/seoMetaData";
-
 import { useState } from "react";
 
 // construct the meta data for the page
-// const metaData = basicMeta({
 const metaData = {
   title: "Blog",
   baseHref: "/blog",

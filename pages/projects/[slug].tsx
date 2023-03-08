@@ -6,7 +6,6 @@ import { generateStaticPaths, getDocBySlug, getDocMetaBySlug } from "zumo";
 const config = require("~/zumo.config").content.projects;
 
 // construct the meta data for the page
-// const metaData = basicMeta({
 const metaData = {
   title: "Projects",
   description:

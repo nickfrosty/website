@@ -1,16 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import Layout from "~/layouts/default";
-import AvatarImage from "~/components/AvatarImage";
-// import { basicMeta } from "~/utils/seoMetaData";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
-// import SocialIcons from "~/components/SocialIcons";
-import ProjectCard from "~/components/ProjectCard";
-
 import { getDocsByPath, filterDocs } from "zumo";
+import Layout from "~/layouts/default";
+import Link from "next/link";
+import AvatarImage from "~/components/AvatarImage";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import ProjectCard from "~/components/ProjectCard";
+// import SocialIcons from "~/components/SocialIcons";
 
 // construct the meta data for the page
-// const metaData = basicMeta({
 const metaData = {
   title: "Nick Frostbutter",
   titleTemplate: "%s",

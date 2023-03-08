@@ -13,9 +13,7 @@ import { HeroSection } from "~/components/content/HeroSection";
 import { CardGrid } from "~/components/cards/CardGrid";
 import { NextSeoProps } from "next-seo";
 
-// import { basicMeta } from "~/utils/seoMetaData";
 // construct the meta data for the page
-// const metaData = basicMeta({
 const seo: NextSeoProps = {
   title: "Tags",
   description: "Explore all my articles with written about this topic.",

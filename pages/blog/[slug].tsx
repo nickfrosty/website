@@ -1,12 +1,10 @@
 import ProseLayout from "~/layouts/ProseLayout";
-
 import { generateStaticPaths, getDocBySlug, getDocMetaBySlug } from "zumo";
 
 // load the config/constants file
 const config = require("~/zumo.config").content.blog;
 
 // construct the meta data for the page
-// const metaData = basicMeta({
 const metaData = {
   title: "Blog",
   description: "Read more from this blog post as part of my online anthology.",

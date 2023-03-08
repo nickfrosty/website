@@ -1,15 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import ProseLayout from "~/layouts/ProseLayout";
-
 import { generateStaticPaths, getDocBySlug, getDocMetaBySlug } from "zumo";
-
-// import { basicMeta } from "~/utils/seoMetaData";
 
 // load the config/constants file
 const config = require("~/zumo.config").content.articles;
 
 // construct the meta data for the page
-// const metaData = basicMeta({
 const metaData = {
   title: "Articles",
   description: "Read more about this super cool article I wrote.",

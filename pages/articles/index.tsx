@@ -6,9 +6,6 @@ import { SmallCard } from "~/components/cards/SmallCard";
 import { NextSeoProps } from "next-seo";
 
 // construct the meta data for the page
-// import { basicMeta } from "~/utils/seoMetaData";
-// const metaData = basicMeta({
-
 const seo: NextSeoProps = {
   title: "Articles and How-To's",
   description: `Collection of "how-to" style tutorials and technical writings. Mostly centered around coding, devops, and content creators.`,
@@ -19,7 +16,7 @@ const metaData = {
   paginationTemplate: null, // "/page/{id}",
 };
 
-export async function preparePage(currentPage: number) {
+export async function preparePage(currentPage?: number) {
   let posts: PostRecord[] = await getDocsByPath("articles");
 
   // extract the `featured` posts
@@ -36,7 +33,7 @@ export async function preparePage(currentPage: number) {
   // construct the `pagination` data object
   const pagination = computePagination(
     posts.length,
-    currentPage,
+    currentPage ?? 1,
     metaData.baseHref,
     metaData?.paginationTemplate,
   );
@@ -66,12 +63,7 @@ type PageProps = {
   pagination: PaginationProps;
 };
 
-export default function ArticlePage({
-  seo,
-  posts,
-  featured,
-  pagination,
-}: PageProps) {
+export default function Page({ seo, posts, featured, pagination }: PageProps) {
   return (
     <DefaultLayout seo={seo}>
       {featured?.length && pagination && (pagination?.page as number) <= 1 && (

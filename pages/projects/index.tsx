@@ -1,12 +1,9 @@
 import DefaultLayout from "~/layouts/default";
 import { getDocsByPath, filterDocs } from "zumo";
 
-// import { basicMeta } from "~/utils/seoMetaData";
-
 import ProjectCard from "~/components/ProjectCard";
 
 // construct the meta data for the page
-// const metaData = basicMeta({
 const metaData = {
   title: "Projects",
   baseHref: "/projects",
