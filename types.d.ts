@@ -51,6 +51,7 @@ type PostMetadata = {
   description?: string;
   logo?: string;
   image?: string;
+  coverImage?: string;
   keywords?: string;
   imageFocus?: "left" | "right" | "center";
   nextPage?: string;
