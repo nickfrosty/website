@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { getDocsByPath, filterDocs } from "zumo";
-import DefaultLayout from "~/layouts/default";
-import { BlogCard } from "~/components/cards/BlogCard";
+import DefaultLayout from "@/layouts/default";
+import { BlogCard } from "@/components/cards/BlogCard";
 import { useState } from "react";
 
 // construct the meta data for the page

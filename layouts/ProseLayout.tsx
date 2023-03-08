@@ -1,10 +1,10 @@
-import ColumnLayout from "~/layouts/ColumnLayout";
+import ColumnLayout from "@/layouts/ColumnLayout";
 import { parseTemplate } from "zumo";
 import Link from "next/link";
 
-import { ArticleMeta } from "~/components/content/ArticleMeta";
-import { Breadcrumbs } from "~/components/content/Breadcrumbs";
-import { ArticleContent } from "~/components/content/ArticleContent";
+import { ArticleMeta } from "@/components/content/ArticleMeta";
+import { Breadcrumbs } from "@/components/content/Breadcrumbs";
+import { ArticleContent } from "@/components/content/ArticleContent";
 import { NextPrevSection } from "@/components/content/NextPrevSection";
 import { NextSeoProps } from "next-seo";
 

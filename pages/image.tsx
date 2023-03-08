@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import AvatarImage from "~/components/AvatarImage";
+import AvatarImage from "@/components/AvatarImage";
 
 type PageProps = {};
 

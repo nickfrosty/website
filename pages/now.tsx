@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import Layout from "~/layouts/default";
+import Layout from "@/layouts/default";
 import Link from "next/link";
-import NowDetailsItem from "~/components/NowDetailsItem";
-import AvatarImage from "~/components/AvatarImage";
-// import NowMessageNotice from "~/components/NowMessageNotice";
+import NowDetailsItem from "@/components/NowDetailsItem";
+import AvatarImage from "@/components/AvatarImage";
+// import NowMessageNotice from "@/components/NowMessageNotice";
 
 // construct the meta data for the page
 const metaData = {

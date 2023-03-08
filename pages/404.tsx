@@ -1,4 +1,4 @@
-import Layout from "~/layouts/default";
+import Layout from "@/layouts/default";
 
 // construct the meta data for the page
 const metaData = {

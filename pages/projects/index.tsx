@@ -1,7 +1,7 @@
-import DefaultLayout from "~/layouts/default";
+import DefaultLayout from "@/layouts/default";
 import { getDocsByPath, filterDocs } from "zumo";
 
-import ProjectCard from "~/components/ProjectCard";
+import ProjectCard from "@/components/ProjectCard";
 
 // construct the meta data for the page
 const metaData = {

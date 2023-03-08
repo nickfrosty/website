@@ -1,4 +1,4 @@
-import ProseLayout from "~/layouts/ProseLayout";
+import ProseLayout from "@/layouts/ProseLayout";
 import { generateStaticPaths, getDocBySlug, getDocMetaBySlug } from "zumo";
 
 // load the config/constants file

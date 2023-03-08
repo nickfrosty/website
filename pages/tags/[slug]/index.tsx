@@ -8,9 +8,9 @@ import {
   parseTemplate,
 } from "zumo";
 
-import Layout from "~/layouts/default";
-import { HeroSection } from "~/components/content/HeroSection";
-import { CardGrid } from "~/components/cards/CardGrid";
+import Layout from "@/layouts/default";
+import { HeroSection } from "@/components/content/HeroSection";
+import { CardGrid } from "@/components/cards/CardGrid";
 import { NextSeoProps } from "next-seo";
 
 // construct the meta data for the page

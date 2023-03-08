@@ -1,8 +1,8 @@
 import { getDocsByPath, filterDocs, computePagination } from "zumo";
 
-import DefaultLayout from "~/layouts/default";
-import { CardGrid } from "~/components/cards/CardGrid";
-import { SmallCard } from "~/components/cards/SmallCard";
+import DefaultLayout from "@/layouts/default";
+import { CardGrid } from "@/components/cards/CardGrid";
+import { SmallCard } from "@/components/cards/SmallCard";
 import { NextSeoProps } from "next-seo";
 
 // construct the meta data for the page

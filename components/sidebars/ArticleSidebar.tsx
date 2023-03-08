@@ -1,4 +1,4 @@
-// import { SmallCard } from "~/components/cards/SmallCard";
+// import { SmallCard } from "@/components/cards/SmallCard";
 import {
   // HeartIcon,
   HandThumbUpIcon,
