@@ -15,7 +15,7 @@ export function BlogCard({
   date,
   href,
 }: CardComponentProps) {
-  if (draft === true && process?.env?.NODE_ENV !== "development") return;
+  if (draft === true && process?.env?.NODE_ENV !== "development") return <></>;
 
   if (!href)
     href = parseTemplate(config.hrefTemplate, {

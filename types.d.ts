@@ -94,4 +94,11 @@ type PaginationProps = {
   totalPages?: number;
   baseHref?: string;
   template?: string;
+  page?: number;
+};
+
+type ProsePageProps = {
+  post: PostRecord;
+  next?: PostRecord;
+  prev?: PostRecord;
 };

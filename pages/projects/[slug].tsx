@@ -14,7 +14,7 @@ const metaData = {
   contentDir: "projects",
 };
 
-const breadcrumbParents = {
+const breadcrumbParents: SimpleLinkItem = {
   href: "/projects",
   label: "Projects",
 };
@@ -24,16 +24,23 @@ export async function getStaticPaths() {
   return generateStaticPaths(metaData.contentDir, false);
 }
 
-export async function getStaticProps({ params }) {
+type PageStaticProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function getStaticProps({ params: { slug } }: PageStaticProps) {
   // if (process && process.env?.NODE_ENV !== "development")
   //   return { notFound: true };
 
-  const post = await getDocBySlug(params?.slug, metaData.contentDir);
+  const post: PostRecord = await getDocBySlug(slug, metaData.contentDir);
 
   // give the 404 page when the post is not found
   if (!post) return { notFound: true };
 
-  let [next, prev] = [null, null];
+  let next: PostRecord | null = null;
+  let prev: PostRecord | null = null;
 
   // parse out the `next` and `prev` articles, when defined by the post's `meta`
   if (post?.meta?.nextPage)
@@ -42,7 +49,7 @@ export async function getStaticProps({ params }) {
     prev = await getDocMetaBySlug(post.meta.prevPage, metaData.contentDir);
 
   // strip the tags from the `post`
-  post.meta.tags = null;
+  post.meta.tags = "";
   // TODO: add the `tag` based post browsing to these blog posts
 
   return {
@@ -50,15 +57,14 @@ export async function getStaticProps({ params }) {
   };
 }
 
-/*
-
-*/
-export default function SingleProjectPage(props) {
+export default function Page({ post, next, prev }: ProsePageProps) {
   return (
     <ProseLayout
-      {...props}
+      post={post}
+      next={next}
+      prev={prev}
       config={config}
-      breadcrumbParents={breadcrumbParents}
+      breadcrumbParents={[breadcrumbParents]}
       breadcrumbShowHome={false}
     />
   );

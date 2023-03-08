@@ -16,7 +16,7 @@ const metaData = {
   contentDir: "articles",
 };
 
-const breadcrumbParents = {
+const breadcrumbParents: SimpleLinkItem = {
   href: "/articles",
   label: "Articles",
 };
@@ -26,8 +26,14 @@ export async function getStaticPaths() {
   return generateStaticPaths(metaData.contentDir, false);
 }
 
-export async function getStaticProps({ params }) {
-  const post = await getDocBySlug(params?.slug, metaData.contentDir);
+type PageStaticProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function getStaticProps({ params: { slug } }: PageStaticProps) {
+  const post: PostRecord = await getDocBySlug(slug, metaData.contentDir);
 
   // give the 404 page when the post is not found
   if (!post) return { notFound: true };
@@ -41,7 +47,8 @@ export async function getStaticProps({ params }) {
     return { notFound: true };
 
   // parse out the `next` and `prev` articles, when defined by the post's `meta`
-  let [next, prev] = [null, null];
+  let next: PostRecord | null = null;
+  let prev: PostRecord | null = null;
 
   if (post?.meta?.nextPage)
     next = await getDocMetaBySlug(post.meta.nextPage, metaData.contentDir);
@@ -53,12 +60,14 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function SingleArticlePage(props) {
+export default function Page({ post, next, prev }: ProsePageProps) {
   return (
     <ProseLayout
-      {...props}
+      post={post}
+      next={next}
+      prev={prev}
       config={config}
-      breadcrumbParents={breadcrumbParents}
+      breadcrumbParents={[breadcrumbParents]}
       breadcrumbShowHome={false}
     />
   );

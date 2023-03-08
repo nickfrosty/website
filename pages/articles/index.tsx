@@ -3,22 +3,27 @@ import { getDocsByPath, filterDocs, computePagination } from "zumo";
 import DefaultLayout from "~/layouts/default";
 import { CardGrid } from "~/components/cards/CardGrid";
 import { SmallCard } from "~/components/cards/SmallCard";
+import { NextSeoProps } from "next-seo";
 
 // construct the meta data for the page
 // import { basicMeta } from "~/utils/seoMetaData";
 // const metaData = basicMeta({
-const metaData = {
+
+const seo: NextSeoProps = {
   title: "Articles and How-To's",
   description: `Collection of "how-to" style tutorials and technical writings. Mostly centered around coding, devops, and content creators.`,
-  baseHref: "/articles",
-  // paginationTemplate: "/page/{id}",
 };
 
-export async function preparePage(currentPage) {
-  let posts = await getDocsByPath("articles");
+const metaData = {
+  baseHref: "/articles",
+  paginationTemplate: null, // "/page/{id}",
+};
+
+export async function preparePage(currentPage: number) {
+  let posts: PostRecord[] = await getDocsByPath("articles");
 
   // extract the `featured` posts
-  const featured = filterDocs(posts, { featured: true }, 2);
+  const featured: PostRecord[] = filterDocs(posts, { featured: true }, 2);
 
   // remove the `featured` from the `posts`
   if (Array.isArray(featured))
@@ -44,14 +49,32 @@ export async function preparePage(currentPage) {
   };
 }
 
-export async function getStaticProps({ params }) {
-  return await preparePage(params?.page);
+type PageStaticProps = {
+  params: {
+    page?: number;
+  };
+};
+
+export async function getStaticProps({ params }: PageStaticProps) {
+  return await preparePage(params?.page ?? 1);
 }
 
-export default function ArticlePage({ posts, featured, pagination }) {
+type PageProps = {
+  seo: NextSeoProps;
+  posts: PostRecord[];
+  featured?: PostRecord[];
+  pagination: PaginationProps;
+};
+
+export default function ArticlePage({
+  seo,
+  posts,
+  featured,
+  pagination,
+}: PageProps) {
   return (
-    <DefaultLayout seo={metaData}>
-      {featured && featured?.length && pagination?.page <= 1 && (
+    <DefaultLayout seo={seo}>
+      {featured?.length && pagination && (pagination?.page as number) <= 1 && (
         <section className="double-wide-cards">
           {featured.map((item) => {
             return (

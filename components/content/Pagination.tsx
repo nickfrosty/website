@@ -12,7 +12,7 @@ export function Pagination({
   // compute the href for the links
   const href = (id: number) => {
     if (id <= 1) return baseHref;
-    return parseTemplate(template, { baseHref, id });
+    return parseTemplate(template ?? "", { baseHref, id });
   };
 
   // compute the next page value

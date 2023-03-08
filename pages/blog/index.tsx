@@ -15,14 +15,14 @@ const metaData = {
     "An anthology of me building in public 👷. Writing down and sharing my thoughts and experiences as I go (plus some other goodies too).",
 };
 
-export async function getStaticProps({ params }) {
-  let posts = await getDocsByPath("blog");
+export async function getStaticProps() {
+  let posts: PostRecord[] = await getDocsByPath("blog");
 
   // extract the `featured` posts
-  const featured = filterDocs(posts, { featured: true }, 2);
+  const featured: PostRecord[] = filterDocs(posts, { featured: true }, 2);
 
   // remove the `featured` from the `posts`
-  if (Array.isArray(featured))
+  if (Array.isArray(featured) && featured.length > 0)
     posts = posts?.filter(
       (item) =>
         item.slug !==
@@ -37,13 +37,18 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function BlogIndex({ posts, featured }) {
+type PageProps = {
+  posts: PostRecord[];
+  featured: PostRecord[];
+};
+
+export default function Page({ posts, featured }: PageProps) {
   const [counter, setCounter] = useState(3);
 
   return (
     <DefaultLayout seo={metaData}>
-      <main className="px-3 mx-auto space-y-8 max-w-3xl">
-        <header className="mx-auto space-y-8 max-w-xl text-center">
+      <main className="max-w-3xl px-3 mx-auto space-y-8">
+        <header className="max-w-xl mx-auto space-y-8 text-center">
           {/* <h1 className="mb-2 text-6xl heading">BLOG</h1> */}
           <p className="text-2xl">
             I like to build things 👷
