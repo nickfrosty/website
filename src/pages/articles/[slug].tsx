@@ -1,25 +1,25 @@
+/* eslint-disable @next/next/no-img-element */
 import ProseLayout from "@/layouts/ProseLayout";
-
 import { generateStaticPaths, getDocBySlug, getDocMetaBySlug } from "zumo";
 
 // load the config/constants file
-const config = require("~/zumo.config").content.projects;
+import zumoConfig from "@@/zumo.config";
+const config = zumoConfig.content.articles;
 
 // construct the meta data for the page
 const metaData = {
-  title: "Projects",
-  description:
-    "I'm always working on something. These are my main active projects, and previous projects. All in various states.",
-  contentDir: "projects",
+  title: "Articles",
+  description: "Read more about this super cool article I wrote.",
+  contentDir: "articles",
 };
 
 const breadcrumbParents: SimpleLinkItem = {
-  href: "/projects",
-  label: "Projects",
+  href: "/articles",
+  label: "Articles",
 };
 
+// get the listing of all of the markdown files
 export async function getStaticPaths() {
-  // get the listing of all of the markdown files
   return generateStaticPaths(metaData.contentDir, false);
 }
 
@@ -30,26 +30,27 @@ type PageStaticProps = {
 };
 
 export async function getStaticProps({ params: { slug } }: PageStaticProps) {
-  // if (process && process.env?.NODE_ENV !== "development")
-  //   return { notFound: true };
-
   const post: PostRecord = await getDocBySlug(slug, metaData.contentDir);
 
   // give the 404 page when the post is not found
   if (!post) return { notFound: true };
 
+  // give 404 for `draft` pages in all non dev envs
+  if (
+    post?.meta?.draft === true &&
+    process &&
+    process.env?.NODE_ENV !== "development"
+  )
+    return { notFound: true };
+
+  // parse out the `next` and `prev` articles, when defined by the post's `meta`
   let next: PostRecord | null = null;
   let prev: PostRecord | null = null;
 
-  // parse out the `next` and `prev` articles, when defined by the post's `meta`
   if (post?.meta?.nextPage)
     next = await getDocMetaBySlug(post.meta.nextPage, metaData.contentDir);
   if (post?.meta?.prevPage)
     prev = await getDocMetaBySlug(post.meta.prevPage, metaData.contentDir);
-
-  // strip the tags from the `post`
-  post.meta.tags = "";
-  // TODO: add the `tag` based post browsing to these blog posts
 
   return {
     props: { post, next, prev },

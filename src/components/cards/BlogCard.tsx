@@ -5,7 +5,8 @@ import styles from "@/styles/project.module.css";
 import { displayDate, generateSlug, parseTemplate } from "zumo";
 
 // load the config/constants file
-const config = require("~/zumo.config").content.blog;
+import zumoConfig from "@@/zumo.config";
+const config = zumoConfig.content.blog;
 
 export function BlogCard({
   title,
