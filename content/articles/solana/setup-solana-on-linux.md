@@ -1,17 +1,19 @@
 ---
-draft: true
-title: Setup Solana on Linux
 featured: true
-description: Get started with Solana development by setting up your dev environment. Installing the Solana CLI, rust, cargo, web3.js, and a local validator on Linux.
-blurb: Get your Solana development environment setup on Linux.
+date: March 17, 2023 EST
+title: Setup Solana on Linux
+description: Get started with Solana development by setting up your dev environment. Installing the Solana CLI, rust, cargo, web3.js, and the local validator on Linux.
+blurb: Get your Solana development environment setup on Linux with this complete installation guide.
 keywords: "solana cli, install rust, rustup, anchor framework"
-# image:
+image: /media/articles/solana/setup-solana-on-linux.png
 tags: solana, linux
 nextPage: intro-to-solana-cli
 # prevPage:
 ---
 
 Installing the tools, create a local wallet, building a sample hello world program to test you setup.
+
+![Get your Solana development environment setup on Linux with this complete installation guide](/media/articles/solana/setup-solana-on-linux.png)
 
 To setup and install Solana on Linux, you will need to install the following:
 
@@ -20,7 +22,6 @@ To setup and install Solana on Linux, you will need to install the following:
 - Rust and Cargo (using rustup)
 - the Solana CLI tool suite
 - the Anchor framework (not truly required, but highly recommended!)
-- Bonus: [Solfate CLI](https://solfate.com/cli)
 
 <div class="msg warn text">
 You may run into compiler or builder errors throughout your setup process, depending on what libraries and dependencies your Linux system already has installed.
@@ -65,6 +66,8 @@ People often run into various errors while setting up the assorted Solana develo
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
+
+When going through this rust installation wizard, you will be given a few options when installing. When prompted, I recommend selecting the `nightly` build option. This seems to work better with the Solana CLI tool suite.
 
 <div class="msg note text">
 This Rustup install command comes directly from the <a href="https://rustup.rs/">Rustup.rs</a> website.
@@ -165,16 +168,6 @@ To check your file system wallet balance:
 ```bash
 solana balance
 ```
-
-## Install the Solfate CLI
-
-The [Solfate CLI](https://solfate.com/cli) gives developers a "hot reload" (aka auto builds) of your Solana programs as you are developing them. Just like most JavaScript frameworks do for the frontend:
-
-```bash
-npm i -g solfate
-```
-
-Plus, the Solfate CLI lets you save a config file in your project's repo to more easily change between networks
 
 ## What's next?
 
