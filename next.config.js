@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+
+const { withContentlayer } = require("next-contentlayer");
+
+module.exports = withContentlayer({
   reactStrictMode: true,
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -24,4 +27,4 @@ module.exports = {
       },
     ],
   },
-};
+});

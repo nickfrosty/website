@@ -3,6 +3,7 @@
 # public/robots*
 public/rss*
 public/sitemap*
+.contentlayer
 
 # dependencies
 /node_modules
