@@ -3,11 +3,11 @@ import { getDocsByPath, filterDocs } from "zumo";
 import DefaultLayout from "@/layouts/default";
 import { BlogCard } from "@/components/cards/BlogCard";
 import { useState } from "react";
+import { NextSeoProps } from "next-seo";
 
-// construct the meta data for the page
-const metaData = {
+// construct the seo meta data for the page
+const seo: NextSeoProps = {
   title: "Blog",
-  baseHref: "/blog",
   description:
     "An anthology of me building in public 👷. Writing down and sharing my thoughts and experiences as I go (plus some other goodies too).",
 };
@@ -43,7 +43,7 @@ export default function Page({ posts, featured }: PageProps) {
   const [counter, setCounter] = useState(3);
 
   return (
-    <DefaultLayout seo={metaData}>
+    <DefaultLayout seo={seo}>
       <main className="max-w-3xl px-3 mx-auto space-y-8">
         <header className="max-w-xl mx-auto space-y-8 text-center">
           {/* <h1 className="mb-2 text-6xl heading">BLOG</h1> */}

@@ -1,19 +1,17 @@
 import DefaultLayout from "@/layouts/default";
 import { getDocsByPath, filterDocs } from "zumo";
-
 import ProjectCard from "@/components/ProjectCard";
+import { NextSeoProps } from "next-seo";
 
-// construct the meta data for the page
-const metaData = {
+// construct the seo meta data for the page
+const seo: NextSeoProps = {
   title: "Projects",
-  baseHref: "/projects",
   description:
     "I'm always working on something. These are my main active projects, and previous projects. All in various states.",
-  contentDir: "projects",
 };
 
 export async function getStaticProps() {
-  let projects: ProjectRecord[] = await getDocsByPath(metaData.contentDir);
+  let projects: ProjectRecord[] = await getDocsByPath("projects");
 
   // extract the `active` projects
   const featured = filterDocs(projects, { status: "active" });
@@ -32,7 +30,7 @@ type PageProps = { projects: ProjectRecord[]; featured?: ProjectRecord[] };
 
 export default function Page({ projects, featured }: PageProps) {
   return (
-    <DefaultLayout seo={metaData} className="space-y-16">
+    <DefaultLayout seo={seo} className="space-y-16">
       <section className="mb-12 text-center">
         <h1 className="mb-5 text-4xl font-bold">Active Projects</h1>
 

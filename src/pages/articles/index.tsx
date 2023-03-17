@@ -5,7 +5,7 @@ import { CardGrid } from "@/components/cards/CardGrid";
 import { SmallCard } from "@/components/cards/SmallCard";
 import { NextSeoProps } from "next-seo";
 
-// construct the meta data for the page
+// construct the seo meta data for the page
 const seo: NextSeoProps = {
   title: "Articles and How-To's",
   description: `Collection of "how-to" style tutorials and technical writings. Mostly centered around coding, devops, and content creators.`,
@@ -63,7 +63,7 @@ type PageProps = {
   pagination: PaginationProps;
 };
 
-export default function Page({ seo, posts, featured, pagination }: PageProps) {
+export default function Page({ posts, featured, pagination }: PageProps) {
   return (
     <DefaultLayout seo={seo}>
       {featured?.length && pagination && (pagination?.page as number) <= 1 && (
