@@ -31,7 +31,7 @@
 
   h1,
   h1 a {
-    @apply font-bold leading-none no-underline uppercase font-display text-4xl;
+    @apply text-4xl font-bold leading-none no-underline uppercase;
     /* @apply capitalize; */
     @apply text-yellow-500;
 
@@ -43,8 +43,8 @@
 
   h2,
   h2 a {
-    @apply py-6  leading-none tracking-tight no-underline;
-    @apply font-bold text-4xl;
+    @apply py-6 leading-none tracking-tight no-underline;
+    @apply text-4xl font-bold;
     @apply text-indigo-400;
 
     /* @apply text-indigo-500; */
@@ -78,9 +78,9 @@
 
   blockquote > p {
     @apply px-6 py-4 text-2xl italic font-semibold leading-tight;
-    @apply rounded-xl shadow-xl;
-    @apply md:mx-14 my-10;
-    @apply bg-indigo-900 text-white border-2 border-indigo-500;
+    @apply shadow-xl rounded-xl;
+    @apply my-10 md:mx-14;
+    @apply text-white bg-indigo-900 border-2 border-indigo-500;
   }
 
   > blockquote > blockquote > p {
@@ -91,7 +91,7 @@
   > img {
     @apply mx-auto my-10;
     @apply rounded-xl;
-    @apply shadow-lg border border-gray-800;
+    @apply border border-gray-800 shadow-lg;
   }
 
   ul:not(.list-none) {

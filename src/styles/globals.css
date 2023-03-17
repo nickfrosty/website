@@ -12,7 +12,7 @@
 
 body {
   @apply scroller;
-  @apply leading-normal tracking-normal font-body;
+  @apply leading-normal tracking-normal;
   @apply text-gray-700 bg-white;
   @apply dark:text-gray-300 dark:bg-gray-900;
 }
@@ -53,7 +53,7 @@ h3 code {
 }
 */
 
-/* Common blog post componenets */
+/* Common blog post components */
 /*
 .tag-simple {
   @apply relative text-xs font-medium text-gray-900 dark:text-gray-400;
@@ -349,6 +349,6 @@ article a {
   /* @apply text-gray-600; */
   /* @apply text-gray-200; */
 }
-.box .label {
-  /* @apply text-gray-100; */
-}
+/* .box .label {
+  @apply text-gray-100;
+} */

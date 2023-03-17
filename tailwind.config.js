@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   // mode: "jit",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -158,8 +161,7 @@ module.exports = {
         linkedin: "#0a66c2",
       },
       fontFamily: {
-        display: "var(--font-display)",
-        body: "var(--font-body)",
+        sans: ["var(--font-theme)", ...fontFamily.sans],
       },
       fontSize: {
         "7xl": "5rem",
