@@ -2,14 +2,16 @@
 
 */
 
-import { Feed } from "feed";
-import { writeFileSync } from "fs";
-import {
+// import { Feed } from "feed";
+const { Feed } = require("feed");
+const { writeFileSync } = require("fs");
+
+const {
   getDocsByPath,
   getDateByPriority,
   sortByPriorityDate,
   filterDocs,
-} from "zumo";
+} = require("zumo");
 
 // define the base path to save the generated RSS files
 const rssBasePath = `./public/`;
@@ -39,11 +41,8 @@ const feed = new Feed({
 
 // read in all of the desired posts to generate the feed with
 (async () => {
-  let [articles] = await Promise.all([
-    getDocsByPath("articles", {
-      metaOnly: false,
-      hideDrafts: true,
-    }) as PostRecord[],
+  let [articles, blog] = await Promise.all([
+    getDocsByPath("articles", { metaOnly: false, hideDrafts: true }),
     // tokenHelper.getUserToken(username),
   ]);
 
@@ -60,7 +59,7 @@ const feed = new Feed({
   // sort the posts with newest first
   sortByPriorityDate(articles, "desc")
     // loop over each post in the listing
-    .map((post: PostRecord, index: number) => {
+    .map((post, index) => {
       // console.log(getDateByPriority(post.meta), post.meta.title);
       const url = `${author.website}/articles/${post.slug}`;
 
@@ -75,14 +74,11 @@ const feed = new Feed({
       };
 
       // construct sanitized content
-      let content = "";
+      let content = null;
 
       // TODO: convert the content into html, from the provided markdown
       // content = post.content;
       // TODO: convert all relative/internal links to using the absolute urls
-
-      if (typeof post.meta?.tags == "string")
-        post.meta.tags = post.meta.tags.split(",");
 
       // construct a RSS item to add to the feed
       articleFeed.addItem({
