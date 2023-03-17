@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+/* for the love of tailwind :) */
+@tailwind base;
+@tailwind components;
 
 /* * {
   outline: solid 1px red;
@@ -352,3 +352,6 @@ article a {
 /* .box .label {
   @apply text-gray-100;
 } */
+
+/* make the utilities last to force their priority when inline */
+@tailwind utilities;
