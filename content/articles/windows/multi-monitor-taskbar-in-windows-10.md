@@ -1,6 +1,5 @@
 ---
 date: 2020-07-12 00:00 EST
-updatedAt: false
 title: "Multi Monitor Taskbar in Windows 10"
 # blurb:
 description: "Quickly setup and show a multi monitor taskbar in Windows 10. Follow these steps to show your Windows 10 taskbar on all your monitors for your computer."
@@ -13,7 +12,7 @@ imageFocus: center
 
 You can get a multi monitor taskbar in Windows 10 **with no extra software**. All with the settings/features built directly into Windows.
 
-![](/media/articles/windows/multi-monitor-taskbar-in-windows-10/multi-monitor-taskbar-monitor-connected.png)
+![Multi Monitor Taskbar in Windows 10](/media/articles/windows/multi-monitor-taskbar-in-windows-10/multi-monitor-taskbar-monitor-connected.png)
 
 When you have a multi monitor computer setup, the default Windows 10 taskbar settings will only show the taskbar on your primary monitor. But with a few setting updates directly in Windows 10, you can show the taskbar on all monitors at once.
 

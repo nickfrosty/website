@@ -1,6 +1,5 @@
 ---
 date: 2021-03-21 00:00 EST
-updatedAt: false
 title: "Custom MailChimp signup forms and success messages"
 # blurb:
 description: "Improve your email marketing efforts with custom MailChimp signup forms? Yes please!"

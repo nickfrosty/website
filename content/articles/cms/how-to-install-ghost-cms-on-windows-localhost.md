@@ -6,7 +6,7 @@ description: "Install Ghost CMS locally on Windows is a great way to give it a t
 # keywords:
 image: "/media/articles/ghost/How-to-Install-Ghost-CMS-on-Windows-localhost.jpg"
 imageFocus: right
-updatedAt: false
+# updatedAt: false
 tags: ghost, windows, npm
 # nextPage:
 ---
@@ -79,7 +79,7 @@ Once inside of your newly created Ghost blog folder, you are ready to install Gh
 If you are getting the "_ghost.ps1 cannot be loaded because running scripts is disabled on this system_" error message (or something similar), then you will need to run the two installation commands with the **runas** command prefix. This will force PowerShell to run the command as the administrator account you specify. Just include and update the command below to run each as an administrator. Like this:
 
 ```bash
-runas "/user:usernamehere" "yourcommand_here"
+runas "/user:<username>" "<your_command_here>"
 ```
 
 Or you can run VS Code/terminal as an administrator, then give VS Code permission to run commands in terminal as an Admin with the following command:

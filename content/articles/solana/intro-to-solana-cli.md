@@ -1,11 +1,10 @@
 ---
 featured: true
+date: Oct 04, 2022
 title: Introduction to the Solana CLI
 blurb: Learn the basics and how to get around in the Solana CLI
 description: Learn how to use the Solana CLI. From creating Solana wallets, airdrop free SOL, and running the test validator.
-keywords:
 image: "/media/articles/solana/intro-to-solana-cli/thumbnail.png"
-date: Oct 04, 2022
 tags: solana
 ---
 

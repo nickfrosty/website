@@ -1,6 +1,5 @@
 ---
 date: 2021-07-08 00:00 EST
-updatedAt: false
 title: "Quickly delete unsubscribed contacts in MailChimp"
 # blurb:
 description: "Trim the fat off your MailChimp email list by removing the unsubscribed or bounced contacts."
@@ -13,7 +12,7 @@ imageFocus: center
 
 Turns out, it is not so straightforward to actually delete a large amount of specific contacts from MailChimp. It took a bit of digging to find an effective and time efficient way to delete them all in one fail swoop.
 
-![](/media/articles/mailchimp/delete-unsubscribed-contacts-in-mailchimp2.jpg)
+![Quickly delete unsubscribed contacts in MailChimp](/media/articles/mailchimp/delete-unsubscribed-contacts-in-mailchimp2.jpg)
 
 Recently I have been debating if I should delete unsubscribed contacts in MailChimp. I have finally decided to pull the trigger on it and just do it.
 

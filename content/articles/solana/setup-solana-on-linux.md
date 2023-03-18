@@ -2,9 +2,9 @@
 featured: true
 date: March 17, 2023 EST
 title: Setup Solana on Linux
-description: Get started with Solana development by setting up your dev environment. Installing the Solana CLI, rust, cargo, web3.js, and the local validator on Linux.
+description: Get started with Solana development by setting up your dev environment. Installing the Solana **CLI**, rust, cargo, web3.js, and the local validator on Linux.
 blurb: Get your Solana development environment setup on Linux with this complete installation guide.
-keywords: "solana cli, install rust, rustup, anchor framework"
+# keywords: "solana cli, install rust, rustup, anchor framework"
 image: /media/articles/solana/setup-solana-on-linux.png
 tags: solana, linux
 nextPage: intro-to-solana-cli

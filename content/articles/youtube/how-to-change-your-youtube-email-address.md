@@ -5,7 +5,6 @@ blurb: "This was an annoying process to do, so here is how."
 description: "Whether you are new to YouTube or been around for years, their may come a time to change your YouTube email address. Here is how."
 # keywords:
 image: "/media/articles/youtube/change-youtube-email-address/Change-YouTube-Email-Address-0.png"
-updatedAt: false
 imageFocus: center
 tags: youtube
 # nextPage:

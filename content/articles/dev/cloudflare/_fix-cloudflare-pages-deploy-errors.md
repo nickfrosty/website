@@ -1,8 +1,7 @@
 ---
 title: "Fix Cloudflare Pages deploy errors"
-# blurb:
 date: 2022-01-19 00:00 EST
-updatedAt: false
+# blurb:
 description: "still a work in progress"
 # image: /media/articles/mysql/backup-and-restore-mysql-database-from-command-line.jpg
 tags: nuxt, ssg, cloudflare

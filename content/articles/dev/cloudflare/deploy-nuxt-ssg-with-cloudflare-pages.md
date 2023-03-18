@@ -1,6 +1,5 @@
 ---
 date: 2022-01-17 00:00 EST
-updatedAt: false
 title: "Deploy NuxtJS SSG with Cloudflare Pages"
 blurb: Effortless deployment of NuxtJS static sites directly from your Git repo, automatically
 description: "Effortless static site generation directly from your Git repo, with automated deployments and git previews? All for free? Sounds perfect!"

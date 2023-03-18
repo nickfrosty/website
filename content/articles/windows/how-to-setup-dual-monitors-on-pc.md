@@ -1,6 +1,5 @@
 ---
 date: 2020-06-26 00:00 EST
-updatedAt: false
 title: "Setup dual monitors on Windows"
 description: "How to split screen on two monitors and create a dual monitor setup on Windows."
 image: /media/articles/windows/how-to-setup-dual-monitors-on-pc/how-to-setup-dual-Monitors-in-Windows.jpg
@@ -12,7 +11,7 @@ imageFocus: center
 
 If you are looking for a dual monitor setup, that allows you to split screen on two monitors, then you are in luck.
 
-![](/media/articles/windows/how-to-setup-dual-monitors-on-pc/how-to-setup-dual-Monitors-in-Windows.jpg)
+![How to split screen on two monitors and create a dual monitor setup on Windows](/media/articles/windows/how-to-setup-dual-monitors-on-pc/how-to-setup-dual-Monitors-in-Windows.jpg)
 
 Windows makes it super easy to do. All without installing any extra software. Just regular old Windows. You can connect and configure your two monitors, setup that "split screen" effect, mirror the display or setup multiple displays. Even on a laptop.
 

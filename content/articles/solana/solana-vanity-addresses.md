@@ -3,8 +3,7 @@ featured: true
 date: 2023-01-13 00:00 EST
 title: Generate Vanity Addresses on Solana
 description: Generate custom Solana wallet addresses that have any word you want. Including how to set the derivation path to use in web and browser wallets.
-# blurb: Generate custom Solana wallet addresses that have any word you want. Including how to set the derivation path to use in web and browser wallets.
-keywords: "custom address, name service, sns, ans, derivation path, web wallet"
+# keywords: "custom address, name service, sns, ans, derivation path, web wallet"
 image: /media/articles/solana/generate-solana-vanity-addresses.jpg
 tags: solana
 # nextPage: intro-to-solana-cli
@@ -109,7 +108,7 @@ To search and match multiple strings, simply specify the `--starts-with` or `--e
 solana-keygen grind --ignore-case --starts-with nick:2 --starts-with burn:2 --ends-with frost:2
 ```
 
-This process will continue to run until `2` matchs are found for EACH of the given string comparisons. So in the end, this will eventually generate 6 addresses.
+This process will continue to run until `2` matches are found for EACH of the given string comparisons. So in the end, this will eventually generate 6 addresses.
 
 ## Generate with mnemonic phrase
 

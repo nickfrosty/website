@@ -1,9 +1,9 @@
 ---
 draft: true
+date: "2023"
 title: Setup VS Code For Solana Development
 description: Get your VS code configured with the best settings and plugins for Solana/Anchor program development.
 blurb: The go to settings and plugins for Solana program development
-keywords:
 imageFocus: right
 # image:
 # tags: solana, nft, spl token
@@ -73,7 +73,7 @@ For the Rust Analyzer extension to work properly, you will need your editor's wo
 
 Because of this and how the rust analyzer language server handles detecting the crates used, the extension will also usually not give code hints on many types of mono repos.
 
-For example, the official Anchor lang [repo examples](https://github.com/coral-xyz/anchor/tree/master/examples) will not load correctly from the root of the repo. To fix it, you need to manually select the specific example directory as your VS code editor's worspace directory (e.g. `examples/tutorial/basic-0`).
+For example, the official Anchor lang [repo examples](https://github.com/coral-xyz/anchor/tree/master/examples) will not load correctly from the root of the repo. To fix it, you need to manually select the specific example directory as your VS code editor's workspace directory (e.g. `examples/tutorial/basic-0`).
 
 #### `unresolved-proc-macro`
 

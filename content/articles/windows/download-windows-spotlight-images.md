@@ -1,6 +1,5 @@
 ---
 date: 2020-07-23 00:00 EST
-updatedAt: false
 title: "Download Windows spotlight image"
 blurb: "This method works for both Windows 10 and Windows 11 in 2021 and 2022."
 description: "Save your favorite Windows spotlight images right to your computer. This method works for both Windows 10 and Windows 11 in 2021 and 2022."
