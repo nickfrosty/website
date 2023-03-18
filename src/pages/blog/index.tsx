@@ -23,7 +23,7 @@ export async function getStaticProps() {
 
   // get a listing of featured posts
   // const featured = allBlogs
-  //   .filter((post) => post.draft !== false && post.featured === true)
+  //   .filter((post) => post.draft !== true && post.featured === true)
   //   .slice(0, 2);
 
   return {
