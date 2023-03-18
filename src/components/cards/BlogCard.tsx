@@ -1,47 +1,38 @@
 /* eslint-disable @next/next/no-img-element */
+import { CardComponentProps } from "@@/types";
 import Link from "next/link";
 import styles from "@/styles/project.module.css";
 
-import { displayDate, generateSlug, parseTemplate } from "zumo";
+import { displayDate } from "zumo";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
+
 const config = zumoConfig.content.blog;
 
-export function BlogCard({
-  title,
-  draft,
-  slug,
-  tags,
-  date,
-  href,
-}: CardComponentProps) {
-  if (draft === true && process?.env?.NODE_ENV !== "development") return <></>;
-
-  if (!href)
-    href = parseTemplate(config.hrefTemplate, {
-      baseHref: config.baseHref,
-      slug: generateSlug(slug || title),
-    });
+export function BlogCard({ post }: CardComponentProps) {
+  // only show drafts in dev mode
+  if (post.draft === true && process?.env?.NODE_ENV !== "development")
+    return <></>;
 
   return (
     <div className={styles.card}>
       <h2 className={styles.h2}>
         <Link
-          href={href}
+          href={post.href ?? "/blog"}
           className="underline-none link-active hover:underline"
         >
-          {title}
+          {post.title}
         </Link>
       </h2>
 
       <div className="items-center justify-between space-y-4 text-gray-600 md:space-x-5 md:space-y-0 md:flex dark:text-gray-400">
         <div className="block whitespace-nowrap md:inline-block">
-          {displayDate(date)}
+          {displayDate(post.date)}
         </div>
 
         <div className="line-clamp-1">
-          <TagsListing tags={tags} />
+          <TagsListing tags={post.tags} />
         </div>
       </div>
     </div>

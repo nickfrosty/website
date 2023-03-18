@@ -66,6 +66,53 @@ const postFields: FieldDefs = {
 };
 
 /**
+ * Blog post schema
+ */
+export const Blog = defineDocumentType(() => ({
+  name: "Blog",
+  filePathPattern: `blog/**/*.md`,
+  fields: {
+    // use the standard post fields
+    ...postFields,
+
+    // define custom fields now...
+    href: {
+      type: "string",
+      description: "",
+      required: false,
+    },
+    category: {
+      type: "string",
+      description: "",
+      required: false,
+    },
+    description: {
+      type: "string",
+      description: "",
+      required: false,
+    },
+    image: {
+      type: "string",
+      description: "Social share image to be used for the SEO metadata",
+      required: false,
+    },
+  },
+  computedFields: {
+    slug: {
+      description: "",
+      type: "string",
+      resolve: (post) => post?.slug ?? createSlug(post._id),
+    },
+    href: {
+      description: "Local url path of the content",
+      type: "string",
+      resolve: (post) =>
+        post.href ?? `/blog/${post.slug ?? createSlug(post._id)}`,
+    },
+  },
+}));
+
+/**
  * Project schema
  */
 export const Project = defineDocumentType(() => ({
@@ -126,5 +173,5 @@ export const Project = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Project],
+  documentTypes: [Project, Blog],
 });

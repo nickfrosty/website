@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { getDocsByPath, filterDocs } from "zumo";
+import { NextSeoProps } from "next-seo";
 import DefaultLayout from "@/layouts/default";
+
+import { Blog, allBlogs } from "contentlayer/generated";
 import { BlogCard } from "@/components/cards/BlogCard";
 import { useState } from "react";
-import { NextSeoProps } from "next-seo";
 
 // construct the seo meta data for the page
 const seo: NextSeoProps = {
@@ -13,30 +14,26 @@ const seo: NextSeoProps = {
 };
 
 export async function getStaticProps() {
-  let posts: PostRecord[] = await getDocsByPath("blog");
-
-  // extract the `featured` posts
-  const featured: PostRecord[] = filterDocs(posts, { featured: true }, 2);
-
-  // remove the `featured` from the `posts`
-  if (Array.isArray(featured) && featured.length > 0)
-    posts = posts?.filter(
-      (item) =>
-        item.slug !==
-        featured.filter((ft) => ft.slug === item?.slug)?.[0]?.meta.slug,
+  // get a listing of regular posts (hiding drafts)
+  const posts = allBlogs
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .filter((post) =>
+      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
     );
 
-  // give the 404 page when the post is not found
-  // if (!posts || !posts?.length) return { notFound: true };
+  // get a listing of featured posts
+  // const featured = allBlogs
+  //   .filter((post) => post.draft !== false && post.featured === true)
+  //   .slice(0, 2);
 
   return {
-    props: { posts, featured },
+    props: { posts },
   };
 }
 
 type PageProps = {
-  posts: PostRecord[];
-  featured: PostRecord[];
+  posts: Blog[];
+  featured: Blog[];
 };
 
 export default function Page({ posts, featured }: PageProps) {
@@ -57,10 +54,9 @@ export default function Page({ posts, featured }: PageProps) {
         </header>
 
         <section className="space-y-10">
-          {posts?.slice(0, counter)?.map((post) => {
-            if (!post?.meta) return;
-            return <BlogCard {...post.meta} key={post.slug} />;
-          })}
+          {posts.slice(0, counter).map((post) => (
+            <BlogCard key={post.href} post={post} />
+          ))}
         </section>
 
         {counter < posts.length && (

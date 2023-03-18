@@ -2,6 +2,8 @@
     Primary type definitions for the site
 */
 
+import { Blog } from "contentlayer/generated";
+
 //
 type ProjectRecord = {
   title: string;
@@ -64,16 +66,18 @@ type CardComponentProps = {
   className?: string;
   children?: React.ReactNode;
   baseHref?: string;
-  title: string;
-  href: string;
-  slug?: string;
-  description?: string;
-  draft?: boolean;
-  image?: string;
-  date?: string;
-  tags?: string[] | string;
-  featured?: boolean;
-  blurb?: string;
+  post: Blog;
+
+  // title: string;
+  // href: string;
+  // slug?: string;
+  // description?: string;
+  // draft?: boolean;
+  // image?: string;
+  // date?: string;
+  // tags?: string[] | string;
+  // featured?: boolean;
+  // blurb?: string;
   imageFocus?: "center" | "left" | "right";
   actionButton?: {
     href: string;
