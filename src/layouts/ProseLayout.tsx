@@ -1,4 +1,7 @@
+import type { SimpleLinkItem } from "@@/types";
+import { NextSeoProps } from "next-seo";
 import ColumnLayout from "@/layouts/ColumnLayout";
+
 import { parseTemplate } from "zumo";
 import Link from "next/link";
 
@@ -6,16 +9,18 @@ import { ArticleMeta } from "@/components/content/ArticleMeta";
 import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import { ArticleContent } from "@/components/content/ArticleContent";
 import { NextPrevSection } from "@/components/content/NextPrevSection";
-import { NextSeoProps } from "next-seo";
+
+import { Article, Blog } from "contentlayer/generated";
 
 type LayoutProps = {
   className?: string;
   children?: React.ReactNode;
 
   config: ZumoConfigRecord;
-  post: PostRecord;
-  next?: PostRecord;
-  prev?: PostRecord;
+  post: Article | Blog;
+  next?: Article | Blog;
+  prev?: Article | Blog;
+
   breadcrumbParents?: SimpleLinkItem[];
   breadcrumbShowHome?: boolean;
   parentPage?: string;
@@ -42,12 +47,12 @@ export default function ProseLayout({
   // define the base data
   let seo: NextSeoProps = {
     openGraph: {
-      title: post.meta.title,
+      title: post.title,
     },
   };
 
   // add the image to the article, when defined
-  if (post?.meta?.image)
+  if (post?.image) {
     seo = {
       twitter: {
         cardType: "summary_large_image",
@@ -55,23 +60,24 @@ export default function ProseLayout({
       openGraph: {
         type: "website",
         url: `https://nick.af${href}`,
-        title: post.meta.title,
+        title: post.title,
         images: [
           {
-            url: `https://nick.af${post.meta.image}`,
+            url: `https://nick.af${post.image}`,
             width: 1200,
             height: 728,
-            alt: post.meta.title,
+            alt: post.title,
           },
         ],
       },
     };
+  }
 
   return (
-    <ColumnLayout seo={{ ...post.meta, ...seo }}>
+    <ColumnLayout seo={{ ...post, ...seo }}>
       {/* Bread crumbs area */}
       <Breadcrumbs
-        meta={post.meta}
+        post={post}
         includeHome={breadcrumbShowHome}
         parents={breadcrumbParents}
         href={href}
@@ -84,17 +90,17 @@ export default function ProseLayout({
             href={href}
             className="text-yellow-400 heading heading-xl hover:underline"
           >
-            {post?.meta?.title}
+            {post.title}
           </Link>
         </h1>
 
         <ArticleMeta
-          meta={post.meta}
+          post={post}
           baseHref={config.baseHref}
           tagHrefTemplate={config.tagHrefTemplate}
         />
 
-        <ArticleContent content={post.content} />
+        <ArticleContent content={post.body.raw} />
       </main>
 
       <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} />

@@ -2,7 +2,7 @@ import { PaginationProps } from "@@/types";
 import { NextSeoProps } from "next-seo";
 import DefaultLayout from "@/layouts/default";
 
-import { getDocsByPath, filterDocs, computePagination } from "zumo";
+import { computePagination } from "zumo";
 
 import { Article, allArticles } from "contentlayer/generated";
 import { CardGrid } from "@/components/cards/CardGrid";
@@ -25,12 +25,24 @@ export async function preparePage(currentPage?: number) {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .filter((post) =>
       process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
-    );
+    )
+    // strip the `body` to send less data to the client
+    .map((post) => {
+      // @ts-ignore
+      delete post.body;
+      return post;
+    });
 
   // get a listing of featured posts
   const featured = allArticles
-    .filter((post) => post.draft !== false && post.featured === true)
-    .slice(0, 2);
+    .filter((post) => post.featured === true && post?.draft !== true)
+    .slice(0, 2)
+    // strip the `body` to send less data to the client
+    .map((post) => {
+      // @ts-ignore
+      delete post.body;
+      return post;
+    });
 
   // remove the selected `featured` from the `posts`
   if (Array.isArray(featured) && featured?.length > 0)
@@ -76,19 +88,22 @@ type PageProps = {
 export default function Page({ posts, featured, pagination }: PageProps) {
   return (
     <DefaultLayout seo={seo}>
-      {featured?.length && pagination && (pagination?.page as number) <= 1 && (
-        <section className="double-wide-cards">
-          {featured.map((post) => {
-            return (
-              <SmallCard
-                key={post.slug}
-                post={post}
-                baseHref={metaData.baseHref}
-              ></SmallCard>
-            );
-          })}
-        </section>
-      )}
+      {/* {!!featured &&
+        !featured?.length &&
+        pagination &&
+        (pagination?.page as number) <= 1 && ( */}
+      <section className="double-wide-cards">
+        {featured?.map((post) => {
+          return (
+            <SmallCard
+              key={post.slug}
+              post={post}
+              baseHref={metaData.baseHref}
+            ></SmallCard>
+          );
+        })}
+      </section>
+      {/* )} */}
 
       <CardGrid
         posts={posts}

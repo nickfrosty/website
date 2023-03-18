@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import type { Article, Blog } from "contentlayer/generated";
+import type { SimpleLinkItem } from "@@/types";
+
 import Link from "next/link";
 import clsx from "clsx";
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
@@ -6,7 +9,7 @@ import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 type ComponentProps = {
   className?: string;
   href: string;
-  meta: PostMetadata;
+  post: Article | Blog;
   parents?: SimpleLinkItem[];
   includeHome?: boolean;
 };
@@ -16,16 +19,11 @@ export function Breadcrumbs({
   parents,
   includeHome = true,
   href,
-  meta,
+  post,
 }: ComponentProps) {
-  // if (!href) href = `${parent?.href || ""}/${meta.slug}`;
-
-  // if (!Array.isArray(parents) && typeof parents === "object")
-  //   parents = [parents];
-
   // auto add a "Home" record to the breadcrumbs
   if (includeHome) {
-    const home = { href: "/", label: "Home" };
+    const home: SimpleLinkItem = { href: "/", label: "Home" };
 
     if (parents?.length) parents.unshift(home);
     else parents = [home];
@@ -35,20 +33,18 @@ export function Breadcrumbs({
     <section className={clsx(`text-base font-bold tracking-wide`, className)}>
       {parents &&
         parents?.length > 0 &&
-        parents.map((item) => {
-          return (
-            <span key={item.href}>
-              <Link href={item.href} className="link-muted">
-                {item?.label || item?.title || "Parent"}
-              </Link>
+        parents.map((item) => (
+          <span key={item.href}>
+            <Link href={item.href} className="link-muted">
+              {item?.label || item?.title || "Parent"}
+            </Link>
 
-              <ChevronDoubleRightIcon className="inline-block mx-2 icon-xs" />
-            </span>
-          );
-        })}
+            <ChevronDoubleRightIcon className="inline-block mx-2 icon-xs" />
+          </span>
+        ))}
 
       <Link href={href} className="link-muted">
-        {meta?.title || "[unknown]"}
+        {post.title ?? "[unknown]"}
       </Link>
     </section>
   );

@@ -41,7 +41,7 @@ const postFields: FieldDefs = {
   },
   draft: {
     type: "boolean",
-    description: "Draft status of the content",
+    description: "Draft status of the post",
     required: false,
   },
   featured: {
@@ -81,8 +81,20 @@ const postFields: FieldDefs = {
     required: false,
   },
   imageFocus: {
-    type: "string",
+    type: "enum",
+    options: ["center", "left", "right"],
     description: "Focus position of the posts image",
+    required: false,
+  },
+
+  nextPage: {
+    type: "string",
+    description: "",
+    required: false,
+  },
+  prevPage: {
+    type: "string",
+    description: "",
     required: false,
   },
 };
@@ -105,6 +117,13 @@ export const Blog = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    draft: {
+      description: "Draft status of the post",
+      type: "boolean",
+      resolve: (post) =>
+        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+    },
+
     slug: {
       description: "Computed slug of the post",
       type: "string",
@@ -137,6 +156,12 @@ export const Article = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    draft: {
+      description: "Draft status of the post",
+      type: "boolean",
+      resolve: (post) =>
+        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+    },
     slug: {
       description: "Computed slug of the post",
       type: "string",
@@ -195,6 +220,12 @@ export const Project = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    draft: {
+      description: "Draft status of the post",
+      type: "boolean",
+      resolve: (post) =>
+        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+    },
     slug: {
       description: "Computed slug of the project",
       type: "string",

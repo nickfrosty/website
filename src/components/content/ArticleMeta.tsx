@@ -3,16 +3,17 @@ import { displayDate } from "zumo";
 import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
 import { Tag } from "./Tag";
+import { Article, Blog } from "contentlayer/generated";
 
 type ComponentProps = {
   className?: string;
-  meta: PostMetadata;
+  post: Article | Blog;
   baseHref?: string;
   tagHrefTemplate?: string;
 };
 
 export function ArticleMeta({
-  meta,
+  post,
   className = "",
   baseHref = "/",
   tagHrefTemplate,
@@ -34,22 +35,18 @@ export function ArticleMeta({
         <span className="hidden w-1 h-1 mr-2 bg-gray-500 rounded-full md:block"></span>
 
         <div className="justify-between mt-4 md:mt-0 flexer">
-          <DisplayDate
-            date={meta?.date}
-            updatedAt={meta?.updatedAt}
-            createdAt={meta?.createdAt}
-          />
+          <DisplayDate date={post?.date} updatedAt={post?.updatedAt} />
           {/* <span>{parseInt("456789").toLocaleString()} views</span> */}
         </div>
       </div>
 
       {/* Post tags and `draft` status */}
       <p className="flexer">
-        {meta?.draft === true && <FloatLabel overlay={false} />}
+        {post?.draft === true && <FloatLabel overlay={false} />}
 
-        {Array.isArray(meta?.tags) && meta.tags?.length > 0 && (
+        {Array.isArray(post?.tags) && post.tags?.length > 0 && (
           <>
-            {meta.tags.map((tag) => (
+            {post.tags.map((tag) => (
               <Tag
                 key={tag}
                 tag={tag}

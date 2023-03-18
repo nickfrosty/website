@@ -2,7 +2,7 @@
     Primary type definitions for the site
 */
 
-import { Blog } from "contentlayer/generated";
+import { Article, Blog, Project } from "contentlayer/generated";
 
 //
 type ProjectRecord = {
@@ -66,18 +66,7 @@ type CardComponentProps = {
   className?: string;
   children?: React.ReactNode;
   baseHref?: string;
-  post: Blog;
-
-  // title: string;
-  // href: string;
-  // slug?: string;
-  // description?: string;
-  // draft?: boolean;
-  // image?: string;
-  // date?: string;
-  // tags?: string[] | string;
-  // featured?: boolean;
-  // blurb?: string;
+  post: Blog | Article;
   imageFocus?: "center" | "left" | "right";
   actionButton?: {
     href: string;
@@ -103,7 +92,7 @@ type PaginationProps = {
 };
 
 type ProsePageProps = {
-  post: PostRecord;
-  next?: PostRecord;
-  prev?: PostRecord;
+  post: Article | Blog;
+  next?: Article | Blog;
+  prev?: Article | Blog;
 };
