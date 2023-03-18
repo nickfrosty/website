@@ -1,9 +1,12 @@
+import { PaginationProps } from "@@/types";
+import { NextSeoProps } from "next-seo";
+import DefaultLayout from "@/layouts/default";
+
 import { getDocsByPath, filterDocs, computePagination } from "zumo";
 
-import DefaultLayout from "@/layouts/default";
+import { Article, allArticles } from "contentlayer/generated";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { SmallCard } from "@/components/cards/SmallCard";
-import { NextSeoProps } from "next-seo";
 
 // construct the seo meta data for the page
 const seo: NextSeoProps = {
@@ -17,17 +20,24 @@ const metaData = {
 };
 
 export async function preparePage(currentPage?: number) {
-  let posts: PostRecord[] = await getDocsByPath("articles");
+  // get a listing of regular posts (hiding drafts)
+  let posts = allArticles
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .filter((post) =>
+      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+    );
 
-  // extract the `featured` posts
-  const featured: PostRecord[] = filterDocs(posts, { featured: true }, 2);
+  // get a listing of featured posts
+  const featured = allArticles
+    .filter((post) => post.draft !== false && post.featured === true)
+    .slice(0, 2);
 
-  // remove the `featured` from the `posts`
-  if (Array.isArray(featured))
+  // remove the selected `featured` from the `posts`
+  if (Array.isArray(featured) && featured?.length > 0)
     posts = posts?.filter(
       (item) =>
         item.slug !==
-        featured.filter((ft) => ft.slug === item?.slug)?.[0]?.meta.slug,
+        featured.filter((ft) => ft.slug === item?.slug)?.[0]?.slug,
     );
 
   // construct the `pagination` data object
@@ -58,8 +68,8 @@ export async function getStaticProps({ params }: PageStaticProps) {
 
 type PageProps = {
   seo: NextSeoProps;
-  posts: PostRecord[];
-  featured?: PostRecord[];
+  posts: Article[];
+  featured?: Article[];
   pagination: PaginationProps;
 };
 
@@ -68,11 +78,11 @@ export default function Page({ posts, featured, pagination }: PageProps) {
     <DefaultLayout seo={seo}>
       {featured?.length && pagination && (pagination?.page as number) <= 1 && (
         <section className="double-wide-cards">
-          {featured.map((item) => {
+          {featured.map((post) => {
             return (
               <SmallCard
-                key={item.slug}
-                {...item?.meta}
+                key={post.slug}
+                post={post}
                 baseHref={metaData.baseHref}
               ></SmallCard>
             );

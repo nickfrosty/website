@@ -1,30 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 // import { StarIcon } from "@heroicons/react/24/solid";
+import { CardComponentProps } from "@@/types";
 import clsx from "clsx";
 import Link from "next/link";
-import { generateSlug } from "zumo";
 import { FloatLabel } from "@/components/content/FloatLabel";
 
 export function SmallCard({
   children,
   className,
-  draft = false,
-  title,
-  image,
-  slug,
-  baseHref,
-  href,
-  featured,
-  description,
-  blurb,
+  post,
   imageFocus = "center",
 }: CardComponentProps) {
-  // construct the `href` location, when not provided
-  if (!href) href = `${baseHref || ""}/${slug || generateSlug(title)}`;
-
   return (
     <Link
-      href={href || ""}
+      href={post.href ?? "#"}
       className={clsx(
         `p-0 card`,
         className,
@@ -46,29 +35,27 @@ export function SmallCard({
 
       <div className="flex-shrink-0 block w-full bg-gray-900 h-60">
         {/* TODO: onerror load a default image, or remove the image? */}
-        {draft && draft === true && (
-          <FloatLabel label={"draft"} overlay={true} />
-        )}
-        {image && (
+        {post?.draft === true && <FloatLabel label={"draft"} overlay={true} />}
+        {post?.image && (
           <img
-            src={image}
+            src={post.image}
             className={clsx(
               `object-cover`,
               `object-${imageFocus}`,
               `relative left-0 w-full h-full`,
             )}
-            alt={title || "[unknown]"}
+            alt={post.title || "[unknown]"}
           />
         )}
       </div>
       <div className="p-5 space-y-3">
-        <h2 className="text-2xl font-bold">{title || "[unknown]"}</h2>
+        <h2 className="text-2xl font-bold">{post?.title || "[unknown]"}</h2>
 
-        {children || blurb || description ? (
-          <p className="text-gray-500">{children || blurb || description}</p>
-        ) : (
-          ""
-        )}
+        {children || post?.blurb || post?.description ? (
+          <p className="text-gray-500">
+            {children || post.blurb || post.description}
+          </p>
+        ) : null}
       </div>
     </Link>
   );

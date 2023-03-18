@@ -10,7 +10,7 @@ type ComponentProps = {
   showDateRange?: boolean;
 };
 
-export default function projectCard({
+export default function ProjectCard({
   project,
   showDateRange = true,
 }: ComponentProps) {

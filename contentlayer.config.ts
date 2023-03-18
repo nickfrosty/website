@@ -20,6 +20,11 @@ const postFields: FieldDefs = {
     description: "The primary title of the post",
     required: true,
   },
+  href: {
+    type: "string",
+    description: "Predefined URL of the post",
+    required: false,
+  },
   slug: {
     type: "string",
     description: "URL slug for the post",
@@ -56,11 +61,28 @@ const postFields: FieldDefs = {
       "Brief description of the content (also used in the SEO metadata)",
     required: false,
   },
+  blurb: {
+    type: "string",
+    description: "One-liner description of the content",
+    required: false,
+  },
   tags: {
     type: "string",
     // type: "list",
     // of: { type: "string" },
     description: "Comma separated listing of tags",
+    required: false,
+  },
+
+  image: {
+    type: "string",
+    description:
+      "The primary image of the post (also used in the SEO metadata)",
+    required: false,
+  },
+  imageFocus: {
+    type: "string",
+    description: "Focus position of the posts image",
     required: false,
   },
 };
@@ -76,30 +98,15 @@ export const Blog = defineDocumentType(() => ({
     ...postFields,
 
     // define custom fields now...
-    href: {
-      type: "string",
-      description: "",
-      required: false,
-    },
     category: {
       type: "string",
       description: "",
       required: false,
     },
-    description: {
-      type: "string",
-      description: "",
-      required: false,
-    },
-    image: {
-      type: "string",
-      description: "Social share image to be used for the SEO metadata",
-      required: false,
-    },
   },
   computedFields: {
     slug: {
-      description: "",
+      description: "Computed slug of the post",
       type: "string",
       resolve: (post) => post?.slug ?? createSlug(post._id),
     },
@@ -108,6 +115,38 @@ export const Blog = defineDocumentType(() => ({
       type: "string",
       resolve: (post) =>
         post.href ?? `/blog/${post.slug ?? createSlug(post._id)}`,
+    },
+  },
+}));
+
+/**
+ * Article post schema
+ */
+export const Article = defineDocumentType(() => ({
+  name: "Article",
+  filePathPattern: `articles/**/*.md`,
+  fields: {
+    // use the standard post fields
+    ...postFields,
+
+    // define custom fields now...
+    category: {
+      type: "string",
+      description: "",
+      required: false,
+    },
+  },
+  computedFields: {
+    slug: {
+      description: "Computed slug of the post",
+      type: "string",
+      resolve: (post) => post?.slug ?? createSlug(post._id),
+    },
+    href: {
+      description: "Local url path of the content",
+      type: "string",
+      resolve: (post) =>
+        post.href ?? `/articles/${post.slug ?? createSlug(post._id)}`,
     },
   },
 }));
@@ -134,11 +173,6 @@ export const Project = defineDocumentType(() => ({
       description: "",
       required: true,
     },
-    slug: {
-      type: "string",
-      description: "",
-      required: true,
-    },
     logo: {
       type: "string",
       description: "",
@@ -161,6 +195,11 @@ export const Project = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    slug: {
+      description: "Computed slug of the project",
+      type: "string",
+      resolve: (post) => post?.slug ?? createSlug(post._id),
+    },
     tags: {
       description: "Array listing of tags",
       type: "list",
@@ -173,5 +212,5 @@ export const Project = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Project, Blog],
+  documentTypes: [Project, Blog, Article],
 });

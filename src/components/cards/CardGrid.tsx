@@ -1,10 +1,12 @@
+import type { Article, Blog } from "contentlayer/generated";
+
 import { Pagination } from "@/components/content/Pagination";
 import { SmallCard } from "@/components/cards/SmallCard";
 
 type ComponentProps = {
   className?: string;
   baseHref: string;
-  posts: PostRecord[];
+  posts: Blog[] | Article[];
   pagination: object;
 };
 
@@ -20,16 +22,9 @@ export function CardGrid({
         {posts?.map((item) => (
           <SmallCard
             key={`small-${item.slug}`}
-            slug={item.slug}
-            href={item.href}
-            draft={item.meta.draft}
-            title={item.meta.title}
-            image={item.meta.image}
-            description={item.meta.description}
-            blurb={item.meta.blurb}
+            post={item}
             imageFocus={"center"}
             baseHref={baseHref}
-            featured={false}
           />
         )) ?? null}
       </section>
