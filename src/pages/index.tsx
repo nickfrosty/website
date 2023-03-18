@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { getDocsByPath, filterDocs } from "zumo";
+import type { NextSeoProps } from "next-seo";
 import Layout from "@/layouts/default";
+import { Project, allProjects } from "contentlayer/generated";
 import Link from "next/link";
 import AvatarImage from "@/components/AvatarImage";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
@@ -8,7 +9,7 @@ import ProjectCard from "@/components/ProjectCard";
 // import SocialIcons from "@/components/SocialIcons";
 
 // construct the meta data for the page
-const metaData = {
+const seoMetaData: NextSeoProps = {
   title: "Nick Frostbutter",
   titleTemplate: "%s",
   description:
@@ -16,11 +17,10 @@ const metaData = {
 };
 
 export async function getStaticProps() {
-  // extract the `homepage` projects
-  let projects: ProjectRecord[] = await getDocsByPath("projects");
-  projects = filterDocs(projects, {
-    homepage: true,
-  })?.slice(0, 3);
+  // locate the `homepage` projects
+  const projects = allProjects
+    .filter((item) => item?.homepage == true)
+    .slice(0, 3);
 
   return {
     props: { projects },
@@ -28,12 +28,12 @@ export async function getStaticProps() {
 }
 
 type PageProps = {
-  projects: ProjectRecord[];
+  projects: Project[];
 };
 
 export default function Page({ projects }: PageProps) {
   return (
-    <Layout footer={false} seo={metaData} className="md:space-y-16">
+    <Layout footer={false} seo={seoMetaData} className="md:space-y-16">
       <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 lg:mt-30 md:gap-32 sm:mt-8 lg:grid-cols-2">
         <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
           <Link
@@ -100,10 +100,10 @@ export default function Page({ projects }: PageProps) {
               </h2>
 
               <div className="grid grid-cols-1 gap-8 mb-3 lg:block md:grid-cols-2">
-                {projects?.map((item) => (
+                {projects.map((project) => (
                   <ProjectCard
-                    key={item.meta.title}
-                    metadata={item.meta}
+                    key={project.title}
+                    project={project}
                     showDateRange={false}
                   />
                 ))}
