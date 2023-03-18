@@ -4,12 +4,12 @@ status: graveyard
 title: "nameea.com"
 slug: nameea
 url: /projects/nameea/
-dateRange: 2021
-date: 2021-02-15
+dateRange: "2021"
+date: "2021-02-15"
 description: "marketplace for brandable domain names, with affordable prices"
 # intro: ''
 logo: "/media/projects/logos/nameea.png"
-# hero_image: '/media/projects/header.png'
+# heroImage: '/media/projects/header.png'
 tags: domains
 ---
 

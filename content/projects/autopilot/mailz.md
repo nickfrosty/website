@@ -10,5 +10,5 @@ date: 2022-04-01
 description: "Convert HTML templates into HTML emails"
 intro: ""
 logo: "/media/projects/logos/mailz.svg"
-# hero_image: "/media/projects/boomerang/header.png"
+# heroImage: "/media/projects/boomerang/header.png"
 ---

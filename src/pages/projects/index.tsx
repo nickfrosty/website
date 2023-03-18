@@ -1,7 +1,7 @@
 import DefaultLayout from "@/layouts/default";
-import { getDocsByPath, filterDocs } from "zumo";
 import ProjectCard from "@/components/ProjectCard";
 import { NextSeoProps } from "next-seo";
+import { Project, allProjects } from "contentlayer/generated";
 
 // construct the seo meta data for the page
 const seo: NextSeoProps = {
@@ -11,22 +11,20 @@ const seo: NextSeoProps = {
 };
 
 export async function getStaticProps() {
-  let projects: ProjectRecord[] = await getDocsByPath("projects");
+  // filter for only non `active` projects from the listing
+  const projects = allProjects.filter((item) => item.status != "active");
 
   // extract the `active` projects
-  const featured = filterDocs(projects, { status: "active" });
+  const featured = allProjects.filter((item) => item.status == "active");
 
-  // remove the `active` projects from the listing
-  projects = projects?.filter((item) => item?.meta?.status !== "active");
-
-  // sort the projects by their `sortDate`
+  // todo: sort the projects by their `sortDate`
 
   return {
     props: { projects, featured },
   };
 }
 
-type PageProps = { projects: ProjectRecord[]; featured?: ProjectRecord[] };
+type PageProps = { projects: Project[]; featured?: Project[] };
 
 export default function Page({ projects, featured }: PageProps) {
   return (
@@ -42,8 +40,8 @@ export default function Page({ projects, featured }: PageProps) {
 
       {featured && (
         <section className="grid max-w-5xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 md:grid-cols-2 sm:mt-8">
-          {featured?.map((item) => (
-            <ProjectCard key={item.meta.title} metadata={item?.meta} />
+          {featured?.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
         </section>
       )}
@@ -66,8 +64,8 @@ export default function Page({ projects, featured }: PageProps) {
       </section>
 
       <section className="grid max-w-2xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 sm:mt-8">
-        {projects?.map((item) => (
-          <ProjectCard key={item.meta.title} metadata={item?.meta} />
+        {projects?.map((project) => (
+          <ProjectCard key={project.title} project={project} />
         ))}
       </section>
     </DefaultLayout>

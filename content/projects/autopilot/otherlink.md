@@ -10,5 +10,5 @@ date: 2022-01-01
 description: "Short link manager with simple analytics"
 intro: "Short link manager for creators"
 logo: "/media/projects/otherlink/otherlink.svg"
-hero_image: "/media/projects/otherlink/header.png"
+heroImage: "/media/projects/otherlink/header.png"
 ---

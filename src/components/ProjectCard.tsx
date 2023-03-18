@@ -2,26 +2,28 @@ import clsx from "clsx";
 import Link from "next/link";
 import styles from "@/styles/project.module.css";
 
+import { Project } from "contentlayer/generated";
+
 type ComponentProps = {
   className?: string;
-  metadata: PostMetadata;
+  project: Project;
   showDateRange?: boolean;
 };
 
-export default function metadataCard({
-  metadata,
+export default function projectCard({
+  project,
   showDateRange = true,
 }: ComponentProps) {
   const isLocalPage = true;
 
   return (
-    <Link href={metadata?.url ?? "#"} className={styles.card}>
+    <Link href={project?.url ?? "#"} className={styles.card}>
       <span className={styles.inner}>
-        {metadata?.logo && (
+        {project?.logo && (
           <img
             className={styles.icon}
-            src={metadata.logo}
-            alt={metadata.title}
+            src={project.logo}
+            alt={project.title}
             width={96}
             height={96}
           />
@@ -29,21 +31,21 @@ export default function metadataCard({
 
         <span className={styles.meta}>
           <span className="items-center block space-y-1">
-            <h3 className={styles.link}>{metadata?.title}</h3>
+            <h3 className={styles.link}>{project?.title}</h3>
 
             <span className="justify-between w-full flexer">
-              {showDateRange && metadata.dateRange && (
-                <span className={styles.date}>{metadata.dateRange}</span>
+              {showDateRange && project.dateRange && (
+                <span className={styles.date}>{project.dateRange}</span>
               )}
 
               <span
                 className={clsx(
                   "md:hidden block",
                   styles.status,
-                  styles[`status-${metadata?.status}`],
+                  styles[`status-${project?.status}`],
                 )}
               >
-                {metadata?.status}
+                {project?.status}
               </span>
             </span>
           </span>
@@ -53,16 +55,16 @@ export default function metadataCard({
               "hidden md:block",
               styles.floater,
               styles.status,
-              styles[`status-${metadata?.status}`],
+              styles[`status-${project?.status}`],
             )}
           >
-            {metadata?.status}
+            {project?.status}
           </span>
         </span>
       </span>
 
-      {metadata?.description && (
-        <p className={styles.description}>{metadata.description}</p>
+      {project?.description && (
+        <p className={styles.description}>{project.description}</p>
       )}
     </Link>
   );

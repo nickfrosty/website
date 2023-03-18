@@ -1,6 +1,5 @@
 import ProseLayout from "@/layouts/ProseLayout";
-
-import { generateStaticPaths, getDocBySlug, getDocMetaBySlug } from "zumo";
+import { Project, allProjects } from "contentlayer/generated";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
@@ -20,8 +19,18 @@ const breadcrumbParents: SimpleLinkItem = {
 };
 
 export async function getStaticPaths() {
-  // get the listing of all of the markdown files
-  return generateStaticPaths(metaData.contentDir, false);
+  const paths = allProjects.map((item) => {
+    return {
+      params: {
+        slug: item.slug,
+      },
+    };
+  });
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
 }
 
 type PageStaticProps = {
@@ -34,28 +43,25 @@ export async function getStaticProps({ params: { slug } }: PageStaticProps) {
   // if (process && process.env?.NODE_ENV !== "development")
   //   return { notFound: true };
 
-  const post: PostRecord = await getDocBySlug(slug, metaData.contentDir);
+  const post: Project = allProjects.filter((item) => item.slug == slug)?.[0];
 
   // give the 404 page when the post is not found
   if (!post) return { notFound: true };
 
-  let next: PostRecord | null = null;
-  let prev: PostRecord | null = null;
-
-  // parse out the `next` and `prev` articles, when defined by the post's `meta`
-  if (post?.meta?.nextPage)
-    next = await getDocMetaBySlug(post.meta.nextPage, metaData.contentDir);
-  if (post?.meta?.prevPage)
-    prev = await getDocMetaBySlug(post.meta.prevPage, metaData.contentDir);
-
   // strip the tags from the `post`
-  post.meta.tags = "";
+  post.tags = "";
   // TODO: add the `tag` based post browsing to these blog posts
 
   return {
-    props: { post, next, prev },
+    props: { post },
   };
 }
+
+type ProsePageProps = {
+  post: Project;
+  next?: PostRecord;
+  prev?: PostRecord;
+};
 
 export default function Page({ post, next, prev }: ProsePageProps) {
   return (

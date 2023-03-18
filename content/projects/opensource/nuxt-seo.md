@@ -8,5 +8,5 @@ date: 2021-11-29
 description: "NPM package for NuxtJS to help with better seo/meta data"
 intro: "A better seo/meta module for NuxtJS"
 logo: "/media/projects/npm.png"
-# hero_image: '/media/projects/otherlink/header.png'
+# heroImage: '/media/projects/otherlink/header.png'
 ---
