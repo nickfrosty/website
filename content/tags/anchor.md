@@ -3,7 +3,7 @@
 title: "Anchor"
 description: "The most popular framework for developing on chain smart contracts for the Solana blockchain."
 tags: solan, rust
-keywords: ""
+# keywords: ""
 #image: /media/tags/solana.png
 ---
 

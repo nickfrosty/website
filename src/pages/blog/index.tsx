@@ -16,9 +16,13 @@ const seo: NextSeoProps = {
 export async function getStaticProps() {
   // get a listing of regular posts (hiding drafts)
   const posts = allBlogs
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .filter((post) =>
       process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+    )
+    //
+    .sort(
+      (a, b) =>
+        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
     );
 
   // get a listing of featured posts

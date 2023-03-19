@@ -13,7 +13,7 @@ export function SmallCard({
 }: CardComponentProps) {
   return (
     <Link
-      href={post.href ?? "#"}
+      href={post?.href ?? "#"}
       className={clsx(
         `p-0 card`,
         className,

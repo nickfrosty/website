@@ -33,11 +33,12 @@ const postFields: FieldDefs = {
   date: {
     type: "date",
     description: "The public date of the post",
-    required: true,
+    required: false,
   },
   updatedAt: {
     type: "date",
     description: "The date this content was updated at",
+    required: false,
   },
   draft: {
     type: "boolean",
@@ -133,7 +134,7 @@ export const Blog = defineDocumentType(() => ({
       description: "Local url path of the content",
       type: "string",
       resolve: (post) =>
-        post.href ?? `/blog/${post.slug ?? createSlug(post._id)}`,
+        post.href ?? `/blog/${post?.slug ?? createSlug(post._id)}`,
     },
   },
 }));
@@ -171,7 +172,45 @@ export const Article = defineDocumentType(() => ({
       description: "Local url path of the content",
       type: "string",
       resolve: (post) =>
-        post.href ?? `/articles/${post.slug ?? createSlug(post._id)}`,
+        post.href ?? `/articles/${post?.slug ?? createSlug(post._id)}`,
+    },
+    tags: {
+      description: "Array listing of tags",
+      type: "list",
+      // of: { type: "string" },
+      resolve: (item) =>
+        item?.tags?.split(",")?.map((tag) => tag.trim()) ?? undefined,
+    },
+  },
+}));
+
+/**
+ * ArticleTag schema
+ */
+export const ArticleTag = defineDocumentType(() => ({
+  name: "ArticleTag",
+  filePathPattern: `tags/**/*.md`,
+  fields: {
+    // use the standard post fields
+    ...postFields,
+
+    // define custom fields now...
+    // category: {
+    //   type: "string",
+    //   description: "",
+    //   required: false,
+    // },
+  },
+  computedFields: {
+    slug: {
+      description: "Computed slug of the post",
+      type: "string",
+      resolve: (post) => post?.slug ?? createSlug(post._id),
+    },
+    href: {
+      description: "Local url path of the content",
+      type: "string",
+      resolve: (post) => `/tags/${post?.slug ?? createSlug(post._id)}`,
     },
   },
 }));
@@ -243,5 +282,5 @@ export const Project = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Project, Blog, Article],
+  documentTypes: [Project, Blog, Article, ArticleTag],
 });

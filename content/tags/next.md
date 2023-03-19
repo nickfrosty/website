@@ -3,7 +3,7 @@
 title: "NextJS"
 description: ""
 tags: nuxt
-keywords: ""
+# keywords: ""
 #image: /media/tags/solana.png
 ---
 

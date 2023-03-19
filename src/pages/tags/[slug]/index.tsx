@@ -8,10 +8,19 @@ import {
   parseTemplate,
 } from "zumo";
 
+import { NextSeoProps } from "next-seo";
 import Layout from "@/layouts/default";
+
+import {
+  Article,
+  ArticleTag,
+  allArticleTags,
+  allArticles,
+} from "contentlayer/generated";
+
 import { HeroSection } from "@/components/content/HeroSection";
 import { CardGrid } from "@/components/cards/CardGrid";
-import { NextSeoProps } from "next-seo";
+import { PaginationProps, PostMetadata } from "@@/types";
 
 // construct the meta data for the page
 const seo: NextSeoProps = {
@@ -27,7 +36,6 @@ const metaData = {
 export async function preparePage(slug: string, currentPage: number = 1) {
   // give the 404 page when no `slug` was found
   if (!slug) return { notFound: true };
-  // console.warn(slug, currentPage);
 
   // retrieve the current `tag` document, when on exists
   let page = (await getDocBySlug(slug, "tags")) || {
@@ -43,19 +51,33 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   });
 
   // get the listing of `posts` for the current `tag`
-  let posts = await getDocsByPath("articles", {
-    metaOnly: true,
-    filters: {
-      tags: { contains: slug },
-    },
-  });
+  let posts = allArticles
+    .filter((item) => {
+      if (Array.isArray(item.tags)) {
+        return item.tags.find(
+          (tag: string) => tag.toLowerCase() == slug.toLocaleLowerCase(),
+        );
+      }
+    })
+    // sort newest to oldest
+    .sort(
+      (a, b) =>
+        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
+    )
+    // strip the `body` to send less data to the client
+    .map((post) => {
+      // @ts-ignore
+      delete post.body;
+      return post;
+    });
 
-  // give the 404 page when no `posts` was found
+  // give the 404 page when no `posts` were found
   if (!(posts && Array.isArray(posts))) return { notFound: true };
 
   // retrieve the latest and featured articles
   const latestPost = posts?.[0] || false;
-  const featured = filterDocs(posts, { featured: true }, 1)?.[0] || latestPost;
+  const featured =
+    posts.filter((item) => item?.featured === true)?.[0] || latestPost;
 
   // construct the `pagination` data object
   const pagination = computePagination(
@@ -69,19 +91,10 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   page.meta.count = posts.length;
   page.meta.baseHref = pagination.baseHref;
   page.meta.countLabel = "articles";
-  page.meta.publishDate =
-    latestPost?.meta?.updatedAt || latestPost?.meta?.createdAt || false;
+  page.meta.publishDate = latestPost?.updatedAt || latestPost?.date || false;
 
   // remove the `featured` article from the overall `posts` listing
   posts = posts.filter((item) => item.slug !== featured?.slug);
-
-  // give 404 for `draft` pages in all non dev envs
-  // if (
-  //   post?.meta?.draft === true &&
-  //   process &&
-  //   process.env?.NODE_ENV !== "development"
-  // )
-  //   return { notFound: true };
 
   // set the on page metaData meta settings
   seo.title = page.meta.title;
@@ -90,11 +103,17 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   // chunk out the posts for the current page
   posts = posts.slice(pagination.start, pagination.end);
 
+  const tagMeta = allArticleTags.filter((item) => item.slug == slug)?.[0] || {
+    _id: slug,
+    title: slug,
+    href: `/tags/${slug.toLowerCase()}`,
+  };
+
   return {
     props: {
       seo,
       metaData,
-      meta: page?.meta,
+      tagMeta,
       content: page?.content,
       posts,
       featured,
@@ -104,11 +123,30 @@ export async function preparePage(slug: string, currentPage: number = 1) {
 }
 
 export async function getStaticPaths() {
-  return generateStaticPaths("tags", false);
+  let paths: object[] = [];
+
+  // determine the tags from all articles
+  allArticles.map((item) => {
+    if (Array.isArray(item.tags)) {
+      item.tags.map((tag: string) => {
+        paths.push({
+          params: {
+            slug: tag,
+          },
+        });
+      });
+    }
+    return;
+  });
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
 }
 
 type PageStaticProps = {
-  params: { page: number; slug: string };
+  params: { page?: number; slug: string };
 };
 
 export async function getStaticProps({
@@ -119,15 +157,15 @@ export async function getStaticProps({
 
 type PageProps = {
   seo: NextSeoProps;
-  posts: PostRecord[];
-  meta: PostMetadata;
-  featured?: PostRecord;
+  posts: Article[];
+  tagMeta: ArticleTag;
+  featured?: Article;
   pagination: PaginationProps;
 };
 
 export default function Page({
   seo,
-  meta,
+  tagMeta,
   // content,
   posts,
   featured,
@@ -139,7 +177,7 @@ export default function Page({
   return (
     <Layout seo={seo}>
       <HeroSection
-        metadata={meta}
+        metadata={tagMeta}
         baseHref={metaData?.baseHref}
         heading="tag"
         featured={featured}

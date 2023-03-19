@@ -22,9 +22,13 @@ const metaData = {
 export async function preparePage(currentPage?: number) {
   // get a listing of regular posts (hiding drafts)
   let posts = allArticles
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .filter((post) =>
       process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+    )
+    // sort newest to oldest
+    .sort(
+      (a, b) =>
+        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
     )
     // strip the `body` to send less data to the client
     .map((post) => {

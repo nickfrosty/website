@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import type { Article, ArticleTag } from "contentlayer/generated";
+
 import Link from "next/link";
 import { DateTime } from "luxon";
 import { generateSlug } from "zumo";
@@ -12,8 +14,8 @@ import {
 type ComponentProps = {
   className?: string;
   children?: React.ReactNode;
-  featured?: PostRecord;
-  metadata: PostMetadata;
+  featured?: Article;
+  metadata: ArticleTag;
   heading?: string;
   baseHref?: string;
   count?: string;
@@ -61,11 +63,11 @@ export function HeroSection({
             </span>
           )}
 
-          {metadata?.createdAt && (
+          {metadata?.date && (
             <span className="flexer-spacer">
               <CalendarIcon className="icon-md" />
               <span className="">
-                {DateTime.fromISO(metadata.createdAt).toRelativeCalendar()}
+                {DateTime.fromISO(metadata.date).toRelativeCalendar()}
               </span>
             </span>
           )}
@@ -78,9 +80,9 @@ export function HeroSection({
       </section>
 
       {/* featured / image area */}
-      {featured && featured?.meta && (
+      {!!featured && (
         <section className="w-full place-content-start place-self-center">
-          <SmallCard {...featured.meta} baseHref={"/articles"} />
+          <SmallCard post={featured} baseHref={"/articles"} />
         </section>
       )}
     </section>
