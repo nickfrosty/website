@@ -41,6 +41,11 @@ export async function preparePage(currentPage?: number) {
   const featured = allArticles
     .filter((post) => post.featured === true && post?.draft !== true)
     .slice(0, 2)
+    // sort newest to oldest
+    .sort(
+      (a, b) =>
+        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
+    )
     // strip the `body` to send less data to the client
     .map((post) => {
       // @ts-ignore
