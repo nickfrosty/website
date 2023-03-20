@@ -10,16 +10,16 @@ import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import { ArticleContent } from "@/components/content/ArticleContent";
 import { NextPrevSection } from "@/components/content/NextPrevSection";
 
-import { Article, Blog } from "contentlayer/generated";
+import { DocumentTypes } from "contentlayer/generated";
 
 type LayoutProps = {
   className?: string;
   children?: React.ReactNode;
 
   config: ZumoConfigRecord;
-  post: Article | Blog;
-  next?: Article | Blog;
-  prev?: Article | Blog;
+  post: DocumentTypes;
+  next?: DocumentTypes;
+  prev?: DocumentTypes;
 
   breadcrumbParents?: SimpleLinkItem[];
   breadcrumbShowHome?: boolean;

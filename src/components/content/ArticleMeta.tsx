@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
+import type { DocumentTypes } from "contentlayer/generated";
 import { displayDate } from "zumo";
 import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
 import { Tag } from "./Tag";
-import { Article, Blog } from "contentlayer/generated";
 
 type ComponentProps = {
   className?: string;
-  post: Article | Blog;
+  post: DocumentTypes;
   baseHref?: string;
   tagHrefTemplate?: string;
 };

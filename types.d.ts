@@ -2,7 +2,12 @@
     Primary type definitions for the site
 */
 
-import { Article, Blog, Project } from "contentlayer/generated";
+import type {
+  Article,
+  Blog,
+  Project,
+  DocumentTypes,
+} from "contentlayer/generated";
 
 //
 type ProjectRecord = {
@@ -92,7 +97,7 @@ type PaginationProps = {
 };
 
 type ProsePageProps = {
-  post: Article | Blog;
-  next?: Article | Blog;
-  prev?: Article | Blog;
+  post: DocumentTypes;
+  next?: DocumentTypes;
+  prev?: DocumentTypes;
 };

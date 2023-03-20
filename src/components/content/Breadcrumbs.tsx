@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import type { Article, Blog } from "contentlayer/generated";
+import type { DocumentTypes } from "contentlayer/generated";
 import type { SimpleLinkItem } from "@@/types";
 
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 type ComponentProps = {
   className?: string;
   href: string;
-  post: Article | Blog;
+  post: DocumentTypes;
   parents?: SimpleLinkItem[];
   includeHome?: boolean;
 };

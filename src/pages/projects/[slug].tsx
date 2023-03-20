@@ -1,5 +1,6 @@
+import type { SimpleLinkItem } from "@@/types";
 import ProseLayout from "@/layouts/ProseLayout";
-import { Project, allProjects } from "contentlayer/generated";
+import { AllTypes, Project, allProjects } from "contentlayer/generated";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
@@ -59,8 +60,8 @@ export async function getStaticProps({ params: { slug } }: PageStaticProps) {
 
 type ProsePageProps = {
   post: Project;
-  next?: PostRecord;
-  prev?: PostRecord;
+  next?: AllTypes;
+  prev?: AllTypes;
 };
 
 export default function Page({ post, next, prev }: ProsePageProps) {

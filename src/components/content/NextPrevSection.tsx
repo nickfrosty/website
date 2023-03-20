@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
+import type { DocumentTypes } from "contentlayer/generated";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
 type ComponentProps = {
   className?: string;
-  next?: PostRecord;
-  prev?: PostRecord;
+  next?: DocumentTypes;
+  prev?: DocumentTypes;
   hrefBase?: string;
   icon?: boolean;
 };
@@ -30,9 +31,7 @@ export function NextPrevSection({
           className="px-5 py-2 text-white bg-indigo-900 border border-indigo-700 place-self-start rounded-xl w-fit flexer hover:bg-indigo-800"
         >
           <ArrowLeftIcon className="w-4 h-4 mr-4 text-white" />
-          <span className="line-clamp-1">
-            {prev?.meta?.title || "Previous"}
-          </span>
+          <span className="line-clamp-1">{prev?.title || "Previous"}</span>
         </Link>
       ) : (
         <div></div>
@@ -45,7 +44,7 @@ export function NextPrevSection({
         >
           <div className="">
             {/* <p className="font-mono text-sm font-semibold uppercase">Next:</p> */}
-            <p className="line-clamp-1">{next?.meta?.title || "Next"}</p>
+            <p className="line-clamp-1">{next?.title || "Next"}</p>
           </div>
           <ArrowRightIcon className="w-4 h-4 ml-4 text-white" />
         </Link>
