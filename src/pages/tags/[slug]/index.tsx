@@ -20,7 +20,7 @@ import {
 
 import { HeroSection } from "@/components/content/HeroSection";
 import { CardGrid } from "@/components/cards/CardGrid";
-import { PaginationProps, PostMetadata } from "@@/types";
+import { PaginationProps } from "@@/types";
 
 // construct the meta data for the page
 const seo: NextSeoProps = {
@@ -33,16 +33,23 @@ const metaData = {
   paginationTemplate: "{{baseHref}}/{{id}}",
 };
 
+type TagMetadata = {
+  count: number;
+  baseHref: string;
+  countLabel: "articles";
+  publishDate: string | boolean;
+};
+
 export async function preparePage(slug: string, currentPage: number = 1) {
   // give the 404 page when no `slug` was found
   if (!slug) return { notFound: true };
 
   // retrieve the current `tag` document, when on exists
-  let page = (await getDocBySlug(slug, "tags")) || {
-    meta: { slug, title: slug },
-    content: false,
+  const tagMeta = allArticleTags.filter((item) => item.slug == slug)?.[0] || {
+    _id: slug,
+    title: slug,
+    href: `/tags/${slug.toLowerCase()}`,
   };
-  // console.log(page);
 
   // parse and update the `baseHref` to include the current tag
   metaData.baseHref = parseTemplate(metaData?.baseHref, {
@@ -63,13 +70,13 @@ export async function preparePage(slug: string, currentPage: number = 1) {
     .sort(
       (a, b) =>
         new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
-    )
-    // strip the `body` to send less data to the client
-    .map((post) => {
-      // @ts-ignore
-      delete post.body;
-      return post;
-    });
+    );
+  // strip the `body` to send less data to the client
+  // .map((post) => {
+  //   // @ts-ignore
+  //   delete post.body;
+  //   return post;
+  // });
 
   // give the 404 page when no `posts` were found
   if (!(posts && Array.isArray(posts))) return { notFound: true };
@@ -87,34 +94,31 @@ export async function preparePage(slug: string, currentPage: number = 1) {
     metaData?.paginationTemplate,
   );
 
-  // add extra page `meta` settings
-  page.meta.count = posts.length;
-  page.meta.baseHref = pagination.baseHref;
-  page.meta.countLabel = "articles";
-  page.meta.publishDate = latestPost?.updatedAt || latestPost?.date || false;
+  // construct the miscellaneous metadata
+  const tagMetadata: TagMetadata = {
+    count: posts.length,
+    baseHref: pagination.baseHref,
+    countLabel: "articles",
+    publishDate: latestPost?.updatedAt || latestPost?.date || false,
+  };
 
   // remove the `featured` article from the overall `posts` listing
   posts = posts.filter((item) => item.slug !== featured?.slug);
 
   // set the on page metaData meta settings
-  seo.title = page.meta.title;
-  seo.description = `Explore all my articles with written about ${page.meta.title}. They are pretty great :)`;
+  seo.title = tagMeta?.title ?? slug;
+  seo.description = `Explore all my articles with written about ${
+    tagMeta?.title ?? slug
+  }. They are pretty great :)`;
 
   // chunk out the posts for the current page
   posts = posts.slice(pagination.start, pagination.end);
 
-  const tagMeta = allArticleTags.filter((item) => item.slug == slug)?.[0] || {
-    _id: slug,
-    title: slug,
-    href: `/tags/${slug.toLowerCase()}`,
-  };
-
   return {
     props: {
       seo,
-      metaData,
+      tagMetadata,
       tagMeta,
-      content: page?.content,
       posts,
       featured,
       pagination,
@@ -159,6 +163,7 @@ type PageProps = {
   seo: NextSeoProps;
   posts: Article[];
   tagMeta: ArticleTag;
+  tagMetadata: TagMetadata;
   featured?: Article;
   pagination: PaginationProps;
 };
@@ -166,7 +171,7 @@ type PageProps = {
 export default function Page({
   seo,
   tagMeta,
-  // content,
+  tagMetadata,
   posts,
   featured,
   pagination,
