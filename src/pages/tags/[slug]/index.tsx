@@ -138,18 +138,22 @@ export async function getStaticPaths() {
   let paths: object[] = [];
 
   // determine the tags from all articles
-  allArticles.map((item) => {
-    if (Array.isArray(item.tags)) {
-      item.tags.map((tag: string) => {
-        paths.push({
-          params: {
-            slug: tag.replace(/\s+/g, "-"),
-          },
+  allArticles
+    .filter((post) =>
+      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+    )
+    .map((item) => {
+      if (Array.isArray(item.tags)) {
+        item.tags.map((tag: string) => {
+          paths.push({
+            params: {
+              slug: tag.replace(/\s+/g, "-"),
+            },
+          });
         });
-      });
-    }
-    return;
-  });
+      }
+      return;
+    });
 
   return {
     paths: paths,
