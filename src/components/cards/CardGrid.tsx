@@ -1,3 +1,4 @@
+import type { PaginationProps } from "@@/types";
 import type { Article, Blog } from "contentlayer/generated";
 
 import { Pagination } from "@/components/content/Pagination";
@@ -7,7 +8,7 @@ type ComponentProps = {
   className?: string;
   baseHref: string;
   posts: Blog[] | Article[];
-  pagination: object;
+  pagination: PaginationProps;
 };
 
 export function CardGrid({

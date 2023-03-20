@@ -3,4 +3,5 @@ module.exports = {
   generateRobotsTxt: true,
   // ...other options
   exclude: ["/image", "/projects/*"],
+  // todo: add tag pages, and any other `additionalPaths` needed
 };

@@ -16,7 +16,7 @@ const seo: NextSeoProps = {
 
 const metaData = {
   baseHref: "/articles",
-  paginationTemplate: null, // "/page/{id}",
+  paginationTemplate: "/articles/page/{{id}}",
 };
 
 export async function preparePage(currentPage?: number) {
@@ -97,22 +97,21 @@ type PageProps = {
 export default function Page({ posts, featured, pagination }: PageProps) {
   return (
     <DefaultLayout seo={seo}>
-      {/* {!!featured &&
-        !featured?.length &&
+      {!!featured?.length &&
         pagination &&
-        (pagination?.page as number) <= 1 && ( */}
-      <section className="double-wide-cards">
-        {featured?.map((post) => {
-          return (
-            <SmallCard
-              key={post.slug}
-              post={post}
-              baseHref={metaData.baseHref}
-            ></SmallCard>
-          );
-        })}
-      </section>
-      {/* )} */}
+        (pagination?.page as number) <= 1 && (
+          <section className="double-wide-cards">
+            {featured?.map((post) => {
+              return (
+                <SmallCard
+                  key={post.slug}
+                  post={post}
+                  baseHref={metaData.baseHref}
+                ></SmallCard>
+              );
+            })}
+          </section>
+        )}
 
       <CardGrid
         posts={posts}

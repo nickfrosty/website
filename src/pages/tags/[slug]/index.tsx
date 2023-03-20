@@ -45,10 +45,12 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   if (!slug) return { notFound: true };
 
   // retrieve the current `tag` document, when on exists
-  const tagMeta = allArticleTags.filter((item) => item.slug == slug)?.[0] || {
+  const tagMeta = allArticleTags.filter(
+    (item) => item.slug?.toLowerCase().replace(/\s+/g, "-") == slug,
+  )?.[0] || {
     _id: slug,
     title: slug,
-    href: `/tags/${slug.toLowerCase()}`,
+    href: `/tags/${slug.toLowerCase().replace(/\s+/g, "-")}`,
   };
 
   // parse and update the `baseHref` to include the current tag
@@ -59,10 +61,16 @@ export async function preparePage(slug: string, currentPage: number = 1) {
 
   // get the listing of `posts` for the current `tag`
   let posts = allArticles
+    .filter((post) =>
+      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+    )
     .filter((item) => {
       if (Array.isArray(item.tags)) {
         return item.tags.find(
-          (tag: string) => tag.toLowerCase() == slug.toLocaleLowerCase(),
+          (tag: string) =>
+            tag.toLowerCase() == slug.toLocaleLowerCase() ||
+            tag.toLowerCase().replace(/\s+/g, "-") ==
+              slug.toLocaleLowerCase().replace(/\s+/g, "-"),
         );
       }
     })
@@ -135,7 +143,7 @@ export async function getStaticPaths() {
       item.tags.map((tag: string) => {
         paths.push({
           params: {
-            slug: tag,
+            slug: tag.replace(/\s+/g, "-"),
           },
         });
       });
