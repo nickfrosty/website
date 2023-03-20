@@ -70,13 +70,13 @@ export async function preparePage(slug: string, currentPage: number = 1) {
     .sort(
       (a, b) =>
         new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
-    );
-  // strip the `body` to send less data to the client
-  // .map((post) => {
-  //   // @ts-ignore
-  //   delete post.body;
-  //   return post;
-  // });
+    )
+    // strip the `body` to send less data to the client
+    .map((post) => {
+      // @ts-ignore
+      delete post.body.html;
+      return post;
+    });
 
   // give the 404 page when no `posts` were found
   if (!(posts && Array.isArray(posts))) return { notFound: true };

@@ -29,13 +29,13 @@ export async function preparePage(currentPage?: number) {
     .sort(
       (a, b) =>
         new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
-    );
-  // strip the `body` to send less data to the client
-  // .map((post) => {
-  //   // @ts-ignore
-  //   delete post.body;
-  //   return post;
-  // });
+    )
+    // strip the `body` to send less data to the client
+    .map((post) => {
+      // @ts-ignore
+      delete post.body.html;
+      return post;
+    });
 
   // get a listing of featured posts
   const featured = allArticles
@@ -45,13 +45,13 @@ export async function preparePage(currentPage?: number) {
     .sort(
       (a, b) =>
         new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
-    );
-  // strip the `body` to send less data to the client
-  // .map((post) => {
-  //   // @ts-ignore
-  //   delete post.body;
-  //   return post;
-  // });
+    )
+    // strip the `body` to send less data to the client
+    .map((post) => {
+      // @ts-ignore
+      delete post.body.html;
+      return post;
+    });
 
   // remove the selected `featured` from the `posts`
   if (Array.isArray(featured) && featured?.length > 0)
