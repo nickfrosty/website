@@ -1,7 +1,7 @@
 import { Feed } from "feed";
 import { writeFileSync } from "fs";
 import { allArticles } from "../.contentlayer/generated/index.mjs";
-import { makeAbsoluteUrl } from "./helpers";
+import { convertRelativeAnchorsToAbsolute } from "./helpers";
 
 // define the base path to save the generated RSS files
 const rssBasePath = `./public/`;
@@ -59,7 +59,10 @@ const feed = new Feed({
       // construct sanitized content
       let content = post.body.html;
       // content = processMarkdownLinks(content);
-      content = makeAbsoluteUrl(content, `${author.website}/articles`);
+      content = convertRelativeAnchorsToAbsolute(
+        content,
+        `${author.website}/articles`,
+      );
 
       // TODO: convert all relative/internal links to using the absolute urls
 
