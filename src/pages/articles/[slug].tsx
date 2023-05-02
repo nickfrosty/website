@@ -57,10 +57,22 @@ export async function getStaticProps({ params: { slug } }: PageStaticProps) {
   let next: Article | null = null;
   let prev: Article | null = null;
 
-  // if (post?.nextPage)
-  //   next = await getDocMetaBySlug(post.nextPage, metaData.contentDir);
-  // if (post?.prevPage)
-  //   prev = await getDocMetaBySlug(post.prevPage, metaData.contentDir);
+  if (post?.nextPage) {
+    next = allArticles.filter((record) => record.slug == post.nextPage)?.[0];
+    if (!next)
+      console.warn(
+        `\n[warning]`,
+        `Article nextPage slug of '${post.nextPage}' not found\n`,
+      );
+  }
+  if (post?.prevPage) {
+    next = allArticles.filter((record) => record.slug == post.prevPage)?.[0];
+    if (!next)
+      console.warn(
+        `\n[warning]`,
+        `Article prevPage slug of '${post.nextPage}' not found\n`,
+      );
+  }
 
   return {
     props: { post, next, prev },
