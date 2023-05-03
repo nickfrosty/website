@@ -6,18 +6,27 @@ export const REGEX_MARKDOWN_HEADINGS = /^(#{1,4}) (.*)?$/gim;
 
 /**
  * Regex for parsing markdown links
- * todo: add image support
+ * (e.g. `[label](url)`)
+ *
+ * Note: this will capture images nested in links, but
+ * would require a second regex match to properly parse
+ * (e.g. `[![image alt](img_url)](link_url)`)
  */
-export const REGEX_MARKDOWN_LINKS = /\[([^\[\]]+)\]\((.*?)\)/gim;
+export const REGEX_MARKDOWN_LINKS = /\[(.*)\]\((.*?)\)/gim;
 
 /**
- * Regex for parsing HTML links
- * todo: add image support?
+ * Regex for parsing markdown images
+ * e.g. `![alt](url)`
+ */
+export const REGEX_MARKDOWN_IMAGES = /\!\[([^\[\]]+)\]\((.*?)\)/gim;
+
+/**
+ * Regex for parsing HTML `a` tags
  */
 export const REGEX_HTML_LINKS = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/gm;
 
 /**
- * Regex for parsing relative HTML `a` and `img` tags
+ * Regex for parsing HTML `a` and `img` tags that use relative urls
  */
 export const REGEX_HTML_RELATIVE_URLS =
   /<(?:a|img)\s+(?:[^>]*?\s+)?(?:href|src)=("|')([\/|\.].*?)\1/gim;
@@ -90,19 +99,22 @@ export function linkifyHeadings(text: string, anchorBefore?: boolean) {
  */
 export function processMarkdownLinks(content: string) {
   // locate and parse all links in the raw markdown
-  return content.replace(REGEX_MARKDOWN_LINKS, (fullMatched, label, url) => {
-    // for errors in the regex, just return the original `fullMatched` string
-    if (!label || !url) return fullMatched;
+  return content.replace(
+    REGEX_MARKDOWN_LINKS,
+    (fullMatched: string, label: string, url: string) => {
+      // for errors in the regex, just return the original `fullMatched` string
+      if (!label || !url) return fullMatched;
 
-    console.log("fullMatched", fullMatched);
+      // handle images nested inside of links (e.g. `[![image alt](http://img)](http://link)`)
+      if (label.startsWith("!"))
+        label = processMarkdownLinks(label.substring(1));
 
-    // removed specific file extensions (".md", ".mdx", etc)
-    url = url.split(/.mdx?|.html?/gi).join("");
+      // removed specific file extensions (".md", ".mdx", etc)
+      url = url.split(/.mdx?|.html?/gi).join("");
 
-    console.log("[url]", url);
-
-    return `[${label}](https://nick.af/articles/${url})`;
-  });
+      return `[${label}](https://nick.af/articles/${url})`;
+    },
+  );
 }
 
 // force convert all h1 to h2
