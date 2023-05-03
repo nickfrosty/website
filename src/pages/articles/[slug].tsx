@@ -66,11 +66,11 @@ export async function getStaticProps({ params: { slug } }: PageStaticProps) {
       );
   }
   if (post?.prevPage) {
-    next = allArticles.filter((record) => record.slug == post.prevPage)?.[0];
-    if (!next)
+    prev = allArticles.filter((record) => record.slug == post.prevPage)?.[0];
+    if (!prev)
       console.warn(
         `\n[warning]`,
-        `Article prevPage slug of '${post.nextPage}' not found\n`,
+        `Article prevPage slug of '${post.prevPage}' not found\n`,
       );
   }
 
