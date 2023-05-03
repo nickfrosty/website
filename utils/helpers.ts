@@ -8,7 +8,7 @@ export const REGEX_MARKDOWN_HEADINGS = /^(#{1,4}) (.*)?$/gim;
  * Regex for parsing markdown links
  * todo: add image support
  */
-export const REGEX_MARKDOWN_LINKS = /\[([^\[]+)\]\((.*?)\)/gim;
+export const REGEX_MARKDOWN_LINKS = /\[([^\[\]]+)\]\((.*?)\)/gim;
 
 /**
  * Regex for parsing HTML links
@@ -17,11 +17,10 @@ export const REGEX_MARKDOWN_LINKS = /\[([^\[]+)\]\((.*?)\)/gim;
 export const REGEX_HTML_LINKS = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/gm;
 
 /**
- * Regex for parsing relative HTML links
- * todo: add image support?
+ * Regex for parsing relative HTML `a` and `img` tags
  */
-export const REGEX_HTML_LINKS_RELATIVE =
-  /<a\s+(?:[^>]*?\s+)?href=("|')([\/|\.].*?)\1/gm;
+export const REGEX_HTML_RELATIVE_URLS =
+  /<(?:a|img)\s+(?:[^>]*?\s+)?(?:href|src)=("|')([\/|\.].*?)\1/gim;
 
 /**
  * Slugify a url string into a valid url form
@@ -95,6 +94,8 @@ export function processMarkdownLinks(content: string) {
     // for errors in the regex, just return the original `fullMatched` string
     if (!label || !url) return fullMatched;
 
+    console.log("fullMatched", fullMatched);
+
     // removed specific file extensions (".md", ".mdx", etc)
     url = url.split(/.mdx?|.html?/gi).join("");
 
@@ -118,12 +119,10 @@ export function convertRelativeAnchorsToAbsolute(
   let newUrl: string;
 
   return content.replace(
-    REGEX_HTML_LINKS_RELATIVE,
+    REGEX_HTML_RELATIVE_URLS,
     (fullMatched: string, starter: string, url: string) => {
       // for errors in the regex, just return the original `fullMatched` string
       if (!starter || !url) return fullMatched;
-      // only handle relative urls
-      // if (!(url.startsWith("/") || url.startsWith("."))) return fullMatched;
 
       // removed specific file extensions (".md", ".html", etc)
       newUrl = url.split(/.mdx?|.html?/gi).join("");

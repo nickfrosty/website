@@ -58,7 +58,6 @@ const feed = new Feed({
 
       // construct sanitized content
       let content = post.body.html;
-      // content = processMarkdownLinks(content);
       content = convertRelativeAnchorsToAbsolute(
         content,
         `${author.website}/articles`,
