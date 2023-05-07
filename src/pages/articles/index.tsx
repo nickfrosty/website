@@ -70,7 +70,8 @@ export async function preparePage(currentPage?: number) {
   );
 
   // chunk out the posts for the current page
-  posts = posts.slice(pagination.start, pagination.end);
+  // @ts-ignore
+  posts = posts.slice(pagination.start || 0, pagination.end);
 
   return {
     props: { posts, featured, pagination },

@@ -105,6 +105,7 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   // construct the miscellaneous metadata
   const tagMetadata: TagMetadata = {
     count: posts.length,
+    // @ts-ignore
     baseHref: pagination.baseHref,
     countLabel: "articles",
     publishDate: latestPost?.updatedAt || latestPost?.date || false,
@@ -120,6 +121,7 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   }. They are pretty great :)`;
 
   // chunk out the posts for the current page
+  // @ts-ignore
   posts = posts.slice(pagination.start, pagination.end);
 
   return {

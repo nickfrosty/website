@@ -9,6 +9,21 @@ import type {
   DocumentTypes,
 } from "contentlayer/generated";
 
+type ZumoConfigRecord = {
+  baseHref?: string;
+  hrefTemplate?: string;
+  tagHrefTemplate?: string;
+  maxTagCount?: number;
+};
+
+/**
+ * Default props for most components
+ */
+type SimpleComponentProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
 //
 type ProjectRecord = {
   title: string;
