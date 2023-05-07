@@ -45,7 +45,7 @@ export default function Page({ projects }: PageProps) {
             />
           </Link>
 
-          <p className="col-span-2 text-2xl font-medium whitespace-pre-line sm:text-2xl sm:col-span-2">
+          <p className="col-span-2 text-2xl whitespace-pre-line sm:text-2xl sm:col-span-2">
             <span className="inline-block mb-5 text-3xl lg:mb-0 lg:text-2xl">
               Hi! I&apos;m Nick,
             </span>

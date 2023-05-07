@@ -11,10 +11,9 @@
 }
 
 body {
-  @apply scroller;
-  @apply leading-normal tracking-normal;
-  @apply text-gray-700 bg-white;
-  @apply dark:text-gray-300 dark:bg-gray-900;
+  @apply leading-normal tracking-normal scroller;
+  @apply text-gray-300 bg-gray-900;
+  @apply font-body;
 }
 
 /* Default form elements */

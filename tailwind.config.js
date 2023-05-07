@@ -155,13 +155,14 @@ module.exports = {
         xl: ".75rem",
       },
       colors: {
-        black: "#12151E",
+        // black: "#12151E",
         "hot-pink": "#fd2d78",
         twitter: "#1d9bf0",
         linkedin: "#0a66c2",
       },
       fontFamily: {
-        sans: ["var(--font-theme)", ...fontFamily.sans],
+        body: ["var(--font-theme)", ...fontFamily.sans],
+        // sans: ["var(--font-theme)", ...fontFamily.sans],
       },
       fontSize: {
         "7xl": "5rem",
