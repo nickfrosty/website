@@ -5238,10 +5238,10 @@ zod@^3.20.2:
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.21.4.tgz#10882231d992519f0a10b5dd58a38c9dabbb64db"
   integrity sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==
 
-zumo@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/zumo/-/zumo-0.0.12.tgz#3b71729fc3e9b9d94a05385b0718e17c8440f969"
-  integrity sha512-mIxxAyEsg0y2+x3FeAYAA4yEO6BPxTiZwHTER0kAZqn/CI1eYGwYcnOc1w956mmTNRbNerXM35Dr1wkEMp0YLQ==
+zumo@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/zumo/-/zumo-0.1.1.tgz#f5ba9c574eb91df3fcd177558c5814e105a033a7"
+  integrity sha512-Qh9E8yxYl+LVbfd9vQe+2sS/R/BURUApCI8i9rmB+16zNUJC5jmDFz3UAHazs7Wrw2HiwF/GCTOGaqbkm3M4yQ==
   dependencies:
     gray-matter "^4.0.3"
     luxon "^3.0.4"

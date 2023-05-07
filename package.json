@@ -33,7 +33,7 @@
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "tsx": "^3.12.7",
-    "zumo": "^0.0.12"
+    "zumo": "^0.1.1"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",
