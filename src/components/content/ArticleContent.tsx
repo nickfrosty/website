@@ -11,9 +11,12 @@ type ComponentProps = {
   content?: any;
 };
 
-export function ArticleContent({ className, content }: ComponentProps) {
+export function ArticleContent({
+  className = "",
+  content = "",
+}: ComponentProps) {
   return (
-    <article className={styles.article}>
+    <article className={`${styles.article} ${className}`}>
       <ReactMarkdown
         rehypePlugins={[rehypeRaw, remarkGfm]}
         components={{ code: CodeBlock }}

@@ -1,4 +1,4 @@
-import type { SimpleLinkItem } from "@@/types";
+import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
 import { NextSeoProps } from "next-seo";
 import ColumnLayout from "@/layouts/ColumnLayout";
 
