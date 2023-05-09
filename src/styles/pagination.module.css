@@ -1,0 +1,32 @@
+/**
+  Style the pagination related components
+*/
+
+.button {
+  @apply flex items-center gap-3 px-5 py-2 border rounded-xl w-fit;
+  @apply text-white bg-indigo-900 border-indigo-500;
+  @apply hover:bg-indigo-800;
+}
+.button ~ .prev {
+  @apply place-self-start;
+}
+.button ~ .next {
+  @apply self-end justify-end place-self-end;
+}
+.button .svg {
+  @apply w-4 h-4 text-white;
+}
+
+/*
+  Styles
+*/
+.pagination {
+  @apply flex items-center justify-center w-full mx-auto space-x-5 text-center;
+}
+
+/*
+  Styles for the next/prev button container for articles
+*/
+.nextPrevSection {
+  @apply grid w-full gap-8 md:grid-cols-2;
+}

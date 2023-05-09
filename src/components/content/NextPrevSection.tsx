@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 import type { DocumentTypes } from "contentlayer/generated";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import styles from "@/styles/pagination.module.css";
 
 type ComponentProps = {
   className?: string;
@@ -24,13 +24,13 @@ export function NextPrevSection({
   */
 
   return (
-    <section className="grid w-full gap-8 md:grid-cols-2">
+    <section className={styles.nextPrevSection}>
       {prev && prev?.slug ? (
         <Link
           href={`${hrefBase}/${prev.slug}`}
-          className="px-5 py-2 text-white bg-indigo-900 border border-indigo-700 place-self-start rounded-xl w-fit flexer hover:bg-indigo-800"
+          className={`${styles.button} ${styles.prev}`}
         >
-          <ArrowLeftIcon className="w-4 h-4 mr-4 text-white" />
+          <ArrowLeftIcon className={styles.svg} />
           <span className="line-clamp-1">{prev?.title || "Previous"}</span>
         </Link>
       ) : (
@@ -40,13 +40,10 @@ export function NextPrevSection({
       {next && next?.slug ? (
         <Link
           href={`${hrefBase}/${next.slug}`}
-          className="self-end justify-end px-5 py-2 text-white bg-indigo-900 border border-indigo-700 place-self-end rounded-xl flexer hover:bg-indigo-800 w-fit"
+          className={`${styles.button} ${styles.next}`}
         >
-          <div className="">
-            {/* <p className="font-mono text-sm font-semibold uppercase">Next:</p> */}
-            <p className="line-clamp-1">{next?.title || "Next"}</p>
-          </div>
-          <ArrowRightIcon className="w-4 h-4 ml-4 text-white" />
+          <p className="line-clamp-1">{next?.title || "Next"}</p>
+          <ArrowRightIcon className={styles.svg} />
         </Link>
       ) : (
         <div></div>
