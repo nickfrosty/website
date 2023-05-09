@@ -81,7 +81,7 @@ type PostMetadata = {
   tags?: string[] | string;
 };
 
-// used for SmallCard, LargeCard, and BlogCard
+// used for SmallCard, and BlogCard
 type CardComponentProps = {
   className?: string;
   children?: React.ReactNode;
