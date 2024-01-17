@@ -69,7 +69,7 @@ running:
 solana-keygen --version
 
 # output (note the version)
-# solana-keygen 1.14.11 (src:61876755; feat:3036606309)
+# solana-keygen 1.17.6 (src:61caae6b; feat:3073089885, client:SolanaLabs)
 ```
 
 Note the version you have installed. This will be important if you want to
@@ -171,66 +171,7 @@ different for the default settings on the CLI and what web browsers wallets
 (like Phantom and Solflare) use.
 
 So to use a Solana vanity address in a browser wallet, you must change the
-derivation path use in the `grind`.
-
-#### Bad news...
-
-At the time of me writing this (Dec 27, 2022), the current Solana CLI version
-[v1.14.11](https://github.com/solana-labs/solana/releases/tag/v1.14.11) does not
-support changing the derivation path. So you cannot generate a browser wallet
-compatible vanity address... Sorry. 😑
-
-#### Good news!
-
-A [wonderful person](https://github.com/diman-io) has submitted and gotten
-approved
-[a change](https://github.com/solana-labs/solana/commit/6899af26b07d24254607796d6957fe305d96ba0c)
-to the keygen program that adds the ability to change the derivation path to one
-usable by browser wallets. It is expected to come out in v1.15.0.
-
-So you can either wait for that version to get officially published.... or...
-
-You can download the official Solana source code,
-[build from source](https://docs.solana.com/cli/install-solana-cli-tools#build-from-source),
-and get access to this wonderful addition now.
-
-This is what I did to start using new feature. Below is how.
-
-PS: I will update this article when the `derivation-path` flag is available in
-the regular Solana CLI.
-
-### Build from source
-
-This section will be short and to the point. I am assuming you have the Rust
-compiler installed and `git`. If you are a developer, especially a Solana dev,
-then you probably do. (I ran this on Linux, but it should also work find on Mac.
-Windows? Just stop.)
-
-These are the complete commands that I ran to build the `solana-keygen` program
-from source, directly from the
-[Solana repo](https://github.com/solana-labs/solana):
-
-```bash
-mkdir solana && cd solana
-git clone https://github.com/solana-labs/solana.git ./
-cd keygen && ./cargo build --release && cd
-./solana/target/release/solana-keygen --version
-```
-
-After running all these commands, you should see a final output of the
-`solana-keygen` version:
-
-```bash
-#output (only the version really matters)
-solana-keygen 1.15.0 (src:devbuild; feat:3921999736)
-```
-
-Now you can use the `--derivation-path` flag to generate browser wallet
-compatible vanity addresses:
-
-```bash
-./solana/target/release/solana-keygen grind --use-mnemonic --derivation-path
-```
+derivation path used in the `grind` command.
 
 ### Vanity with mnemonic and derivation path
 
@@ -243,13 +184,13 @@ As apposed to the default the Solana CLI the derivation path of `m/44'/501'`
 (which is NOT compatible with browser wallets).
 
 ```bash
-./solana/target/release/solana-keygen grind --use-mnemonic --derivation-path --starts-with nick:1 --no-passphrase
+solana-keygen grind --use-mnemonic --derivation-path --starts-with nick:1 --no-passphrase
 ```
 
 If you want, you can also set a custom derivation path like so:
 
 ```bash
-./solana/target/release/solana-keygen grind --use-mnemonic --derivation-path m/44/117/0/0 --starts-with nick:1 --no-passphrase
+solana-keygen grind --use-mnemonic --derivation-path m/44/117/0/0 --starts-with nick:1 --no-passphrase
 ```
 
 ### Add your vanity address into your browser wallet
@@ -275,7 +216,7 @@ Like so:
 ```bash
 mkdir grinder_keys && cd grind_keys
 mkdir keys && cd keys
-./solana/target/release/solana-keygen grind --no-passphrase --use-mnemonic --derivation-path --ignore-case --starts-with nick:100 --starts-with more:100 >> ../mnemonics.txt
+solana-keygen grind --no-passphrase --use-mnemonic --derivation-path --ignore-case --starts-with nick:100 --starts-with more:100 >> ../mnemonics.txt
 ```
 
 This allows me to simply run the same `grind` command every time I start my
