@@ -8,12 +8,10 @@
   },
   "scripts": {
     "dev": "next dev",
-    "export": "next export",
     "build": "yarn contentlayer && next build",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
-    "generate": "next build && next-sitemap && yarn rss && next export",
     "contentlayer": "contentlayer build --clearCache",
     "rss": "yarn tsx ./utils/rss.ts"
   },
