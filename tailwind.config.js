@@ -7,7 +7,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   // darkMode: "media",
   plugins: [
-    require("@tailwindcss/line-clamp"),
+    // comment for better diffs
     require("@tailwindcss/typography"),
     require("tailwind-scrollbar"),
   ],
