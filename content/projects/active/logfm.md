@@ -1,6 +1,5 @@
 ---
-status: active
-homepage: true
+status: backburner
 title: "log.fm"
 url: https://log.fm
 dateRange: "Jan 2022 - current"
