@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: `${config.siteName} - Blog`,
   description:
     "An anthology of me building in public 👷. Writing down and sharing my thoughts and experiences as I go (plus some other goodies too).",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default function Page() {
@@ -39,10 +42,15 @@ export default function Page() {
         </p>
       </header>
 
-      <section className="grid gap-8 md:gap-12 md:grid-cols-2">
+      <section className="grid gap-8 md:grid-cols-2">
         {posts.map((post, key) => {
           return (
-            <div key={key} className="">
+            <div
+              key={key}
+              className={`relative p-2 border border-transparent rounded-md ${
+                post.draft === true ? "!border-red-900" : ""
+              }`}
+            >
               {!!post.category && (
                 <h4 className="text-base font-medium tracking-wide text-gray-500 capitalize">
                   {post.category}
@@ -57,7 +65,12 @@ export default function Page() {
                 </Link>
               </h3>
 
-              <div className="block text-gray-500 whitespace-nowrap md:inline-block">
+              <div className="flex items-center text-gray-500 whitespace-nowrap md:inline-block">
+                {post.draft === true && (
+                  <span className="absolute right-2 w-min px-[5px] py-[4px] bg-gray-800 leading-none font-mono text-xs text-gray-500 border border-gray-600 rounded-md">
+                    draft
+                  </span>
+                )}
                 {displayDate(post.date)}
               </div>
             </div>
