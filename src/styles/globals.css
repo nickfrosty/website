@@ -11,7 +11,7 @@
 }
 
 body {
-  @apply leading-normal tracking-normal scroller;
+  @apply leading-snug tracking-normal scroller;
   @apply text-gray-300 bg-gray-900;
   @apply font-body;
 }
