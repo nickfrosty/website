@@ -266,7 +266,7 @@ export const Project = defineDocumentType(() => ({
       resolve: (post) =>
         post.url?.startsWith("http")
           ? new URL(post.url).toString()
-          : `/projects/${post.slug}`,
+          : `/projects/${post._raw.sourceFileName.split(".")[0]}`,
     },
     tags: {
       description: "Array listing of tags",
