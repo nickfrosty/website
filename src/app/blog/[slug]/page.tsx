@@ -36,6 +36,9 @@ export async function generateMetadata({
     title: `${post.title} | Blog`,
     description:
       post.description || "Read more from this blog post to learn more.",
+    alternates: {
+      canonical: post.href,
+    },
   };
 }
 
