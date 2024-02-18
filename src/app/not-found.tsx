@@ -1,5 +1,3 @@
-import Layout from "@/layouts/default";
-
 // construct the meta data for the page
 const metaData = {
   title: "Nope, couldn't find that page...",
@@ -8,15 +6,13 @@ const metaData = {
     "I swear this never happens. You found a page that does not exist, or I moved it. Or am hiding it from you?? 🙃",
 };
 
-type PageProps = {};
-
-export default function ErrorPage({}: PageProps) {
+export default function ErrorPage() {
   return (
-    <Layout seo={metaData} className="my-20 text-center md:space-y-16">
+    // <Layout seo={metaData} className="my-20 text-center md:space-y-16">
+    <>
       <h1 className="text-5xl font-bold md:block">
         Well, this is embarrassing...
       </h1>
-
       <main className="max-w-xl mx-auto space-y-12 text-2xl">
         <p>
           You found a page that does not exist, or I moved it.
@@ -29,6 +25,6 @@ export default function ErrorPage({}: PageProps) {
           <br /> just move on.
         </p>
       </main>
-    </Layout>
+    </>
   );
 }

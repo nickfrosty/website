@@ -1,39 +1,27 @@
-/* eslint-disable @next/next/no-img-element */
-import type { NextSeoProps } from "next-seo";
-import Layout from "@/layouts/default";
-import { Project, allProjects } from "contentlayer/generated";
+import { allProjects } from "contentlayer/generated";
 import Link from "next/link";
 import AvatarImage from "@/components/AvatarImage";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import ProjectCard from "@/components/ProjectCard";
+import { Metadata } from "next";
 // import SocialIcons from "@/components/SocialIcons";
 
-// construct the meta data for the page
-const seoMetaData: NextSeoProps = {
+export const metadata: Metadata = {
   title: "Nick Frostbutter",
-  titleTemplate: "%s",
+  // titleTemplate: "%s",
   description:
     "Hi! I'm Nick, a full stack developer and submariner working on various projects. In my free time I write software, technical articles, and build things.",
 };
 
-export async function getStaticProps() {
-  // locate the `homepage` projects
+export default function Page() {
   const projects = allProjects
     .filter((item) => item?.homepage == true)
     .slice(0, 3);
 
-  return {
-    props: { projects },
-  };
-}
-
-type PageProps = {
-  projects: Project[];
-};
-
-export default function Page({ projects }: PageProps) {
   return (
-    <Layout footer={false} seo={seoMetaData} className="md:space-y-16">
+    <>
+      {" "}
+      {/** md:space-y-16 */}
       <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 lg:mt-30 md:gap-32 sm:mt-8 lg:grid-cols-2">
         <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
           <Link
@@ -120,6 +108,6 @@ export default function Page({ projects }: PageProps) {
           )}
         </section>
       </section>
-    </Layout>
+    </>
   );
 }

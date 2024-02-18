@@ -1,19 +1,16 @@
-/* eslint-disable @next/next/no-img-element */
-import { NextSeoProps } from "next-seo";
-import DefaultLayout from "@/layouts/default";
-
-import { Blog, allBlogs } from "contentlayer/generated";
+import { allBlogs } from "contentlayer/generated";
 import { BlogCard } from "@/components/cards/BlogCard";
-import { useState } from "react";
+import { Metadata } from "next";
+// import { useState } from "react";
 
 // construct the seo meta data for the page
-const seo: NextSeoProps = {
+export const metadata: Metadata = {
   title: "Blog",
   description:
     "An anthology of me building in public 👷. Writing down and sharing my thoughts and experiences as I go (plus some other goodies too).",
 };
 
-export async function getStaticProps() {
+export default function Page() {
   // get a listing of regular posts (hiding drafts)
   const posts = allBlogs
     .filter((post) =>
@@ -30,21 +27,11 @@ export async function getStaticProps() {
   //   .filter((post) => post.draft !== true && post.featured === true)
   //   .slice(0, 2);
 
-  return {
-    props: { posts },
-  };
-}
-
-type PageProps = {
-  posts: Blog[];
-  featured: Blog[];
-};
-
-export default function Page({ posts, featured }: PageProps) {
-  const [counter, setCounter] = useState(3);
+  const counter = 3;
+  // const [counter, setCounter] = useState(3);
 
   return (
-    <DefaultLayout seo={seo}>
+    <>
       <main className="max-w-3xl px-3 mx-auto space-y-8">
         <header className="max-w-xl mx-auto space-y-8 text-center">
           {/* <h1 className="mb-2 text-6xl heading">BLOG</h1> */}
@@ -63,20 +50,20 @@ export default function Page({ posts, featured }: PageProps) {
           ))}
         </section>
 
-        {counter < posts.length && (
+        {/* {counter < posts.length && (
           <section className="">
             <button
               onClick={(e) => {
                 e.preventDefault();
-                setCounter(counter + 5);
+                // setCounter(counter + 5);
               }}
               className="block w-full btn"
             >
               Load More Posts
             </button>
           </section>
-        )}
+        )} */}
       </main>
-    </DefaultLayout>
+    </>
   );
 }

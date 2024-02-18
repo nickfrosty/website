@@ -8,7 +8,7 @@ type ComponentProps = {
   className?: string;
   baseHref: string;
   posts: Blog[] | Article[];
-  pagination: PaginationProps;
+  pagination?: PaginationProps;
 };
 
 export function CardGrid({
@@ -30,9 +30,11 @@ export function CardGrid({
         )) ?? null}
       </section>
 
-      {pagination && typeof pagination === "object" ? (
+      <p>todo:load more</p>
+
+      {/* {pagination && typeof pagination === "object" ? (
         <Pagination {...pagination} />
-      ) : null}
+      ) : null} */}
     </>
   );
 }

@@ -1,20 +1,16 @@
-import { PaginationProps } from "@@/types";
-import { NextSeoProps } from "next-seo";
-import DefaultLayout from "@/layouts/default";
-
 import { computePagination } from "zumo";
-
-import { Article, allArticles } from "contentlayer/generated";
+import { allArticles } from "contentlayer/generated";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { SmallCard } from "@/components/cards/SmallCard";
+import { Metadata } from "next";
 
 // construct the seo meta data for the page
-const seo: NextSeoProps = {
+export const metadata: Metadata = {
   title: "Articles and How-To's",
   description: `Collection of "how-to" style tutorials and technical writings. Mostly centered around coding, devops, and content creators.`,
 };
 
-const metaData = {
+const metadataConfig = {
   baseHref: "/articles",
   paginationTemplate: "/articles/page/{{id}}",
 };
@@ -62,12 +58,13 @@ export async function preparePage(currentPage?: number) {
     );
 
   // construct the `pagination` data object
-  const pagination = computePagination(
-    posts.length,
-    currentPage ?? 1,
-    metaData.baseHref,
-    metaData?.paginationTemplate,
-  );
+  const pagination =
+    computePagination(
+      posts.length,
+      currentPage ?? 1,
+      metadataConfig.baseHref,
+      metadataConfig?.paginationTemplate,
+    ) || undefined;
 
   // chunk out the posts for the current page
   // @ts-ignore
@@ -78,26 +75,19 @@ export async function preparePage(currentPage?: number) {
   };
 }
 
-type PageStaticProps = {
+type PageProps = {
   params: {
     page?: number;
   };
 };
 
-export async function getStaticProps({ params }: PageStaticProps) {
-  return await preparePage(params?.page ?? 1);
-}
+export default async function Page({ params: { page = 1 } }: PageProps) {
+  const {
+    props: { posts, featured, pagination },
+  } = await preparePage(page);
 
-type PageProps = {
-  seo: NextSeoProps;
-  posts: Article[];
-  featured?: Article[];
-  pagination: PaginationProps;
-};
-
-export default function Page({ posts, featured, pagination }: PageProps) {
   return (
-    <DefaultLayout seo={seo}>
+    <>
       {!!featured?.length &&
         pagination &&
         (pagination?.page as number) <= 1 && (
@@ -107,8 +97,8 @@ export default function Page({ posts, featured, pagination }: PageProps) {
                 <SmallCard
                   key={post.slug}
                   post={post}
-                  baseHref={metaData.baseHref}
-                ></SmallCard>
+                  baseHref={metadataConfig.baseHref}
+                />
               );
             })}
           </section>
@@ -116,9 +106,9 @@ export default function Page({ posts, featured, pagination }: PageProps) {
 
       <CardGrid
         posts={posts}
-        baseHref={metaData.baseHref}
+        baseHref={metadataConfig.baseHref}
         pagination={pagination}
       />
-    </DefaultLayout>
+    </>
   );
 }

@@ -1,19 +1,18 @@
-/* eslint-disable @next/next/no-img-element */
-import type { ProsePageProps, SimpleLinkItem } from "@@/types";
+import type { SimpleLinkItem } from "@@/types";
 import ProseLayout from "@/layouts/ProseLayout";
 
 import { Article, allArticles } from "@@/.contentlayer/generated";
-import { getDocMetaBySlug } from "zumo";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
+import { Metadata } from "next";
 const config = zumoConfig.content.articles;
 
 // construct the meta data for the page
-const metaData = {
+export const metadata: Metadata = {
   title: "Articles",
   description: "Read more about this super cool article I wrote.",
-  contentDir: "articles",
+  // contentDir: "articles",
 };
 
 const breadcrumbParents: SimpleLinkItem = {
@@ -21,28 +20,28 @@ const breadcrumbParents: SimpleLinkItem = {
   label: "Articles",
 };
 
-export async function getStaticPaths() {
-  const paths = allArticles.map((item) => {
-    return {
-      params: {
-        slug: item.slug,
-      },
-    };
-  });
+// export async function getStaticPaths() {
+//   const paths = allArticles.map((item) => {
+//     return {
+//       params: {
+//         slug: item.slug,
+//       },
+//     };
+//   });
 
-  return {
-    paths: paths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths: paths,
+//     fallback: false,
+//   };
+// }
 
-type PageStaticProps = {
+type PageProps = {
   params: {
     slug: string;
   };
 };
 
-export async function getStaticProps({ params: { slug } }: PageStaticProps) {
+export default function Page({ params: { slug } }: PageProps) {
   // select the currently viewed post
   const post = allArticles.filter((post) => post.slug == slug)?.[0];
 
@@ -74,17 +73,11 @@ export async function getStaticProps({ params: { slug } }: PageStaticProps) {
       );
   }
 
-  return {
-    props: { post, next, prev },
-  };
-}
-
-export default function Page({ post, next, prev }: ProsePageProps) {
   return (
     <ProseLayout
       post={post}
-      next={next}
-      prev={prev}
+      // next={next}
+      // prev={prev}
       config={config}
       breadcrumbParents={[breadcrumbParents]}
       breadcrumbShowHome={false}

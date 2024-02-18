@@ -1,22 +1,19 @@
-/* eslint-disable @next/next/no-img-element */
-import Layout from "@/layouts/default";
 import Link from "next/link";
 import NowDetailsItem from "@/components/NowDetailsItem";
 import AvatarImage from "@/components/AvatarImage";
+import { Metadata } from "next";
 // import NowMessageNotice from "@/components/NowMessageNotice";
 
-// construct the meta data for the page
-const metaData = {
+export const metadata: Metadata = {
   title: "What I'm working on now",
   description:
     "I am always working on various projects. Here are some high level snapshots of what I am working on now.",
 };
 
-type PageProps = {};
-
-export default function Page({}: PageProps) {
+export default function Page() {
   return (
-    <Layout seo={metaData} className="md:space-y-16">
+    // <Layout seo={metaData} className="md:space-y-16">
+    <>
       <main className="max-w-3xl mx-auto space-y-12 text-lg">
         <div className="max-w-xl mx-auto space-y-8">
           <div className="items-center justify-center mx-auto md:flex md:space-x-5">
@@ -165,6 +162,6 @@ export default function Page({}: PageProps) {
           </p>
         </NowDetailsItem> */}
       </main>
-    </Layout>
+    </>
   );
 }

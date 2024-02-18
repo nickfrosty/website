@@ -1,16 +1,14 @@
-import DefaultLayout from "@/layouts/default";
+import type { Metadata } from "next";
 import ProjectCard from "@/components/ProjectCard";
-import { NextSeoProps } from "next-seo";
-import { Project, allProjects } from "contentlayer/generated";
+import { allProjects } from "contentlayer/generated";
 
-// construct the seo meta data for the page
-const seo: NextSeoProps = {
+export const metadata: Metadata = {
   title: "Projects",
   description:
     "I'm always working on something. These are my main active projects, and previous projects. All in various states.",
 };
 
-export async function getStaticProps() {
+export default function Page() {
   // filter for only non `active` projects from the listing
   const projects = allProjects.filter((item) => item.status != "active");
 
@@ -19,16 +17,9 @@ export async function getStaticProps() {
 
   // todo: sort the projects by their `sortDate`
 
-  return {
-    props: { projects, featured },
-  };
-}
-
-type PageProps = { projects: Project[]; featured?: Project[] };
-
-export default function Page({ projects, featured }: PageProps) {
   return (
-    <DefaultLayout seo={seo} className="space-y-16">
+    // <DefaultLayout seo={seo} className="space-y-16">
+    <>
       <section className="mb-12 text-center">
         <h1 className="mb-5 text-4xl font-bold">Active Projects</h1>
 
@@ -68,6 +59,6 @@ export default function Page({ projects, featured }: PageProps) {
           <ProjectCard key={project.title} project={project} />
         ))}
       </section>
-    </DefaultLayout>
+    </>
   );
 }

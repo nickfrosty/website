@@ -1,34 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
-import {
-  generateStaticPaths,
-  getDocBySlug,
-  getDocsByPath,
-  filterDocs,
-  computePagination,
-  parseTemplate,
-} from "zumo";
+import { computePagination, parseTemplate } from "zumo";
 
 import { NextSeoProps } from "next-seo";
-import Layout from "@/layouts/default";
 
-import {
-  Article,
-  ArticleTag,
-  allArticleTags,
-  allArticles,
-} from "contentlayer/generated";
+import { allArticleTags, allArticles } from "contentlayer/generated";
 
 import { HeroSection } from "@/components/content/HeroSection";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { PaginationProps } from "@@/types";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 // construct the meta data for the page
-const seo: NextSeoProps = {
+export const metadata: Metadata = {
   title: "Tags",
   description: "Explore all my articles with written about this topic.",
 };
 
-const metaData = {
+const config = {
   baseHref: "/tags/{{tag}}",
   paginationTemplate: "{{baseHref}}/{{id}}",
 };
@@ -44,7 +33,7 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   // give the 404 page when no `slug` was found
   if (!slug) return { notFound: true };
 
-  // retrieve the current `tag` document, when on exists
+  // retrieve the current `tag` document, when it exists
   const tagMeta = allArticleTags.filter(
     (item) => item.slug?.toLowerCase().replace(/\s+/g, "-") == slug,
   )?.[0] || {
@@ -54,8 +43,8 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   };
 
   // parse and update the `baseHref` to include the current tag
-  metaData.baseHref = parseTemplate(metaData?.baseHref, {
-    baseHref: metaData.baseHref,
+  config.baseHref = parseTemplate(config?.baseHref, {
+    baseHref: config.baseHref,
     tag: slug.toLowerCase(),
   });
 
@@ -95,12 +84,13 @@ export async function preparePage(slug: string, currentPage: number = 1) {
     posts.filter((item) => item?.featured === true)?.[0] || latestPost;
 
   // construct the `pagination` data object
-  const pagination = computePagination(
-    posts.length,
-    currentPage,
-    metaData?.baseHref,
-    metaData?.paginationTemplate,
-  );
+  const pagination =
+    computePagination(
+      posts.length,
+      currentPage,
+      config?.baseHref,
+      config?.paginationTemplate,
+    ) || undefined;
 
   // construct the miscellaneous metadata
   const tagMetadata: TagMetadata = {
@@ -115,8 +105,8 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   posts = posts.filter((item) => item.slug !== featured?.slug);
 
   // set the on page metaData meta settings
-  seo.title = tagMeta?.title ?? slug;
-  seo.description = `Explore all my articles with written about ${
+  metadata.title = tagMeta?.title ?? slug;
+  metadata.description = `Explore all my articles with written about ${
     tagMeta?.title ?? slug
   }. They are pretty great :)`;
 
@@ -125,84 +115,70 @@ export async function preparePage(slug: string, currentPage: number = 1) {
   posts = posts.slice(pagination.start, pagination.end);
 
   return {
-    props: {
-      seo,
-      tagMetadata,
-      tagMeta,
-      posts,
-      featured,
-      pagination,
-    },
+    tagMetadata,
+    tagMeta,
+    posts,
+    featured,
+    pagination,
   };
 }
 
-export async function getStaticPaths() {
-  let paths: object[] = [];
+// export async function getStaticPaths() {
+//   let paths: object[] = [];
 
-  // determine the tags from all articles
-  allArticles
-    .filter((post) =>
-      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
-    )
-    .map((item) => {
-      if (Array.isArray(item.tags)) {
-        item.tags.map((tag: string) => {
-          paths.push({
-            params: {
-              slug: tag.replace(/\s+/g, "-"),
-            },
-          });
-        });
-      }
-      return;
-    });
+//   // determine the tags from all articles
+//   allArticles
+//     .filter((post) =>
+//       process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+//     )
+//     .map((item) => {
+//       if (Array.isArray(item.tags)) {
+//         item.tags.map((tag: string) => {
+//           paths.push({
+//             params: {
+//               slug: tag.replace(/\s+/g, "-"),
+//             },
+//           });
+//         });
+//       }
+//       return;
+//     });
 
-  return {
-    paths: paths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths: paths,
+//     fallback: false,
+//   };
+// }
 
-type PageStaticProps = {
+type PageProps = {
   params: { page?: number; slug: string };
 };
 
-export async function getStaticProps({
-  params: { page, slug },
-}: PageStaticProps) {
-  return await preparePage(slug, page ?? 1);
-}
+export default async function Page({ params: { page, slug } }: PageProps) {
+  const {
+    // comment for better diffs
+    tagMeta,
+    tagMetadata,
+    posts,
+    featured,
+    pagination,
+  } = await preparePage(slug, page ?? 1);
 
-type PageProps = {
-  seo: NextSeoProps;
-  posts: Article[];
-  tagMeta: ArticleTag;
-  tagMetadata: TagMetadata;
-  featured?: Article;
-  pagination: PaginationProps;
-};
+  if (!tagMeta) notFound();
 
-export default function Page({
-  seo,
-  tagMeta,
-  tagMetadata,
-  posts,
-  featured,
-  pagination,
-}: PageProps) {
   // TODO: support setting a canonical tag, likely via a util function to standardize the data
   // if (!meta?.canonical) meta.canonical = `${href}`;
 
   return (
-    <Layout seo={seo}>
+    <>
       <HeroSection
         metadata={tagMeta}
-        baseHref={metaData?.baseHref}
+        baseHref={config?.baseHref}
         heading="tag"
         featured={featured}
       />
 
       <CardGrid posts={posts} baseHref={"/articles"} pagination={pagination} />
-    </Layout>
+    </>
   );
 }

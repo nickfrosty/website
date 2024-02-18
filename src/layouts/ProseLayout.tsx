@@ -1,3 +1,5 @@
+"use client";
+
 import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
 import { NextSeoProps } from "next-seo";
 import ColumnLayout from "@/layouts/ColumnLayout";
@@ -74,7 +76,8 @@ export default function ProseLayout({
   }
 
   return (
-    <ColumnLayout seo={{ ...post, ...seo }}>
+    // <ColumnLayout seo={{ ...post, ...seo }}>
+    <>
       {/* Bread crumbs area */}
       <Breadcrumbs
         post={post}
@@ -104,6 +107,6 @@ export default function ProseLayout({
       </main>
 
       <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} />
-    </ColumnLayout>
+    </>
   );
 }

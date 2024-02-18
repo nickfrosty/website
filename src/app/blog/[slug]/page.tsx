@@ -1,18 +1,20 @@
-import { ProsePageProps, SimpleLinkItem } from "@@/types";
+import { SimpleLinkItem } from "@@/types";
 import ProseLayout from "@/layouts/ProseLayout";
 import { Blog, allBlogs } from "contentlayer/generated";
 
-import { getDocMetaBySlug } from "zumo";
-
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
+import { Metadata } from "next";
 const config = zumoConfig.content.blog;
 
+// todo:
+// export function generateMetadata(){}
+
 // construct the meta data for the page
-const metaData = {
+export const metadata: Metadata = {
   title: "Blog",
   description: "Read more from this blog post as part of my online anthology.",
-  contentDir: "blog",
+  // contentDir: "blog",
 };
 
 const breadcrumbParents: SimpleLinkItem = {
@@ -20,28 +22,26 @@ const breadcrumbParents: SimpleLinkItem = {
   label: "Blog",
 };
 
-export async function getStaticPaths() {
-  const paths = allBlogs.map((item) => {
-    return {
-      params: {
-        slug: item.slug,
-      },
-    };
-  });
+// export async function getStaticPaths() {
+//   const paths = allBlogs.map((item) => {
+//     return {
+//       params: {
+//         slug: item.slug,
+//       },
+//     };
+//   });
 
-  return {
-    paths: paths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths: paths,
+//     fallback: false,
+//   };
+// }
 
-type PageStaticProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function getStaticProps({ params: { slug } }: PageStaticProps) {
+export default function Page({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
   // select the currently viewed post
   const post = allBlogs.filter((post) => post.slug == slug)?.[0];
 
@@ -61,17 +61,11 @@ export async function getStaticProps({ params: { slug } }: PageStaticProps) {
   // if (post?.prevPage)
   //   prev = await getDocMetaBySlug(post.prevPage, metaData.contentDir);
 
-  return {
-    props: { post, next, prev },
-  };
-}
-
-export default function Page({ post, next, prev }: ProsePageProps) {
   return (
     <ProseLayout
       post={post}
-      next={next}
-      prev={prev}
+      // next={next}
+      // prev={prev}
       config={config}
       breadcrumbParents={[breadcrumbParents]}
       breadcrumbShowHome={false}
