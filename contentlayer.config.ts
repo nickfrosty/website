@@ -20,11 +20,6 @@ const postFields: FieldDefs = {
     description: "The primary title of the post",
     required: true,
   },
-  href: {
-    type: "string",
-    description: "Predefined URL of the post",
-    required: false,
-  },
   slug: {
     type: "string",
     description: "URL slug for the post",
