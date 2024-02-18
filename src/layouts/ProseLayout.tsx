@@ -1,8 +1,6 @@
 "use client";
 
 import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
-import { NextSeoProps } from "next-seo";
-
 import { parseTemplate } from "zumo";
 import Link from "next/link";
 
@@ -42,35 +40,6 @@ export default function ProseLayout({
     baseHref: config.baseHref,
     slug: post.slug,
   });
-
-  // define the base data
-  let seo: NextSeoProps = {
-    openGraph: {
-      title: post.title,
-    },
-  };
-
-  // add the image to the article, when defined
-  if (post?.image) {
-    seo = {
-      twitter: {
-        cardType: "summary_large_image",
-      },
-      openGraph: {
-        type: "website",
-        url: `https://nick.af${href}`,
-        title: post.title,
-        images: [
-          {
-            url: `https://nick.af${post.image}`,
-            width: 1200,
-            height: 728,
-            alt: post.title,
-          },
-        ],
-      },
-    };
-  }
 
   return (
     <>
