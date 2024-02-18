@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <html lang="en">
       {/* <style jsx global>
         {`
           :root {
@@ -34,11 +34,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         `}
       </style> */}
 
-      <AppHeader />
+      <body>
+        <AppHeader />
 
-      <section className={"container px-6 py-12 mx-auto"}>{children}</section>
+        <section className={"container px-6 py-12 mx-auto"}>{children}</section>
 
-      <AppFooter />
-    </>
+        <AppFooter />
+      </body>
+    </html>
   );
 }
