@@ -6,8 +6,11 @@ import { Metadata } from "next";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
-  title: "Articles and How-To's",
+  title: "Articles, Tutorials, and How-To's",
   description: `Collection of "how-to" style tutorials and technical writings. Mostly centered around coding, devops, and content creators.`,
+  alternates: {
+    canonical: "/articles",
+  },
 };
 
 const metadataConfig = {
@@ -15,7 +18,7 @@ const metadataConfig = {
   paginationTemplate: "/articles/page/{{id}}",
 };
 
-export async function preparePage(currentPage?: number) {
+export function preparePage(currentPage?: number) {
   // get a listing of regular posts (hiding drafts)
   let posts = allArticles
     .filter((post) =>
@@ -81,10 +84,10 @@ type PageProps = {
   };
 };
 
-export default async function Page({ params: { page = 1 } }: PageProps) {
+export default function Page({ params: { page = 1 } }: PageProps) {
   const {
     props: { posts, featured, pagination },
-  } = await preparePage(page);
+  } = preparePage(page);
 
   return (
     <>
