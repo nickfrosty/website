@@ -1,6 +1,6 @@
 ---
 homepage: false
-status: autopilot
+status: graveyard
 title: "Boomerang.link"
 url: https://boomerang.link
 dateRange: "Oct 2021 - Jan 2022"

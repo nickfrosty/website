@@ -1,6 +1,6 @@
 ---
 homepage: false
-status: autopilot
+status: graveyard
 title: "mailz.dev"
 url: https://mailz.dev
 dateRange: "Apr 2022"
