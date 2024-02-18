@@ -1,10 +1,9 @@
 import "@/styles/globals.css";
-
-import clsx from "clsx";
-import AppHeader from "@/components/core/AppHeader";
-import AppFooter from "@/components/core/AppFooter";
 import type { Metadata } from "next";
 import { SITE } from "@/lib/config";
+
+import AppHeader from "@/components/core/AppHeader";
+import AppFooter from "@/components/core/AppFooter";
 
 // import { Inter } from "next/font/google";
 
@@ -37,9 +36,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <AppHeader />
 
-      <section className={clsx("container px-6 py-12 mx-auto")}>
-        {children}
-      </section>
+      <section className={"container px-6 py-12 mx-auto"}>{children}</section>
 
       <AppFooter />
     </>
