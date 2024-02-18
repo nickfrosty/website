@@ -29,7 +29,7 @@ type TagMetadata = {
   publishDate: string | boolean;
 };
 
-export async function preparePage(slug: string, currentPage: number = 1) {
+function preparePage(slug: string, currentPage: number = 1) {
   // give the 404 page when no `slug` was found
   if (!slug) return { notFound: true };
 
@@ -154,7 +154,7 @@ type PageProps = {
   params: { page?: number; slug: string };
 };
 
-export default async function Page({ params: { page, slug } }: PageProps) {
+export default function Page({ params: { page, slug } }: PageProps) {
   const {
     // comment for better diffs
     tagMeta,
@@ -162,7 +162,7 @@ export default async function Page({ params: { page, slug } }: PageProps) {
     posts,
     featured,
     pagination,
-  } = await preparePage(slug, page ?? 1);
+  } = preparePage(slug, page ?? 1);
 
   if (!tagMeta) notFound();
 

@@ -18,7 +18,7 @@ const metadataConfig = {
   paginationTemplate: "/articles/page/{{id}}",
 };
 
-export function preparePage(currentPage?: number) {
+function preparePage(currentPage?: number) {
   // get a listing of regular posts (hiding drafts)
   let posts = allArticles
     .filter((post) =>
