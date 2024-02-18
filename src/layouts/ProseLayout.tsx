@@ -2,7 +2,6 @@
 
 import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
 import { NextSeoProps } from "next-seo";
-import ColumnLayout from "@/layouts/ColumnLayout";
 
 import { parseTemplate } from "zumo";
 import Link from "next/link";
@@ -16,7 +15,6 @@ import { DocumentTypes } from "contentlayer/generated";
 
 type LayoutProps = {
   className?: string;
-  children?: React.ReactNode;
 
   config: ZumoConfigRecord;
   post: DocumentTypes;
@@ -29,7 +27,6 @@ type LayoutProps = {
 };
 
 export default function ProseLayout({
-  children,
   config,
   post,
   next,
@@ -76,7 +73,6 @@ export default function ProseLayout({
   }
 
   return (
-    // <ColumnLayout seo={{ ...post, ...seo }}>
     <>
       {/* Bread crumbs area */}
       <Breadcrumbs
