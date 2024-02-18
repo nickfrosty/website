@@ -59,10 +59,9 @@
     @apply text-xl leading-tight;
   }
 
-  > p > img,
-  > img {
+  img {
     @apply mx-auto my-10;
-    @apply rounded-xl;
+    @apply overflow-hidden rounded-xl;
     @apply border border-gray-700 shadow-lg;
   }
 
@@ -80,13 +79,13 @@
     }
   }
 
-  p code,
+  /* p code,
   ul li *:not(pre) code,
   ul li > code,
   ol li *:not(pre) code,
   ol li > code {
-    /* @apply inline-block p-2 font-mono text-sm leading-none text-white align-baseline whitespace-nowrap; */
-  }
+    @apply inline-block p-2 font-mono text-sm leading-none text-white align-baseline whitespace-nowrap;
+  } */
 
   /* pre code,
   pre code&,
