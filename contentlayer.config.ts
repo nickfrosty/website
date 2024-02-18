@@ -39,6 +39,7 @@ const postFields: FieldDefs = {
     type: "boolean",
     description: "Draft status of the post",
     required: false,
+    default: false,
   },
   featured: {
     type: "boolean",

@@ -17,7 +17,7 @@ type PageProps = {
 
 export function generateStaticParams() {
   return allBlogs
-    .filter((post) => post.draft !== false)
+    .filter((post) => post.draft !== true)
     .map((post) => ({
       slug: post.slug as string,
     }));
@@ -56,7 +56,7 @@ export default function Page({ params: { slug } }: PageProps) {
   }
 
   // give 404 for `draft` pages in all non dev envs
-  if (post?.draft === true && process?.env?.NODE_ENV !== "development") {
+  if (!!post.draft && process?.env?.NODE_ENV !== "development") {
     return notFound();
   }
 

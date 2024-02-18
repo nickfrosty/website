@@ -21,7 +21,7 @@ type PageProps = {
 
 export function generateStaticParams() {
   return allProjects
-    .filter((item) => item.draft !== false && !item.href.startsWith("http"))
+    .filter((item) => !item.draft && !item.href.startsWith("http"))
     .map((item) => ({
       slug: item.href.replace(/^\/projects\//gi, ""),
     }));

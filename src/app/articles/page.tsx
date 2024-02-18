@@ -38,7 +38,7 @@ function preparePage(currentPage?: number) {
 
   // get a listing of featured posts
   const featured = allArticles
-    .filter((post) => post.featured === true && post?.draft !== true)
+    .filter((post) => post.featured === true && !post.draft)
     .slice(0, 2)
     // sort newest to oldest
     .sort(

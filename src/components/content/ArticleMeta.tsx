@@ -42,7 +42,7 @@ export function ArticleMeta({
 
       {/* Post tags and `draft` status */}
       <p className="flexer">
-        {post?.draft === true && <FloatLabel overlay={false} />}
+        {!!post.draft && <FloatLabel overlay={false} />}
 
         {Array.isArray(post?.tags) && post.tags?.length > 0 && (
           <>

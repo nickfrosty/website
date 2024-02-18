@@ -35,7 +35,7 @@ export function SmallCard({
 
       <div className="flex-shrink-0 block w-full bg-gray-900 aspect-video">
         {/* TODO: onerror load a default image, or remove the image? */}
-        {post?.draft === true && <FloatLabel label={"draft"} overlay={true} />}
+        {!!post.draft && <FloatLabel label={"draft"} overlay={true} />}
         {post?.image && (
           <img
             src={post.image}
