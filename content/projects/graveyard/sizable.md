@@ -1,15 +1,12 @@
 ---
-draft: false
 status: graveyard
 title: "Sizable.io"
-slug: sizable
 url: https://other.link
 dateRange: "2021"
 date: "2021-03-01"
-description: "rebranded to other.link"
-# intro: ''
+description: "Rebranded to other.link"
 logo: "/media/projects/sizable/sizable.png"
 # heroImage: '/media/projects/sizable/header.png'
 ---
 
-Sizable was renamed and rebranded into [other.link](/projects/otherlink)
+Sizable was renamed and rebranded into [other.link](https://other.link)
