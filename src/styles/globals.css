@@ -236,10 +236,10 @@ article a {
 */
 
 .tag {
-  @apply px-3 py-1 mr-3 cursor-pointer rounded-xl;
-  @apply border border-gray-800;
-  @apply bg-transparent;
-  @apply hover:border-gray-500;
+  @apply px-2 py-1 mr-3 space-x-[3px] rounded-md cursor-pointer;
+  @apply border border-gray-700;
+  @apply bg-gray-800;
+  @apply hover:border-gray-500 hover:text-white;
 }
 .inline-code {
   @apply px-3 py-1 ml-1 mr-2 rounded-lg;
