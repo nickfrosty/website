@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 import clsx from "clsx";
 import AppHeader from "@/components/core/AppHeader";
 import AppFooter from "@/components/core/AppFooter";
-import { Metadata } from "next";
-import config from "@/lib/config";
+import type { Metadata } from "next";
+import { SITE } from "@/lib/config";
 
 // import { Inter } from "next/font/google";
 
@@ -14,11 +14,14 @@ import config from "@/lib/config";
 // });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${config.domain}`),
-  title: "Nick Frostbutter",
-  // titleTemplate: "%s",
+  metadataBase: new URL(`https://${SITE.domain}`),
+  title: {
+    default: SITE.name,
+    template: `%s – ${SITE.name}`,
+  },
   description:
-    "Hi! I'm Nick, a full stack developer and submariner working on various projects. In my free time I write software, technical articles, and build things.",
+    "Hi! I'm Nick, a full stack developer and submariner working on various " +
+    "projects. In my free time I write software, technical articles, and build things.",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

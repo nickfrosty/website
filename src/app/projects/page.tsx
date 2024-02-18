@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { allProjects } from "contentlayer/generated";
 import ProjectCard from "@/components/ProjectCard";
-import config from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: `${config.siteName} - Projects`,
-  description:
-    "I'm always working on something. These are my main active " +
-    "projects, and previous projects. All in various states.",
   alternates: {
     canonical: "/projects",
   },
+  title: `Projects`,
+  description:
+    "I'm always working on something. These are my main active " +
+    "projects, and previous projects. All in various states.",
 };
 
 export default function Page() {

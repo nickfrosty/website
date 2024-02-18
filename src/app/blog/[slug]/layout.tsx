@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import config from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: `Read this blog post - ${config.siteName}`,
+  title: `Read this blog post`,
   description: "Read more from this blog post to learn more.",
 };
 

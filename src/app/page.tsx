@@ -1,16 +1,20 @@
+import type { Metadata } from "next";
 import { allProjects } from "contentlayer/generated";
 import Link from "next/link";
 import AvatarImage from "@/components/AvatarImage";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import ProjectCard from "@/components/ProjectCard";
-import { Metadata } from "next";
+import { SITE } from "@/lib/config";
 // import SocialIcons from "@/components/SocialIcons";
 
 export const metadata: Metadata = {
-  title: "Nick Frostbutter",
-  // titleTemplate: "%s",
+  alternates: { canonical: "/" },
+  title: {
+    absolute: SITE.name,
+  },
   description:
-    "Hi! I'm Nick, a full stack developer and submariner working on various projects. In my free time I write software, technical articles, and build things.",
+    "Hi! I'm Nick, a full stack developer and submariner working on various " +
+    "projects. In my free time I write software, technical articles, and build things.",
 };
 
 export default function Page() {
@@ -20,7 +24,6 @@ export default function Page() {
 
   return (
     <>
-      {" "}
       {/** md:space-y-16 */}
       <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 lg:mt-30 md:gap-32 sm:mt-8 lg:grid-cols-2">
         <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">

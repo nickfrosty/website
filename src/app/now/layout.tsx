@@ -4,9 +4,13 @@ import AvatarImage from "@/components/AvatarImage";
 // import NowMessageNotice from "@/components/NowMessageNotice";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/now",
+  },
   title: "What I'm working on now",
   description:
-    "I am always working on various projects. Here are some high level snapshots of what I am working on now.",
+    "I am always working on various projects. Here are some high level " +
+    "snapshots of what I am working on now.",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadata as layoutMetadata } from "./layout";
 import type { SimpleLinkItem } from "@@/types";
 import { allBlogs } from "contentlayer/generated";
 
@@ -34,8 +35,7 @@ export async function generateMetadata({
 
   return {
     title: `${post.title} | Blog`,
-    description:
-      post.description || "Read more from this blog post to learn more.",
+    description: post.description || layoutMetadata.description,
     alternates: {
       canonical: post.href,
     },

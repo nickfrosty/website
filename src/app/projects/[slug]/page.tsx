@@ -27,9 +27,7 @@ export function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: PageProps): Promise<Metadata> {
+export function generateMetadata({ params: { slug } }: PageProps): Metadata {
   const post = allProjects.find((post) => post.slug == slug);
 
   if (!post) {

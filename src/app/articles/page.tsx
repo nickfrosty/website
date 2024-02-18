@@ -1,16 +1,18 @@
+import type { Metadata } from "next";
 import { computePagination } from "zumo";
 import { allArticles } from "contentlayer/generated";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { SmallCard } from "@/components/cards/SmallCard";
-import { Metadata } from "next";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
-  title: "Articles, Tutorials, and How-To's",
-  description: `Collection of "how-to" style tutorials and technical writings. Mostly centered around coding, devops, and content creators.`,
   alternates: {
     canonical: "/articles",
   },
+  title: "Articles, Tutorials, and Guides",
+  description:
+    `Collection of "how-to" style tutorials and technical writings. ` +
+    `Mostly centered around coding, devops, and content creators.`,
 };
 
 const metadataConfig = {

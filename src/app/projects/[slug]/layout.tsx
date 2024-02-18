@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import config from "@/lib/config";
+import { SITE } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: `${config.siteName} - Projects`,
+  title: `${SITE.name} - Projects`,
   description:
     "I'm always working on something. These are my main active " +
     "projects, and previous projects. All in various states.",

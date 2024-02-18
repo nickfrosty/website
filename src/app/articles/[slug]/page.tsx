@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadata as layoutMetadata } from "./layout";
 import { notFound } from "next/navigation";
 import type { SimpleLinkItem } from "@@/types";
 import ProseLayout from "@/layouts/ProseLayout";
@@ -30,8 +31,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Article`,
-    description: post.description || "Read more article to learn more.",
+    title: post.title,
+    description: post.description || layoutMetadata.description,
     alternates: {
       canonical: post.href,
     },

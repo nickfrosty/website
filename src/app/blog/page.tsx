@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import config from "@/lib/config";
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";
 import { displayDate } from "zumo";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
-  title: `${config.siteName} - Blog`,
-  description:
-    "An anthology of me building in public 👷. Writing down and sharing my thoughts and experiences as I go (plus some other goodies too).",
   alternates: {
     canonical: "/blog",
   },
+  title: `Blog`,
+  description:
+    "An anthology of me building in public 👷. Writing down and sharing " +
+    "my thoughts and experiences as I go (plus some other goodies too).",
 };
 
 export default function Page() {
