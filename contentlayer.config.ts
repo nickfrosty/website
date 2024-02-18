@@ -230,14 +230,9 @@ export const Project = defineDocumentType(() => ({
     url: {
       type: "string",
       description: "",
-      required: true,
-    },
-    logo: {
-      type: "string",
-      description: "",
       required: false,
     },
-    intro: {
+    logo: {
       type: "string",
       description: "",
       required: false,
@@ -263,7 +258,15 @@ export const Project = defineDocumentType(() => ({
     slug: {
       description: "Computed slug of the project",
       type: "string",
-      resolve: (post) => post?.slug ?? createSlug(post._id),
+      resolve: (post) => post._raw.sourceFileName.split(".")[0],
+    },
+    href: {
+      description: "Url path of the project (either local or absolute)",
+      type: "string",
+      resolve: (post) =>
+        post.url?.startsWith("http")
+          ? new URL(post.url).toString()
+          : `/projects/${post.slug}`,
     },
     tags: {
       description: "Array listing of tags",
