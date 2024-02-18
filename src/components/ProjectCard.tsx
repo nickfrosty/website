@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import styles from "@/styles/project.module.css";
 
-import { Project } from "contentlayer/generated";
+import { type Project } from "contentlayer/generated";
 
 type ComponentProps = {
   className?: string;
@@ -17,7 +17,11 @@ export default function ProjectCard({
   const isLocalPage = true;
 
   return (
-    <Link href={project?.url ?? "#"} className={styles.card}>
+    <Link
+      href={project.href}
+      target={project.href.startsWith("http") ? "_blank" : "_self"}
+      className={styles.card}
+    >
       <span className={styles.inner}>
         {project?.logo && (
           <img
