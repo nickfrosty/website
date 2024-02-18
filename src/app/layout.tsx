@@ -4,6 +4,7 @@ import clsx from "clsx";
 import AppHeader from "@/components/core/AppHeader";
 import AppFooter from "@/components/core/AppFooter";
 import { Metadata } from "next";
+import config from "@/lib/config";
 
 // import { Inter } from "next/font/google";
 
@@ -13,6 +14,7 @@ import { Metadata } from "next";
 // });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${config.domain}`),
   title: "Nick Frostbutter",
   // titleTemplate: "%s",
   description:

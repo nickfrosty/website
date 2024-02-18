@@ -5,6 +5,7 @@
 const configBase = {
   siteName: "Nick Frostbutter",
   twitter: "nickfrosty",
+  domain: "nick.af",
 };
 
 const configDev = {
