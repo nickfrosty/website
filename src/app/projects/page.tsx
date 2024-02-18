@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { allProjects } from "contentlayer/generated";
 import ProjectCard from "@/components/ProjectCard";
+import config from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: `${config.siteName} - Projects`,
   description:
     "I'm always working on something. These are my main active " +
     "projects, and previous projects. All in various states.",
@@ -34,7 +35,7 @@ export default function Page() {
 
       {!!featured.length && (
         <section className="grid max-w-5xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 md:grid-cols-2 sm:mt-8">
-          {featured?.map((project) => (
+          {featured.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
         </section>
