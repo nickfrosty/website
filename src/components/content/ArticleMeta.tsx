@@ -4,6 +4,7 @@ import { displayDate } from "zumo";
 import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
 import { Tag } from "./Tag";
+import Link from "next/link";
 
 type ComponentProps = {
   className?: string;
@@ -19,18 +20,17 @@ export function ArticleMeta({
   tagHrefTemplate,
 }: ComponentProps) {
   return (
-    <section className={`space-y-3 ${className}`}>
-      <div className="items-center font-mono tracking-wide text-gray-500 md:space-x-4 md:flex">
-        <a
+    <section className={`space-y-4 ${className}`}>
+      <div className="items-center tracking-wide text-gray-300 md:space-x-4 md:flex">
+        <Link
           href="https://twitter.com/nickfrosty"
           target="_blank"
-          rel="noreferrer"
-          className={"space-x-3 text-lg md:text-base reverse-link flexer"}
+          className={"space-x-3 text-xl font-medium flexer reverse-link"}
           style={{ textDecoration: "none" }}
         >
-          <AvatarImage sizeClass={"w-12 h-12"} />
+          <AvatarImage sizeClass={"w-14 h-14"} />
           <span>Nick Frostbutter</span>
-        </a>
+        </Link>
 
         <span className="hidden w-1 h-1 mr-2 bg-gray-500 rounded-full md:block"></span>
 

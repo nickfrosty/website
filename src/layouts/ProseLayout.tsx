@@ -52,7 +52,7 @@ export default function ProseLayout({
       />
 
       {/* Primary content area */}
-      <main className="space-y-5">
+      <main className="space-y-6">
         <h1>
           <Link
             href={href}
