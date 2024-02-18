@@ -1,19 +1,20 @@
-// construct the meta data for the page
-const metaData = {
-  title: "Nope, couldn't find that page...",
-  titleTemplate: "%s",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Page not found",
   description:
-    "I swear this never happens. You found a page that does not exist, or I moved it. Or am hiding it from you?? 🙃",
+    "I swear this never happens. You found a page that does not " +
+    "exist, or I moved it. Or am hiding it from you?? 🙃",
 };
 
-export default function ErrorPage() {
+export default function NotFound() {
   return (
-    // <Layout seo={metaData} className="my-20 text-center md:space-y-16">
-    <>
+    <main className="my-20 text-center md:space-y-10">
       <h1 className="text-5xl font-bold md:block">
         Well, this is embarrassing...
       </h1>
-      <main className="max-w-xl mx-auto space-y-12 text-2xl">
+
+      <section className="max-w-xl mx-auto space-y-12 text-2xl">
         <p>
           You found a page that does not exist, or I moved it.
           <br />
@@ -24,7 +25,7 @@ export default function ErrorPage() {
           You probably should not try to look for it,
           <br /> just move on.
         </p>
-      </main>
-    </>
+      </section>
+    </main>
   );
 }
