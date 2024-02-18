@@ -1,37 +1,18 @@
-/* eslint-disable @next/next/no-img-element */
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { computePagination, parseTemplate } from "zumo";
-
-import { NextSeoProps } from "next-seo";
-
 import { allArticleTags, allArticles } from "contentlayer/generated";
-
 import { HeroSection } from "@/components/content/HeroSection";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { PaginationProps } from "@@/types";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-
-// construct the meta data for the page
-export const metadata: Metadata = {
-  title: "Tags",
-  description: "Explore all my articles with written about this topic.",
-};
 
 const config = {
   baseHref: "/tags/{{tag}}",
   paginationTemplate: "{{baseHref}}/{{id}}",
 };
 
-type TagMetadata = {
-  count: number;
-  baseHref: string;
-  countLabel: "articles";
-  publishDate: string | boolean;
-};
-
 function preparePage(slug: string, currentPage: number = 1) {
-  // give the 404 page when no `slug` was found
-  if (!slug) return { notFound: true };
+  if (!slug) return notFound();
 
   // retrieve the current `tag` document, when it exists
   const tagMeta = allArticleTags.filter(
@@ -51,11 +32,15 @@ function preparePage(slug: string, currentPage: number = 1) {
   // get the listing of `posts` for the current `tag`
   let posts = allArticles
     .filter((post) =>
-      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+      process?.env?.NODE_ENV == "development" ? true : !!post.draft,
     )
-    .filter((item) => {
-      if (Array.isArray(item.tags)) {
-        return item.tags.find(
+    .filter(({ tags }) => {
+      if (typeof tags == "string") {
+        tags = tags.split(",") as any;
+      }
+
+      if (Array.isArray(tags)) {
+        return tags.find(
           (tag: string) =>
             tag.toLowerCase() == slug.toLocaleLowerCase() ||
             tag.toLowerCase().replace(/\s+/g, "-") ==
@@ -76,7 +61,9 @@ function preparePage(slug: string, currentPage: number = 1) {
     });
 
   // give the 404 page when no `posts` were found
-  if (!(posts && Array.isArray(posts))) return { notFound: true };
+  if (!(posts && Array.isArray(posts))) {
+    return notFound();
+  }
 
   // retrieve the latest and featured articles
   const latestPost = posts?.[0] || false;
@@ -92,30 +79,14 @@ function preparePage(slug: string, currentPage: number = 1) {
       config?.paginationTemplate,
     ) || undefined;
 
-  // construct the miscellaneous metadata
-  const tagMetadata: TagMetadata = {
-    count: posts.length,
-    // @ts-ignore
-    baseHref: pagination.baseHref,
-    countLabel: "articles",
-    publishDate: latestPost?.updatedAt || latestPost?.date || false,
-  };
-
   // remove the `featured` article from the overall `posts` listing
   posts = posts.filter((item) => item.slug !== featured?.slug);
-
-  // set the on page metaData meta settings
-  metadata.title = tagMeta?.title ?? slug;
-  metadata.description = `Explore all my articles with written about ${
-    tagMeta?.title ?? slug
-  }. They are pretty great :)`;
 
   // chunk out the posts for the current page
   // @ts-ignore
   posts = posts.slice(pagination.start, pagination.end);
 
   return {
-    tagMetadata,
     tagMeta,
     posts,
     featured,
@@ -123,42 +94,67 @@ function preparePage(slug: string, currentPage: number = 1) {
   };
 }
 
-// export async function getStaticPaths() {
-//   let paths: object[] = [];
-
-//   // determine the tags from all articles
-//   allArticles
-//     .filter((post) =>
-//       process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
-//     )
-//     .map((item) => {
-//       if (Array.isArray(item.tags)) {
-//         item.tags.map((tag: string) => {
-//           paths.push({
-//             params: {
-//               slug: tag.replace(/\s+/g, "-"),
-//             },
-//           });
-//         });
-//       }
-//       return;
-//     });
-
-//   return {
-//     paths: paths,
-//     fallback: false,
-//   };
-// }
-
 type PageProps = {
-  params: { page?: number; slug: string };
+  params: {
+    slug: string;
+    page?: number;
+  };
 };
+
+export function generateStaticParams() {
+  const hashmap = new Map();
+
+  allArticles
+    .filter((post) => !!post.draft)
+    .map(({ tags }) => {
+      if (typeof tags == "string") {
+        tags = tags.split(",") as any;
+      }
+
+      if (Array.isArray(tags)) {
+        tags.map((tag: string) => {
+          tag = tag.toLowerCase().replace(/\s+/g, "-");
+          hashmap.set(tag, tag);
+        });
+      }
+    });
+
+  const slugs: Array<{ slug: string }> = [];
+  hashmap.forEach((value, key) =>
+    slugs.push({
+      slug: value,
+    }),
+  );
+
+  return slugs;
+}
+
+export function generateMetadata({ params: { slug } }: PageProps): Metadata {
+  let record = allArticleTags.filter((record) => record.slug == slug)?.[0];
+
+  if (!record) {
+    record = {
+      title: slug.substring(0, 1).toUpperCase() + slug.substring(1),
+      href: `/tags/${slug}`,
+    } as any;
+    record.title = record.title.replaceAll("-", " ");
+  }
+
+  return {
+    title: `${record.title} articles`,
+    description:
+      record.description ||
+      `Explore all my articles with written about ${record.title}. They are pretty great :)`,
+    alternates: {
+      canonical: record.href,
+    },
+  };
+}
 
 export default function Page({ params: { page, slug } }: PageProps) {
   const {
     // comment for better diffs
     tagMeta,
-    tagMetadata,
     posts,
     featured,
     pagination,
