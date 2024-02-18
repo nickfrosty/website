@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import ProjectCard from "@/components/ProjectCard";
 import { allProjects } from "contentlayer/generated";
+import ProjectCard from "@/components/ProjectCard";
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "I'm always working on something. These are my main active projects, and previous projects. All in various states.",
+    "I'm always working on something. These are my main active " +
+    "projects, and previous projects. All in various states.",
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 export default function Page() {
@@ -18,18 +22,17 @@ export default function Page() {
   // todo: sort the projects by their `sortDate`
 
   return (
-    // <DefaultLayout seo={seo} className="space-y-16">
     <>
-      <section className="mb-12 text-center">
+      <header className="mb-12 text-center">
         <h1 className="mb-5 text-4xl font-bold">Active Projects</h1>
 
         <p className="text-lg">
           I&apos;m always working on something. These are my main active
           projects right now.
         </p>
-      </section>
+      </header>
 
-      {featured && (
+      {!!featured.length && (
         <section className="grid max-w-5xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 md:grid-cols-2 sm:mt-8">
           {featured?.map((project) => (
             <ProjectCard key={project.title} project={project} />
@@ -42,10 +45,10 @@ export default function Page() {
       </section>
 
       <section className="max-w-2xl mx-auto mb-12 text-center">
-        <h1 className="mb-5 text-4xl font-bold">
+        <h2 className="mb-5 text-4xl font-bold">
           Other Projects, <br className="block sm:hidden" />
           Various States
-        </h1>
+        </h2>
 
         <p className="text-lg">
           Not every project can be actively and diligently maintained.
@@ -55,7 +58,7 @@ export default function Page() {
       </section>
 
       <section className="grid max-w-2xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 sm:mt-8">
-        {projects?.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}
       </section>
