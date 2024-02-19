@@ -81,10 +81,7 @@ export default function Page({ params: { slug } }: PageProps) {
 
       <main className="space-y-5">
         <h1>
-          <Link
-            href={post.href as string}
-            className="text-yellow-400 heading heading-xl hover:underline"
-          >
+          <Link href={post.href as string} className="heading heading-xl">
             {post.title}
           </Link>
         </h1>

@@ -20,7 +20,7 @@ export default function ProjectCard({
     <Link
       href={project.href}
       target={project.href.startsWith("http") ? "_blank" : "_self"}
-      className={styles.card}
+      className={`${styles.card} hover-outline`}
     >
       <span className={styles.inner}>
         {project?.logo && (

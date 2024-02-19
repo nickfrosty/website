@@ -20,7 +20,7 @@ export function BlogCard({ post }: CardComponentProps) {
       <h2 className={styles.h2}>
         <Link
           href={post.href ?? "/blog"}
-          className="underline-none link-active hover:underline"
+          className="!no-underline link-active hover:underline"
         >
           {post.title}
         </Link>

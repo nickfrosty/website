@@ -92,28 +92,36 @@ export default function Page({ params: { page = 1 } }: PageProps) {
   } = preparePage(page);
 
   return (
-    <>
+    <main className="space-y-12">
+      <header className="">
+        <h1 className="text-5xl font-bold">Featured articles</h1>
+        {/* <p></p> */}
+      </header>
+
       {!!featured?.length &&
         pagination &&
         (pagination?.page as number) <= 1 && (
           <section className="double-wide-cards">
-            {featured?.map((post) => {
-              return (
-                <SmallCard
-                  key={post.slug}
-                  post={post}
-                  baseHref={metadataConfig.baseHref}
-                />
-              );
-            })}
+            {featured?.map((post) => (
+              <SmallCard
+                key={post.slug}
+                post={post}
+                baseHref={metadataConfig.baseHref}
+              />
+            ))}
           </section>
         )}
+
+      <section className="pt-8">
+        <h2 className="text-4xl font-bold">Latest articles</h2>
+        {/* <p></p> */}
+      </section>
 
       <CardGrid
         posts={posts}
         baseHref={metadataConfig.baseHref}
         pagination={pagination}
       />
-    </>
+    </main>
   );
 }

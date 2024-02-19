@@ -11,11 +11,11 @@ export default function AppHeader({}: ComponentProps) {
       <AppNav />
 
       <div className="text-center">
-        <h1 className="pt-6 my-8 text-4xl font-bold tracking-tight text-indigo-500 sm:text-5xl md:text-6xl">
+        <div className="pt-6 my-8 text-4xl font-bold tracking-tight text-indigo-500 sm:text-5xl md:text-6xl">
           <Link href="/" className="">
             Nick Frostbutter
           </Link>
-        </h1>
+        </div>
       </div>
 
       <div

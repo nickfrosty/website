@@ -1,11 +1,13 @@
 .card {
   @apply block w-full;
-  @apply relative top-0 mb-5 lg:mb-8 transition-all duration-75 ease-in-out;
+  @apply relative top-0 mb-5 transition-all duration-75 ease-in-out lg:mb-8;
   @apply border rounded-xl lg:text-left;
   @apply border-white md:hover:border-indigo-200;
-  @apply border-gray-800 md:hover:border-indigo-700;
+  @apply border-gray-900 md:hover:border-indigo-400;
 
-  @apply border-0 space-y-2 md:space-y-4;
+  @apply hover:!text-white;
+
+  @apply space-y-2 border-0 md:space-y-4;
   @apply md:p-6 md:border md:shadow-md;
   /* @apply md:hover:-top-2 md:hover:shadow-lg; */
 }
@@ -15,7 +17,7 @@
 }
 
 .inner {
-  @apply flex gap-4 items-center;
+  @apply flex items-center gap-4;
 }
 
 .description {
@@ -23,49 +25,49 @@
 }
 
 .meta {
-  @apply flex-grow justify-between;
+  @apply justify-between flex-grow;
   @apply w-full;
 }
 
 .link {
-  @apply text-2xl font-bold text-gray-700 dark:text-gray-300;
+  @apply text-2xl font-bold;
   /* @apply link hover:text-hot-pink; */
 }
 
 .icon {
-  @apply overflow-hidden w-12 h-12 rounded;
+  @apply w-12 h-12 overflow-hidden rounded;
 }
 
 .minor,
 .date {
-  @apply block md:text-sm text-gray-500;
+  @apply block text-gray-500 md:text-sm;
 }
 
 .floater {
-  @apply absolute right-0 top-0 mr-4 mt-4;
+  @apply absolute top-0 right-0 mt-4 mr-4;
 }
 
 /* Style the status pills */
 .status {
-  @apply px-3 py-1 place-self-center;
-  @apply text-xs font-medium rounded-lg font-mono;
+  @apply px-3 py-1 shadow-lg place-self-center;
+  @apply font-mono text-xs font-medium rounded-md;
 }
 .status-init {
   @apply text-gray-900 bg-purple-200;
 }
 .status-active {
-  @apply text-gray-900 bg-green-300;
+  @apply text-white bg-green-600;
 }
 .status-autopilot {
-  @apply text-white bg-indigo-500;
+  @apply text-white bg-indigo-600;
 }
 .status-opensource {
-  @apply text-gray-900 bg-yellow-200;
+  @apply text-black bg-yellow-400;
 }
 .status-backburner {
-  @apply text-white bg-slate-500;
+  @apply text-white bg-slate-700;
 }
 .status-graveyard,
 .status-sold {
-  @apply text-gray-900 bg-red-200;
+  @apply text-white bg-red-500;
 }

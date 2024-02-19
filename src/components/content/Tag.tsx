@@ -31,10 +31,10 @@ export function Tag({
   return (
     <Link
       href={href}
-      className={`w-min font-medium whitespace-nowrap tag flexer ${className}`}
+      className={`w-min  whitespace-nowrap tag flexer ${className}`}
     >
       {icon && <HashtagIcon className="w-4 h-4 mx-auto" />}
-      <span>{tag}</span>
+      <span className="">{tag}</span>
     </Link>
   );
 }

@@ -19,13 +19,7 @@
 
   h1,
   h1 a {
-    @apply text-4xl no-underline uppercase;
-    @apply text-yellow-500;
-
-    /* font-size: min(max(3rem, 5.25vw), 6rem); */
-    /* @supports (font-size: clamp(3rem, 5.25vw, 7rem)) {
-      font-size: clamp(3rem, 5.25vw, 7rem);
-    } */
+    @apply text-4xl no-underline;
   }
 
   h2 {
@@ -62,7 +56,7 @@
   img {
     @apply mx-auto my-10;
     @apply overflow-hidden rounded-xl;
-    @apply border border-gray-700 shadow-lg;
+    @apply border border-gray-900 shadow-lg;
   }
 
   ul:not(.list-none) {

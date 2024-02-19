@@ -12,8 +12,11 @@
 
 body {
   @apply leading-snug tracking-normal scroller;
-  @apply text-gray-300 bg-gray-900;
+  @apply text-gray-200 bg-gray-950;
   @apply font-body;
+}
+a {
+  @apply !no-underline transition cursor-pointer;
 }
 
 /* Default form elements */
@@ -125,30 +128,33 @@ hr {
   @apply dark:text-hot-pink hover:underline hover:text-indigo-400;
   @apply group-hover:underline group-hover:text-hot-pink;
 } */
-.underline-none {
-  @apply no-underline !important;
-}
 .reverse-link {
   @apply font-semibold underline cursor-pointer;
-  @apply hover:text-yellow-500;
+  @apply hover:text-yellow-400 hover:shadow-indigo;
 }
+
+h1 a {
+  @apply text-yellow-400 !important;
+  @apply shadow-none hover:shadow-indigo-lg;
+}
+
 .link,
 .summary a,
 article a {
-  @apply underline cursor-pointer;
-  @apply text-indigo-400 hover:text-yellow-500;
+  @apply text-indigo-400 hover:text-yellow-400 hover:shadow-indigo;
 }
+
 .link-active {
   @apply link;
-  @apply hover:text-indigo-500 text-yellow-500 !important;
+  @apply hover:text-indigo-500 hover:shadow-yellow !important;
+  @apply shadow-indigo text-yellow-400 !important;
 }
 .link-passive {
   @apply link;
-  @apply text-indigo-500 hover:text-yellow-500 !important;
+  @apply text-indigo-500 hover:text-yellow-400 !important;
 }
 .link-muted {
-  @apply cursor-pointer hover:underline !important;
-  @apply text-gray-500 hover:text-yellow-500 !important;
+  @apply hover:text-yellow-400 hover:shadow-indigo;
 }
 
 .avatar {
@@ -207,7 +213,7 @@ article a {
 */
 .card {
   @apply block w-full overflow-hidden rounded-xl;
-  @apply border border-gray-800;
+  @apply border border-gray-900 shadow-lg;
 }
 
 .card-error {
@@ -215,19 +221,21 @@ article a {
 }
 
 .hover-outline {
-  @apply hover:outline hover:outline-offset-4 hover:outline-2 hover:outline-yellow-500 hover:border-transparent;
+  @apply transition;
+  @apply hover:outline hover:outline-offset-[5px] hover:outline-2 hover:outline-yellow-400;
+  @apply hover:border-indigo-400;
 }
 .featured-outline {
-  @apply border-2 border-yellow-500;
+  @apply border-2 border-yellow-400;
 }
 .double-wide-cards {
-  @apply grid grid-cols-1 gap-5 lg:grid-cols-2;
+  @apply grid grid-cols-1 gap-12 lg:grid-cols-2;
 }
 .side-heavy-cards {
   @apply grid grid-cols-1 gap-5 lg:grid-cols-5;
 }
 .card-listing {
-  @apply grid grid-cols-1 gap-5;
+  @apply grid grid-cols-1 gap-6;
   @apply sm:grid-cols-2 md:grid-cols-3;
 }
 
@@ -237,14 +245,14 @@ article a {
 
 .tag {
   @apply px-2 py-1 mr-3 space-x-[3px] rounded-md cursor-pointer;
-  @apply border border-gray-700;
-  @apply bg-gray-800;
-  @apply hover:border-gray-500 hover:text-white;
+  @apply border border-gray-900;
+  @apply text-gray-300 bg-slate-900;
+  @apply hover:border-gray-400 hover:text-white;
 }
 .inline-code {
   @apply px-3 py-1 ml-1 mr-2 rounded-lg;
   @apply font-mono text-base tracking-wide;
-  @apply bg-slate-800 border border-slate-700 text-white !important;
+  @apply bg-slate-900 border border-gray-600 text-white !important;
 }
 
 .inline-code-link {

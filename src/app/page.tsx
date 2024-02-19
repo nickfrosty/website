@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Hi! I'm Nick, a full stack developer and submariner working on various " +
-    "projects. In my free time I write software, technical articles, and build things.",
+    "projects. I like to write software, technical articles, and build things.",
 };
 
 export default function Page() {
@@ -49,13 +49,13 @@ export default function Page() {
             >
               full stack developer
             </Link>{" "}
-            and submarine veteran. In my free time, I write{" "}
+            and submarine veteran. Even in my free time, I like to{" "}
             <Link
               href="/projects"
               className="link-active"
               title="View a list of my projects"
             >
-              software
+              write software
             </Link>{" "}
             and{" "}
             <Link
@@ -72,7 +72,7 @@ export default function Page() {
             <SocialIcons />
           </div> */}
 
-          <p className="col-span-2 space-y-5 text-lg font-medium text-center md:mt-10 xl:mt-14 lg:text-left">
+          <p className="col-span-2 space-y-5 text-lg md:mt-10 xl:mt-14">
             Here, you can find{" "}
             <Link href="/now" className="link-active">
               what I am working on now
@@ -86,9 +86,7 @@ export default function Page() {
             <div className="order-2 md:order-1">
               <hr className="mb-14 md:hidden" />
 
-              <h2 className="my-10 text-3xl font-bold text-center lg:hidden">
-                My Current Projects
-              </h2>
+              <h2 className="my-10 text-3xl font-bold">Current Projects</h2>
 
               <div className="grid grid-cols-1 gap-8 mb-3 lg:block md:grid-cols-2">
                 {projects.map((project) => (
@@ -102,7 +100,7 @@ export default function Page() {
 
               <Link
                 href="/projects"
-                className="inline-flex ml-10 space-x-3 text-lg font-medium flexer link-active"
+                className="inline-flex space-x-3 text-lg font-medium flexer link-muted"
               >
                 <span>View more projects</span>
                 <ArrowRightIcon className="w-5 h-5" />

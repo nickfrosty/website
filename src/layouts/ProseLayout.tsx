@@ -54,10 +54,7 @@ export default function ProseLayout({
       {/* Primary content area */}
       <main className="space-y-6">
         <h1>
-          <Link
-            href={href}
-            className="text-yellow-400 heading heading-xl hover:underline"
-          >
+          <Link href={href} className="heading heading-xl hover:underline">
             {post.title}
           </Link>
         </h1>
