@@ -25,7 +25,7 @@ export default function Page() {
   return (
     <>
       {/** md:space-y-16 */}
-      <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 lg:mt-30 md:gap-32 sm:mt-8 lg:grid-cols-2">
+      <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 md:gap-32 sm:mt-8 lg:grid-cols-2">
         <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
           <Link
             href="/"
