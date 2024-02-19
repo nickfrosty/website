@@ -118,7 +118,7 @@ export const Blog = defineDocumentType(() => ({
       description: "Draft status of the post",
       type: "boolean",
       resolve: (post) =>
-        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+        post.draft == true || post._raw.sourceFileName.startsWith("_"),
     },
 
     slug: {
@@ -157,7 +157,7 @@ export const Article = defineDocumentType(() => ({
       description: "Draft status of the post",
       type: "boolean",
       resolve: (post) =>
-        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+        post.draft == true || post._raw.sourceFileName.startsWith("_"),
     },
     slug: {
       description: "Computed slug of the post",
@@ -254,7 +254,7 @@ export const Project = defineDocumentType(() => ({
       description: "Draft status of the post",
       type: "boolean",
       resolve: (post) =>
-        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+        post.draft == true || post._raw.sourceFileName.startsWith("_"),
     },
     slug: {
       description: "Computed slug of the project",
