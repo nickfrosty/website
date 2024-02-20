@@ -275,8 +275,11 @@ h5 {
 }
 
 .callout {
-  @apply p-4 border rounded-md shadow-lg !space-y-0;
+  @apply p-4 border rounded-lg shadow-lg !space-y-0;
   @apply text-white bg-slate-800 border-slate-700;
+}
+.callout a {
+  @apply text-white shadow-yellow;
 }
 .callout .callout-title {
   @apply font-mono text-lg font-bold;
@@ -289,7 +292,11 @@ h5 {
 }
 .callout.yellow,
 .callout.caution {
-  @apply bg-yellow-500 border-yellow-300;
+  @apply bg-yellow-600 border-yellow-300;
+
+  a {
+    @apply shadow-indigo;
+  }
 }
 .callout.red,
 .callout.error,
