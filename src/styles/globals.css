@@ -274,73 +274,40 @@ h5 {
   @apply hover:bg-slate-700 hover:border-slate-500 !important;
 }
 
-/* Inline `msg` boxes used throughout the site */
-.btn,
-.msg {
-  @apply px-4 py-4 rounded-lg;
-  @apply border shadow-xl;
-  /* @apply text-2xl; */
-  @apply bg-slate-800 border-slate-700;
-  @apply my-5;
-  @apply text-white;
-  @apply text-lg !important;
+.callout {
+  @apply p-4 border rounded-md shadow-lg !space-y-0;
+  @apply text-white bg-slate-800 border-slate-700;
 }
-.msg h2,
-.msg h3,
-.msg h4,
-.msg h5 {
-  @apply pt-0 !important;
+.callout .callout-title {
+  @apply font-mono text-lg font-bold;
 }
-.msg p {
-  @apply mt-0 !important;
+.callout .callout-content {
+  @apply !space-y-2;
 }
-
-.msg.grey,
-.msg.gray {
-  @apply bg-slate-800 border-slate-700;
+.callout .callout-content p {
+  @apply py-0 my-0 leading-normal !important;
 }
-.msg.note,
-.msg.purple,
-.msg.indigo {
-  @apply bg-indigo-900 border-indigo-700;
+.callout.yellow,
+.callout.caution {
+  @apply bg-yellow-500 border-yellow-300;
 }
-
-.msg.blue {
-  @apply bg-blue-900 border-blue-700;
+.callout.red,
+.callout.error,
+.callout.warn,
+.callout.warning {
+  @apply border-red-800 bg-red-950;
 }
-.msg.red,
-.msg.error {
-  @apply bg-red-900 border-red-700;
+.callout.green,
+.callout.success {
+  @apply border-green-800 bg-green-950;
 }
-.msg.green,
-.msg.good,
-.msg.success {
-  @apply bg-green-900 border-green-700;
+.callout.purple,
+.callout.indigo {
+  @apply border-indigo-800 bg-indigo-950;
 }
-.msg.yellow,
-.msg.caution,
-.msg.warn,
-.msg.warning {
-  @apply bg-yellow-900 border-yellow-700;
-}
-
-.msg.text::before {
-  @apply block;
-  @apply text-white;
-  @apply font-mono uppercase;
-  @apply font-semibold;
-}
-.msg.note.text::before {
-  content: "Note:";
-}
-.msg.warn.text::before {
-  content: "Warning:";
-}
-.msg.caution.text::before {
-  content: "Caution:";
-}
-.msg.danger.text::before {
-  content: "Danger:";
+.callout.note,
+.callout.blue {
+  @apply border-blue-800 bg-blue-950;
 }
 
 .box {

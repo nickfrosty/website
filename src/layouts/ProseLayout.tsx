@@ -3,13 +3,14 @@
 import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
 import { parseTemplate } from "zumo";
 import Link from "next/link";
+import styles from "@/styles/article.module.css";
 
 import { ArticleMeta } from "@/components/content/ArticleMeta";
 import { Breadcrumbs } from "@/components/content/Breadcrumbs";
-import { ArticleContent } from "@/components/content/ArticleContent";
 import { NextPrevSection } from "@/components/content/NextPrevSection";
 
-import { DocumentTypes } from "contentlayer/generated";
+import { type DocumentTypes } from "contentlayer/generated";
+import { RenderMDX } from "@/components/mdx";
 
 type LayoutProps = {
   className?: string;
@@ -65,7 +66,9 @@ export default function ProseLayout({
           tagHrefTemplate={config.tagHrefTemplate}
         />
 
-        <ArticleContent content={post.body.raw} />
+        <article className={styles.article}>
+          <RenderMDX source={post.body.raw} />
+        </article>
       </main>
 
       <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} />

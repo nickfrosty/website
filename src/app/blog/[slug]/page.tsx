@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { metadata as layoutMetadata } from "./layout";
 import type { SimpleLinkItem } from "@@/types";
 import { allBlogs } from "contentlayer/generated";
+import styles from "@/styles/article.module.css";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
@@ -9,7 +10,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import Link from "next/link";
 import { ArticleMeta } from "@/components/content/ArticleMeta";
-import { ArticleContent } from "@/components/content/ArticleContent";
+import { RenderMDX } from "@/components/mdx";
 const config = zumoConfig.content.blog;
 
 type PageProps = {
@@ -92,7 +93,9 @@ export default function Page({ params: { slug } }: PageProps) {
           tagHrefTemplate={config.tagHrefTemplate}
         />
 
-        <ArticleContent content={post.body.raw} />
+        <article className={styles.article}>
+          <RenderMDX source={post.body.raw} />
+        </article>
       </main>
 
       {/* <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} /> */}
