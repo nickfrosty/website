@@ -27,17 +27,13 @@ export default function Page() {
 
   return (
     <main className="max-w-5xl px-3 mx-auto space-y-20">
-      <header className="grid items-center max-w-2xl gap-8 md:flex">
-        <Link href={"/blog"} className="text-6xl font-bold">
-          <h1 className="">/blog</h1>
-        </Link>
-        <p className="text-lg leading-tight text-gray-300">
-          I like to build things 👷
-          <br />
-          and share my experiences about those things
-          <br className="hidden md:block" />
-          <span className="text-base"> (and other goodies too)</span>
-        </p>
+      <header className="space-y-3">
+        <h1>
+          <Link href="/blog" className="text-white link-muted">
+            All blog posts
+          </Link>
+        </h1>
+        <p className="text-lg minor">Just a guy, building and sharing.</p>
       </header>
 
       <section className="grid gap-8 md:grid-cols-2">
@@ -50,7 +46,7 @@ export default function Page() {
               }`}
             >
               {!!post.category && (
-                <h4 className="text-base tracking-wide text-gray-500 capitalize">
+                <h4 className="text-base tracking-wide capitalize minor">
                   {post.category}
                 </h4>
               )}
@@ -63,9 +59,9 @@ export default function Page() {
                 </Link>
               </h3>
 
-              <div className="flex items-center text-gray-500 whitespace-nowrap md:inline-block">
+              <div className="flex items-center minor whitespace-nowrap md:inline-block">
                 {post.draft === true && (
-                  <span className="absolute font-mono text-xs leading-none text-gray-300 border rounded-md right-2 tag bg-slate-800 border-slate-700">
+                  <span className="absolute right-0 font-mono text-sm bottom-2 tag">
                     draft
                   </span>
                 )}

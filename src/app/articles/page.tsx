@@ -94,7 +94,7 @@ export default function Page({ params: { page = 1 } }: PageProps) {
   return (
     <main className="space-y-12">
       <header className="">
-        <h1 className="text-5xl font-bold">Featured articles</h1>
+        <h1>Featured articles</h1>
         {/* <p></p> */}
       </header>
 

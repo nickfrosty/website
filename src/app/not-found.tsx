@@ -10,9 +10,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <main className="my-20 text-center md:space-y-10">
-      <h1 className="text-5xl font-bold md:block">
-        Well, this is embarrassing...
-      </h1>
+      <h1 className="md:block">Well, this is embarrassing...</h1>
 
       <section className="max-w-xl mx-auto space-y-12 text-2xl">
         <p>

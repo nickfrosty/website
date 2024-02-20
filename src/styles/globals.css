@@ -133,11 +133,6 @@ hr {
   @apply hover:text-yellow-400 hover:shadow-indigo;
 }
 
-h1 a {
-  @apply text-yellow-400 !important;
-  @apply shadow-none hover:shadow-indigo-lg;
-}
-
 .link,
 .summary a,
 article a {
@@ -155,6 +150,24 @@ article a {
 }
 .link-muted {
   @apply hover:text-yellow-400 hover:shadow-indigo;
+}
+h1 a {
+  @apply text-yellow-400;
+  @apply shadow-none hover:!shadow-indigo-lg;
+}
+
+h1 {
+  @apply text-4xl font-bold md:text-5xl;
+}
+h2,
+h3,
+h4,
+h5 {
+  @apply font-semibold;
+}
+
+.minor {
+  @apply leading-tight text-gray-400;
 }
 
 .avatar {
@@ -337,18 +350,6 @@ article a {
 .box .inner-box {
   @apply space-y-4 text-lg text-center;
   /* @apply sm:p-6 xl:p-8 2xl:col-span-2; */
-}
-.heading {
-  @apply text-xl font-bold leading-none tracking-wide;
-}
-.heading-md {
-  @apply text-2xl;
-}
-.heading-lg {
-  @apply text-3xl;
-}
-.heading-xl {
-  @apply text-4xl md:text-5xl;
 }
 
 .label {

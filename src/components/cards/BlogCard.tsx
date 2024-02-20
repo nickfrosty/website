@@ -26,7 +26,7 @@ export function BlogCard({ post }: CardComponentProps) {
         </Link>
       </h2>
 
-      <div className="items-center justify-between space-y-4 text-gray-600 md:space-x-5 md:space-y-0 md:flex dark:text-gray-400">
+      <div className="items-center justify-between space-y-4 minor md:space-x-5 md:space-y-0 md:flex">
         <div className="block whitespace-nowrap md:inline-block">
           {displayDate(post.date)}
         </div>

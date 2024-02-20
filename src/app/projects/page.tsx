@@ -23,8 +23,8 @@ export default function Page() {
 
   return (
     <>
-      <header className="mb-12 text-center">
-        <h1 className="mb-5 text-4xl font-bold">Active Projects</h1>
+      <header className="mb-12 space-y-5 text-center">
+        <h1>Active Projects</h1>
 
         <p className="text-lg">
           I&apos;m always working on something. These are my main active

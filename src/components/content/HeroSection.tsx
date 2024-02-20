@@ -44,8 +44,11 @@ export function HeroSection({
         {heading && (
           <h4 className="text-base font-medium uppercase">{heading}</h4>
         )}
-        <h1 className="text-6xl font-semibold first-letter:uppercase">
-          <Link href={metadata.href ?? "#"}>
+        <h1>
+          <Link
+            href={metadata.href ?? "#"}
+            className="text-6xl link-muted first-letter:uppercase"
+          >
             {metadata.title ||
               metadata.slug?.toString().replace("-", " ") ||
               "[unknown]"}
