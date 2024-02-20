@@ -1,5 +1,3 @@
-"use client";
-
 import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
 import { parseTemplate } from "zumo";
 import Link from "next/link";
