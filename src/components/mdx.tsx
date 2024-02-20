@@ -46,5 +46,15 @@ const components: MDXRemoteProps["components"] = {
 };
 
 export function RenderMDX(props: MDXRemoteProps) {
-  return <MDXRemote {...props} components={components} />;
+  return (
+    <MDXRemote
+      {...props}
+      options={{
+        mdxOptions: {
+          development: process.env.NODE_ENV === "development",
+        },
+      }}
+      components={components}
+    />
+  );
 }
