@@ -78,7 +78,7 @@ For the year of 2019 (when I am writing this article) the
 [current U.S. tax brackets](https://www.irs.gov/newsroom/irs-provides-tax-inflation-adjustments-for-tax-year-2019)
 are:
 
-<figure class="wp-block-table aligncenter"><table><tbody><tr><td> **Rate **</td><td> **Individual (or Married, filing separate) **</td><td> **Married, filing jointly **</td></tr><tr><td>10%</td><td>&lt; $9,700</td><td>&lt; $19,400</td></tr><tr><td>12%</td><td>$9,701 - $39,475</td><td>$19,401 - $78,950</td></tr><tr><td>22%</td><td>$39,476 - $84,200</td><td>$78,951 - $168,400</td></tr><tr><td>24%</td><td>$84,201 - $160,725</td><td>$168,401 - $321,450</td></tr><tr><td>32%</td><td>$160,726 - $204,100</td><td>$321,451 - $408,200</td></tr><tr><td>35%</td><td>$204,101 - $510,300</td><td>$408,201 - $612,350</td></tr><tr><td>37%</td><td>&gt; $510,301</td><td>&gt; $612,351</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td> **Rate **</td><td> **Individual (or Married, filing separate) **</td><td> **Married, filing jointly **</td></tr><tr><td>10%</td><td>&lt; $9,700</td><td>&lt; $19,400</td></tr><tr><td>12%</td><td>$9,701 - $39,475</td><td>$19,401 - $78,950</td></tr><tr><td>22%</td><td>$39,476 - $84,200</td><td>$78,951 - $168,400</td></tr><tr><td>24%</td><td>$84,201 - $160,725</td><td>$168,401 - $321,450</td></tr><tr><td>32%</td><td>$160,726 - $204,100</td><td>$321,451 - $408,200</td></tr><tr><td>35%</td><td>$204,101 - $510,300</td><td>$408,201 - $612,350</td></tr><tr><td>37%</td><td>&gt; $510,301</td><td>&gt; $612,351</td></tr></tbody></table></figure>
 
 But knowing what "bracket" or percentage you will fall under does not quite give
 you the entire picture of how much you pay. These brackets are actually on a

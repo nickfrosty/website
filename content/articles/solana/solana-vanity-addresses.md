@@ -35,16 +35,14 @@ programs use a vanity address, like these:
 You will notice that each of the account addresses start with some readable
 words (or portions of them). They are all "Vanity Address".
 
-<div class="msg note">
-
-**Technical Deep Dive?**
+<Callout title="Technical Deep Dive?">
 
 You can read all about
 [how Solana addresses are derived](./derive-solana-addresses) and generated in
 my technical deep dive on it. Including understanding the "derivation path" used
 to generate vanity address with the Solana CLI. Pretty interesting stuff 😀
 
-</div>
+</Callout>
 
 ## How to generate a vanity addresses
 
@@ -52,15 +50,13 @@ The easiest and most common way to generate vanity addresses is using the
 [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools). So that is
 what I will demonstrate here as well.
 
-<div class="msg warn">
-
-**Install the Solana CLI**
+<Callout type="warn" title="Install the Solana CLI">
 
 If you do not have the Solana CLI already installed and setup on your computer,
 then you can read my other article on
 [How to Setup and Configure the Solana CLI](./intro-to-solana-cli)
 
-</div>
+</Callout>
 
 Make sure you have the `solana-keygen` program installed and functioning by
 running:

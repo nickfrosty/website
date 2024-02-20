@@ -22,17 +22,17 @@ specific tasks:
 - run a test validator
 - deploy Solana programs
 
-> > PS: I also created a [YouTube video](https://youtu.be/pNzT3hgFbpg) for this
-> > Solana tutorial.
+> PS: I also created a [YouTube video](https://youtu.be/pNzT3hgFbpg) for this
+> Solana tutorial.
 
 ![Learn how to use the Solana CLI](/media/articles/solana/intro-to-solana-cli/thumbnail.png)
 
-<div class="msg note text">
+<Callout>
 
 This guide assumes you already have the Solana CLI installed. If you do not,
 checkout my guide on how to [install Solana on Linux](./setup-solana-on-linux)
 
-</div>
+</Callout>
 
 ## Create a Solana wallet for development
 
@@ -57,8 +57,8 @@ solana-keygen new --outfile ~/.config/solana/solfate-dev.json
 When creating each wallet, you can also set a passphrase (just like an SSH
 keyfile).
 
-> > I STRONGLY RECOMMEND setting a wallet passphrase one, especially for any
-> > wallet that you may use in production at some point!!!
+> I STRONGLY RECOMMEND setting a wallet passphrase one, especially for any
+> wallet that you may use in production at some point!!!
 
 After your wallet is created, you will get a readout of your "_pubkey_" (aka
 your wallet address) and your _seed phrase_. Don't forget to write down your
@@ -135,12 +135,12 @@ To check any other wallet's balance:
 solana balance WALLET_ADDRESS_HERE
 ```
 
-<div class="msg note text">
+<Callout>
 
 The `solana balance` command will only check the balance of the given wallet on
 the currently selected Solana network.
 
-</div>
+</Callout>
 
 ## Fund your wallet (via airdrop)
 
@@ -163,13 +163,13 @@ To request a free airdrop to your currently selected wallet:
 solana airdrop 1
 ```
 
-<div class="msg note text">
+<Callout>
 
 The `solana airdrop` command has a limit to the amount of SOL that can be
 dropped. Any request passed this limit will cause the transaction to fail. At
 the time of writing this, the limit is 2.
 
-</div>
+</Callout>
 
 Just like you may have guessed, the airdrop will occur on the network you are
 selected to in your Solana config settings. And no, airdrop does not work on

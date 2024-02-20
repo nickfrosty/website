@@ -30,13 +30,13 @@ to install the following:
 - the Solana CLI tool suite
 - the Anchor framework (not truly required, but highly recommended!)
 
-<div class="msg warn text">
+<Callout type="warn">
 
 You may run into compiler or builder errors throughout your setup process,
 depending on what libraries and dependencies your Linux system already has
 installed.
 
-</div>
+</Callout>
 
 ## Install NodeJS and Yarn
 
@@ -78,14 +78,14 @@ based systems:
 sudo apt-get install -y pkg-config build-essential libudev-dev libssl-dev
 ```
 
-<div class="msg note text">
+<Callout>
 
 In the past I used
 [Parrot OS Home](https://parrotlinux.org/download/?version=home) edition (Debian
 and _apt_) as my daily driver, and these packages were also needed to get
 started in Solana development.
 
-</div>
+</Callout>
 
 People often run into various errors while setting up the assorted Solana
 development tooling on Linux based operating system like Ubuntu or Parrot OS
@@ -105,12 +105,12 @@ When going through this rust installation wizard, you will be given a few
 options when installing. When prompted, I recommend selecting the `nightly`
 build option. This seems to work better with the Solana CLI tool suite.
 
-<div class="msg note text">
+<Callout>
 
 This Rustup install command comes directly from the
 [Rustup.rs](https://rustup.rs/) website.
 
-</div>
+</Callout>
 
 ## Install the Solana CLI
 
@@ -118,13 +118,13 @@ This Rustup install command comes directly from the
 sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 ```
 
-<div class="msg note text">
+<Callout>
 
 This installation command for the Solana CLI tool suite comes directly from the
 Official
 [Solana Docs](https://docs.solana.com/cli/install-solana-cli-tools#use-solanas-install-tool).
 
-</div>
+</Callout>
 
 ## Install Anchor Lang for Solana
 
@@ -132,7 +132,7 @@ Anchor is the most popular framework for building Solana Programs. It is an open
 source project that can help to simplify your programs, on top of making them
 more sure.
 
-<div class="msg note text">
+<Callout>
 
 The Anchor team recommends
 [installing Anchor](https://www.anchor-lang.com/docs/installation) using the
@@ -140,7 +140,7 @@ Anchor Version Manager tool, AVM, so that is what we shall use here! This
 process will build AVM from source and can take a bit of time, depending on your
 computer's hardware.
 
-</div>
+</Callout>
 
 Once you have Cargo installed, you can install AVM with the following command:
 
@@ -169,9 +169,9 @@ Solana programs is a wallet. I won't go very deep into the details of using the
 Solana CLI here, but rather a shallow level understanding of the commands to get
 your started developing.
 
-> > Learn more about using the Solana CLI (including managing your file system
-> > wallet) with my other article:
-> > [Intro to the Solana CLI](./intro-to-solana-cli)
+> Learn more about using the Solana CLI (including managing your file system
+> wallet) with my other article:
+> [Intro to the Solana CLI](./intro-to-solana-cli)
 
 #### TLDR;
 

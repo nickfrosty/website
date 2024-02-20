@@ -64,18 +64,16 @@ of my 2022 goals. I have high hopes to be updating this public doc every day
 with the things that I am actually accomplish, both "maker" and "manager".
 
 Any one who wants to see my progress (or copy the template), you are more than
-welcome to check it out. It is public with read-only access:
-
-<div class="msg note">
-https://nickfrosty.notion.site/2022-Get-things-done-df66e4729bd84b68bfaf16e74b7b4b51
-</div>
+welcome to
+[check it out](https://nickfrosty.notion.site/2022-Get-things-done-df66e4729bd84b68bfaf16e74b7b4b51).
+It is public with read-only access.
 
 The doc has the yearly goals displayed right at the top, so every time I open
 it, **BAM**!!! They are right there.
 
-<div class="msg note">
+<Callout>
 I see them. I make progress on them.
-</div>
+</Callout>
 
 Then a simple table to add a record for each week. Tracking the daily progress,
 or lack there of, towards each of my goals.
