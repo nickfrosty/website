@@ -1,15 +1,21 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import Link from "next/link";
 
+const contentDirLinkRegex = new RegExp(
+  /^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm,
+);
+
 function CustomLink(props: any) {
-  const href = (props.href.toString() as string).replace(
+  let href = (props.href.toString() as string).replace(
     /^(https?:\/\/)?nick.af\//gi,
     "/",
   );
 
-  if (href.startsWith("/")) {
+  if (href.startsWith("/") || href.startsWith(".")) {
+    // reformat paths like `/content/article/sub-dir/doc.md`
+    href = href.replace(contentDirLinkRegex, "/$1/$3");
     return (
-      <Link {...props} href={href}>
+      <Link {...props} href={href.replace(/(.mdx?)$/gi, "")}>
         {props.children}
       </Link>
     );
