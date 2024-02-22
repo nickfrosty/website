@@ -1,12 +1,15 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
+import type { ComponentProps } from "react";
 import Link from "next/link";
+import { CalloutProps, rehypePluginConfig } from "./rehypeConfig";
+import { CustomMetadataProps } from "./rehypeMetadata";
 
 const contentDirLinkRegex = new RegExp(
   /^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm,
 );
 
-function CustomLink(props: any) {
-  let href = (props.href.toString() as string).replace(
+function CustomLink({ ref, ...props }: ComponentProps<"a">) {
+  let href = (props.href!.toString() as string).replace(
     /^(https?:\/\/)?nick.af\//gi,
     "/",
   );
@@ -24,7 +27,7 @@ function CustomLink(props: any) {
   return <a target="_blank" {...props} />;
 }
 
-function Callout(props: any) {
+function Callout(props: ComponentProps<"div"> & CalloutProps) {
   return (
     <div
       className={`callout ${(props?.type as string)?.toLowerCase() || ""} ${
@@ -37,7 +40,7 @@ function Callout(props: any) {
   );
 }
 
-function Blockquote(props: any) {
+function Blockquote(props: ComponentProps<"blockquote">) {
   return (
     <div className={`callout mx-4 md:mx-12 mt-5 mb-9`}>
       <div className="callout-content">{props.children}</div>
@@ -45,7 +48,21 @@ function Blockquote(props: any) {
   );
 }
 
+function Pre({
+  children,
+  ...props
+}: ComponentProps<"pre"> & CustomMetadataProps) {
+  return (
+    <div className="!rounded-lg  !overflow-hidden">
+      <pre {...props} className="p-4 [&>code]:leading-normal">
+        {children}
+      </pre>
+    </div>
+  );
+}
+
 const components: MDXRemoteProps["components"] = {
+  pre: Pre,
   a: CustomLink,
   Callout: Callout,
   blockquote: Blockquote,
@@ -58,6 +75,8 @@ export function RenderMDX(props: MDXRemoteProps) {
       options={{
         mdxOptions: {
           development: process.env.NODE_ENV === "development",
+          // remarkPlugins: [remarkGfm],
+          rehypePlugins: rehypePluginConfig,
         },
       }}
       components={components}
