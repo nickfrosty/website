@@ -88,12 +88,12 @@
     @apply p-5;
   } */
 
-  pre,
+  /* pre,
   pre&,
   > ul li pre,
   > ol li pre {
-    @apply p-0 mb-5 leading-loose rounded-md;
-  }
+    @apply mb-5 leading-loose rounded-md 0;
+  } */
 
   table {
     @apply w-full mb-8 text-sm text-left border-2 border-collapse;
