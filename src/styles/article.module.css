@@ -73,6 +73,12 @@
     }
   }
 
+  /* triple ` code snippets get wrapped in a pre tag */
+  :not(pre) > code {
+    @apply mx-[1px] px-[5px] py-[4px];
+    @apply text-slate-100 bg-slate-800 !text-sm border border-gray-800 rounded-md;
+  }
+
   /* p code,
   ul li *:not(pre) code,
   ul li > code,

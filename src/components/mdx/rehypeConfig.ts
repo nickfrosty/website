@@ -22,7 +22,6 @@ export const rehypePluginConfig: import("unified").PluggableList = [
       keepBackground: true,
       defaultLang: {
         block: "text",
-        inline: "text",
       },
       theme: codeTheme,
     } as RehypePrettyCodeOptions,
