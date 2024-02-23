@@ -31,7 +31,7 @@ function Callout(props: ComponentProps<"div"> & CalloutProps) {
   return (
     <div
       className={`callout ${(props?.type as string)?.toLowerCase() || ""} ${
-        props?.className && props.className
+        props.className ? props.className : ""
       }`}
     >
       {!!props.title && <div className="callout-title">{props.title}</div>}
