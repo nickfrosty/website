@@ -53,8 +53,11 @@ function Pre({
   ...props
 }: ComponentProps<"pre"> & CustomMetadataProps) {
   return (
-    <div className="!rounded-lg  !overflow-hidden">
-      <pre {...props} className="p-4 [&>code]:leading-normal !text-lg">
+    <div className="overflow-hidden rounded-lg">
+      <pre
+        {...props}
+        className="rounded-lg overflow-hidden p-3 [&>code]:leading-normal border border-gray-800"
+      >
         {children}
       </pre>
     </div>
