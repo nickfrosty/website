@@ -277,6 +277,9 @@ h5 {
 .callout {
   @apply p-4 border rounded-lg shadow-lg !space-y-0;
   @apply text-white bg-slate-800 border-slate-700;
+  :not(pre) > code {
+    @apply !bg-slate-700 !border-slate-600;
+  }
 }
 .callout a {
   @apply text-white shadow-yellow;
@@ -285,17 +288,19 @@ h5 {
   @apply font-mono text-lg font-bold;
 }
 .callout .callout-content {
-  @apply !space-y-2;
+  @apply !space-y-2 [&>p]:!text-base;
 }
 .callout .callout-content p {
   @apply py-0 my-0 leading-normal !important;
 }
 .callout.yellow,
 .callout.caution {
-  @apply bg-yellow-600 border-yellow-300;
-
+  @apply bg-orange-800 border-orange-600;
   a {
     @apply shadow-indigo;
+  }
+  :not(pre) > code {
+    @apply !bg-orange-900 border-orange-700;
   }
 }
 .callout.red,
@@ -303,18 +308,30 @@ h5 {
 .callout.warn,
 .callout.warning {
   @apply border-red-800 bg-red-950;
+  :not(pre) > code {
+    @apply !bg-red-900 border-red-700;
+  }
 }
 .callout.green,
 .callout.success {
-  @apply border-green-800 bg-green-950;
+  @apply bg-green-900 border-green-700;
+  :not(pre) > code {
+    @apply !bg-green-800 border-green-700;
+  }
 }
 .callout.purple,
 .callout.indigo {
   @apply border-indigo-800 bg-indigo-950;
+  :not(pre) > code {
+    @apply !bg-indigo-900 border-indigo-600;
+  }
 }
 .callout.note,
 .callout.blue {
   @apply border-blue-800 bg-blue-950;
+  :not(pre) > code {
+    @apply !bg-blue-900 border-blue-600;
+  }
 }
 
 .box {
