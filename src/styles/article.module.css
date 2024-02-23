@@ -1,5 +1,5 @@
 .article {
-  @apply break-words;
+  @apply !space-y-5 break-words;
 
   h1,
   h2,
@@ -9,7 +9,6 @@
   h6 {
     @apply font-medium leading-none;
     @apply tracking-tight no-underline;
-    @apply py-4;
   }
 
   em > strong,
