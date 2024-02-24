@@ -72,7 +72,7 @@ export default function Page() {
             <SocialIcons />
           </div> */}
 
-          <p className="col-span-2 space-y-5 text-lg md:mt-10 xl:mt-14">
+          <p className="col-span-2 space-y-5 text-xl md:mt-10 xl:mt-14">
             Here, you can find{" "}
             <Link href="/now" className="link-active">
               what I am working on now
