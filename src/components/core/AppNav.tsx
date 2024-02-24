@@ -28,7 +28,7 @@ type LinkItemProps = {
 function LinkItem({ href, title }: LinkItemProps) {
   return (
     <li>
-      <Link href={href} className="text-white link">
+      <Link href={href} className="text-white link-muted">
         {title}
       </Link>
     </li>

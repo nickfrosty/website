@@ -149,7 +149,7 @@ article a {
   @apply text-indigo-500 hover:text-yellow-400 !important;
 }
 .link-muted {
-  @apply hover:text-yellow-400 hover:shadow-indigo;
+  @apply hover:text-yellow-400 shadow-indigo hover:shadow-indigo;
 }
 h1 a {
   @apply text-yellow-400;

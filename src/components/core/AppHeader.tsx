@@ -20,7 +20,7 @@ export default function AppHeader({}: ComponentProps) {
 
       <div
         id="header-divider"
-        className="w-full h-px my-4 transform bg-indigo-500 -rotate-1"
+        className="w-full h-px my-4 transform bg-gray-900 rotate-[0.5deg]"
       ></div>
     </>
   );

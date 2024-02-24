@@ -10,7 +10,7 @@ export default function AppFooter({}: ComponentProps) {
     <footer className="w-full pt-5 pb-8 mt-5 mb-2 overflow-hidden text-lg text-center text-gray-400">
       <div
         id="footer-divider"
-        className="w-2/3 h-px mx-auto mb-6 transform shadow-lg bg-slate-800 -rotate-1 md:w-1/2"
+        className="w-2/3 h-px mx-auto mb-10 transform bg-gray-900 shadow-lg -rotate-1 md:w-2/3"
       ></div>
 
       <div className="items-center max-w-md px-3 mx-auto space-y-3 md:space-y-0 md:justify-between md:flex">
