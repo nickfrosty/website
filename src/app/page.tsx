@@ -26,7 +26,7 @@ export default function Page() {
     <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 md:gap-30 lg:grid-cols-2">
       <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
         <div className="block col-span-2 mx-auto mb-5 text-center auto-cols-auto sm:col-span-1 md:text-left">
-          <Link href="/" className="">
+          <Link href="/" className="inline-block">
             <AvatarImage
               sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"}
             />

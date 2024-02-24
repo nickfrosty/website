@@ -9,7 +9,7 @@ type ComponentProps = {
 
 export default function AvatarImage({ className, sizeClass }: ComponentProps) {
   return (
-    <span className={clsx("inline-block", sizeClass, className)}>
+    <span className={clsx("block rounded-full", sizeClass, className)}>
       <Image
         className={clsx(
           "place-self-center avatar border rounded-full shadow border-gray-800",
