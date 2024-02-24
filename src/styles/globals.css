@@ -7,7 +7,7 @@
 } */
 
 .scroller {
-  @apply scrollbar-thin dark:scrollbar-thumb-indigo-500 dark:scrollbar-track-slate-500;
+  @apply scrollbar-thin dark:scrollbar-thumb-slate-900 dark:scrollbar-track-slate-700;
 }
 
 body {
