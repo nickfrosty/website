@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     absolute: SITE.name,
   },
   description:
-    "Hi! I'm Nick, a full stack developer and submariner working on various " +
-    "projects. I like to write software, technical articles, and build things.",
+    "I'm Nick, a full stack developer and submariner working on various " +
+    "projects. I like to write code, technical articles, and build software products.",
 };
 
 export default function Page() {
@@ -25,14 +25,13 @@ export default function Page() {
   return (
     <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 md:gap-30 lg:grid-cols-2">
       <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
-        <Link
-          href="/"
-          className="block col-span-2 mx-auto mb-5 text-center auto-cols-auto sm:col-span-1 md:text-left"
-        >
-          <AvatarImage
-            sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"}
-          />
-        </Link>
+        <div className="block col-span-2 mx-auto mb-5 text-center auto-cols-auto sm:col-span-1 md:text-left">
+          <Link href="/" className="">
+            <AvatarImage
+              sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"}
+            />
+          </Link>
+        </div>
 
         <p className="col-span-2 text-2xl whitespace-pre-line sm:text-2xl sm:col-span-2">
           <span className="inline-block mb-5 text-3xl lg:mb-0 lg:text-2xl">
@@ -53,7 +52,7 @@ export default function Page() {
             className="link-active"
             title="View a list of my projects"
           >
-            write software
+            write code
           </Link>{" "}
           and{" "}
           <Link
@@ -85,7 +84,7 @@ export default function Page() {
           <div className="order-2 md:order-1">
             <hr className="mb-14 md:hidden" />
 
-            <h2 className="my-10 text-3xl font-bold">Current Projects</h2>
+            <h2 className="my-10 text-3xl font-bold">My Projects in Focus</h2>
 
             <div className="grid grid-cols-1 gap-8 mb-3 lg:block md:grid-cols-2">
               {projects.map((project) => (
@@ -99,7 +98,7 @@ export default function Page() {
 
             <Link
               href="/projects"
-              className="inline-flex space-x-3 text-lg font-medium flexer link-muted"
+              className="inline-flex space-x-3 text-lg font-medium flexer link-muted shadow-indigo"
             >
               <span>View more projects</span>
               <ArrowRightIcon className="w-5 h-5" />

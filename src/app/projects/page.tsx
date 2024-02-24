@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: `Projects`,
   description:
     "I'm always working on something. These are my main active " +
-    "projects, and previous projects. All in various states.",
+    "projects and previous projects that I stopped working on for various reasons.",
 };
 
 export default function Page() {

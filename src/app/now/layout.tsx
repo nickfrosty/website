@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   },
   title: "What I'm working on now",
   description:
-    "I am always working on various projects. Here are some high level " +
-    "snapshots of what I am working on now.",
+    "Here are some high level snapshots of what I am working on now. " +
+    "From the various side projects, official work projects, and even podcasting.",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   },
   title: `Blog`,
   description:
-    "An anthology of me building in public 👷. Writing down and sharing " +
-    "my thoughts and experiences as I go (plus some other goodies too).",
+    "Various personal thoughts and anecdotes from over the years, including sharing " +
+    "my experiences of building in public and things I find interesting.",
 };
 
 export default function Page() {
@@ -29,7 +29,7 @@ export default function Page() {
     <main className="max-w-5xl px-3 mx-auto space-y-20">
       <header className="space-y-3">
         <h1>
-          <Link href="/blog" className="text-white link-muted">
+          <Link href="/blog" className="text-white shadow-none link-muted">
             All blog posts
           </Link>
         </h1>
@@ -52,7 +52,7 @@ export default function Page() {
               )}
               <h3 className="">
                 <Link
-                  className="text-2xl font-semibold link-muted"
+                  className="text-2xl font-semibold shadow-none link-muted"
                   href={post.href as string}
                 >
                   {post.title}
