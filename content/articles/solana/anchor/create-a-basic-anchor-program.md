@@ -185,7 +185,7 @@ will live at `programs/project_name/src/lib.rs`)
 
 The default Anchor scaffold for `lib.rs` should look something like this:
 
-```rust
+```rust filename=lib.rs
 use anchor_lang::prelude::*;
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
@@ -216,7 +216,6 @@ keyword is used to specify what crates to import into the specific rust file.
 
 ```rust
 use anchor_lang::prelude::*;
-
 ```
 
 For every Anchor based Solana program, the same basic import of the
@@ -255,7 +254,7 @@ Next, we are creating a public **_module_** named `program_name` with the
 
 No pun intended but, let's unpack that statement.
 
-```rust
+```rust filename=lib.rs
 #[program]
 pub mod program_name {
     use super::*;
@@ -284,7 +283,7 @@ use super::*;
 Next we bring all the imported libraries from the `program` attribute into our
 local scope within our `program_name` module.
 
-```rust
+```rust filename=lib.rs
 pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
   Ok(())
 }
