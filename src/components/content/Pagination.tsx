@@ -30,12 +30,12 @@ export function Pagination({
         </Link>
       )}
 
-      {nextPage <= totalPages && (
+      {nextPage <= totalPages ? (
         <Link href={href(nextPage)} className={styles.button}>
           <span>Next</span>
           <ArrowRightIcon className={styles.svg} />
         </Link>
-      )}
+      ) : null}
     </section>
   );
 }

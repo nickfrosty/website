@@ -30,11 +30,9 @@ export function CardGrid({
         )) ?? null}
       </section>
 
-      <p>todo:load more</p>
-
-      {/* {pagination && typeof pagination === "object" ? (
+      {pagination && typeof pagination === "object" ? (
         <Pagination {...pagination} />
-      ) : null} */}
+      ) : null}
     </>
   );
 }

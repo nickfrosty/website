@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { computePagination } from "zumo";
 import { allArticles } from "contentlayer/generated";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { SmallCard } from "@/components/cards/SmallCard";
+import { computePagination } from "@@/utils/helpers";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 
 const metadataConfig = {
   baseHref: "/articles",
-  paginationTemplate: "/articles/page/{{id}}",
+  paginationTemplate: "/articles/browse/{{id}}",
 };
 
-function preparePage(currentPage?: number) {
+function preparePage(currentPage: string = "1") {
   // get a listing of regular posts (hiding drafts)
   let posts = allArticles
     .filter((post) =>
@@ -30,13 +30,13 @@ function preparePage(currentPage?: number) {
     .sort(
       (a, b) =>
         new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
-    )
-    // strip the `body` to send less data to the client
-    .map((post) => {
-      // @ts-ignore
-      delete post.body.html;
-      return post;
-    });
+    );
+  // strip the `body` to send less data to the client
+  // .map((post) => {
+  //   // @ts-ignore
+  //   // delete post.body.html;
+  //   return post;
+  // });
 
   // get a listing of featured posts
   const featured = allArticles
@@ -46,13 +46,13 @@ function preparePage(currentPage?: number) {
     .sort(
       (a, b) =>
         new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
-    )
-    // strip the `body` to send less data to the client
-    .map((post) => {
-      // @ts-ignore
-      delete post.body.html;
-      return post;
-    });
+    );
+  // strip the `body` to send less data to the client
+  // .map((post) => {
+  //   // @ts-ignore
+  // delete post.body.html;
+  //   return post;
+  // });
 
   // remove the selected `featured` from the `posts`
   if (Array.isArray(featured) && featured?.length > 0)
@@ -63,17 +63,16 @@ function preparePage(currentPage?: number) {
     );
 
   // construct the `pagination` data object
-  const pagination =
-    computePagination(
-      posts.length,
-      currentPage ?? 1,
-      metadataConfig.baseHref,
-      metadataConfig?.paginationTemplate,
-    ) || undefined;
+  const pagination = computePagination(
+    posts.length, // record length
+    currentPage, // current page
+    "/articles", // baseHref
+    "/articles/browse/{{id}}", // template
+    9, // perPage
+  );
 
   // chunk out the posts for the current page
-  // @ts-ignore
-  posts = posts.slice(pagination.start || 0, pagination.end);
+  posts = posts.slice(pagination.start, pagination.end);
 
   return {
     props: { posts, featured, pagination },
@@ -82,11 +81,11 @@ function preparePage(currentPage?: number) {
 
 type PageProps = {
   params: {
-    page?: number;
+    page?: string;
   };
 };
 
-export default function Page({ params: { page = 1 } }: PageProps) {
+export default function Page({ params: { page } }: PageProps) {
   const {
     props: { posts, featured, pagination },
   } = preparePage(page);

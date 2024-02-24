@@ -1,3 +1,5 @@
+import { PaginationProps } from "@@/types";
+
 /**
  * Regex for parsing headings from raw markdown
  * - note: this only parsed h4 and higher
@@ -167,4 +169,46 @@ export function makeAbsoluteUrl(base: string, relative: string) {
     else st.push(arr[i]);
   }
   return st.join("/");
+}
+
+/**
+ * Compute the required parameters used in pagination
+ * @param {number} count total number of items to paginate
+ * @param {number} page the current page of items to parse
+ * @param {string} baseHref the base `href` used in creating routes
+ * @param {string} template template string used for `href`
+ * @param {number} perPage number of items desired per page
+ * @returns `pagination` object ready to be used
+ */
+export function computePagination(
+  count = 0,
+  page: string | number = 1,
+  baseHref = "",
+  template = "{{baseHref}}/browse/{{id}}",
+  perPage = 9,
+) {
+  try {
+    if (typeof page == "string") page = parseInt(page || "1");
+    if (!page || page < 1) page = 1;
+  } catch (err) {
+    page = 1;
+  }
+
+  // construct the `pagination` data object
+  const pagination = {
+    count,
+    page,
+    perPage,
+    totalPages: Math.ceil(count / perPage),
+    baseHref,
+    template,
+    start: 0,
+    end: perPage,
+  };
+
+  // compute the `start` and `end` values used to `slice` an array
+  pagination.start = page <= 1 ? 0 : (page - 1) * perPage;
+  pagination.end = pagination.start + perPage;
+
+  return pagination;
 }
