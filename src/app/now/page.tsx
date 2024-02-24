@@ -10,22 +10,19 @@ export default function Page() {
         title="Solana Foundation (DevRel)"
       >
         <p>
-          I{" "}
+          In March 2023, I started{" "}
           <a
             href="https://twitter.com/nickfrosty/status/1630207372479045637"
             target="_blank"
             className="link"
             rel="noreferrer"
           >
-            recently started
+            full time
           </a>{" "}
-          full time at the Solana Foundation, joining the Developer Relations
-          team.{" "}
-        </p>
-        <p>
-          I am actively working on improving the official{" "}
+          at the Solana Foundation, joining the Developer Relations team. Where
+          I am focused on improving the official{" "}
           <a
-            href="https://docs.solana.com"
+            href="https://solana.com/docs"
             className="link"
             target="_blank"
             rel="noreferrer"
@@ -38,30 +35,44 @@ export default function Page() {
 
         <p>
           PS: Here you can find the list of all{" "}
-          <a
+          <Link
             className="link"
             target="_blank"
             rel="noreferrer"
             href="https://github.com/solana-labs/solana/commits?author=nickfrosty"
           >
             my merged PRs
-          </a>{" "}
-          into the Solana repo on github.
+          </Link>{" "}
+          into the Solana monorepo on github.
+        </p>
+
+        <p>
+          I am also focused on building out the{" "}
+          <Link
+            className="link"
+            target="_blank"
+            rel="noreferrer"
+            href={"https://solana.com/developers"}
+          >
+            Solana Developers Hub
+          </Link>
+          , a one stop shop for anyone to learn how to build on the Solana
+          blockchain.
         </p>
       </NowDetailsItem>
 
       <NowDetailsItem id="solfate" href="#solfate" title="Solfate Podcast">
         <p>
           The{" "}
-          <a
+          <Link
             href="https://solfate.com"
             target="_blank"
             rel="noreferrer"
             className="link"
           >
             Solfate Podcast
-          </a>{" "}
-          is an audio commentary from{" "}
+          </Link>{" "}
+          is an audio commentary with my friend{" "}
           <Link
             href="https://twitter.com/jamesrp13"
             className="link"
@@ -70,35 +81,61 @@ export default function Page() {
           >
             @jamesrp13
           </Link>{" "}
-          and myself. Each week we are discussing assorted news in the broader
-          Solana ecosystem, as well as giving periodic updates on the projects
-          we are building.
+          and myself. Each episode, we explore deeper into the Solana ecosystem
+          by having conversations with founders and builders in the ecosystem.
         </p>
 
         <p>
-          You can explore the podcast on it&apos;s own website, where ever you
-          get your podcasts, or from the links below:
+          We have had so many amazing conversations with some of the top teams
+          and founders in the Solana community, including founders from Phantom,
+          Drip, Solflare, Triton, Helius, Backpack, Dialect, and even Toly
+          himself.
+        </p>
+
+        <p>
+          You can explore the podcast yourself on it&apos;s own website, where
+          ever you get your podcasts, or from the links below:
         </p>
         <ul className="mx-3 space-y-2 list-disc list-inside md:mx-10">
           <li className="">
-            <a
+            <Link
               className="link"
               target="_blank"
               rel="noreferrer"
               href="https://solfate.com/podcast"
             >
-              Explore all the episodes on Solfate.com
-            </a>
+              Browse all the episodes on Solfate.com
+            </Link>
           </li>
           <li className="">
-            <a
+            <Link
               className="link"
               target="_blank"
               rel="noreferrer"
               href="https://feeds.transistor.fm/solfate"
             >
               Good ole&apos; fashion RSS
-            </a>
+            </Link>
+          </li>
+          <li className="">
+            <Link
+              className="link"
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com/SolfatePod"
+            >
+              @SolfatePod on Twitter
+            </Link>
+          </li>
+          <li className="">
+            <Link
+              className="link"
+              target="_blank"
+              rel="noreferrer"
+              href="https://youtube.com/@SolfatePod"
+            >
+              @SolfatePod on YouTube
+            </Link>
           </li>
         </ul>
       </NowDetailsItem>
