@@ -53,11 +53,15 @@ function Pre({
   ...props
 }: ComponentProps<"pre"> & CustomMetadataProps) {
   return (
-    <div className="rounded-lg">
-      {!!props.filename && <div className="">{props.filename}</div>}
+    <div className="border rounded-lg border-slate-700 overflow-clip">
+      {!!props.filename && (
+        <div className="px-3 pt-3 pb-2 font-mono text-sm font-medium leading-none border-b bg-slate-700 border-slate-700">
+          {props.filename}
+        </div>
+      )}
       <pre
         {...props}
-        className="rounded-lg overflow-hidden p-3 [&>code]:leading-normal border border-gray-800"
+        className="rounded-b-lg p-3 [&>code]:leading-normal overflow-auto scroller"
       >
         {children}
       </pre>
