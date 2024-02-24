@@ -1,5 +1,5 @@
 // @ts-nocheck
-// import { CODE_BLOCK_FILENAME_REGEX } from "../constants";
+const CODE_BLOCK_FILENAME_REGEX = /(file|filename)=\"?([^"]+)\"?/;
 
 function visit(node, tagNames, handler) {
   if (tagNames.includes(node.tagName)) {
@@ -20,17 +20,18 @@ export type ParseMetadataProps = {
 export const parseMetadata =
   ({ defaultShowCopyCode }: ParseMetadataProps) =>
   (tree) => {
-    visit(tree, ["pre"], (preEl) => {
-      const [codeEl] = preEl.children;
-      // Add default language `text` for code-blocks without languages
-      // codeEl.properties.className ||= ["language-text"];
-      const meta = codeEl.data?.meta;
-      //   preEl.__nextra_filename = meta?.match(CODE_BLOCK_FILENAME_REGEX)?.[1];
+    visit(tree, ["pre"], (preElem) => {
+      const [codeElem] = preElem.children;
+      const meta: string | undefined = codeElem.data?.meta;
 
-      preEl.__nextra_showCopyCode = meta
-        ? (defaultShowCopyCode && !/( |^)copy=false($| )/.test(meta)) ||
-          /( |^)copy($| )/.test(meta)
-        : defaultShowCopyCode;
+      if (meta) {
+        preElem.__filename = meta.match(CODE_BLOCK_FILENAME_REGEX)?.[2];
+
+        preElem.__showCopyCode = meta
+          ? (defaultShowCopyCode && !/( |^)copy=false($| )/.test(meta)) ||
+            /( |^)copy($| )/.test(meta)
+          : defaultShowCopyCode;
+      }
     });
   };
 
@@ -45,10 +46,8 @@ export const attachMetadata = () => (tree) => {
       Object.assign(node, node.children[0]);
     }
 
-    console.log(node.children);
-
-    // node.properties.filename = node.__nextra_filename;
-    // node.properties.showCopyCode = node.__nextra_showCopyCode;
+    node.properties.filename = node.__filename;
+    // node.properties.showCopyCode = node.__showCopyCode;
   });
 };
 
