@@ -5,7 +5,7 @@ import AvatarImage from "@/components/AvatarImage";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import ProjectCard from "@/components/ProjectCard";
 import { SITE } from "@/lib/config";
-// import SocialIcons from "@/components/SocialIcons";
+import SocialIcons from "@/components/SocialIcons";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -68,9 +68,10 @@ export default function Page() {
             .
           </p>
 
-          {/* <div className="col-span-3 mt-5 space-x-5 text-center md:mt-10 lg:mt-5 lg:text-left">
-            <SocialIcons />
-          </div> */}
+          <SocialIcons
+            className="space-x-6 text-gray-300 md:pt-8"
+            iconSize="w-8 h-8"
+          />
 
           <p className="col-span-2 space-y-5 text-xl md:mt-10 xl:mt-14">
             Here, you can find{" "}
