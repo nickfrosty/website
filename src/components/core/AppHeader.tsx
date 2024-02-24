@@ -11,16 +11,16 @@ export default function AppHeader({}: ComponentProps) {
       <AppNav />
 
       <div className="text-center">
-        <h1 className="pt-6 my-8 text-4xl font-bold tracking-tight text-indigo-500 sm:text-5xl md:text-6xl">
+        <div className="pt-6 my-8 text-4xl font-bold tracking-tight text-indigo-500 sm:text-5xl md:text-6xl">
           <Link href="/" className="">
             Nick Frostbutter
           </Link>
-        </h1>
+        </div>
       </div>
 
       <div
         id="header-divider"
-        className="w-full h-px my-4 transform bg-indigo-500 -rotate-1"
+        className="w-full h-px my-4 transform bg-gray-900 rotate-[0.5deg]"
       ></div>
     </>
   );

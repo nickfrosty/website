@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import Image from "next/image";
+import nickAvatar from "@/../public/img/nick.jpg";
 
 type ComponentProps = {
   className?: string;
@@ -7,16 +9,14 @@ type ComponentProps = {
 
 export default function AvatarImage({ className, sizeClass }: ComponentProps) {
   return (
-    <span
-      className={clsx(
-        "block overflow-hidden rounded-full shadow",
-        sizeClass,
-        className,
-      )}
-    >
-      <img
-        className={clsx("place-self-center avatar", sizeClass, className)}
-        src="/img/nick.jpg"
+    <span className={clsx("block rounded-full", sizeClass, className)}>
+      <Image
+        className={clsx(
+          "place-self-center avatar border rounded-full shadow border-gray-800",
+          sizeClass,
+          className,
+        )}
+        src={nickAvatar}
         width={256}
         height={256}
         alt="Nick Frostbutter"

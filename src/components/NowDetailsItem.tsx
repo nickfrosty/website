@@ -20,9 +20,9 @@ export default function NowDetailsItem({
       <h2>
         <Link
           href={href}
-          className="space-x-5 text-4xl font-bold cursor-pointer hover:underline hover:text-yellow-500"
+          className="inline-flex items-center space-x-4 text-4xl !font-semibold cursor-pointer reverse-link"
         >
-          <span className="text-indigo-600">#</span>
+          <span className="!font-normal text-5xl">#</span>
           <span>{title}</span>
         </Link>
       </h2>

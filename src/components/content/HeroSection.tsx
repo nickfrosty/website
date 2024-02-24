@@ -40,12 +40,15 @@ export function HeroSection({
 
   return (
     <section className="grid-cols-2 gap-12 space-y-10 md:space-y-0 md:grid md:mb-30">
-      <section className="w-full space-y-6 place-content-start place-self-center">
+      <section className="w-full space-y-4 place-content-start place-self-center">
         {heading && (
-          <h4 className="text-sm font-semibold uppercase">{heading}</h4>
+          <h4 className="text-base font-medium uppercase">{heading}</h4>
         )}
-        <h1 className="text-6xl font-semibold first-letter:uppercase">
-          <Link href={metadata.href ?? "#"}>
+        <h1>
+          <Link
+            href={metadata.href ?? "#"}
+            className="text-6xl link-muted first-letter:uppercase"
+          >
             {metadata.title ||
               metadata.slug?.toString().replace("-", " ") ||
               "[unknown]"}

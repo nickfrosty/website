@@ -30,7 +30,7 @@ export function Breadcrumbs({
   }
 
   return (
-    <section className={clsx(`text-base font-bold tracking-wide`, className)}>
+    <section className={clsx(`text-base font-medium tracking-wide`, className)}>
       {parents &&
         parents?.length > 0 &&
         parents.map((item) => (

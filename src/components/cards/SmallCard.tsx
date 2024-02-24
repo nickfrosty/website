@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-// import { StarIcon } from "@heroicons/react/24/solid";
 import { CardComponentProps } from "@@/types";
 import clsx from "clsx";
 import Link from "next/link";
@@ -15,7 +13,7 @@ export function SmallCard({
     <Link
       href={post?.href ?? "#"}
       className={clsx(
-        `p-0 card`,
+        `p-0 card group`,
         className,
         "hover-outline",
         // featured ? "featured-outline" : "",
@@ -25,7 +23,7 @@ export function SmallCard({
           <span className="absolute z-10">
             <div
               className={clsx(
-                "inline-block top-0 p-2 text-gray-900 bg-yellow-500 rounded-tl-lg rounded-br-lg",
+                "inline-block top-0 p-2 text-gray-900 bg-yellow-400 rounded-tl-lg rounded-br-lg",
               )}
             >
               <StarIcon className="icon-md" />
@@ -35,7 +33,7 @@ export function SmallCard({
 
       <div className="flex-shrink-0 block w-full bg-gray-900 aspect-video">
         {/* TODO: onerror load a default image, or remove the image? */}
-        {post?.draft === true && <FloatLabel label={"draft"} overlay={true} />}
+        {!!post.draft && <FloatLabel label={"draft"} overlay={true} />}
         {post?.image && (
           <img
             src={post.image}
@@ -49,10 +47,12 @@ export function SmallCard({
         )}
       </div>
       <div className="p-5 space-y-3">
-        <h2 className="text-2xl font-bold">{post?.title || "[unknown]"}</h2>
+        <h3 className="text-2xl font-bold">
+          <span className="">{post?.title || "[unknown]"}</span>
+        </h3>
 
         {children || post?.blurb || post?.description ? (
-          <p className="text-gray-500">
+          <p className="text-gray-500 group-hover:text-gray-100">
             {children || post.blurb || post.description}
           </p>
         ) : null}

@@ -3,8 +3,8 @@
 */
 
 .button {
-  @apply flex items-center gap-3 px-5 py-2 border rounded-xl w-fit;
-  @apply text-white bg-indigo-900 border-indigo-500;
+  @apply flex items-center gap-3 px-5 py-2 border rounded-md w-fit;
+  @apply text-white border-indigo-800 bg-indigo-950;
   @apply hover:bg-indigo-800;
 }
 .button ~ .prev {

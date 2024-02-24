@@ -47,7 +47,7 @@ character is used, then the blockchain address is completely different!
 
 ## How are Solana addresses derived?
 
-> > mnemonic phase -> private key -> public key (aka your wallet's address)
+> mnemonic phase -> private key -> public key (aka your wallet's address)
 
 For most people (not programs) the process to get a public address on the
 blockchain involved installing a web based "browser wallet" like Phantom or
@@ -88,13 +88,13 @@ A private key can always derive it's "child" public keys (and yes that is
 multiple, more on that in a moment), but a public key cannot derive its private
 key.
 
-<div class="msg note text">
+<Callout>
 
 It is also worth noting that similarly, a Private key cannot derive its owns
 mnemonic phrase. This too is a one way relationship and key to the cryptographic
 integrity of blockchain.
 
-</div>
+</Callout>
 
 ## Derivation path
 
@@ -125,7 +125,7 @@ the `<ACCOUNT>/<CHANGE>` will enable deriving multiple Public keys from the same
 Private key.
 
 > You can learn more about about the CLI with this guide on
-> [how to use the Solana CLI](https://nick.af/articles/intro-to-solana-cli)
+> [how to use the Solana CLI](https://nick.af/articles/intro-to-solana-cli).
 
 ### Derivation paths on Solana
 
@@ -135,14 +135,14 @@ The "standard" derivation paths used on the Solana blockchain are:
 - `m/44'/501'/0'/0'` used by most web based or browser based wallets (like
   Phantom and Solflare)
 
-<div class="msg note text">
+<Callout title="Note">
 
 With these two derivation paths being different, this is why most people attempt
 to add a CLI generated vanity address into a browser wallet, but get a different
 address. The derivation paths are different. Therefore, the derived public
 addresses are different.
 
-</div>
+</Callout>
 
 These Solana derivation paths segments basically mean this:
 

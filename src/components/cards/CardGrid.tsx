@@ -8,7 +8,7 @@ type ComponentProps = {
   className?: string;
   baseHref: string;
   posts: Blog[] | Article[];
-  pagination: PaginationProps;
+  pagination?: PaginationProps;
 };
 
 export function CardGrid({

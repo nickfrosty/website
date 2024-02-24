@@ -20,11 +20,6 @@ const postFields: FieldDefs = {
     description: "The primary title of the post",
     required: true,
   },
-  href: {
-    type: "string",
-    description: "Predefined URL of the post",
-    required: false,
-  },
   slug: {
     type: "string",
     description: "URL slug for the post",
@@ -44,6 +39,7 @@ const postFields: FieldDefs = {
     type: "boolean",
     description: "Draft status of the post",
     required: false,
+    default: false,
   },
   featured: {
     type: "boolean",
@@ -122,7 +118,7 @@ export const Blog = defineDocumentType(() => ({
       description: "Draft status of the post",
       type: "boolean",
       resolve: (post) =>
-        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+        post.draft == true || post._raw.sourceFileName.startsWith("_"),
     },
 
     slug: {
@@ -161,7 +157,7 @@ export const Article = defineDocumentType(() => ({
       description: "Draft status of the post",
       type: "boolean",
       resolve: (post) =>
-        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+        post.draft == true || post._raw.sourceFileName.startsWith("_"),
     },
     slug: {
       description: "Computed slug of the post",
@@ -235,14 +231,9 @@ export const Project = defineDocumentType(() => ({
     url: {
       type: "string",
       description: "",
-      required: true,
-    },
-    logo: {
-      type: "string",
-      description: "",
       required: false,
     },
-    intro: {
+    logo: {
       type: "string",
       description: "",
       required: false,
@@ -263,12 +254,20 @@ export const Project = defineDocumentType(() => ({
       description: "Draft status of the post",
       type: "boolean",
       resolve: (post) =>
-        post?.draft ?? post._raw.sourceFileName.startsWith("_"),
+        post.draft == true || post._raw.sourceFileName.startsWith("_"),
     },
     slug: {
       description: "Computed slug of the project",
       type: "string",
-      resolve: (post) => post?.slug ?? createSlug(post._id),
+      resolve: (post) => post._raw.sourceFileName.split(".")[0],
+    },
+    href: {
+      description: "Url path of the project (either local or absolute)",
+      type: "string",
+      resolve: (post) =>
+        post.url?.startsWith("http")
+          ? new URL(post.url).toString()
+          : `/projects/${post._raw.sourceFileName.split(".")[0]}`,
     },
     tags: {
       description: "Array listing of tags",

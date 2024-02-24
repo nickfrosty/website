@@ -1,13 +1,9 @@
 ---
-draft: false
 status: graveyard
 title: "nameea.com"
-slug: nameea
-url: /projects/nameea/
 dateRange: "2021"
 date: "2021-02-15"
-description: "marketplace for brandable domain names, with affordable prices"
-# intro: ''
+description: "Marketplace for brandable domain names, with affordable prices"
 logo: "/media/projects/logos/nameea.png"
 # heroImage: '/media/projects/header.png'
 tags: domains
@@ -15,7 +11,9 @@ tags: domains
 
 ## The goal
 
-As an amateur domain collector/investor, I began to amass a sizable collection of domain names. Once I decided to downsize my "portfolio", I wanted to sell some.
+As an amateur domain collector/investor, I began to amass a sizable collection
+of domain names. Once I decided to downsize my "portfolio", I wanted to sell
+some.
 
 ## The result
 

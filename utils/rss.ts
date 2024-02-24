@@ -39,7 +39,7 @@ const feed = new Feed({
   // process each of the articles
   allArticles
     // remove draft articles (e.g. with a prefix of `_` or `draft=true`)
-    .filter((item) => !item?.draft && !item.slug.startsWith("_"))
+    .filter((item) => !item.draft)
     // sort the posts with newest first
     .sort((a, b) => parseInt(b.date) - parseInt(a.date))
     // loop over each post in the listing
