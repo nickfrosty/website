@@ -6,9 +6,6 @@ import { computePagination } from "@@/utils/helpers";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
-  alternates: {
-    canonical: "/articles",
-  },
   title: "Articles, Tutorials, and Guides",
   description:
     `Collection of "how-to" style tutorials and technical writings. ` +
@@ -20,6 +17,31 @@ type PageProps = {
     page?: string;
   };
 };
+
+export function generateStaticParams() {
+  let posts = allArticles
+    .filter((post) =>
+      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+    )
+    // sort newest to oldest
+    .sort(
+      (a, b) =>
+        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
+    );
+
+  // construct the `pagination` data object
+  const pagination = computePagination(
+    posts.length, // record length
+    1, // current page
+    "/articles", // baseHref
+    "/articles/browse/{{id}}", // template
+    9, // perPage
+  );
+
+  return new Array(pagination.totalPages).map((item, page) => ({
+    page,
+  }));
+}
 
 export default function Page({ params: { page } }: PageProps) {
   // get a listing of regular posts (hiding drafts)
