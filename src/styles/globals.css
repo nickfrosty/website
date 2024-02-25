@@ -2,12 +2,8 @@
 @tailwind base;
 @tailwind components;
 
-/* * {
-  outline: solid 1px red;
-} */
-
 .scroller {
-  @apply scrollbar-thin dark:scrollbar-thumb-slate-500 dark:scrollbar-track-slate-700;
+  @apply scrollbar-thin scrollbar-thumb-slate-500 scrollbar-track-slate-700;
 }
 
 body {
@@ -25,14 +21,16 @@ input[type="email"],
 input[type="url"],
 textarea,
 textbox {
-  @apply block px-4 py-3 bg-white border border-gray-200 rounded dark:border-gray-700 dark:bg-gray-800;
+  @apply block px-4 py-3 border rounded-md;
+  @apply bg-gray-800 border border-gray-700;
 }
 
 button,
 input[type="submit"],
 input[type="button"],
 .button {
-  @apply block px-4 py-3 text-white bg-indigo-500 rounded cursor-pointer hover:bg-indigo-600;
+  @apply block px-4 py-3 border border-transparent rounded-md cursor-pointer;
+  @apply text-white bg-indigo-500 hover:bg-indigo-600;
 }
 
 /* Define the custom component styles for use on the site */
@@ -105,7 +103,7 @@ h3 code {
 }
 
 .social-icon {
-  @apply text-gray-800 dark:text-white;
+  @apply text-white;
   @apply hover:text-hot-pink;
 }
 /*
