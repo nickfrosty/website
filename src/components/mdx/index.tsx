@@ -90,9 +90,9 @@ function Blockquote(props: ComponentProps<"blockquote">) {
 
 function Line(props: ComponentProps<"hr">) {
   return (
-    <p className="">
+    <div className="">
       <hr />
-    </p>
+    </div>
   );
 }
 
