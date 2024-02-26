@@ -88,6 +88,14 @@ function Blockquote(props: ComponentProps<"blockquote">) {
   );
 }
 
+function Line(props: ComponentProps<"hr">) {
+  return (
+    <p className="">
+      <hr />
+    </p>
+  );
+}
+
 function Pre({
   children,
   ...props
@@ -113,6 +121,7 @@ function Pre({
 }
 
 const components: MDXRemoteProps["components"] = {
+  hr: Line,
   pre: Pre,
   a: CustomLink,
   Callout: Callout,
