@@ -1,10 +1,16 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import { type ComponentProps } from "react";
+import { useMemo, type ComponentProps } from "react";
 import Link from "next/link";
 import { CalloutProps, rehypePluginConfig } from "./rehypeConfig";
 import { CustomMetadataProps } from "./rehypeMetadata";
 import { CopyToClipBoard } from "./CopyToClipboard";
-import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
+import {
+  StarIcon,
+  BoltIcon,
+  SparklesIcon,
+  InformationCircleIcon,
+  ExclamationTriangleIcon,
+} from "@heroicons/react/24/outline";
 
 const contentDirLinkRegex = new RegExp(
   /^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm,
@@ -30,28 +36,52 @@ function CustomLink({ ref, ...props }: ComponentProps<"a">) {
 }
 
 function Callout(props: ComponentProps<"div"> & CalloutProps) {
+  const IconToUse = useMemo(() => {
+    switch (props.type) {
+      case "warn":
+      case "warning":
+      case "caution":
+      case "yellow":
+      case "red":
+      case "error":
+        return ExclamationTriangleIcon;
+      case "green":
+      case "success":
+        return StarIcon;
+      case "blue":
+      case "note":
+      case "pro":
+        return BoltIcon;
+      default:
+        return InformationCircleIcon;
+    }
+  }, []);
+
   return (
     <div
-      className={`callout ${(props?.type as string)?.toLowerCase() || ""} ${
+      className={`callout ${(props?.type as string)?.toLowerCase() || "note"} ${
         props.className ? props.className : ""
       }`}
     >
-      {!!props.title && <div className="callout-title">{props.title}</div>}
-      <div className="callout-content">{props.children}</div>
+      <div className="callout-icon">
+        <IconToUse className="" />
+      </div>
+      <div {...props} className={"callout-content"}>
+        {!!props.title && <h5 className="callout-title">{props.title}</h5>}
+        {props.children}
+      </div>
     </div>
   );
 }
 
 function Blockquote(props: ComponentProps<"blockquote">) {
   return (
-    <div className="relative">
-      <div className="absolute p-[10px] rounded-full bg-gray-950 -left-5 -top-3">
-        <ChatBubbleBottomCenterTextIcon className="w-6 h-6" />
+    <div className={"callout indigo"}>
+      <div className="callout-icon">
+        <SparklesIcon className="" />
       </div>
-      <blockquote
-        {...props}
-        className="px-4 py-2 border-l-4 border-indigo-500 rounded-r-lg bg-slate-800"
-      >
+      <blockquote {...props} className={"callout-content"}>
+        {!!props.title && <h5 className="callout-title">{props.title}</h5>}
         {props.children}
       </blockquote>
     </div>
@@ -62,8 +92,6 @@ function Pre({
   children,
   ...props
 }: ComponentProps<"pre"> & CustomMetadataProps) {
-  // const preRef = useRef<HTMLPreElement | null>(null);
-
   return (
     <div className="relative border rounded-lg border-slate-700 overflow-clip">
       {!!props.filename && (
@@ -73,7 +101,6 @@ function Pre({
       )}
       <pre
         {...props}
-        // ref={preRef}
         className="rounded-b-lg p-3 [&>code]:leading-normal overflow-auto scroller"
       >
         {children}

@@ -34,5 +34,18 @@ export const rehypePluginConfig: import("unified").PluggableList = [
 
 /** additional props supported by the Callout component */
 export type CalloutProps = {
-  type?: string;
+  type?:
+    | "warn"
+    | "warning"
+    | "caution"
+    | "yellow"
+    | "red"
+    | "error"
+    | "green"
+    | "success"
+    | "blue"
+    | "note"
+    | "pro"
+    | "indigo"
+    | "purple";
 };

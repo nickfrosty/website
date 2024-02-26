@@ -30,7 +30,7 @@
   }
 
   p {
-    @apply my-4 text-lg leading-relaxed;
+    @apply text-lg leading-relaxed;
   }
   > p:first-of-type {
     @apply text-xl md:text-2xl;
