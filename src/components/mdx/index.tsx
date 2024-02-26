@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CalloutProps, rehypePluginConfig } from "./rehypeConfig";
 import { CustomMetadataProps } from "./rehypeMetadata";
 import { CopyToClipBoard } from "./CopyToClipboard";
+import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 
 const contentDirLinkRegex = new RegExp(
   /^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm,
@@ -43,8 +44,16 @@ function Callout(props: ComponentProps<"div"> & CalloutProps) {
 
 function Blockquote(props: ComponentProps<"blockquote">) {
   return (
-    <div className={`callout mx-4 md:mx-12 mt-5 mb-9`}>
-      <div className="callout-content">{props.children}</div>
+    <div className="relative">
+      <div className="absolute p-[10px] rounded-full bg-gray-950 -left-5 -top-3">
+        <ChatBubbleBottomCenterTextIcon className="w-6 h-6" />
+      </div>
+      <blockquote
+        {...props}
+        className="px-4 py-2 border-l-4 border-indigo-500 rounded-r-lg bg-slate-800"
+      >
+        {props.children}
+      </blockquote>
     </div>
   );
 }
