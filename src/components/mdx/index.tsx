@@ -136,6 +136,7 @@ export function RenderMDX(props: MDXRemoteProps) {
         mdxOptions: {
           development: process.env.NODE_ENV === "development",
           // remarkPlugins: [remarkGfm],
+          // @ts-ignore
           rehypePlugins: rehypePluginConfig,
         },
       }}
