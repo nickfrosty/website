@@ -8,11 +8,11 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "yarn contentlayer && next build",
+    "build": "npm run contentlayer && next build",
     "start": "next start",
     "lint": "next lint",
     "contentlayer": "contentlayer build --clearCache",
-    "rss": "yarn tsx ./utils/rss.ts"
+    "rss": "tsx ./utils/rss.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
@@ -29,6 +29,7 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "tsx": "^4.7.1",
+    "unified": "^11.0.4",
     "zumo": "^0.1.1"
   },
   "devDependencies": {

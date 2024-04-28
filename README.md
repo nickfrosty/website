@@ -34,8 +34,8 @@ locally:
 
 ```bash
 # install dependencies
-yarn install
+pnpm install
 
 # serve with hot reload at localhost:3000
-yarn dev
+pnpm dev
 ```
