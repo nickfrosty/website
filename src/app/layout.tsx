@@ -4,6 +4,7 @@ import { SITE, SOCIAL } from "@/lib/config";
 
 import AppHeader from "@/components/core/AppHeader";
 import AppFooter from "@/components/core/AppFooter";
+import FathomAnalytics from "@/components/core/FathomAnalytics";
 
 // import { Inter } from "next/font/google";
 
@@ -54,6 +55,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </style> */}
 
       <body>
+        <FathomAnalytics />
+
         <AppHeader />
 
         <section className={"container px-6 py-12 mx-auto"}>{children}</section>
