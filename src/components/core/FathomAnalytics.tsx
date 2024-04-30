@@ -12,6 +12,7 @@ function TrackPageView() {
     if (process?.env?.NODE_ENV !== "production") return;
 
     load("TPWTJRRN", {
+      url: `${SITE.url}/assets/helpers.js`,
       auto: false,
       // includedDomains: [SITE.domain, `www.${SITE.domain}`],
     });

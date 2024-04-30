@@ -19,6 +19,14 @@ module.exports = withContentlayer({
 
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: "/assets/helpers.js",
+        destination: "https://cdn.usefathom.com/script.js",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
