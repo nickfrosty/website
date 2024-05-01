@@ -21,10 +21,7 @@ export async function getPageViewCount(route: PageViewCounter["route"]) {
  * Record a single page view entry into the database
  */
 export async function incrementPageViewCount(route: PageViewCounter["route"]) {
-  // if (process.env.NODE_ENV !)
-  console.log("process.env.NODE_ENV:", process.env.NODE_ENV);
-
-  return null;
+  if (process.env.NODE_ENV !== "production") return null;
 
   try {
     return prisma.pageViewCounter.upsert({
