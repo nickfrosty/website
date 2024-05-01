@@ -150,7 +150,7 @@ article a {
   @apply hover:text-yellow-400 shadow-indigo hover:shadow-indigo;
 }
 h1 a {
-  @apply text-yellow-400;
+  @apply text-transparent from-yellow-400 to-rose-600 hover:text-yellow-400 bg-clip-text bg-gradient-to-r;
   @apply shadow-none hover:!shadow-indigo-lg;
 }
 
