@@ -57,6 +57,17 @@ model Profile {
   @@index([username], name: "profile_username_idx")
 }
 
+model PostViews {
+  id    Int    @unique @default(autoincrement()) @db.Integer
+  year  Int
+  month Int
+  slug  String
+  count Int    @default(0) @db.Integer
+
+  @@unique([year, month, slug], name: "post_view_index")
+  @@index([slug], name: "post_slug_index")
+}
+
 model NewsletterSubscriber {
   id    Int    @unique @default(autoincrement()) @db.Integer
   email String @unique
