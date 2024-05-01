@@ -1,18 +1,13 @@
-import { PostViews } from "@prisma/client";
 import prisma from "./client";
+import type { PageViewCounter, Prisma } from "@prisma/client";
 
-export async function getPostViewCount(slug: PostViews["slug"]) {
+export async function getPageViewCount(route: PageViewCounter["route"]) {
   try {
-    const date = new Date();
     return (
       (
-        await prisma.postViews.findUnique({
+        await prisma.pageViewCounter.findUnique({
           where: {
-            post_view_index: {
-              year: date.getFullYear(),
-              month: date.getMonth(),
-              slug,
-            },
+            route,
           },
         })
       )?.count || 2
@@ -22,27 +17,41 @@ export async function getPostViewCount(slug: PostViews["slug"]) {
   }
 }
 
-export async function incrementPostViewCount(slug: PostViews["slug"]) {
+/**
+ * Record a single page view entry into the database
+ */
+export async function incrementPageViewCount(route: PageViewCounter["route"]) {
+  // if (process.env.NODE_ENV !)
+  console.log("process.env.NODE_ENV:", process.env.NODE_ENV);
+
+  return null;
+
   try {
-    const date = new Date();
-    await prisma.postViews.upsert({
+    return prisma.pageViewCounter.upsert({
       where: {
-        post_view_index: {
-          year: date.getFullYear(),
-          month: date.getMonth(),
-          slug,
-        },
+        route,
       },
       create: {
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        slug,
+        route,
       },
       update: {
         count: {
           increment: 1,
         },
       },
+    });
+  } catch (err) {
+    return null;
+  }
+}
+
+/**
+ * Record a single page view entry into the database
+ */
+export async function recordPageView(payload: Prisma.PageViewCreateInput) {
+  try {
+    return prisma.pageView.create({
+      data: payload,
     });
   } catch (err) {
     return null;
