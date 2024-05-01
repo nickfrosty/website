@@ -5,7 +5,7 @@ import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
 import { Tag } from "./Tag";
 import Link from "next/link";
-import { ViewCounter } from "./ViewCounter";
+import { PageViewCounter } from "./PageViewCounter";
 
 type ComponentProps = {
   className?: string;
@@ -45,7 +45,7 @@ export function ArticleMeta({
           <DisplayDate date={post?.date} updatedAt={post?.updatedAt} />
           {/* <span>{parseInt("456789").toLocaleString()} views</span> */}
           <span className="block w-1 h-1 mr-2 bg-gray-500 rounded-full"></span>
-          <ViewCounter slug={post.slug || ""} />
+          <PageViewCounter route={post.href} />
         </div>
       </div>
 
