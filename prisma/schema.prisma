@@ -1,0 +1,228 @@
+datasource db {
+  provider     = "postgres"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// next-auth and custom
+model User {
+  username String @unique @default(uuid()) @db.VarChar(255)
+
+  // start next-auth required
+  uid           Int       @unique @default(autoincrement()) @db.Integer
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  // end next-auth required
+
+  // basic user status info
+  type      UserType? @default(USER)
+  status    Status?   @default(ACTIVE)
+  flags     String?   @db.VarChar(500)
+  createdAt DateTime? @default(now()) @db.Timestamp()
+  updatedAt DateTime? @updatedAt
+
+  // connections to other model structures
+  profile Profile? @relation("username")
+
+  @@index([id], name: "user_id_idx")
+  @@index([email], name: "user_email_idx")
+  @@index([username], name: "user_username_idx")
+  @@index([uid], name: "user_uid_idx")
+}
+
+// User Profile information
+model Profile {
+  // id       Int    @unique @default(autoincrement()) @db.UnsignedInt
+  username String @unique @db.VarChar(255)
+  user     User   @relation("username", fields: [username], references: [username])
+
+  // 
+  title    String?
+  name     String?
+  image    String?
+  bio      String? @default("") @db.VarChar(255)
+  verified Boolean @default(false)
+  flags    String? @db.VarChar(500)
+  status   Status? @default(ACTIVE)
+
+  @@index([username], name: "profile_username_idx")
+}
+
+model NewsletterSubscriber {
+  id    Int    @unique @default(autoincrement()) @db.Integer
+  email String @unique
+
+  name     String?
+  image    String?
+  bio      String? @default("") @db.VarChar(255)
+  website  String?
+  twitter  String?
+  github   String?
+  telegram String?
+
+  tags     String?
+  verified Boolean @default(false)
+  flags    String? @db.VarChar(500)
+  status   Status? @default(ACTIVE)
+
+  postsForSubscriber NewsletterPostForSubscriber[]
+}
+
+model NewsletterPost {
+  id      Int     @unique @default(autoincrement()) @db.Integer
+  key     String  @unique @default(cuid())
+  name    String
+  slug    String?
+  content String
+
+  dateCreated DateTime @default(now()) @db.Timestamp()
+  dateUpdated DateTime @updatedAt
+  status      Status?  @default(DRAFT)
+  flags       String?  @db.VarChar(500)
+
+  blastStarted DateTime?    @db.Timestamp()
+  blastEnded   DateTime?    @db.Timestamp()
+  blastStatus  EmailStatus? @default(IDLE)
+
+  postsForSubscriber NewsletterPostForSubscriber[]
+
+  @@index([blastStatus], name: "newsletter_post_blast_status")
+}
+
+model NewsletterPostForSubscriber {
+  id           Int                  @unique @default(autoincrement()) @db.Integer
+  subscriberId Int                  @db.Integer
+  subscriber   NewsletterSubscriber @relation(fields: [subscriberId], references: [id])
+  postId       Int                  @db.Integer
+  post         NewsletterPost       @relation(fields: [postId], references: [id])
+
+  dateCreated DateTime @default(now()) @db.Timestamp()
+  dateUpdated DateTime @updatedAt
+  content     String
+
+  // track the email via an id provided by the provider
+  emailId String? @default("")
+  // emailProvider String // only `resend` is used right now
+
+  // replyEmail String?      @default("")
+  status    EmailStatus? @default(PENDING)
+  openCount Int?         @default(0) @db.Integer
+
+  links NewsletterPostLinkForSubscriber[]
+
+  @@index([postId], name: "newsletter_post_for_subscriber_post_id")
+  @@index([emailId], name: "newsletter_post_for_subscriber_email_id")
+  @@index([subscriberId], name: "newsletter_post_for_subscriber_sbuscriber_id")
+}
+
+model NewsletterPostLinkForSubscriber {
+  id                  String                      @id @default(cuid())
+  postForSubscriberId Int                         @db.Integer
+  postForSubscriber   NewsletterPostForSubscriber @relation(fields: [postForSubscriberId], references: [id])
+
+  destination String
+  clickCount  Int?      @default(0) @db.Integer
+  lastOpened  DateTime?
+  status      Status    @default(ACTIVE)
+
+  @@index([postForSubscriberId], name: "newsletter_post_link_for_subscriber_id")
+}
+
+// User types to be used for access controls
+enum UserType {
+  USER
+  MANAGER
+  ADMIN
+  SUPER
+  OWNER
+  UNKNOWN
+}
+
+// Common statuses to be used throughout the app
+enum Status {
+  DRAFT
+  INACTIVE
+  ACTIVE
+  CLOSED
+  CANCELED
+  DISABLED
+  LOCKED
+  DELETED
+  PAID
+  PENDING
+  FAILED
+  UNCLAIMED
+}
+
+enum EmailStatus {
+  IDLE
+  PENDING
+  SENT
+  DELIVERED
+  COMPLAINED
+  DELIVEREY_DELAYED
+  BOUNCED
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+// next-auth specific models
+// note: these normally do not change
+
+// Required for next-auth
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  // this is required by GitHub for login
+  refresh_token_expires_in Int?
+  access_token             String? @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+  provider_profile         Json?   @default("{}")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId], name: "provider_and_account_id_idx")
+  @@index([providerAccountId], name: "provider_account_id_idx")
+  @@index(userId, name: "provider_user_id_idx")
+}
+
+// required for next-auth
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// required for next-auth
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index(userId, name: "session_user_id_idx")
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
