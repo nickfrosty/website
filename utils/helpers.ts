@@ -33,6 +33,10 @@ export const REGEX_HTML_LINKS = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/gm;
 export const REGEX_HTML_RELATIVE_URLS =
   /<(?:a|img)\s+(?:[^>]*?\s+)?(?:href|src)=("|')([\/|\.].*?)\1/gim;
 
+export const REGEX_CONTENT_DIR_LINK = new RegExp(
+  /^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm,
+);
+
 /**
  * Slugify a url string into a valid url form
  */

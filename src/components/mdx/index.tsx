@@ -11,10 +11,7 @@ import {
   InformationCircleIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
-
-const contentDirLinkRegex = new RegExp(
-  /^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm,
-);
+import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
 
 function CustomLink({ ref, ...props }: ComponentProps<"a">) {
   let href = (props.href!.toString() as string).replace(
@@ -24,7 +21,7 @@ function CustomLink({ ref, ...props }: ComponentProps<"a">) {
 
   if (href.startsWith("/") || href.startsWith(".")) {
     // reformat paths like `/content/article/sub-dir/doc.md`
-    href = href.replace(contentDirLinkRegex, "/$1/$3");
+    href = href.replace(REGEX_CONTENT_DIR_LINK, "/$1/$3");
     return (
       <Link {...props} href={href.replace(/(.mdx?)$/gi, "")}>
         {props.children}
