@@ -1,6 +1,6 @@
 ---
 status: graveyard
-title: "nameea.com"
+title: nameea
 dateRange: "2021"
 date: "2021-02-15"
 description: "Marketplace for brandable domain names, with affordable prices"

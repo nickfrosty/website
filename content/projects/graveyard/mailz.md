@@ -1,7 +1,7 @@
 ---
 homepage: false
 status: graveyard
-title: "mailz.dev"
+title: mailz
 url: https://mailz.dev
 dateRange: "Apr 2022"
 date: 2022-04-01

@@ -1,6 +1,6 @@
 ---
 status: graveyard
-title: "Finbab.com"
+title: Finbab
 dateRange: "2020"
 date: "2020-01-01"
 description:

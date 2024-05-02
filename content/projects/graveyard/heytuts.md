@@ -1,6 +1,6 @@
 ---
 status: autopilot
-title: "HeyTuts.com"
+title: HeyTuts
 date: 2010-01-01
 dateRange: "2010-2012, 2018-2020"
 description:
