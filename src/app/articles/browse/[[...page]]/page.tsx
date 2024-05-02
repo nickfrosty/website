@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { allArticles } from "contentlayer/generated";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { computePagination } from "@@/utils/helpers";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
@@ -70,17 +71,19 @@ export default function Page({ params: { page } }: PageProps) {
   if (!posts.length) return notFound();
 
   return (
-    <main className="space-y-12">
-      <section className="pt-8">
-        <h1 className="text-4xl font-bold">Browse articles</h1>
-        {/* <p></p> */}
-      </section>
+    <PageViewTracker>
+      <main className="space-y-12">
+        <section className="pt-8">
+          <h1 className="text-4xl font-bold">Browse articles</h1>
+          {/* <p></p> */}
+        </section>
 
-      <CardGrid
-        posts={posts}
-        baseHref={pagination.baseHref as string}
-        pagination={pagination}
-      />
-    </main>
+        <CardGrid
+          posts={posts}
+          baseHref={pagination.baseHref as string}
+          pagination={pagination}
+        />
+      </main>
+    </PageViewTracker>
   );
 }

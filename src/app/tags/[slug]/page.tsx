@@ -5,6 +5,7 @@ import { allArticleTags, allArticles } from "contentlayer/generated";
 import { HeroSection } from "@/components/content/HeroSection";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { PaginationProps } from "@@/types";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 
 const config = {
   baseHref: "/tags/{{tag}}",
@@ -166,7 +167,7 @@ export default function Page({ params: { page, slug } }: PageProps) {
   // if (!meta?.canonical) meta.canonical = `${href}`;
 
   return (
-    <>
+    <PageViewTracker>
       <HeroSection
         metadata={tagMeta}
         baseHref={config?.baseHref}
@@ -175,6 +176,6 @@ export default function Page({ params: { page, slug } }: PageProps) {
       />
 
       <CardGrid posts={posts} baseHref={"/articles"} pagination={pagination} />
-    </>
+    </PageViewTracker>
   );
 }

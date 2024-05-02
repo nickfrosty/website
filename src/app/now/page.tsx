@@ -1,9 +1,10 @@
 import Link from "next/link";
 import NowDetailsItem from "@/components/NowDetailsItem";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 
 export default function Page() {
   return (
-    <>
+    <PageViewTracker>
       <NowDetailsItem
         id="solana"
         href="#solana"
@@ -159,6 +160,6 @@ export default function Page() {
             NuxtJS(Vue) to a NextJS(React) base app.
           </p>
         </NowDetailsItem> */}
-    </>
+    </PageViewTracker>
   );
 }

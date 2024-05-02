@@ -6,6 +6,8 @@ import { allProjects } from "contentlayer/generated";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { META_TITLE_SEPARATOR } from "@/lib/constants";
 const config = zumoConfig.content.projects;
 
 const breadcrumbParents: SimpleLinkItem = {
@@ -35,7 +37,7 @@ export function generateMetadata({ params: { slug } }: PageProps): Metadata {
   }
 
   return {
-    title: `${post.title} | Projects`,
+    title: `Project: ${post.title}`,
     description:
       post.description ||
       "Read more about this project and it's current state of development.",
@@ -46,10 +48,6 @@ export function generateMetadata({ params: { slug } }: PageProps): Metadata {
 }
 
 export default function Page({ params: { slug } }: PageProps) {
-  if (process && process.env?.NODE_ENV !== "development") {
-    return notFound();
-  }
-
   const post = allProjects.find((item) => item.slug == slug);
 
   if (!post) {
@@ -61,13 +59,15 @@ export default function Page({ params: { slug } }: PageProps) {
   // TODO: add the `tag` based post browsing to these blog posts
 
   return (
-    <ProseLayout
-      post={post}
-      // next={next}
-      // prev={prev}
-      config={config}
-      breadcrumbParents={[breadcrumbParents]}
-      breadcrumbShowHome={false}
-    />
+    <PageViewTracker>
+      <ProseLayout
+        post={post}
+        // next={next}
+        // prev={prev}
+        config={config}
+        breadcrumbParents={[breadcrumbParents]}
+        breadcrumbShowHome={false}
+      />
+    </PageViewTracker>
   );
 }

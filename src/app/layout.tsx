@@ -5,6 +5,7 @@ import { SITE, SOCIAL } from "@/lib/config";
 import AppHeader from "@/components/core/AppHeader";
 import AppFooter from "@/components/core/AppFooter";
 import FathomAnalytics from "@/components/core/FathomAnalytics";
+import { META_TITLE_SEPARATOR } from "@/lib/constants";
 
 // import { Inter } from "next/font/google";
 
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(`https://${SITE.domain}`),
   title: {
     default: SITE.name,
-    template: `%s – ${SITE.name}`,
+    template: `%s ${META_TITLE_SEPARATOR} ${SITE.name}`,
   },
   description:
     "Hi! I'm Nick, a full stack developer and submariner working on various " +

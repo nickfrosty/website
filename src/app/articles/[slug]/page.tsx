@@ -7,6 +7,7 @@ import { type Article, allArticles } from "contentlayer/generated";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 const config = zumoConfig.content.articles;
 
 type PageProps = {
@@ -81,13 +82,15 @@ export default function Page({ params: { slug } }: PageProps) {
   }
 
   return (
-    <ProseLayout
-      post={post}
-      // next={next}
-      // prev={prev}
-      config={config}
-      breadcrumbParents={[breadcrumbParents]}
-      breadcrumbShowHome={false}
-    />
+    <PageViewTracker>
+      <ProseLayout
+        post={post}
+        // next={next}
+        // prev={prev}
+        config={config}
+        breadcrumbParents={[breadcrumbParents]}
+        breadcrumbShowHome={false}
+      />
+    </PageViewTracker>
   );
 }

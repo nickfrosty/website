@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import Link from "next/link";
 import { ArticleMeta } from "@/components/content/ArticleMeta";
 import { RenderMDX } from "@/components/mdx";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 const config = zumoConfig.content.blog;
 
 type PageProps = {
@@ -72,7 +73,7 @@ export default function Page({ params: { slug } }: PageProps) {
   //   prev = await getDocMetaBySlug(post.prevPage, metaData.contentDir);
 
   return (
-    <>
+    <PageViewTracker>
       {/* <Breadcrumbs
         post={post}
         includeHome={breadcrumbShowHome}
@@ -99,6 +100,6 @@ export default function Page({ params: { slug } }: PageProps) {
       </main>
 
       {/* <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} /> */}
-    </>
+    </PageViewTracker>
   );
 }

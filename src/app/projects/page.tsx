@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { allProjects } from "contentlayer/generated";
 import ProjectCard from "@/components/ProjectCard";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 
 export const metadata: Metadata = {
   alternates: {
@@ -22,7 +23,7 @@ export default function Page() {
   // todo: sort the projects by their `sortDate`
 
   return (
-    <>
+    <PageViewTracker>
       <header className="mb-12 space-y-5 text-center">
         <h1>Active Projects</h1>
 
@@ -62,6 +63,6 @@ export default function Page() {
           <ProjectCard key={project.title} project={project} />
         ))}
       </section>
-    </>
+    </PageViewTracker>
   );
 }

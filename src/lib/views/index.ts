@@ -5,11 +5,11 @@ import {
   HEADER_IP,
   HEADER_PATHNAME,
   HEADER_REFERER,
-  IP_LOCALHOST,
-} from "./const";
+  HEADER_IP_LOCALHOST,
+} from "./headers";
 
 /**
- *
+ * Create a SHA-256 hash of the provided input string
  */
 export async function createSHA256hash(input: string) {
   const encoder = new TextEncoder();
@@ -51,27 +51,16 @@ export async function createIdentityHash(
 }
 
 /**
- *
+ * Gather all the desired data to record a page view in the db
  */
 export async function createPageViewPayload() {
   const headers = getHeaders();
-  const pathname = headers.get(HEADER_PATHNAME);
-  const referer = headers.get(HEADER_REFERER);
-  const ip = headers.get(HEADER_IP) || IP_LOCALHOST;
+  const pathname = headers.get(HEADER_PATHNAME) || "";
+  const referer = headers.get(HEADER_REFERER) || "";
+  const ip = headers.get(HEADER_IP) || HEADER_IP_LOCALHOST;
   const geo = headers.get(HEADER_GEO) || "";
   const userAgent = getUserAgent({ headers });
   const identityHash = await createIdentityHash(ip, userAgent.ua);
-
-  console.log("identityHash:", identityHash);
-  console.log("pathname:", pathname);
-  console.log("refer:", referer);
-  console.log("geo:", referer);
-  console.log("refer:", referer);
-  console.log("user:", userAgent);
-
-  // for (const key of headers.keys()) {
-  //   console.log(key, ":", headers.get(key));
-  // }
 
   return {
     pathname,

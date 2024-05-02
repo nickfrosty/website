@@ -3,6 +3,7 @@ import { allArticles } from "contentlayer/generated";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { SmallCard } from "@/components/cards/SmallCard";
 import { computePagination } from "@@/utils/helpers";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
@@ -91,36 +92,38 @@ export default function Page({ params: { page } }: PageProps) {
   } = preparePage(page);
 
   return (
-    <main className="space-y-12">
-      <header className="">
-        <h1>Featured articles</h1>
-        {/* <p></p> */}
-      </header>
+    <PageViewTracker>
+      <main className="space-y-12">
+        <header className="">
+          <h1>Featured articles</h1>
+          {/* <p></p> */}
+        </header>
 
-      {!!featured?.length &&
-        pagination &&
-        (pagination?.page as number) <= 1 && (
-          <section className="double-wide-cards">
-            {featured?.map((post) => (
-              <SmallCard
-                key={post.slug}
-                post={post}
-                baseHref={metadataConfig.baseHref}
-              />
-            ))}
-          </section>
-        )}
+        {!!featured?.length &&
+          pagination &&
+          (pagination?.page as number) <= 1 && (
+            <section className="double-wide-cards">
+              {featured?.map((post) => (
+                <SmallCard
+                  key={post.slug}
+                  post={post}
+                  baseHref={metadataConfig.baseHref}
+                />
+              ))}
+            </section>
+          )}
 
-      <section className="pt-8">
-        <h2 className="text-4xl font-bold">Latest articles</h2>
-        {/* <p></p> */}
-      </section>
+        <section className="pt-8">
+          <h2 className="text-4xl font-bold">Latest articles</h2>
+          {/* <p></p> */}
+        </section>
 
-      <CardGrid
-        posts={posts}
-        baseHref={metadataConfig.baseHref}
-        pagination={pagination}
-      />
-    </main>
+        <CardGrid
+          posts={posts}
+          baseHref={metadataConfig.baseHref}
+          pagination={pagination}
+        />
+      </main>
+    </PageViewTracker>
   );
 }

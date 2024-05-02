@@ -1,3 +1,4 @@
+import SITE from "../config";
 import prisma from "./client";
 import type { PageViewCounter, Prisma } from "@prisma/client";
 
@@ -46,6 +47,16 @@ export async function incrementPageViewCount(route: PageViewCounter["route"]) {
  * Record a single page view entry into the database
  */
 export async function recordPageView(payload: Prisma.PageViewCreateInput) {
+  payload.referer = payload.referer?.replace(
+    new RegExp(`^${SITE.url}\/`, "i"),
+    "/",
+  );
+
+  if (process.env.NODE_ENV !== "production") {
+    console.warn("[recordPageView]", payload);
+    return null;
+  }
+
   try {
     return prisma.pageView.create({
       data: payload,
