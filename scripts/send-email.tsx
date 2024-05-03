@@ -8,6 +8,7 @@ import { compileMDX, type MDXRemoteProps } from "next-mdx-remote/rsc";
 import { renderToStaticMarkup } from "react-dom/server";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
 import { parseMDXasHtmlString } from "@/lib/content/parseHtmlAsString";
+import { MASKED_DOMAIN, MASKED_NEWSLETTER_PATH } from "@/lib/views/constants";
 
 import { createId } from "@paralleldrive/cuid2";
 
@@ -79,7 +80,10 @@ const componentsForEmail: MDXRemoteProps["components"] = {
      */
 
     const cuid = createId();
-    const maskedUrl = new URL(`/newsletter/${cuid}`, "https://nicks.link");
+    const maskedUrl = new URL(
+      `${MASKED_NEWSLETTER_PATH}/${cuid}`,
+      `https://${MASKED_DOMAIN}`,
+    );
 
     links.set(href, maskedUrl.toString());
     return <a {...props} href={maskedUrl.toString()} />;

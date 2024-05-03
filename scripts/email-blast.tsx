@@ -26,7 +26,7 @@
 // // );
 
 // const CONFIG_SITE_URL = `https://${SITE.domain}`;
-// const CONFIG_LINK_MASKER_URL = `https://nicks.link`;
+// const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
 
 // const postContent = readFileSync(
 //   "/home/nick/code/nickfrosty/newsletter-tmp/2024-04-28-init.md",
