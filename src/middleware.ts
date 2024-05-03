@@ -1,5 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { injectViewTrackerHeaders } from "@/lib/views/headers";
+import MaskedLinkMiddleware from "@/middleware/MaskedLinkMiddleware";
+import { parseRequest } from "@/lib/views/middleware";
+import { MASKED_DOMAIN } from "@/lib/views/constants";
 
 export const config = {
   matcher: [
@@ -28,6 +31,12 @@ export const config = {
 };
 
 export function middleware(req: NextRequest) {
+  const parsed = parseRequest(req);
+
+  if (parsed.domain == MASKED_DOMAIN) {
+    return MaskedLinkMiddleware(req, parsed);
+  }
+
   return NextResponse.next({
     request: {
       headers: injectViewTrackerHeaders(req),
