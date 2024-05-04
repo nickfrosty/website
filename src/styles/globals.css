@@ -22,7 +22,7 @@ input[type="url"],
 textarea,
 textbox {
   @apply block px-4 py-3 border rounded-md;
-  @apply bg-gray-800 border border-gray-700;
+  @apply bg-black border border-gray-900;
 }
 
 button,
