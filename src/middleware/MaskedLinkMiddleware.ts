@@ -3,6 +3,7 @@
  * (like those used with the newsletter and short links)
  */
 
+import SITE from "@/lib/config";
 import { MASKED_API_PATH } from "@/lib/views/constants";
 import { ParsedRequestData } from "@/lib/views/middleware";
 import { NextRequest, NextResponse } from "next/server";
@@ -23,5 +24,7 @@ export default async function MaskedLinkMiddleware(
   // for now we just show the main site, which will have invalid links
   // todo: we could also wrap everything in a try catch to handle this too
 
-  return NextResponse.next();
+  // masked middleware should always redirect to the master site
+  // since we did not find a masked link, it must be the root domain
+  return NextResponse.redirect(SITE.url);
 }
