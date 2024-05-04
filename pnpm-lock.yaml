@@ -29,12 +29,12 @@ dependencies:
   estree-walker:
     specifier: ^3.0.3
     version: 3.0.3
-  gray-matter:
-    specifier: ^4.0.3
-    version: 4.0.3
   fathom-client:
     specifier: ^3.6.0
     version: 3.6.0
+  gray-matter:
+    specifier: ^4.0.3
+    version: 4.0.3
   luxon:
     specifier: ^3.4.4
     version: 3.4.4
@@ -89,6 +89,9 @@ dependencies:
   unified:
     specifier: ^11.0.4
     version: 11.0.4
+  zod:
+    specifier: ^3.23.6
+    version: 3.23.6
   zumo:
     specifier: ^0.1.1
     version: 0.1.1
@@ -226,7 +229,7 @@ packages:
       ts-pattern: 4.3.0
       unified: 10.1.2
       yaml: 2.4.2
-      zod: 3.23.4
+      zod: 3.23.6
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
       - esbuild
@@ -6758,8 +6761,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zod@3.23.4:
-    resolution: {integrity: sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==}
+  /zod@3.23.6:
+    resolution: {integrity: sha512-RTHJlZhsRbuA8Hmp/iNL7jnfc4nZishjsanDAfEY1QpDQZCahUp3xDzl+zfweE9BklxMUcgBgS1b7Lvie/ZVwA==}
     dev: false
 
   /zumo@0.1.1:

@@ -25,8 +25,8 @@
     "clsx": "^2.1.0",
     "contentlayer": "^0.3.4",
     "estree-walker": "^3.0.3",
-    "gray-matter": "^4.0.3",
     "fathom-client": "^3.6.0",
+    "gray-matter": "^4.0.3",
     "luxon": "^3.4.4",
     "next": "^14.1.0",
     "next-contentlayer": "^0.3.4",
@@ -45,6 +45,7 @@
     "resend": "^3.2.0",
     "tsx": "^4.7.1",
     "unified": "^11.0.4",
+    "zod": "^3.23.6",
     "zumo": "^0.1.1"
   },
   "devDependencies": {
