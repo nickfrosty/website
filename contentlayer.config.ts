@@ -108,9 +108,11 @@ export const Blog = defineDocumentType(() => ({
 
     // define custom fields now...
     category: {
-      type: "string",
-      description: "",
-      required: false,
+      type: "enum",
+      options: ["blog", "newsletter", "devlog"],
+      default: "blog",
+      description: "The category this post belongs too",
+      required: true,
     },
   },
   computedFields: {

@@ -47,7 +47,7 @@ export default function Page() {
               }`}
             >
               {!!post.category && (
-                <h4 className="text-base tracking-wide capitalize minor">
+                <h4 className="text-sm font-medium tracking-wide uppercase minor">
                   {post.category}
                 </h4>
               )}
