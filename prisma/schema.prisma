@@ -100,10 +100,12 @@ model NewsletterSubscriber {
   github   String?
   telegram String?
 
-  tags     String?
-  verified Boolean @default(false)
-  flags    String? @db.VarChar(500)
-  status   Status? @default(ACTIVE)
+  tags      String?
+  verified  Boolean  @default(false)
+  flags     String?  @db.VarChar(500)
+  status    Status?  @default(PENDING)
+  dateAdded DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   postsForSubscriber NewsletterPostForSubscriber[]
 }
