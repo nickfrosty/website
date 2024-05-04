@@ -53,7 +53,7 @@ export async function recordPageView(payload: Prisma.PageViewCreateInput) {
   );
 
   if (process.env.NODE_ENV !== "production") {
-    console.warn("[recordPageView]", payload);
+    // console.warn("[recordPageView]", payload);
     return null;
   }
 
