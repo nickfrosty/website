@@ -134,7 +134,7 @@ hr {
 .link,
 .summary a,
 article a {
-  @apply text-indigo-400 hover:text-yellow-400 hover:shadow-indigo;
+  @apply text-yellow-400 hover:text-indigo-400 hover:shadow-yellow shadow-indigo;
 }
 
 .link-active {
