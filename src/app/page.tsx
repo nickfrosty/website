@@ -7,6 +7,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { SITE } from "@/lib/config";
 import SocialIcons from "@/components/SocialIcons";
 import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -76,9 +77,18 @@ export default function Page() {
             Here, you can find{" "}
             <Link href="/now" className="link-active">
               what I am working on now
-            </Link>
-            .
+            </Link>{" "}
+            and my{" "}
+            <Link href="/newsletter" className="link-active">
+              latest newsletter
+            </Link>{" "}
+            posts.
           </p>
+
+          <NewsletterSubscribeForm
+            className="col-span-full md:mt-10 xl:mt-14"
+            title="Subscribe to my newsletter?"
+          />
         </section>
 
         <section className="grid gap-8 xl:gap-12">

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { ArticleMeta } from "@/components/content/ArticleMeta";
 import { RenderMDX } from "@/components/mdx";
 import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
 const config = zumoConfig.content.blog;
 
 type PageProps = {
@@ -97,6 +98,8 @@ export default function Page({ params: { slug } }: PageProps) {
         <article className={styles.article}>
           <RenderMDX source={post.body.raw} />
         </article>
+
+        <NewsletterSubscribeForm title="Want to read more of my antics via email?" />
       </main>
 
       {/* <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} /> */}

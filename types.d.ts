@@ -9,6 +9,8 @@ import type {
   DocumentTypes,
 } from "contentlayer/generated";
 
+import type { ZodType, ZodTypeAny } from "zod";
+
 type ZumoConfigRecord = {
   baseHref?: string;
   hrefTemplate?: string;
@@ -115,4 +117,10 @@ type ProsePageProps = {
   post: DocumentTypes;
   next?: DocumentTypes;
   prev?: DocumentTypes;
+};
+
+type ActionFormState<T extends z.ZodType<any, any, any>> = {
+  success?: boolean;
+  message?: string;
+  errors?: z.typeToFlattenedError<z.infer<T>>["fieldErrors"];
 };
