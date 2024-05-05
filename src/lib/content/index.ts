@@ -10,12 +10,12 @@ export function getPostBySlug(
 ) {
   try {
     const source = readFileSync(`${pathname}/${slug}${extension}`);
-    const { data, content } = matter(source);
+    const { data: metadata, content } = matter(source);
     // const excerpt = getExcerpt(content, 200);
 
-    return { data, content };
+    return { metadata, content: content.trim() };
   } catch (e) {
-    return null;
+    return { metadata: {}, content: "" };
   }
 }
 
