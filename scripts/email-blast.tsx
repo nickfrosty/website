@@ -1,80 +1,63 @@
 // import { Resend } from "resend";
 
 // import * as dotenv from "dotenv";
-// import { SITE } from "@/lib/config";
-// import { prisma } from "@/lib/prisma";
-// import { readFileSync } from "fs";
-// import type { MDXRemoteProps } from "next-mdx-remote/rsc";
-// import { compileMDXwithRenderCheck } from "@/lib/mdx";
-// import { createId } from "@paralleldrive/cuid2";
-// import type {
-//   NewsletterPost,
-//   NewsletterSubscriber,
-//   Prisma,
-// } from "@prisma/client";
+// import { prisma } from "@/lib/prisma/client";
+// import type { NewsletterSubscriber, Prisma } from "@prisma/client";
+// import { getPostBySlug } from "@/lib/content";
+// // import { preparePostForSubscriber } from "@/lib/newsletter";
+// import {
+//   NEWSLETTER_EMAIL_ADDRESS,
+//   NEWSLETTER_FROM,
+//   NEWSLETTER_REPLY_TO,
+// } from "@/lib/constants";
+
+// import { NewsletterPost } from "@prisma/client";
+// import { MDXRemoteProps } from "next-mdx-remote/rsc";
+// import { SITE_ADDR } from "@/lib/constants";
 // import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
+// import { createId } from "@paralleldrive/cuid2";
+// import { compileMDXwithRenderCheck } from "@/lib/mdx";
+// import { MASKED_DOMAIN } from "@/lib/views/constants";
+
+// const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
+// const CONFIG_MASK_LINKS = true;
 
 // dotenv.config();
 
-// console.log("Let's not accidentally send to everyone again");
-// process.exit();
+// const DRAFT_ONLY_MODE: boolean = true;
 
-// const resend = new Resend(process.env.RESEND_API_KEY);
+// const postSlug = "2024-05-05-analytics-for-websites-and-emails";
 
-// // const files = getAllContentFiles(
-// //   "/home/nick/code/nickfrosty/newsletter-tmp/",
-// // );
-
-// const CONFIG_SITE_URL = `https://${SITE.domain}`;
-// const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
-
-// const postContent = readFileSync(
-//   "/home/nick/code/nickfrosty/newsletter-tmp/2024-04-28-init.md",
-//   "utf-8",
+// const rawPost = getPostBySlug(
+//   postSlug,
+//   "/home/nick/code/nickfrosty/website/content/blog/newsletter",
 // );
-// // console.log(postContent);
 
-// const subscribers = await prisma.newsletterSubscriber.findMany({
-//   where: {
-//     status: "ACTIVE",
-//   },
-// });
-// console.log("subscriber count:", subscribers.length);
-
-// if (!subscribers.length) {
-//   console.warn("There are currently no subscribers. Stopping.");
+// if (!rawPost || !rawPost.content) {
+//   console.log("Unable to locate the newsletter file");
 //   process.exit(1);
 // }
 
-// // let post = await prisma.newsletterPost.findUnique({where: {
-// //   slug:
-// // }})
-// //
-// // if (post) {
-// //   console.warn(`This post has already been created...`);
-// //   process.exit(1);
-// // }
-
-// const post = await prisma.newsletterPost.create({
-//   data: {
-//     name: "",
-//     content: postContent,
-//   },
-// });
-
-// if (!post) {
-//   console.warn("Failed to create new post record");
+// if (!rawPost.metadata.title) {
+//   // todo: frontmatter validation
+//   console.log("Unable to locate post title");
 //   process.exit(1);
 // }
+
+// // auto append the closing statement to the newsletter
+// rawPost.content +=
+//   "\n\n" +
+//   "PS: You can always reply directly to this email or chat on Twitter:\n" +
+//   "[@nickfrosty](https://twitter.com/nickfrosty) to share your thoughts and\n" +
+//   "comments about the content above.";
 
 // type PreparePostForSubscriberProps = {
-//   post: NewsletterPost;
-//   subscriber: NewsletterSubscriber;
+//   content: NewsletterPost["content"];
 //   maskLinks: boolean;
 // };
 
-// async function preparePostForSubscriber({
-//   post,
+// export async function preparePostForSubscriber({
+//   content,
 //   // todo: do we need the subscriber details? I don't think so since cuid is awesome
 //   // subscriber,
 //   maskLinks,
@@ -90,12 +73,13 @@
 //       // todo: do we want to mask links for images?
 //       // links.set(src, "image");
 
-//       const url = new URL(src, CONFIG_SITE_URL);
+//       const url = new URL(src, SITE_ADDR);
 
 //       return <img {...props} src={url.toString()} />;
 //     },
 //     a: ({ href, ...props }) => {
 //       if (!href) return null;
+//       // todo: dynamically use the site's domain
 //       href = href.replace(/^(https?:\/\/)?nick.af\//gi, "/");
 
 //       /**
@@ -119,7 +103,7 @@
 //           console.log("not supported:", href);
 //         }
 
-//         href = new URL(href, CONFIG_SITE_URL).toString();
+//         href = new URL(href, SITE_ADDR).toString();
 //       }
 
 //       if (maskLinks) {
@@ -139,7 +123,7 @@
 //   };
 
 //   const { htmlString } = await compileMDXwithRenderCheck({
-//     content: post.content,
+//     content: content,
 //     components: componentsForEmail,
 //   });
 
@@ -147,6 +131,102 @@
 //     links,
 //     htmlString,
 //   };
+// }
+
+// // console.log(rawPost);
+
+// const resend = new Resend(process.env.RESEND_API_KEY);
+
+// // if (DRAFT_ONLY_MODE) {
+// //   const { htmlString, links } = await preparePostForSubscriber({
+// //     content: rawPost.content,
+// //     maskLinks: CONFIG_MASK_LINKS,
+// //   });
+
+// //   //   console.log(htmlString);
+
+// //   console.log("masked links:");
+// //   console.log(links);
+
+// //   const emailResponse = await resend.emails.send({
+// //     // lots of good details: https://www.litmus.com/blog/email-subdomains
+// //     from: NEWSLETTER_FROM,
+// //     // todo: generate a custom reply email?
+// //     reply_to: NEWSLETTER_REPLY_TO,
+// //     to: NEWSLETTER_EMAIL_ADDRESS,
+// //     subject: `Newsletter: ${rawPost.metadata.title}`,
+// //     html: htmlString,
+// //   });
+
+// //   console.log("emailResponse");
+// //   console.log(emailResponse);
+
+// //   console.log("==============================================");
+// //   console.log("==============================================");
+// //   console.log("  DRAFT ONLY MODE IS ENABLED. STOPPING HERE. ");
+// //   console.log("==============================================");
+// //   console.log("==============================================");
+// //   process.exit();
+// // }
+
+// let subscribers = await prisma.newsletterSubscriber.findMany({
+//   where: {
+//     status: "ACTIVE",
+//     id: DRAFT_ONLY_MODE ? 1 : undefined,
+//   },
+//   orderBy: {
+//     id: "asc",
+//   },
+// });
+// console.log("subscriber count:", subscribers.length);
+
+// if (!subscribers.length) {
+//   console.warn("There are currently no subscribers. Stopping.");
+//   process.exit(1);
+// }
+
+// if (DRAFT_ONLY_MODE) {
+//   subscribers = subscribers.filter(
+//     (item) => item.id == 1 && item.twitter == "nickfrosty",
+//   );
+
+//   if (subscribers.length != 1) {
+//     console.warn("Failed to filter subscribers for draft mode");
+//     process.exit();
+//   }
+
+//   console.log(subscribers);
+// }
+
+// // todo: check the db to ensure a post has not already been created
+// // let newsletterPost = await prisma.newsletterPost.findUnique({where: {
+// //   slug:
+// // }})
+// //
+// // if (post) {
+// //   console.warn(`This post has already been created...`);
+// //   process.exit(1);
+// // }
+
+// // process.exit();
+
+// const newsletterPost = await prisma.newsletterPost.create({
+//   data: {
+//     name: "",
+//     content: rawPost.content,
+//   },
+// });
+
+// if (!newsletterPost) {
+//   console.warn("Failed to create new newsletter post record");
+//   process.exit(1);
+// }
+
+// // @ts-ignore
+// if (DRAFT_ONLY_MODE === true) {
+//   console.log("Draft mode enabled");
+//   console.log("Let's not accidentally send to everyone again");
+//   process.exit();
 // }
 
 // const errors = new Map<NewsletterSubscriber["id"], "string">();
@@ -160,9 +240,8 @@
 
 //   try {
 //     const { htmlString, links } = await preparePostForSubscriber({
-//       post,
-//       subscriber,
-//       maskLinks: false,
+//       content: newsletterPost.content,
+//       maskLinks: CONFIG_MASK_LINKS,
 //     });
 
 //     // todo: do we need to make sure this user has not already received this post?
@@ -183,7 +262,7 @@
 
 //     let postForSubscriber = await prisma.newsletterPostForSubscriber.create({
 //       data: {
-//         postId: post.id,
+//         postId: newsletterPost.id,
 //         subscriberId: subscriber.id,
 //         content: htmlString,
 //         status: "IDLE",
@@ -210,11 +289,11 @@
 //     // await Promise.allSettled([
 //     const emailResponse = await resend.emails.send({
 //       // lots of good details: https://www.litmus.com/blog/email-subdomains
-//       from: "Nick Frostbutter <newsletter@mail.frostbutter.com>",
+//       from: NEWSLETTER_FROM,
 //       // todo: generate a custom reply email?
-//       reply_to: "Nick Frostbutter <nick@frostbutter.com>",
+//       reply_to: NEWSLETTER_REPLY_TO,
 //       to: subscriber.email,
-//       subject: "First newsletter!",
+//       subject: `Newsletter: ${rawPost.metadata.title}`,
 //       html: htmlString,
 //     });
 
