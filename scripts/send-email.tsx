@@ -11,6 +11,11 @@ import { parseMDXasHtmlString } from "@/lib/content/parseHtmlAsString";
 import { MASKED_DOMAIN, MASKED_NEWSLETTER_PATH } from "@/lib/views/constants";
 
 import { createId } from "@paralleldrive/cuid2";
+import {
+  NEWSLETTER_EMAIL_ADDRESS,
+  NEWSLETTER_FROM,
+  NEWSLETTER_REPLY_TO,
+} from "@/lib/constants";
 
 dotenv.config();
 
@@ -128,10 +133,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const { data, error } = await resend.emails.send({
   // lots of good details: https://www.litmus.com/blog/email-subdomains
-  from: "Nick Frostbutter <newsletter@mail.frostbutter.com>",
+  from: NEWSLETTER_FROM,
   // todo: generate a custom reply email?
-  reply_to: "Nick Frostbutter <nick@frostbutter.com>",
-  to: "nfrostbutter@gmail.com",
+  reply_to: NEWSLETTER_REPLY_TO,
+  to: NEWSLETTER_EMAIL_ADDRESS,
   subject: "Hello World with domain",
   // note: tags not supported in batch
   // tags: [
