@@ -198,6 +198,7 @@ enum Status {
 
 enum EmailStatus {
   IDLE
+  DRAFT
   PENDING
   SENT
   DELIVERED
