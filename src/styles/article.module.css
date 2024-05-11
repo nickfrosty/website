@@ -43,7 +43,7 @@
   }
 
   ul:not(.list-none) {
-    @apply pl-0 mb-8 ml-10 text-lg list-disc;
+    @apply pl-0 ml-10 text-lg list-disc;
     li {
       @apply mb-1;
     }
