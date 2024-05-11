@@ -84,7 +84,7 @@ const NewsletterSubscribeFormInner = ({
         </p>
       ) : (
         <p className="text-gray-500">
-          * after subscribing, you must verify your email address
+          {/* * after subscribing, you must verify your email address */}
         </p>
       )}
     </>

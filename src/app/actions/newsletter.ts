@@ -40,8 +40,9 @@ export async function subscribeToNewsletter(
       create: {
         dateAdded: dateAdded,
         email: input.data.email,
+        status: "ACTIVE",
         // pending so the user must perform the double opt-in
-        status: "PENDING",
+        // status: "PENDING",
       },
     });
 
