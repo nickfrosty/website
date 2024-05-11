@@ -20,13 +20,13 @@
 // import { MASKED_DOMAIN } from "@/lib/views/constants";
 
 // const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
-// const CONFIG_MASK_LINKS = true;
+// const CONFIG_MASK_LINKS: boolean = true;
 
 // dotenv.config();
 
 // const DRAFT_ONLY_MODE: boolean = true;
 
-// const postSlug = "2024-05-05-analytics-for-websites-and-emails";
+// const postSlug = "2024-05-12-week-of-solfate";
 
 // const rawPost = getPostBySlug(
 //   postSlug,
@@ -66,6 +66,22 @@
 //   let links = new Map<string, string>();
 
 //   const componentsForEmail: MDXRemoteProps["components"] = {
+//     blockquote: ({ children, ...props }) => {
+//       return (
+//         <blockquote
+//           {...props}
+//           style={{
+//             border: "1px solid #bfbfbf",
+//             borderRadius: "8px",
+//             margin: "0rem",
+//             padding: "0 1rem",
+//           }}
+//         >
+//           {/* <div style={{fontSize: "16px"}}>🧠</div> */}
+//           {children}
+//         </blockquote>
+//       );
+//     },
 //     img: ({ src, ...props }) => {
 //       // console.log(props);
 //       if (!src) return null;
@@ -114,7 +130,7 @@
 //         ).toString();
 
 //         // todo: can and should we note what text is being rendered?
-//         links.set(href, maskedUrl);
+//         links.set(cuid, href);
 //         href = maskedUrl;
 //       }
 
@@ -214,6 +230,7 @@
 //   data: {
 //     name: "",
 //     content: rawPost.content,
+//     blastStatus: DRAFT_ONLY_MODE ? "DRAFT" : "IDLE",
 //   },
 // });
 
@@ -224,9 +241,24 @@
 
 // // @ts-ignore
 // if (DRAFT_ONLY_MODE === true) {
-//   console.log("Draft mode enabled");
+//   console.log("===========================================");
+//   console.log("DRAFT MODE ENABLED");
 //   console.log("Let's not accidentally send to everyone again");
+//   console.log("Draft list size:", subscribers.length);
+//   console.log("First draft user:", subscribers[0].email);
+//   console.log("===========================================", "\n");
+
 //   process.exit();
+
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
+//   /////////////////////////////////////////////////////////////////////////////////
 // }
 
 // const errors = new Map<NewsletterSubscriber["id"], "string">();
@@ -254,33 +286,41 @@
 
 //     links.forEach((value, key) => {
 //       linksToCreate.push({
-//         id: value,
-//         destination: key,
+//         id: key,
+//         destination: value,
 //       });
 //     });
-//     // console.log(linksToCreate);
+
+//     // if (DRAFT_ONLY_MODE) {
+//     //   console.log("linksToCreate:", linksToCreate);
+//     // }
 
 //     let postForSubscriber = await prisma.newsletterPostForSubscriber.create({
 //       data: {
 //         postId: newsletterPost.id,
 //         subscriberId: subscriber.id,
 //         content: htmlString,
-//         status: "IDLE",
-//         // links: {
-//         //   createMany: {
-//         //     data: linksToCreate,
-//         //   },
-//         // },
+//         status: DRAFT_ONLY_MODE ? "DRAFT" : "IDLE",
+//         links: {
+//           createMany: {
+//             data: linksToCreate,
+//           },
+//         },
 //       },
-//       // include: {
-//       //   links: true,
-//       // }
+//       //   include: {
+//       //     links: true,
+//       //   },
 //     });
 
 //     if (!postForSubscriber) {
 //       throw Error("Unable to create post for subscriber");
 //     }
 //     hasDatabaseEntry = true;
+
+//     if (DRAFT_ONLY_MODE) {
+//       console.log("postForSubscriber");
+//       console.log(postForSubscriber);
+//     }
 
 //     // let emailResponse:
 //     //   | Awaited<ReturnType<typeof resend.emails.send>>
@@ -302,10 +342,10 @@
 //         id: postForSubscriber.id,
 //         // note: we only update from idle state to cover the race condition
 //         // - the email provider might give a response faster than we update the db
-//         status: "IDLE",
+//         status: DRAFT_ONLY_MODE ? "DRAFT" : "IDLE",
 //       },
 //       data: {
-//         status: "PENDING",
+//         status: DRAFT_ONLY_MODE ? "DRAFT" : "PENDING",
 //       },
 //     });
 
@@ -334,6 +374,7 @@
 //       // todo: store the status in the db, including the error
 //       console.log("emailId:", emailResponse?.data?.id);
 
+//       // @ts-ignore
 //       postForSubscriber = await prisma.newsletterPostForSubscriber.update({
 //         where: {
 //           id: postForSubscriber.id,
@@ -377,4 +418,4 @@
 // console.log(`  Total: ${subscribers.length}`);
 // console.log(`  Errors: ${"?"}`);
 // console.log(`  Sent: ${"?"}`);
-// console.log("===================================");
+// console.log("===================================", "\n");
