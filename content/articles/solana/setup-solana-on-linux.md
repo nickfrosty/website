@@ -10,7 +10,7 @@ blurb:
   Get your Solana development environment setup on Linux with this complete
   installation guide.
 # keywords: "solana cli, install rust, rustup, anchor framework"
-image: /media/articles/solana/setup-solana-on-linux.png
+image: /media/articles/solana/setup-solana-on-linux.jpg
 tags: solana, linux
 nextPage: intro-to-solana-cli
 # prevPage:
@@ -19,7 +19,7 @@ nextPage: intro-to-solana-cli
 Installing the tools, create a local wallet, building a sample hello world
 program to test you setup.
 
-[![Get your Solana development environment setup on Linux with this complete installation guide](/media/articles/solana/setup-solana-on-linux.png)](./setup-solana-on-linux)
+[![Get your Solana development environment setup on Linux with this complete installation guide](public/media/articles/solana/setup-solana-on-linux.jpg)](./setup-solana-on-linux)
 
 To setup and [install Solana on Linux](./setup-solana-on-linux), you will need
 to install the following:
