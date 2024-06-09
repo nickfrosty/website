@@ -61,6 +61,9 @@ function Callout(props: ComponentProps<"div"> & CalloutProps) {
       case "green":
       case "success":
         return StarIcon;
+      case "blockquote":
+      case "sparkles":
+        return SparklesIcon;
       case "blue":
       case "note":
       case "pro":
@@ -87,18 +90,9 @@ function Callout(props: ComponentProps<"div"> & CalloutProps) {
   );
 }
 
-function Blockquote(props: ComponentProps<"blockquote">) {
-  return (
-    <div className={"callout indigo"}>
-      <div className="callout-icon">
-        <SparklesIcon className="" />
-      </div>
-      <blockquote {...props} className={"callout-content"}>
-        {!!props.title && <h5 className="callout-title">{props.title}</h5>}
-        {props.children}
-      </blockquote>
-    </div>
-  );
+function Blockquote({ ref, ...props }: ComponentProps<"blockquote">) {
+  // @ts-ignore
+  return <Callout {...props} type="blockquote" className="indigo" />;
 }
 
 function Line(props: ComponentProps<"hr">) {
