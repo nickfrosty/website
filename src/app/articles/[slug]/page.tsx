@@ -8,6 +8,7 @@ import { type Article, allArticles } from "contentlayer/generated";
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
 import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { SOCIAL } from "@/lib/config";
 const config = zumoConfig.content.articles;
 
 type PageProps = {
@@ -45,6 +46,11 @@ export async function generateMetadata({
           },
         }
       : undefined,
+    twitter: {
+      card: "summary_large_image",
+      site: `@${SOCIAL.twitter}`,
+      creator: `@${SOCIAL.twitter}`,
+    },
   };
 }
 
