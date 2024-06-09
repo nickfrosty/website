@@ -99,7 +99,7 @@ export default function Page({ params: { slug } }: PageProps) {
           <RenderMDX source={post.body.raw} />
         </article>
 
-        <NewsletterSubscribeForm title="Want to read more of my antics via email?" />
+        <NewsletterSubscribeForm title="Do you like my antics? Subscribe to me email newsletter!" />
       </main>
 
       {/* <NextPrevSection next={next} prev={prev} hrefBase={config.baseHref} /> */}

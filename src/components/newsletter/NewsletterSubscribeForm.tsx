@@ -6,7 +6,7 @@ import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { ActionFormState } from "@@/types";
 
 export const NewsletterSubscribeForm = ({
-  title = "Subscribe for weekly emails",
+  title = "Subscribe for (sometimes) weekly emails",
   className,
 }: {
   title?: string;
@@ -36,9 +36,9 @@ export const NewsletterSubscribeForm = ({
         </>
       ) : (
         <>
-          <h4 className="!mt-0 text-2xl">{title}</h4>
+          <h4 className="!mt-0 text-xl">{title}</h4>
 
-          <p>Devlog and assorted tech things. ~5min read.</p>
+          <p>Devlog and assorted tech things. ~7min read.</p>
 
           <NewsletterSubscribeFormInner state={state} />
         </>
