@@ -37,6 +37,14 @@ export async function generateMetadata({
     alternates: {
       canonical: post.href,
     },
+    openGraph: post.image
+      ? {
+          images: {
+            url: post.image,
+            alt: post.title,
+          },
+        }
+      : undefined,
   };
 }
 
