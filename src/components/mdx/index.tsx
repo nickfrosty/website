@@ -14,10 +14,9 @@ import {
 import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
 
 function CustomLink({ ref, ...props }: ComponentProps<"a">) {
-  let href = (props.href!.toString() as string).replace(
-    /^(https?:\/\/)?nick.af\//gi,
-    "/",
-  );
+  let href = (props.href!.toString() as string)
+    .replace(/^(https?:\/\/)?nick.af\//gi, "/")
+    .replace(/^\/?(content|public)\//i, "/");
 
   if (href.startsWith("/") || href.startsWith(".")) {
     // reformat paths like `/content/article/sub-dir/doc.md`
@@ -30,6 +29,23 @@ function CustomLink({ ref, ...props }: ComponentProps<"a">) {
   }
 
   return <a target="_blank" {...props} />;
+}
+
+function CustomImage({ ref, ...props }: ComponentProps<"img">) {
+  let src = (props.src!.toString() as string)
+    .replace(/^(https?:\/\/)?nick.af\//gi, "/")
+    .replace(/^\/?(content|public)\//i, "/");
+
+  if (src.startsWith("/") || src.startsWith(".")) {
+    src = src.replace(REGEX_CONTENT_DIR_LINK, "/$1/$3");
+    return (
+      <img {...props} src={src.replace(/(.mdx?)$/gi, "")}>
+        {props.children}
+      </img>
+    );
+  }
+
+  return <img src={src} {...props} />;
 }
 
 function Callout(props: ComponentProps<"div"> & CalloutProps) {
@@ -122,6 +138,7 @@ const components: MDXRemoteProps["components"] = {
   pre: Pre,
   a: CustomLink,
   Callout: Callout,
+  img: CustomImage,
   blockquote: Blockquote,
 };
 
