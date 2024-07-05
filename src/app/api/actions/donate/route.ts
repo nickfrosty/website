@@ -79,7 +79,9 @@ export const POST = async (req: Request) => {
       }
     }
 
-    const connection = new Connection(clusterApiUrl("devnet"));
+    const SOLANA_RPC_URL = process.env.SOLANA_RPC_URL!;
+    if (!SOLANA_RPC_URL) throw "Unable to find RPC url...awkward...";
+    const connection = new Connection(SOLANA_RPC_URL);
 
     const TO_PUBKEY = new PublicKey(
       "9FK3BZiGatVrDwVZoMZsJQW24ETAmmzBAGPnJp9jSdtu",
