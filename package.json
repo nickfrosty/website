@@ -24,6 +24,8 @@
     "@prisma/client": "^5.13.0",
     "@react-email/components": "0.0.17",
     "@react-email/render": "^0.0.12",
+    "@solana/actions": "^1.1.1",
+    "@solana/web3.js": "^1.94.0",
     "clsx": "^2.1.0",
     "contentlayer": "^0.3.4",
     "estree-walker": "^3.0.3",
