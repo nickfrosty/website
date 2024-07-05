@@ -1,3 +1,4 @@
+import { TREASURY_PUBKEY } from "@/lib/constants";
 import {
   ActionGetResponse,
   ACTIONS_CORS_HEADERS,
@@ -6,7 +7,6 @@ import {
   ActionPostResponse,
 } from "@solana/actions";
 import {
-  clusterApiUrl,
   Connection,
   LAMPORTS_PER_SOL,
   PublicKey,
@@ -83,15 +83,11 @@ export const POST = async (req: Request) => {
     if (!SOLANA_RPC_URL) throw "Unable to find RPC url...awkward...";
     const connection = new Connection(SOLANA_RPC_URL);
 
-    const TO_PUBKEY = new PublicKey(
-      "9FK3BZiGatVrDwVZoMZsJQW24ETAmmzBAGPnJp9jSdtu",
-    );
-
     const transaction = new Transaction().add(
       SystemProgram.transfer({
         fromPubkey: account,
         lamports: amount * LAMPORTS_PER_SOL,
-        toPubkey: TO_PUBKEY,
+        toPubkey: TREASURY_PUBKEY,
       }),
     );
     transaction.feePayer = account;
