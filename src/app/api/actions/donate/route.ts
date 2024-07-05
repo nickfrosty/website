@@ -16,11 +16,12 @@ import {
 
 export const GET = async (req: Request) => {
   const payload: ActionGetResponse = {
-    icon: new URL("/img/nick.jpg", new URL(req.url).origin).toString(),
-    label: "Buy me a coffee",
+    icon: new URL("/img/coffee.jpg", new URL(req.url).origin).toString(),
+    label: "Buy me a coffee ☕️",
     description:
-      "Buy me a coffee with SOL using this super sweet blink of mine :)",
-    title: "Nick Frostbutter - Buy Me a Coffee",
+      "👋 If you are interested in helping to support my work, " +
+      "buy me a coffee with SOL using this super sweet blink of mine :)",
+    title: "Nick Frostbutter - Buy Me a Coffee? ☕️",
     links: {
       actions: [
         {
