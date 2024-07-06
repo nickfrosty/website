@@ -99,6 +99,7 @@ model NewsletterSubscriber {
   twitter  String?
   github   String?
   telegram String?
+  wallet   String?
 
   tags      String?
   verified  Boolean  @default(false)
@@ -108,6 +109,23 @@ model NewsletterSubscriber {
   updatedAt DateTime @default(now()) @updatedAt
 
   postsForSubscriber NewsletterPostForSubscriber[]
+}
+
+model NewsletterSubscriberTransaction {
+  id            Int      @unique @default(autoincrement()) @db.Integer
+  solFee        Float
+  wallet        String
+  email         String
+  referenceKey  String
+  transactionId String?
+  status        Status?  @default(PENDING)
+  dateAdded     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+
+  @@index([wallet], name: "newsletter_transaction_wallet")
+  @@index([email], name: "newsletter_transaction_email")
+  @@index([referenceKey], name: "newsletter_transaction_reference_key")
+  @@index([transactionId], name: "newsletter_transaction_transaction_id")
 }
 
 model NewsletterPost {
