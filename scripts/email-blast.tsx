@@ -27,11 +27,11 @@ dotenv.config();
 const TEST_SEND_ONLY_MODE: boolean = false;
 const DRAFT_ONLY_MODE: boolean = true;
 
-const postSlug = "2024-06-09-pod-dev-podcast-nickle-app-finance-app";
+const postSlug = "2024-07-07-launch-of-actions-and-blinks";
 
 const rawPost = getPostBySlug(
   postSlug,
-  "/home/nick/code/nickfrosty/website/content/blog/newsletter",
+  "/home/nick/code/nickfrosty/personal-website/content/blog/newsletter",
 );
 
 if (!rawPost || !rawPost.content) {
@@ -50,7 +50,9 @@ rawPost.content +=
   "\n\n" +
   "PS: You can always reply directly to this email or chat on Twitter:\n" +
   "[@nickfrosty](https://twitter.com/nickfrosty) to share your thoughts and\n" +
-  "comments about the content above.";
+  "comments about the content above.\n\n" +
+  "If you would like to help support my work, you can " +
+  "buy me a coffee with crypto using this blink: [https://nick.af/coffee](https://nick.af/coffee)";
 
 type PreparePostForSubscriberProps = {
   content: NewsletterPost["content"];
@@ -69,35 +71,63 @@ export async function preparePostForSubscriber({
   const componentsForEmail: MDXRemoteProps["components"] = {
     blockquote: ({ children, ...props }) => {
       return (
-        <blockquote
-          {...props}
-          style={{
-            border: "1px solid #bfbfbf",
-            borderRadius: "8px",
-            margin: "0rem",
-            padding: "0 1rem",
-          }}
-        >
-          {/* <div style={{fontSize: "16px"}}>🧠</div> */}
-          {children}
-        </blockquote>
+        <div style={{ padding: "0 6px" }}>
+          <blockquote
+            {...props}
+            style={{
+              border: "1px solid #bfbfbf",
+              borderRadius: "8px",
+              padding: "0",
+              margin: "0",
+            }}
+          >
+            <div
+              style={{
+                padding: "0 10px",
+              }}
+            >
+              {/* <div style={{fontSize: "16px"}}>🧠</div> */}
+              {children}
+            </div>
+          </blockquote>
+        </div>
       );
     },
     img: ({ src, ...props }) => {
-      // console.log(props);
       if (!src) return null;
 
       // todo: do we want to mask links for images?
       // links.set(src, "image");
 
-      const url = new URL(src, SITE_ADDR);
+      src = src
+        .replace(/^(https?:\/\/)?nick.af\//gi, "/")
+        .replace(/^\/?(content|public)\//i, "/");
 
-      return <img {...props} src={url.toString()} />;
+      if (src.startsWith("/") || src.startsWith(".")) {
+        src = src.replace(REGEX_CONTENT_DIR_LINK, "/$1/$3");
+      }
+
+      return (
+        <div style={{ padding: "4px", textAlign: "center" }}>
+          <img
+            {...props}
+            src={new URL(src, SITE_ADDR).toString()}
+            style={{
+              maxWidth: "95%",
+              border: "1px solid #bfbfbf",
+              borderRadius: "8px",
+              margin: "0 auto",
+            }}
+          />
+        </div>
+      );
     },
     a: ({ href, ...props }) => {
       if (!href) return null;
       // todo: dynamically use the site's domain
-      href = href.replace(/^(https?:\/\/)?nick.af\//gi, "/");
+      href = href
+        .replace(/^(https?:\/\/)?nick.af\//gi, "/")
+        .replace(/^\/?(content|public)\//i, "/");
 
       /**
        * todo: assorted things
@@ -259,12 +289,22 @@ for (let i = 0; i < subscribers.length; i++) {
   let hasDatabaseEntry = false;
   const subscriber = subscribers[i];
 
+  let extraContent = "";
+  if (!!subscriber.wallet) {
+    // extraContent =
+    //   "> Hi fren. If you are seeing this message here, it is because you subscribed " +
+    //   "to my newsletter via my custom blink. I hope you thought it was cool. " +
+    //   "I sure did :). I have some fun ideas of what something like this could " +
+    //   "look like in the future. Stay tuned!";
+    // extraContent += "\n\n";
+  }
+
   console.log("-----------------------------------");
   console.log(`  To: ${subscriber.email}`);
 
   try {
     const { htmlString, links } = await preparePostForSubscriber({
-      content: newsletterPost.content,
+      content: extraContent + newsletterPost.content,
       maskLinks: CONFIG_MASK_LINKS,
     });
 
@@ -311,7 +351,7 @@ for (let i = 0; i < subscribers.length; i++) {
 
     if (DRAFT_ONLY_MODE) {
       console.log("postForSubscriber");
-      console.log(postForSubscriber);
+      // console.log(postForSubscriber);
     }
 
     // let emailResponse:
@@ -325,7 +365,7 @@ for (let i = 0; i < subscribers.length; i++) {
       // todo: generate a custom reply email?
       reply_to: NEWSLETTER_REPLY_TO,
       to: subscriber.email,
-      subject: `Newsletter: ${rawPost.metadata.title}`,
+      subject: `☃️ Newsletter: ${rawPost.metadata.title}`,
       html: htmlString,
     });
 
