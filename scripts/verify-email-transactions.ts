@@ -67,10 +67,12 @@ for (let i = 0; i < records.length; i++) {
       where: { email: record.email },
       update: {
         wallet: record.wallet,
+        status: "ACTIVE",
       },
       create: {
         email: record.email,
         wallet: record.wallet,
+        status: "ACTIVE",
       },
     });
 
