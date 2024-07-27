@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "my experiences of building in public and things I find interesting.",
   twitter: {
     card: "player",
+    site: "@nickfrosty",
     players: {
       playerUrl:
         "https://dial.to/?action=solana-action:https://nick.af/api/actions/newsletter",
