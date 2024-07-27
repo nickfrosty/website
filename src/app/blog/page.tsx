@@ -13,6 +13,17 @@ export const metadata: Metadata = {
   description:
     "Various personal thoughts and anecdotes from over the years, including sharing " +
     "my experiences of building in public and things I find interesting.",
+  twitter: {
+    card: "player",
+    players: {
+      playerUrl:
+        "https://dial.to/?action=solana-action:https://nick.af/api/actions/newsletter",
+      width: 360,
+      height: 600,
+      streamUrl:
+        "https://dial.to/?action=solana-action:https://nick.af/api/actions/newsletter",
+    },
+  },
 };
 
 export default function Page() {
