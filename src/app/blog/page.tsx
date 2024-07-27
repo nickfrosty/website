@@ -13,6 +13,19 @@ export const metadata: Metadata = {
   description:
     "Various personal thoughts and anecdotes from over the years, including sharing " +
     "my experiences of building in public and things I find interesting.",
+  twitter: {
+    card: "app",
+    site: "@nickfrosty",
+    app: {
+      id: {
+        googleplay: "solana:https://nick.af/api/actions/newsletter",
+      },
+      name: "Solana",
+      url: {
+        googleplay: "solana:https://nick.af/api/actions/newsletter",
+      },
+    },
+  },
 };
 
 export default function Page() {
