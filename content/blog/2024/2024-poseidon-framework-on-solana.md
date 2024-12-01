@@ -5,6 +5,7 @@ description:
   "Easing the Rust transition: Poseidon enables Javascript developers to explore
   Solana blockchain development with gentler learning curves."
 tags: oped, devex, devrel
+category: newsletter
 ---
 
 There has been a strong negative opinion in the Solana ecosystem about the
