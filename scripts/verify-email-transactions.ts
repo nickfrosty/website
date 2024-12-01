@@ -37,7 +37,7 @@ for (let i = 0; i < records.length; i++) {
       new PublicKey(record.referenceKey),
     );
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     console.log("Unable to locate reference key:", record.referenceKey);
     continue;
   }
