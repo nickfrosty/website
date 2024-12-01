@@ -33,21 +33,21 @@ export default function Page() {
 
   return (
     <PageViewTracker>
-      <main className="max-w-5xl px-3 mx-auto space-y-20">
-        <header className="flex items-center justify-between gap-8">
+      <main className="max-w-5xl mx-auto space-y-10 md:space-y-20">
+        <header className="grid items-center justify-between gap-8 md:flex">
           <div className="items-center justify-between flex-shrink group md:flex md:space-x-4">
             <div className="flex items-center justify-center mx-auto">
               <Link
                 href="/newsletter"
                 className="border-4 border-transparent rounded-full group-hover:border-indigo-400"
               >
-                <AvatarImage sizeClass={"w-30 h-30"} className="" />
+                <AvatarImage sizeClass={"size-20 md:size-30"} className="" />
               </Link>
 
               <h1 className="md:hidden">
                 <Link
                   href="/newsletter"
-                  className="text-6xl text-white shadow-none link-muted"
+                  className="text-4xl text-white shadow-none md:text-6xl link-muted"
                 >
                   /newsletter
                 </Link>
@@ -65,7 +65,7 @@ export default function Page() {
               </h1>
 
               <p className="text-lg text-center text-gray-400 md:text-left">
-                Building in public, sharing as I go
+                Building in public, sharing as I go.
               </p>
             </div>
           </div>
