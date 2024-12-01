@@ -24,14 +24,15 @@ const CONFIG_MASK_LINKS: boolean = true;
 
 dotenv.config();
 
-const TEST_SEND_ONLY_MODE: boolean = false;
+const TEST_SEND_ONLY_MODE: boolean = true;
 const DRAFT_ONLY_MODE: boolean = true;
 
-const postSlug = "2024-07-07-launch-of-actions-and-blinks";
+const postSlug = "2024-poseidon-framework-on-solana";
 
 const rawPost = getPostBySlug(
   postSlug,
-  "/home/nick/code/nickfrosty/personal-website/content/blog/newsletter",
+  "/home/nick/code/nickfrosty/personal-website/content/blog/2024",
+  // "/home/nick/code/nickfrosty/personal-website/content/blog/newsletter",
 );
 
 if (!rawPost || !rawPost.content) {
@@ -181,6 +182,7 @@ export async function preparePostForSubscriber({
 }
 
 // console.log(rawPost);
+// process.exit(1);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -203,7 +205,7 @@ if (TEST_SEND_ONLY_MODE) {
     // todo: generate a custom reply email?
     reply_to: NEWSLETTER_REPLY_TO,
     to: NEWSLETTER_EMAIL_ADDRESS,
-    subject: `Newsletter: ${rawPost.metadata.title}`,
+    subject: `❄️ Newsletter: ${rawPost.metadata.title}`,
     html: htmlString,
   });
 
@@ -365,7 +367,7 @@ for (let i = 0; i < subscribers.length; i++) {
       // todo: generate a custom reply email?
       reply_to: NEWSLETTER_REPLY_TO,
       to: subscriber.email,
-      subject: `☃️ Newsletter: ${rawPost.metadata.title}`,
+      subject: `❄️ Newsletter: ${rawPost.metadata.title}`,
       html: htmlString,
     });
 
