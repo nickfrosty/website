@@ -1,5 +1,5 @@
 ---
-featured: true
+featured: false
 date: Oct 04, 2022
 title: Introduction to the Solana CLI
 blurb: Learn the basics and how to get around in the Solana CLI

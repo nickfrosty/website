@@ -1,5 +1,5 @@
 ---
-featured: true
+featured: false
 date: March 17, 2023 EST
 title: Setup Solana on Linux
 description:
