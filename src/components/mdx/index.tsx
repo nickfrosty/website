@@ -1,5 +1,5 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
-import { useMemo, type ComponentProps } from "react";
+import React, { Children, useMemo, type ComponentProps } from "react";
 import Link from "next/link";
 import { CalloutProps, rehypePluginConfig } from "./rehypeConfig";
 import { CustomMetadataProps } from "./rehypeMetadata";
@@ -11,14 +11,14 @@ import {
   InformationCircleIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
-import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
+import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
 
 function CustomLink({ ref, ...props }: ComponentProps<"a">) {
   let href = (props.href!.toString() as string)
     .replace(/^(https?:\/\/)?nick.af\//gi, "/")
     .replace(/^\/?(content|public)\//i, "/");
 
-  if (href.startsWith("/") || href.startsWith(".")) {
+  if (href.startsWith("/") || href.startsWith(".") || href.startsWith("#")) {
     // reformat paths like `/content/article/sub-dir/doc.md`
     href = href.replace(REGEX_CONTENT_DIR_LINK, "/$1/$3");
     return (
@@ -30,6 +30,51 @@ function CustomLink({ ref, ...props }: ComponentProps<"a">) {
 
   return <a target="_blank" {...props} />;
 }
+
+interface AnchorHeadingProps {
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  id?: string;
+  children: React.ReactNode;
+  className?: string;
+}
+
+const AnchorHeading: React.FC<AnchorHeadingProps> = ({
+  as: Component,
+  id,
+  children,
+  className = "",
+  ...props
+}) => {
+  // Create a slug from the heading text
+  const childrenString = Children.toArray(children)
+    .map((child) => (typeof child === "string" ? child : ""))
+    .join("");
+
+  const headingId = id || slugify(childrenString);
+
+  return (
+    <Component id={headingId} className={`group ${className}`} {...props}>
+      <a
+        href={`#${headingId}`}
+        style={{
+          color: "inherit",
+        }}
+        className="!shadow-none !no-underline"
+      >
+        {children}
+        <span
+          className="absolute hidden ml-3 text-indigo-400 shadow-yellow hover:text-yellow-400 group-hover:inline-block"
+          style={{
+            fontSize: "0.8em",
+            transition: "opacity 0.2s",
+          }}
+        >
+          #
+        </span>
+      </a>
+    </Component>
+  );
+};
 
 function CustomImage({ ref, ...props }: ComponentProps<"img">) {
   let src = (props.src!.toString() as string)
@@ -128,6 +173,13 @@ function Pre({
 }
 
 const components: MDXRemoteProps["components"] = {
+  // convert h1 to h2 since the layout will ship the h1
+  h1: (props: any) => <AnchorHeading as="h2" {...props} />,
+  h2: (props: any) => <AnchorHeading as="h2" {...props} />,
+  h3: (props: any) => <AnchorHeading as="h3" {...props} />,
+  h4: (props: any) => <AnchorHeading as="h4" {...props} />,
+  h5: (props: any) => <AnchorHeading as="h5" {...props} />,
+  h6: (props: any) => <AnchorHeading as="h6" {...props} />,
   hr: Line,
   pre: Pre,
   a: CustomLink,
