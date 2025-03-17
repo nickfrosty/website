@@ -1,5 +1,5 @@
 ---
-featured: true
+featured: false
 date: 2023-01-03 00:00 EST
 title: Create a Basic Anchor Program
 # blurb:
