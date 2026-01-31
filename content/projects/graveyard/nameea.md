@@ -11,9 +11,8 @@ tags: domains
 
 ## The goal
 
-As an amateur domain collector/investor, I began to amass a sizable collection
-of domain names. Once I decided to downsize my "portfolio", I wanted to sell
-some.
+As an amateur domain collector/investor, I began to amass a sizable collection of domain names. Once
+I decided to downsize my "portfolio", I wanted to sell some.
 
 ## The result
 
