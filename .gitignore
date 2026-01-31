@@ -1,9 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # public/robots*
-public/rss*
 public/sitemap*
-.contentlayer
 
 # dependencies
 /node_modules
@@ -17,6 +15,7 @@ test-ledger
 # next.js
 /.next/
 /out/
+next-env.d.ts
 
 # production
 /build

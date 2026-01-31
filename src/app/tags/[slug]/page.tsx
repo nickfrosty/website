@@ -1,65 +1,64 @@
 import type { Metadata } from "next";
+
 import { notFound } from "next/navigation";
+
 import { computePagination, parseTemplate } from "zumo";
-import { allArticleTags, allArticles } from "contentlayer/generated";
-import { HeroSection } from "@/components/content/HeroSection";
-import { CardGrid } from "@/components/cards/CardGrid";
-import { PaginationProps } from "@@/types";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+
+import { CardGrid } from "@/components/cards/card-grid";
+import { HeroSection } from "@/components/content/hero-section";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
+import { getAllTags, getAllArticles } from "@/lib/content";
 
 const config = {
   baseHref: "/tags/{{tag}}",
   paginationTemplate: "{{baseHref}}/{{id}}",
 };
 
-function preparePage(slug: string, currentPage: number = 1) {
+async function preparePage(slug: string, currentPage: number = 1) {
   if (!slug) return notFound();
 
+  const allTags = await getAllTags();
+  const allPosts = await getAllArticles();
+
   // retrieve the current `tag` document, when it exists
-  const tagMeta = allArticleTags.filter(
-    (item) => item.slug?.toLowerCase().replace(/\s+/g, "-") == slug,
+  const tagMeta = allTags.filter(
+    item => item.slug?.toLowerCase().replace(/\s+/g, "-") == slug,
   )?.[0] || {
     _id: slug,
-    title: slug,
+    frontmatter: {
+      title: slug,
+    },
     href: `/tags/${slug.toLowerCase().replace(/\s+/g, "-")}`,
   };
 
   // parse and update the `baseHref` to include the current tag
-  config.baseHref = parseTemplate(config?.baseHref, {
+  const baseHref = parseTemplate(config?.baseHref, {
     baseHref: config.baseHref,
     tag: slug.toLowerCase(),
   });
 
   // get the listing of `posts` for the current `tag`
-  let posts = allArticles
-    .filter((post) =>
-      process?.env?.NODE_ENV == "development" ? true : !!post.draft,
-    )
-    .filter(({ tags }) => {
+  let posts = allPosts
+    .filter(post => (process?.env?.NODE_ENV == "development" ? true : !post.frontmatter.draft))
+    .filter(({ frontmatter }) => {
+      let tags = frontmatter.tags;
       if (typeof tags == "string") {
-        tags = tags.split(",") as any;
+        tags = (tags as string).split(",").map(t => t.trim());
       }
 
       if (Array.isArray(tags)) {
         return tags.find(
           (tag: string) =>
             tag.toLowerCase() == slug.toLocaleLowerCase() ||
-            tag.toLowerCase().replace(/\s+/g, "-") ==
-              slug.toLocaleLowerCase().replace(/\s+/g, "-"),
+            tag.toLowerCase().replace(/\s+/g, "-") == slug.toLocaleLowerCase().replace(/\s+/g, "-"),
         );
       }
     })
     // sort newest to oldest
     .sort(
       (a, b) =>
-        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
-    )
-    // strip the `body` to send less data to the client
-    .map((post) => {
-      // @ts-ignore
-      delete post.body.html;
-      return post;
-    });
+        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
+    );
 
   // give the 404 page when no `posts` were found
   if (!(posts && Array.isArray(posts))) {
@@ -68,20 +67,14 @@ function preparePage(slug: string, currentPage: number = 1) {
 
   // retrieve the latest and featured articles
   const latestPost = posts?.[0] || false;
-  const featured =
-    posts.filter((item) => item?.featured === true)?.[0] || latestPost;
+  const featured = posts.filter(item => item.frontmatter.featured === true)?.[0] || latestPost;
 
   // construct the `pagination` data object
   const pagination =
-    computePagination(
-      posts.length,
-      currentPage,
-      config?.baseHref,
-      config?.paginationTemplate,
-    ) || undefined;
+    computePagination(posts.length, currentPage, baseHref, config?.paginationTemplate) || undefined;
 
   // remove the `featured` article from the overall `posts` listing
-  posts = posts.filter((item) => item.slug !== featured?.slug);
+  posts = posts.filter(item => item.slug !== featured?.slug);
 
   // chunk out the posts for the current page
   // @ts-ignore
@@ -92,24 +85,27 @@ function preparePage(slug: string, currentPage: number = 1) {
     posts,
     featured,
     pagination,
+    baseHref,
   };
 }
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
     page?: number;
-  };
+  }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const allPosts = await getAllArticles();
   const hashmap = new Map();
 
-  allArticles
-    .filter((post) => !!post.draft)
-    .map(({ tags }) => {
+  allPosts
+    .filter(post => !post.frontmatter.draft)
+    .map(({ frontmatter }) => {
+      let tags = frontmatter.tags;
       if (typeof tags == "string") {
-        tags = tags.split(",") as any;
+        tags = (tags as string).split(",").map(t => t.trim());
       }
 
       if (Array.isArray(tags)) {
@@ -121,7 +117,7 @@ export function generateStaticParams() {
     });
 
   const slugs: Array<{ slug: string }> = [];
-  hashmap.forEach((value, key) =>
+  hashmap.forEach(value =>
     slugs.push({
       slug: value,
     }),
@@ -130,52 +126,72 @@ export function generateStaticParams() {
   return slugs;
 }
 
-export function generateMetadata({ params: { slug } }: PageProps): Metadata {
-  let record = allArticleTags.filter((record) => record.slug == slug)?.[0];
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const allTags = await getAllTags();
+  let record = allTags.filter(record => record.slug == slug)?.[0];
 
   if (!record) {
-    record = {
-      title: slug.substring(0, 1).toUpperCase() + slug.substring(1),
-      href: `/tags/${slug}`,
-    } as any;
-    record.title = record.title.replaceAll("-", " ");
+    const title = slug.substring(0, 1).toUpperCase() + slug.substring(1).replaceAll("-", " ");
+    return {
+      title: `${title} articles`,
+      description: `Explore all my articles with written about ${title}. They are pretty great :)`,
+      alternates: {
+        canonical: `/tags/${slug}`,
+      },
+    };
   }
 
   return {
-    title: `${record.title} articles`,
+    title: `${record.frontmatter.title} articles`,
     description:
-      record.description ||
-      `Explore all my articles with written about ${record.title}. They are pretty great :)`,
+      record.frontmatter.description ||
+      `Explore all my articles with written about ${record.frontmatter.title}. They are pretty great :)`,
     alternates: {
       canonical: record.href,
     },
   };
 }
 
-export default function Page({ params: { page, slug } }: PageProps) {
-  const {
-    // comment for better diffs
-    tagMeta,
-    posts,
-    featured,
-    pagination,
-  } = preparePage(slug, page ?? 1);
+export default async function Page({ params }: PageProps) {
+  const { page, slug } = await params;
+  const result = await preparePage(slug, page ?? 1);
 
-  if (!tagMeta) notFound();
+  if (!result || !result.tagMeta) return notFound();
 
-  // TODO: support setting a canonical tag, likely via a util function to standardize the data
-  // if (!meta?.canonical) meta.canonical = `${href}`;
+  const { tagMeta, posts, featured, pagination, baseHref } = result;
+
+  // Transform posts for CardGrid (expects old format)
+  const transformedPosts = posts.map(p => ({
+    ...p.frontmatter,
+    slug: p.slug,
+    href: p.href,
+  }));
+
+  const transformedFeatured = featured
+    ? {
+        ...featured.frontmatter,
+        slug: featured.slug,
+        href: featured.href,
+      }
+    : null;
+
+  const transformedTagMeta = {
+    ...tagMeta.frontmatter,
+    slug: tagMeta.slug || slug,
+    href: tagMeta.href,
+  };
 
   return (
     <PageViewTracker>
       <HeroSection
-        metadata={tagMeta}
-        baseHref={config?.baseHref}
+        metadata={transformedTagMeta}
+        baseHref={baseHref}
         heading="tag"
-        featured={featured}
+        featured={transformedFeatured}
       />
 
-      <CardGrid posts={posts} baseHref={"/articles"} pagination={pagination} />
+      <CardGrid posts={transformedPosts} baseHref={"/articles"} pagination={pagination} />
     </PageViewTracker>
   );
 }

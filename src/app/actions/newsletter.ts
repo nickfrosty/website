@@ -1,12 +1,14 @@
 "use server";
-import prisma from "@/lib/prisma/client";
-import { ActionFormState } from "@@/types";
 import { Prisma } from "@prisma/client";
-import { z } from "zod";
-import { NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
-import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
-import NewsletterSubscriberVerifyEmail from "@@/emails/newsletter/verify-email";
 import { Resend } from "resend";
+import { z } from "zod";
+
+import { NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
+import { ActionFormState } from "@/lib/form-types";
+import prisma from "@/lib/prisma/client";
+import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
+
+import NewsletterSubscriberVerifyEmail from "@@/emails/newsletter/verify-email";
 
 const schema = z.object({
   email: z.string().trim().email("Invalid email address"),

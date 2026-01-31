@@ -1,4 +1,3 @@
-import { TREASURY_PUBKEY } from "@/lib/constants";
 import {
   ActionGetResponse,
   ACTIONS_CORS_HEADERS,
@@ -13,6 +12,8 @@ import {
   SystemProgram,
   Transaction,
 } from "@solana/web3.js";
+
+import { TREASURY_PUBKEY } from "@/lib/constants";
 
 export const GET = async (req: Request) => {
   const payload: ActionGetResponse = {
@@ -92,9 +93,7 @@ export const POST = async (req: Request) => {
       }),
     );
     transaction.feePayer = account;
-    transaction.recentBlockhash = (
-      await connection.getLatestBlockhash()
-    ).blockhash;
+    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
 
     const payload: ActionPostResponse = await createPostResponse({
       fields: {

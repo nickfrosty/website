@@ -12,7 +12,7 @@ export default function NotFound() {
     <main className="my-20 text-center md:space-y-10">
       <h1 className="md:block">Well, this is embarrassing...</h1>
 
-      <section className="max-w-xl mx-auto space-y-12 text-2xl">
+      <section className="mx-auto max-w-xl space-y-12 text-2xl">
         <p>
           You found a page that does not exist, or I moved it.
           <br />

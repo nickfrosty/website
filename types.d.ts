@@ -1,15 +1,63 @@
 /*
-    Primary type definitions for the site
+    Global type declarations
 */
 
-import type {
-  Article,
-  Blog,
-  Project,
-  DocumentTypes,
-} from "contentlayer/generated";
+// CSS Modules declarations
+declare module "*.css" {
+  const content: any;
+  export default content;
+}
 
-import type { ZodType, ZodTypeAny } from "zod";
+type Option<T> = T | undefined;
+
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]];
+}[keyof T][];
+
+type Params<TKeys extends string = string, TValues = string> = Promise<Record<TKeys, TValues>>;
+
+type SearchParams<TKeys extends string = string, TValues = string> = Promise<
+  Record<TKeys, TValues | undefined>
+>;
+
+type PagePropsWithSlug<TExtra extends string = never> = {
+  params: Params<"slug" | TExtra>;
+};
+
+type PagePropsWithSlugAndSearch<TExtra extends string = never, TSearch extends string = string> = {
+  params: Params<"slug" | TExtra>;
+  searchParams: SearchParams<TSearch>;
+};
+
+type NotFoundResponse = { notFound: true };
+
+type SimpleComponentProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
+type ImageSize = {
+  width: number;
+  height: number;
+};
+
+// Flattened post type (used by UI components that expect transformed data)
+type FlatPost = {
+  slug: string;
+  href: string;
+  title: string;
+  date?: string;
+  description?: string;
+  draft?: boolean;
+  featured?: boolean;
+  tags?: string[];
+  image?: string;
+  imageFocus?: "center" | "left" | "right";
+  updatedAt?: string;
+  nextPage?: string;
+  prevPage?: string;
+  blurb?: string;
+};
 
 type ZumoConfigRecord = {
   baseHref?: string;
@@ -18,15 +66,6 @@ type ZumoConfigRecord = {
   maxTagCount?: number;
 };
 
-/**
- * Default props for most components
- */
-type SimpleComponentProps = {
-  children?: React.ReactNode;
-  className?: string;
-};
-
-//
 type ProjectRecord = {
   title: string;
   description: string;
@@ -35,21 +74,8 @@ type ProjectRecord = {
   dateRange: string;
   status: "";
   meta: PostMetadata;
-  //   slug: string;
-  //   href: string;
-  //   title: string;
-
-  //   date?: string;
-  //   createdAt?: string;
-  //   updatedAt?: string;
-
-  //   url?: string;
-  //   dateRange?: string;
-  //   status?: string;
-  // };
 };
 
-//
 type PostRecord = {
   slug: string;
   href: string;
@@ -88,7 +114,7 @@ type CardComponentProps = {
   className?: string;
   children?: React.ReactNode;
   baseHref?: string;
-  post: Blog | Article;
+  post: FlatPost;
   imageFocus?: "center" | "left" | "right";
   actionButton?: {
     href: string;
@@ -96,7 +122,6 @@ type CardComponentProps = {
   };
 };
 
-//
 type SimpleLinkItem = {
   title?: string;
   href: string;
@@ -110,17 +135,10 @@ type PaginationProps = {
   totalPages?: number;
   baseHref?: string;
   template?: string;
-  page?: number;
 };
 
 type ProsePageProps = {
-  post: DocumentTypes;
-  next?: DocumentTypes;
-  prev?: DocumentTypes;
-};
-
-type ActionFormState<T extends z.ZodType<any, any, any>> = {
-  success?: boolean;
-  message?: string;
-  errors?: z.typeToFlattenedError<z.infer<T>>["fieldErrors"];
+  post: FlatPost;
+  next?: FlatPost;
+  prev?: FlatPost;
 };

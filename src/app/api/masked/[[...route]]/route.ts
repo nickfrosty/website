@@ -1,8 +1,9 @@
+import { NextRequest, NextResponse } from "next/server";
+
 import SITE from "@/lib/config";
 import { MASKED_DOMAIN } from "@/lib/views/constants";
 import { getMaskedNewsletterRedirect } from "@/lib/views/masked";
 import { parseRequest } from "@/lib/views/middleware";
-import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {
   try {

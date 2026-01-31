@@ -1,7 +1,9 @@
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+
 import SITE from "@/lib/config";
 import prisma from "@/lib/prisma/client";
 import { ParsedRequestData } from "@/lib/views/middleware";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+
 import { MASKED_NEWSLETTER_PATH } from "./constants";
 
 type GetMaskedNewsletterRedirect = {
@@ -22,9 +24,7 @@ export async function getMaskedNewsletterRedirect(
   }
 
   try {
-    const linkId = parsed.path
-      .replace(`/${parsed.key}`, "--")
-      .replace(/^--\/?/i, "");
+    const linkId = parsed.path.replace(`/${parsed.key}`, "--").replace(/^--\/?/i, "");
 
     /**
      * since we want to also record a visit, and prisma will return the record when updating
@@ -49,10 +49,7 @@ export async function getMaskedNewsletterRedirect(
     if (!newsletterLink) throw PrismaClientKnownRequestError;
 
     if (newsletterLink.destination.startsWith("/")) {
-      newsletterLink.destination = new URL(
-        newsletterLink.destination,
-        SITE.url,
-      ).toString();
+      newsletterLink.destination = new URL(newsletterLink.destination, SITE.url).toString();
     }
 
     return { url: newsletterLink.destination };

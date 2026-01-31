@@ -1,8 +1,9 @@
-import * as dotenv from "dotenv";
-import { prisma } from "@/lib/prisma/client";
+import { Status } from "@prisma/client";
 import { findReference } from "@solana/actions";
 import { ConfirmedSignatureInfo, Connection, PublicKey } from "@solana/web3.js";
-import { Status } from "@prisma/client";
+import * as dotenv from "dotenv";
+
+import { prisma } from "@/lib/prisma/client";
 
 dotenv.config();
 
@@ -32,10 +33,7 @@ for (let i = 0; i < records.length; i++) {
   let confirmedSig: ConfirmedSignatureInfo | null = null;
 
   try {
-    confirmedSig = await findReference(
-      connection,
-      new PublicKey(record.referenceKey),
-    );
+    confirmedSig = await findReference(connection, new PublicKey(record.referenceKey));
   } catch (err) {
     // console.log(err);
     console.log("Unable to locate reference key:", record.referenceKey);
@@ -56,8 +54,7 @@ for (let i = 0; i < records.length; i++) {
   // ensure the recorded wallet is a signer
   if (
     tx.transaction.message.accountKeys.filter(
-      (account) =>
-        account.signer && account.pubkey.toBase58() === record.wallet,
+      account => account.signer && account.pubkey.toBase58() === record.wallet,
     ).length > 0
   ) {
     console.log("is signer");

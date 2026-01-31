@@ -1,0 +1,80 @@
+"use client";
+
+import { useActionState } from "react";
+
+import { useFormStatus } from "react-dom";
+
+import clsx from "clsx";
+
+import { subscribeToNewsletter } from "@/app/actions/newsletter";
+import { ActionFormState } from "@/lib/form-types";
+
+export const NewsletterSubscribeForm = ({
+  title = "Subscribe for (sometimes) weekly emails",
+  className,
+}: {
+  title?: string;
+  className?: string;
+}) => {
+  const [state, formAction] = useActionState(subscribeToNewsletter, {
+    success: false,
+    message: "",
+  });
+
+  return (
+    <form
+      action={formAction}
+      className={clsx("card space-y-2 rounded-md px-6 py-6 shadow-lg", className)}
+    >
+      {state.success ? (
+        <>
+          <h4 className="!mt-0 text-2xl">Last step: verify your email!</h4>
+
+          <section className="text-lg text-yellow-400">
+            {state.message ||
+              `Please verify your email address by clicking the "Verify Email" link in the email I just sent you.`}
+          </section>
+        </>
+      ) : (
+        <>
+          <h4 className="!mt-0 text-xl">{title}</h4>
+
+          <p>Devlog and assorted tech things. ~7min read.</p>
+
+          <NewsletterSubscribeFormInner state={state} />
+        </>
+      )}
+    </form>
+  );
+};
+
+const NewsletterSubscribeFormInner = ({ state }: { state: ActionFormState<any> }) => {
+  const { pending } = useFormStatus();
+
+  return (
+    <>
+      <section className="grid w-full items-center gap-4 md:flex">
+        <input
+          type="email"
+          name="email"
+          required={true}
+          placeholder="Your email address"
+          className={`flex-grow ${Object.hasOwn(state.errors || {}, "email") && "!border-red-500"}`}
+          disabled={pending}
+          aria-disabled={pending}
+        />
+        <button type="submit" disabled={pending} aria-disabled={pending} className="flex-shrink-0">
+          Subscribe
+        </button>
+      </section>
+
+      {state.errors || state.message ? (
+        <p className="text-red-500">{state.errors?.email?.join(". ") || state.message}</p>
+      ) : (
+        <p className="text-gray-500">
+          {/* * after subscribing, you must verify your email address */}
+        </p>
+      )}
+    </>
+  );
+};

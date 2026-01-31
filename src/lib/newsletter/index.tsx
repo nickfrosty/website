@@ -1,10 +1,13 @@
-import { NewsletterPost } from "@prisma/client";
-import { MDXRemoteProps } from "next-mdx-remote/rsc";
-import { SITE_ADDR } from "../constants";
-import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
 import { createId } from "@paralleldrive/cuid2";
+import { NewsletterPost } from "@prisma/client";
+
+import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
+
+import { SITE_ADDR } from "../constants";
 import { compileMDXwithRenderCheck } from "../mdx";
 import { MASKED_DOMAIN } from "../views/constants";
+
+import type { MDXComponents } from "mdx/types";
 
 const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
 
@@ -22,7 +25,7 @@ export async function preparePostForSubscriber({
   // list o' links that are in the post
   let links = new Map<string, string>();
 
-  const componentsForEmail: MDXRemoteProps["components"] = {
+  const componentsForEmail: MDXComponents = {
     img: ({ src, ...props }) => {
       // console.log(props);
       if (!src) return null;
@@ -46,15 +49,9 @@ export async function preparePostForSubscriber({
        * - handle local hash routes for the page being viewed (i.e. `#example`)
        */
 
-      if (
-        href.startsWith("/") ||
-        href.startsWith(".") ||
-        href.startsWith("#")
-      ) {
+      if (href.startsWith("/") || href.startsWith(".") || href.startsWith("#")) {
         // reformat paths like `/content/article/sub-dir/doc.md`
-        href = href
-          .replace(REGEX_CONTENT_DIR_LINK, "/$1/$3")
-          .replace(/(.mdx?)$/gi, "");
+        href = href.replace(REGEX_CONTENT_DIR_LINK, "/$1/$3").replace(/(.mdx?)$/gi, "");
 
         if (href.startsWith("#")) {
           console.log("not supported:", href);
@@ -65,10 +62,7 @@ export async function preparePostForSubscriber({
 
       if (maskLinks) {
         const cuid = createId();
-        const maskedUrl = new URL(
-          `/newsletter/${cuid}`,
-          CONFIG_LINK_MASKER_URL,
-        ).toString();
+        const maskedUrl = new URL(`/newsletter/${cuid}`, CONFIG_LINK_MASKER_URL).toString();
 
         // todo: can and should we note what text is being rendered?
         links.set(href, maskedUrl);

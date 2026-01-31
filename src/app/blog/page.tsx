@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { allBlogs } from "contentlayer/generated";
+
 import Link from "next/link";
+
 import { displayDate } from "zumo";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+
+import { PageViewTracker } from "@/components/content/page-view-tracker";
+import { getAllBlogs } from "@/lib/content";
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {
@@ -15,58 +18,54 @@ export const metadata: Metadata = {
     "my experiences of building in public and things I find interesting.",
 };
 
-export default function Page() {
+export default async function Page() {
   // get a listing of regular posts (hiding drafts)
-  const posts = allBlogs
-    .filter((post) =>
-      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+  const allPosts = await getAllBlogs();
+  const posts = allPosts
+    .filter(post =>
+      process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true,
     )
     .sort(
       (a, b) =>
-        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
+        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
     );
 
   return (
     <PageViewTracker>
-      <main className="max-w-5xl px-3 mx-auto space-y-20">
+      <main className="mx-auto max-w-5xl space-y-20 px-3">
         <header className="space-y-3">
           <h1>
-            <Link href="/blog" className="text-white shadow-none link-muted">
+            <Link href="/blog" className="text-white hover:text-yellow-400">
               All blog posts
             </Link>
           </h1>
-          <p className="text-lg minor">Just a guy, building and sharing.</p>
+          <p className="minor text-lg">Just a guy, building and sharing.</p>
         </header>
 
         <section className="grid gap-8 md:grid-cols-2">
           {posts.map((post, key) => (
             <div
               key={key}
-              className={`relative p-2 border border-transparent rounded-md ${
-                post.draft === true ? "!border-red-900" : ""
+              className={`relative rounded-md border border-transparent py-2 ${
+                post.frontmatter.draft === true ? "!border-red-900" : ""
               }`}
             >
-              {!!post.category && (
-                <h4 className="text-sm font-medium tracking-wide uppercase minor">
-                  {post.category}
+              {!!post.frontmatter.category && (
+                <h4 className="minor text-sm font-medium tracking-wide uppercase">
+                  {post.frontmatter.category}
                 </h4>
               )}
               <h3 className="">
-                <Link
-                  className="text-2xl font-semibold shadow-none link-muted"
-                  href={post.href as string}
-                >
-                  {post.title}
+                <Link className="link-muted text-2xl font-semibold shadow-none" href={post.href}>
+                  {post.frontmatter.title}
                 </Link>
               </h3>
 
-              <div className="flex items-center minor whitespace-nowrap md:inline-block">
-                {post.draft === true && (
-                  <span className="absolute right-0 font-mono text-sm bottom-2 tag">
-                    draft
-                  </span>
+              <div className="minor mt-2 flex items-center whitespace-nowrap md:inline-block">
+                {post.frontmatter.draft === true && (
+                  <span className="tag absolute right-0 bottom-2 font-mono text-sm">draft</span>
                 )}
-                {displayDate(post.date)}
+                {displayDate(post.frontmatter.date)}
               </div>
             </div>
           ))}

@@ -1,17 +1,23 @@
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { Children, useMemo, type ComponentProps } from "react";
+
 import Link from "next/link";
-import { CalloutProps, rehypePluginConfig } from "./rehypeConfig";
-import { CustomMetadataProps } from "./rehypeMetadata";
-import { CopyToClipBoard } from "./CopyToClipboard";
+
 import {
-  StarIcon,
   BoltIcon,
-  SparklesIcon,
-  InformationCircleIcon,
   ExclamationTriangleIcon,
+  InformationCircleIcon,
+  SparklesIcon,
+  StarIcon,
 } from "@heroicons/react/24/outline";
+
 import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
+
+import { CopyToClipBoard } from "./copy-to-clipboard";
+import { CalloutProps } from "./rehypeConfig";
+import { CustomMetadataProps } from "./rehypeMetadata";
+
+import type { MdxContent } from "@fumadocs/mdx-remote/client";
+import type { MDXComponents } from "mdx/types";
 
 function CustomLink({ ref, ...props }: ComponentProps<"a">) {
   let href = (props.href!.toString() as string)
@@ -47,7 +53,7 @@ const AnchorHeading: React.FC<AnchorHeadingProps> = ({
 }) => {
   // Create a slug from the heading text
   const childrenString = Children.toArray(children)
-    .map((child) => (typeof child === "string" ? child : ""))
+    .map(child => (typeof child === "string" ? child : ""))
     .join("");
 
   const headingId = id || slugify(childrenString);
@@ -59,11 +65,11 @@ const AnchorHeading: React.FC<AnchorHeadingProps> = ({
         style={{
           color: "inherit",
         }}
-        className="!shadow-none !no-underline"
+        className="no-underline! shadow-none!"
       >
         {children}
         <span
-          className="absolute hidden ml-3 text-indigo-400 shadow-yellow hover:text-yellow-400 group-hover:inline-block"
+          className="shadow-yellow absolute ml-3 hidden text-indigo-400 group-hover:inline-block hover:text-yellow-400"
           style={{
             fontSize: "0.8em",
             transition: "opacity 0.2s",
@@ -148,21 +154,15 @@ function Line(props: ComponentProps<"hr">) {
   );
 }
 
-function Pre({
-  children,
-  ...props
-}: ComponentProps<"pre"> & CustomMetadataProps) {
+function Pre({ children, ...props }: ComponentProps<"pre"> & CustomMetadataProps) {
   return (
-    <div className="relative border rounded-lg border-slate-700 overflow-clip">
+    <div className="relative overflow-clip rounded-lg border border-slate-700">
       {!!props.filename && (
-        <div className="px-3 pt-3 pb-2 font-mono text-sm font-medium leading-none border-b bg-slate-700 border-slate-700">
+        <div className="border-b border-slate-700 bg-slate-700 px-3 pt-3 pb-2 font-mono text-sm leading-none font-medium">
           {props.filename}
         </div>
       )}
-      <pre
-        {...props}
-        className="rounded-b-lg p-3 [&>code]:leading-normal overflow-auto scroller"
-      >
+      <pre {...props} className="scroller overflow-auto rounded-b-lg p-3 [&>code]:leading-normal">
         {children}
         <div className="absolute top-[7px] right-2">
           <CopyToClipBoard />
@@ -172,7 +172,7 @@ function Pre({
   );
 }
 
-const components: MDXRemoteProps["components"] = {
+export const defaultMdxComponents: MDXComponents = {
   // convert h1 to h2 since the layout will ship the h1
   h1: (props: any) => <AnchorHeading as="h2" {...props} />,
   h2: (props: any) => <AnchorHeading as="h2" {...props} />,
@@ -188,19 +188,6 @@ const components: MDXRemoteProps["components"] = {
   blockquote: Blockquote,
 };
 
-export function RenderMDX(props: MDXRemoteProps) {
-  return (
-    <MDXRemote
-      {...props}
-      options={{
-        mdxOptions: {
-          development: process.env.NODE_ENV === "development",
-          // remarkPlugins: [remarkGfm],
-          // @ts-ignore
-          rehypePlugins: rehypePluginConfig,
-        },
-      }}
-      components={components}
-    />
-  );
+export function RenderMDX({ body: MDXBody }: { body: MdxContent }) {
+  return <MDXBody components={defaultMdxComponents} />;
 }

@@ -1,6 +1,5 @@
-import SITE from "@/lib/config";
-import { SITE_ADDR } from "@/lib/constants";
-import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
+import * as React from "react";
+
 import {
   Body,
   Button,
@@ -15,7 +14,10 @@ import {
   Section,
   Text,
 } from "@react-email/components";
-import * as React from "react";
+
+import SITE from "@/lib/config";
+import { SITE_ADDR } from "@/lib/constants";
+import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
 
 interface NewsletterSubscriberVerifyEmailProps {
   verificationLink?: string;
@@ -51,8 +53,8 @@ export const NewsletterSubscriberVerifyEmail = ({
         <Heading style={heading}>Confirm your email address</Heading>
 
         <Text style={paragraph}>
-          Thanks for joining my newsletter! Please confirm your email address by
-          clicking the button below.
+          Thanks for joining my newsletter! Please confirm your email address by clicking the button
+          below.
         </Text>
 
         <Section style={buttonContainer}>
@@ -61,8 +63,7 @@ export const NewsletterSubscriberVerifyEmail = ({
           </Button>
         </Section>
         <Text style={paragraph}>
-          If you did not subscribe to this newsletter, then you can safely
-          ignore this email.
+          If you did not subscribe to this newsletter, then you can safely ignore this email.
         </Text>
 
         <Hr style={hr} />

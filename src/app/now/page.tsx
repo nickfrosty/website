@@ -1,15 +1,12 @@
 import Link from "next/link";
-import NowDetailsItem from "@/components/NowDetailsItem";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+
+import { PageViewTracker } from "@/components/content/page-view-tracker";
+import NowDetailsItem from "@/components/now-details-item";
 
 export default function Page() {
   return (
     <PageViewTracker>
-      <NowDetailsItem
-        id="solana"
-        href="#solana"
-        title="Solana Foundation (DevRel)"
-      >
+      <NowDetailsItem id="solana" href="#solana" title="Solana Foundation (DevRel)">
         <p>
           In March 2023, I started{" "}
           <a
@@ -20,18 +17,13 @@ export default function Page() {
           >
             full time
           </a>{" "}
-          at the Solana Foundation, joining the Developer Relations team. Where
-          I am focused on improving the official{" "}
-          <a
-            href="https://solana.com/docs"
-            className="link"
-            target="_blank"
-            rel="noreferrer"
-          >
+          at the Solana Foundation, joining the Developer Relations team. Where I am focused on
+          improving the official{" "}
+          <a href="https://solana.com/docs" className="link" target="_blank" rel="noreferrer">
             Solana blockchain&apos;s documentation
           </a>
-          . From writing new articles and content, to reorganizing the content
-          itself. And yes, even the janitorial tasks like updating npm packages.
+          . From writing new articles and content, to reorganizing the content itself. And yes, even
+          the janitorial tasks like updating npm packages.
         </p>
 
         <p>
@@ -57,20 +49,14 @@ export default function Page() {
           >
             Solana Developers Hub
           </Link>
-          , a one stop shop for anyone to learn how to build on the Solana
-          blockchain.
+          , a one stop shop for anyone to learn how to build on the Solana blockchain.
         </p>
       </NowDetailsItem>
 
       <NowDetailsItem id="solfate" href="#solfate" title="Solfate Podcast">
         <p>
           The{" "}
-          <Link
-            href="https://solfate.com"
-            target="_blank"
-            rel="noreferrer"
-            className="link"
-          >
+          <Link href="https://solfate.com" target="_blank" rel="noreferrer" className="link">
             Solfate Podcast
           </Link>{" "}
           is an audio commentary with my friend{" "}
@@ -82,22 +68,21 @@ export default function Page() {
           >
             @jamesrp13
           </Link>{" "}
-          and myself. Each episode, we explore deeper into the Solana ecosystem
-          by having conversations with founders and builders in the ecosystem.
+          and myself. Each episode, we explore deeper into the Solana ecosystem by having
+          conversations with founders and builders in the ecosystem.
         </p>
 
         <p>
-          We have had so many amazing conversations with some of the top teams
-          and founders in the Solana community, including founders from Phantom,
-          Drip, Solflare, Triton, Helius, Backpack, Dialect, and even Toly
-          himself.
+          We have had so many amazing conversations with some of the top teams and founders in the
+          Solana community, including founders from Phantom, Drip, Solflare, Triton, Helius,
+          Backpack, Dialect, and even Toly himself.
         </p>
 
         <p>
-          You can explore the podcast yourself on it&apos;s own website, where
-          ever you get your podcasts, or from the links below:
+          You can explore the podcast yourself on it&apos;s own website, where ever you get your
+          podcasts, or from the links below:
         </p>
-        <ul className="mx-3 space-y-2 list-disc list-inside md:mx-10">
+        <ul className="mx-3 list-inside list-disc space-y-2 md:mx-10">
           <li className="">
             <Link
               className="link"
