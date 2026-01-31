@@ -90,13 +90,13 @@ export default async function Page() {
                 Newsletter #{posts.length - id}
               </h4> */}
               <span className="minor flex items-center gap-2 whitespace-nowrap">
-                <span className="bottom-2 right-2 block w-min px-2 font-mono text-3xl font-semibold leading-none text-indigo-400 shadow-indigo group-hover:text-white group-hover:!shadow-none">
+                <span className="shadow-indigo right-2 bottom-2 block w-min px-2 font-mono text-3xl leading-none font-semibold text-indigo-400 group-hover:text-white group-hover:!shadow-none">
                   #{posts.length - id}
                 </span>
                 <span className="block">{displayDate(post.frontmatter.date)}</span>
               </span>
 
-              <span className="block text-2xl font-semibold shadow-none group-hover:text-yellow-400 group-hover:shadow-indigo">
+              <span className="group-hover:shadow-indigo block text-2xl font-semibold shadow-none group-hover:text-yellow-400">
                 {post.frontmatter.title}
               </span>
             </Link>

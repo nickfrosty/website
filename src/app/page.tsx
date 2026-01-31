@@ -36,7 +36,7 @@ export default async function Page() {
             </Link>
           </div>
 
-          <p className="col-span-2 whitespace-pre-line text-2xl sm:col-span-2 sm:text-2xl">
+          <p className="col-span-2 text-2xl whitespace-pre-line sm:col-span-2 sm:text-2xl">
             <span className="mb-5 inline-block text-3xl lg:mb-0 lg:text-2xl">
               Hi! I&apos;m Nick,
             </span>
@@ -102,7 +102,7 @@ export default async function Page() {
 
               <Link
                 href="/projects"
-                className="flexer link-muted inline-flex space-x-3 text-lg font-medium shadow-indigo"
+                className="flexer link-muted shadow-indigo inline-flex space-x-3 text-lg font-medium"
               >
                 <span>View more projects</span>
                 <ArrowRightIcon className="h-5 w-5" />

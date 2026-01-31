@@ -8,7 +8,7 @@ type ComponentProps = {
 
 export default function AppFooter({}: ComponentProps) {
   return (
-    <footer className="mb-2 mt-5 w-full overflow-hidden pb-8 pt-5 text-center text-lg text-gray-400">
+    <footer className="mt-5 mb-2 w-full overflow-hidden pt-5 pb-8 text-center text-lg text-gray-400">
       <div
         id="footer-divider"
         className="mx-auto mb-10 h-px w-2/3 -rotate-1 transform bg-gray-900 shadow-lg md:w-2/3"
@@ -19,7 +19,7 @@ export default function AppFooter({}: ComponentProps) {
           &copy;{new Date().getFullYear()}{" "}
           <Link
             href="/"
-            className="hover:text-black hover:shadow-indigo dark:hover:text-white"
+            className="hover:shadow-indigo hover:text-black dark:hover:text-white"
             title="Personal Website for Nick Frostbutter"
           >
             Nick Frostbutter

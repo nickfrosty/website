@@ -65,11 +65,11 @@ const AnchorHeading: React.FC<AnchorHeadingProps> = ({
         style={{
           color: "inherit",
         }}
-        className="!no-underline !shadow-none"
+        className="no-underline! shadow-none!"
       >
         {children}
         <span
-          className="absolute ml-3 hidden text-indigo-400 shadow-yellow group-hover:inline-block hover:text-yellow-400"
+          className="shadow-yellow absolute ml-3 hidden text-indigo-400 group-hover:inline-block hover:text-yellow-400"
           style={{
             fontSize: "0.8em",
             transition: "opacity 0.2s",
@@ -158,13 +158,13 @@ function Pre({ children, ...props }: ComponentProps<"pre"> & CustomMetadataProps
   return (
     <div className="relative overflow-clip rounded-lg border border-slate-700">
       {!!props.filename && (
-        <div className="border-b border-slate-700 bg-slate-700 px-3 pb-2 pt-3 font-mono text-sm font-medium leading-none">
+        <div className="border-b border-slate-700 bg-slate-700 px-3 pt-3 pb-2 font-mono text-sm leading-none font-medium">
           {props.filename}
         </div>
       )}
       <pre {...props} className="scroller overflow-auto rounded-b-lg p-3 [&>code]:leading-normal">
         {children}
-        <div className="absolute right-2 top-[7px]">
+        <div className="absolute top-[7px] right-2">
           <CopyToClipBoard />
         </div>
       </pre>

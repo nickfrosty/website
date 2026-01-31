@@ -36,7 +36,7 @@ export default async function Page() {
       </header>
 
       {!!featured.length && (
-        <section className="mx-auto mb-3 mt-4 grid max-w-5xl grid-cols-1 gap-5 sm:mt-8 md:grid-cols-2">
+        <section className="mx-auto mt-4 mb-3 grid max-w-5xl grid-cols-1 gap-5 sm:mt-8 md:grid-cols-2">
           {featured.map(project => (
             <ProjectCard
               key={project.frontmatter.title}
@@ -66,7 +66,7 @@ export default async function Page() {
         </p>
       </section>
 
-      <section className="mx-auto mb-3 mt-4 grid max-w-2xl grid-cols-1 gap-5 sm:mt-8">
+      <section className="mx-auto mt-4 mb-3 grid max-w-2xl grid-cols-1 gap-5 sm:mt-8">
         {projects.map(project => (
           <ProjectCard
             key={project.frontmatter.title}

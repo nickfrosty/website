@@ -32,7 +32,7 @@ export function ArticleMeta({
             sizeClass={"w-14 h-14"}
             className={"border border-transparent group-hover:border-indigo-400"}
           />
-          <span className="group-hover:text-yellow-400 group-hover:shadow-indigo">
+          <span className="group-hover:shadow-indigo group-hover:text-yellow-400">
             Nick Frostbutter
           </span>
         </Link>

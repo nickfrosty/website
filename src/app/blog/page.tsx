@@ -51,7 +51,7 @@ export default async function Page() {
               }`}
             >
               {!!post.frontmatter.category && (
-                <h4 className="minor text-sm font-medium uppercase tracking-wide">
+                <h4 className="minor text-sm font-medium tracking-wide uppercase">
                   {post.frontmatter.category}
                 </h4>
               )}
@@ -63,7 +63,7 @@ export default async function Page() {
 
               <div className="minor flex items-center whitespace-nowrap md:inline-block">
                 {post.frontmatter.draft === true && (
-                  <span className="tag absolute bottom-2 right-0 font-mono text-sm">draft</span>
+                  <span className="tag absolute right-0 bottom-2 font-mono text-sm">draft</span>
                 )}
                 {displayDate(post.frontmatter.date)}
               </div>
