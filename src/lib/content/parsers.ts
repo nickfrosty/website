@@ -4,7 +4,7 @@ import path from "path";
 import { globSync } from "glob";
 import matter from "gray-matter";
 
-import { compiler } from "@/lib/mdx/compiler";
+import { mdxCompiler } from "@/lib/mdx/compiler";
 
 import {
   articleFrontmatterSchema,
@@ -114,7 +114,7 @@ export async function getPostWithMDX<T>(
   const post = await getContentBySlug<T>(slug, contentType, schema);
   if (!post) return null;
 
-  const result = await compiler.compile({
+  const result = await mdxCompiler.compile({
     source: post.content,
   });
 

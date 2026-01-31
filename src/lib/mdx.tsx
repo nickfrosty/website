@@ -1,4 +1,4 @@
-import { compiler } from "@/lib/mdx/compiler";
+import { mdxCompiler } from "@/lib/mdx/compiler";
 
 import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { MDXComponents } from "mdx/types";
@@ -39,7 +39,7 @@ export async function compileMDXwithRenderCheck({
 
   while (++i && i <= maxCompileAttempts && !canRender) {
     try {
-      const result = await compiler.compile({
+      const result = await mdxCompiler.compile({
         source: content,
       });
 
