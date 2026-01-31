@@ -8,6 +8,9 @@
     "name": "nickfrosty",
     "url": "https://nick.af"
   },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "npm run generate && next dev",
     "build": "npm run generate && next build",
@@ -91,7 +94,6 @@
     "rimraf": "5.0.10",
     "shiki": "^1.1.6",
     "tailwindcss": "^4.1.18",
-    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "vitest": "^3.2.4"
   }
