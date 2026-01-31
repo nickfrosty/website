@@ -2,7 +2,7 @@
 	zumo config file
 ****/
 
-module.exports = {
+export default {
   config: {
     dateFormat: "MMM dd, yyyy",
   },

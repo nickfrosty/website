@@ -24,7 +24,7 @@ My website is also open source, so you can look at
 [this commit](https://github.com/nickfrosty/website/commit/3d8fe782d1897132193e790822c59a961fcab7b6)
 to see how easy it is to go from zero to blink.
 
-![entire commit to add the first blink](/public/media/newsletter/blinks-and-actions/how-to-build-a-blink.png)
+![entire commit to add the first blink](/media/newsletter/blinks-and-actions/how-to-build-a-blink.png)
 
 ## What are Solana Actions?
 
@@ -99,7 +99,7 @@ worry, I have noticed lots of people not quite getting there), image these scena
    - the author can even charge a fee to people that subscribe
    - allowing them to more easily earn income from publishing their newsletter
 
-![This is what my "newsletter signup" blink looks like](/public/media/newsletter/blinks-and-actions/newsletter-signup-blink.png)
+![This is what my "newsletter signup" blink looks like](/media/newsletter/blinks-and-actions/newsletter-signup-blink.png)
 
 If you recently joined my email newsletter from my blink, an extra special gm to you :)
 
