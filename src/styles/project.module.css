@@ -1,3 +1,5 @@
+@reference "../app/globals.css";
+
 .card {
   @apply block w-full;
   @apply relative top-0 mb-5 transition-all duration-75 ease-in-out lg:mb-8;
@@ -13,7 +15,7 @@
 }
 
 .h2 {
-  @apply line-clamp-1 text-2xl font-bold leading-tight;
+  @apply line-clamp-1 text-2xl leading-tight font-bold;
 }
 
 .inner {
@@ -44,7 +46,7 @@
 }
 
 .floater {
-  @apply absolute right-0 top-0 mr-4 mt-4;
+  @apply absolute top-0 right-0 mt-4 mr-4;
 }
 
 /* Style the status pills */

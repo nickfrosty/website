@@ -1,9 +1,174 @@
-/* for the love of tailwind :) */
-@tailwind base;
-@tailwind components;
+/* Tailwind v4 */
+@import "tailwindcss";
 
+/* Source paths for class detection */
+@source "../**/*.{js,jsx,ts,tsx}";
+
+/* Theme customizations migrated from tailwind.config.js */
+@theme {
+  /* Custom colors */
+  --color-hot-pink: #fd2d78;
+  --color-twitter: #1d9bf0;
+  --color-linkedin: #0a66c2;
+
+  /* Gray palette */
+  --color-gray-50: #f6f6f6;
+  --color-gray-100: #e7e7e7;
+  --color-gray-200: #d1d1d1;
+  --color-gray-300: #b0b0b0;
+  --color-gray-400: #888888;
+  --color-gray-500: #6d6d6d;
+  --color-gray-600: #5d5d5d;
+  --color-gray-700: #4f4f4f;
+  --color-gray-800: #454545;
+  --color-gray-900: #3d3d3d;
+  --color-gray-950: #111111;
+
+  /* Indigo palette */
+  --color-indigo-50: #ecf4ff;
+  --color-indigo-100: #ddeaff;
+  --color-indigo-200: #c2d8ff;
+  --color-indigo-300: #9cbcff;
+  --color-indigo-400: #7596ff;
+  --color-indigo-500: #617bff;
+  --color-indigo-600: #3646f5;
+  --color-indigo-700: #2a36d8;
+  --color-indigo-800: #2531ae;
+  --color-indigo-900: #263189;
+  --color-indigo-950: #161a50;
+
+  /* Yellow palette */
+  --color-yellow-50: #fffaeb;
+  --color-yellow-100: #fff0c6;
+  --color-yellow-200: #ffdf88;
+  --color-yellow-300: #ffd166;
+  --color-yellow-400: #ffb220;
+  --color-yellow-500: #f98f07;
+  --color-yellow-600: #dd6802;
+  --color-yellow-700: #b74706;
+  --color-yellow-800: #94360c;
+  --color-yellow-900: #7a2e0d;
+  --color-yellow-950: #461502;
+
+  /* Green palette */
+  --color-green-50: #effef7;
+  --color-green-100: #dafeef;
+  --color-green-200: #b8fadd;
+  --color-green-300: #81f4c3;
+  --color-green-400: #43e5a0;
+  --color-green-500: #1acd81;
+  --color-green-600: #0fa968;
+  --color-green-700: #108554;
+  --color-green-800: #126945;
+  --color-green-900: #11563a;
+  --color-green-950: #03301f;
+
+  /* Red palette */
+  --color-red-50: #fff1f3;
+  --color-red-100: #fee5e9;
+  --color-red-200: #fdced7;
+  --color-red-300: #faa7b7;
+  --color-red-400: #f77591;
+  --color-red-500: #ef476f;
+  --color-red-600: #db2357;
+  --color-red-700: #b9174a;
+  --color-red-800: #9b1644;
+  --color-red-900: #85163f;
+  --color-red-950: #4a071e;
+
+  /* Blue palette */
+  --color-blue-50: #f0f8ff;
+  --color-blue-100: #e0f0fe;
+  --color-blue-200: #bae2fd;
+  --color-blue-300: #7dcbfc;
+  --color-blue-400: #47b7f8;
+  --color-blue-500: #0f98e8;
+  --color-blue-600: #0378c6;
+  --color-blue-700: #0360a1;
+  --color-blue-800: #075185;
+  --color-blue-900: #0c446e;
+  --color-blue-950: #082b49;
+
+  /* Tarawera palette */
+  --color-tarawera-50: #ebffff;
+  --color-tarawera-100: #cefdff;
+  --color-tarawera-200: #a3f8fe;
+  --color-tarawera-300: #63f1fd;
+  --color-tarawera-400: #1ddff3;
+  --color-tarawera-500: #01c2d9;
+  --color-tarawera-600: #039bb7;
+  --color-tarawera-700: #0b7b93;
+  --color-tarawera-800: #126378;
+  --color-tarawera-900: #145265;
+  --color-tarawera-950: #073b4c;
+
+  /* Purple palette */
+  --color-purple-50: #fbf3ff;
+  --color-purple-100: #f4e4ff;
+  --color-purple-200: #ecceff;
+  --color-purple-300: #dda7ff;
+  --color-purple-400: #c86fff;
+  --color-purple-500: #b439ff;
+  --color-purple-600: #a213ff;
+  --color-purple-700: #8d04ec;
+  --color-purple-800: #7209b7;
+  --color-purple-900: #62099a;
+  --color-purple-950: #430074;
+
+  /* Custom shadows */
+  --shadow-yellow: 0px 2px 0px 0px #ffb220;
+  --shadow-yellow-lg: 0px 4px 0px 0px #ffb220;
+  --shadow-indigo: 0px 2px 0px 0px #7596ff;
+  --shadow-indigo-lg: 0px 4px 0px 0px #7596ff;
+
+  /* Custom font */
+  --font-body:
+    var(--font-theme), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Custom spacing (non-standard values) */
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+  --spacing-34: 8.5rem;
+  --spacing-38: 9.5rem;
+  --spacing-68: 17rem;
+  --spacing-76: 19rem;
+  --spacing-88: 22rem;
+  --spacing-104: 26rem;
+  --spacing-110: 28rem;
+  --spacing-118: 30rem;
+  --spacing-126: 32rem;
+  --spacing-132: 34rem;
+  --spacing-140: 36rem;
+
+  /* Custom font sizes */
+  --font-size-7xl: 5rem;
+  --font-size-8xl: 6rem;
+  --font-size-9xl: 7rem;
+
+  /* Custom border radius */
+  --radius-xl: 0.75rem;
+
+  /* Animation */
+  --animate-spin-slow: spin 3s linear infinite;
+}
+
+/* Scrollbar styles (replacing tailwind-scrollbar plugin) */
 .scroller {
-  @apply scrollbar-thin scrollbar-track-slate-700 scrollbar-thumb-slate-500;
+  scrollbar-width: thin;
+  scrollbar-color: theme(colors.slate.500) theme(colors.slate.700);
+}
+.scroller::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroller::-webkit-scrollbar-track {
+  background: theme(colors.slate.700);
+}
+.scroller::-webkit-scrollbar-thumb {
+  background: theme(colors.slate.500);
+  border-radius: 4px;
 }
 
 /* Shiki syntax highlighting - consume CSS variables */
@@ -15,9 +180,23 @@ pre {
 }
 
 body {
-  @apply scroller leading-snug tracking-normal;
+  @apply leading-snug tracking-normal;
   @apply bg-gray-950 text-gray-200;
   @apply font-body;
+  /* Scrollbar styles */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-slate-500) var(--color-slate-700);
+}
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--color-slate-700);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--color-slate-500);
+  border-radius: 4px;
 }
 a {
   @apply cursor-pointer !no-underline transition;
@@ -86,7 +265,7 @@ h3 code {
 }
 
 .flexer-spacer {
-  @apply flexer;
+  @apply flex items-center;
   @apply space-x-2;
 }
 
@@ -94,16 +273,16 @@ h3 code {
   @apply md:mx-auto md:max-w-6xl;
 }
 .container {
-  @apply container-inner;
+  @apply md:mx-auto md:max-w-6xl;
   @apply mx-auto gap-8 space-y-4 p-5 md:space-y-8 md:px-4 md:py-10;
   @apply justify-between;
 }
 
 .focus-area {
-  @apply container-inner;
+  @apply md:mx-auto md:max-w-6xl;
   @apply w-full items-center text-center md:text-left;
   @apply grid justify-between gap-8 md:flex;
-  @apply mx-auto space-y-10 md:flex md:space-x-8 md:space-y-0;
+  @apply mx-auto space-y-10 md:flex md:space-y-0 md:space-x-8;
   @apply px-4 py-8;
 }
 .focus-image {
@@ -136,30 +315,30 @@ hr {
 } */
 .reverse-link {
   @apply cursor-pointer font-semibold underline;
-  @apply hover:text-yellow-400 hover:shadow-indigo;
+  @apply hover:shadow-indigo hover:text-yellow-400;
 }
 
 .link,
 .summary a,
 article a {
-  @apply text-yellow-400 shadow-indigo hover:text-indigo-400 hover:shadow-yellow;
+  @apply shadow-indigo hover:shadow-yellow text-yellow-400 hover:text-indigo-400;
 }
 
 .link-active {
-  @apply link;
-  @apply hover:text-indigo-500 hover:shadow-yellow !important;
-  @apply text-yellow-400 shadow-indigo !important;
+  @apply shadow-indigo hover:shadow-yellow text-yellow-400 hover:text-indigo-400;
+  @apply hover:!shadow-yellow hover:!text-indigo-500;
+  @apply !shadow-indigo !text-yellow-400;
 }
 .link-passive {
-  @apply link;
-  @apply text-indigo-500 hover:text-yellow-400 !important;
+  @apply shadow-indigo hover:shadow-yellow text-yellow-400 hover:text-indigo-400;
+  @apply !text-indigo-500 hover:!text-yellow-400;
 }
 .link-muted {
-  @apply shadow-indigo hover:text-yellow-400 hover:shadow-indigo;
+  @apply shadow-indigo hover:shadow-indigo hover:text-yellow-400;
 }
 h1 a {
   @apply bg-gradient-to-r from-yellow-400 to-rose-600 bg-clip-text text-transparent hover:text-yellow-400;
-  @apply shadow-none hover:!shadow-indigo-lg;
+  @apply hover:!shadow-indigo-lg shadow-none;
 }
 
 h1 {
@@ -209,7 +388,7 @@ h5 {
 }
 
 .icon {
-  @apply icon-base;
+  @apply h-6 w-6;
   /* @apply text-gray-100 hover:text-gray-100; */
   @apply text-gray-800 hover:text-gray-800;
 }
@@ -269,15 +448,17 @@ h5 {
   @apply hover:border-gray-400 hover:text-white;
 }
 .inline-code {
-  @apply ml-1 mr-2 rounded-lg px-3 py-1;
+  @apply mr-2 ml-1 rounded-lg px-3 py-1;
   @apply font-mono text-base tracking-wide;
-  @apply border border-gray-600 bg-slate-900 text-white !important;
+  @apply !border !border-gray-600 !bg-slate-900 !text-white;
 }
 
 .inline-code-link {
-  @apply inline-code;
+  @apply mr-2 ml-1 rounded-lg px-3 py-1;
+  @apply font-mono text-base tracking-wide;
+  @apply border border-gray-600 bg-slate-900 text-white;
   @apply cursor-pointer;
-  @apply hover:border-slate-500 hover:bg-slate-700 !important;
+  @apply hover:!border-slate-500 hover:!bg-slate-700;
 }
 
 .callout {
@@ -291,14 +472,14 @@ h5 {
   }
 }
 .callout .callout-icon {
-  @apply absolute -left-5 -top-3 rounded-full bg-gray-950 p-[10px];
+  @apply absolute -top-3 -left-5 rounded-full bg-gray-950 p-[10px];
 
   svg {
     @apply h-6 w-6;
   }
 }
 .callout a {
-  @apply text-white shadow-yellow;
+  @apply shadow-yellow text-white;
 }
 .callout .callout-title {
   @apply text-lg font-semibold;
@@ -308,7 +489,7 @@ h5 {
   @apply border-indigo-500 bg-slate-800;
 }
 .callout .callout-content p {
-  @apply my-0 py-0 leading-normal !important;
+  @apply !my-0 !py-0 !leading-normal;
 }
 .callout.yellow,
 .callout.caution,
@@ -400,5 +581,4 @@ h5 {
   @apply text-gray-100;
 } */
 
-/* make the utilities last to force their priority when inline */
-@tailwind utilities;
+/* Utilities are included via @import "tailwindcss" above */
