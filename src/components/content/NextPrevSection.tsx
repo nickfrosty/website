@@ -1,4 +1,3 @@
-import type { FlatPost } from "@@/types";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import styles from "@/styles/pagination.module.css";

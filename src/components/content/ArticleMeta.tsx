@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import type { FlatPost } from "@@/types";
 import { displayDate } from "zumo";
 import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";

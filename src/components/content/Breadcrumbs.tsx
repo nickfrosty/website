@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import type { SimpleLinkItem, FlatPost } from "@@/types";
 
 import Link from "next/link";
 import clsx from "clsx";

@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import type { FlatPost } from "@@/types";
 
 import Link from "next/link";
 import { DateTime } from "luxon";

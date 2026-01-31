@@ -1,4 +1,3 @@
-import { CardComponentProps } from "@@/types";
 import clsx from "clsx";
 import Link from "next/link";
 import { FloatLabel } from "@/components/content/FloatLabel";
@@ -13,7 +12,7 @@ export function SmallCard({
     <Link
       href={post?.href ?? "#"}
       className={clsx(
-        `p-0 card group`,
+        `card group p-0`,
         className,
         "hover-outline",
         // featured ? "featured-outline" : "",
@@ -31,7 +30,7 @@ export function SmallCard({
           </span>
         )} */}
 
-      <div className="flex-shrink-0 block w-full bg-gray-900 aspect-video">
+      <div className="block aspect-video w-full flex-shrink-0 bg-gray-900">
         {/* TODO: onerror load a default image, or remove the image? */}
         {!!post.draft && <FloatLabel label={"draft"} overlay={true} />}
         {post?.image && (
@@ -40,13 +39,13 @@ export function SmallCard({
             className={clsx(
               `object-cover`,
               `object-${imageFocus}`,
-              `relative left-0 w-full h-full`,
+              `relative left-0 h-full w-full`,
             )}
             alt={post.title || "[unknown]"}
           />
         )}
       </div>
-      <div className="p-5 space-y-3">
+      <div className="space-y-3 p-5">
         <h3 className="text-2xl font-bold">
           <span className="">{post?.title || "[unknown]"}</span>
         </h3>

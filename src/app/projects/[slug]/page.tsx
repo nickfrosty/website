@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { SimpleLinkItem } from "@@/types";
 import ProseLayout from "@/layouts/ProseLayout";
 import {
   getAllProjectSlugs,
@@ -19,12 +18,6 @@ const breadcrumbParents: SimpleLinkItem = {
   label: "Projects",
 };
 
-type PageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
 export async function generateStaticParams() {
   const allPosts = await getAllProjects();
   return allPosts
@@ -34,7 +27,7 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PagePropsWithSlug): Promise<Metadata> {
   const { slug } = await params;
   const post = await getProjectBySlug(slug);
 
@@ -53,7 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: PagePropsWithSlug) {
   const { slug } = await params;
   const post = await getProjectWithMDX(slug);
 

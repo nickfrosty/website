@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { PaginationProps } from "@@/types";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { parseTemplate } from "zumo";

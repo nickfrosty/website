@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
-import { ActionFormState } from "@@/types";
+import { ActionFormState } from "@/lib/form-types";
 
 export const NewsletterSubscribeForm = ({
   title = "Subscribe for (sometimes) weekly emails",

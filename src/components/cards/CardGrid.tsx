@@ -1,5 +1,3 @@
-import type { PaginationProps, FlatPost } from "@@/types";
-
 import { Pagination } from "@/components/content/Pagination";
 import { SmallCard } from "@/components/cards/SmallCard";
 

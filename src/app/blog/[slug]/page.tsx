@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { metadata as layoutMetadata } from "./layout";
-import type { SimpleLinkItem } from "@@/types";
 import { getAllBlogSlugs, getBlogBySlug, getBlogWithMDX } from "@/lib/content";
 import styles from "@/styles/article.module.css";
 
@@ -14,16 +13,12 @@ import { PageViewTracker } from "@/components/content/PageViewTracker";
 import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
 const config = zumoConfig.content.blog;
 
-type PageProps = {
-  params: Promise<{ slug: string }>;
-};
-
 export function generateStaticParams() {
   const slugs = getAllBlogSlugs();
   return slugs.map(slug => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PagePropsWithSlug): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogBySlug(slug);
 
@@ -45,7 +40,7 @@ const breadcrumbParents: SimpleLinkItem = {
   label: "Blog",
 };
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: PagePropsWithSlug) {
   const { slug } = await params;
   const post = await getBlogWithMDX(slug);
 

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { metadata as layoutMetadata } from "./layout";
 import { notFound } from "next/navigation";
-import type { SimpleLinkItem } from "@@/types";
 import ProseLayout from "@/layouts/ProseLayout";
 import {
   getAllArticleSlugs,
@@ -16,16 +15,12 @@ import { PageViewTracker } from "@/components/content/PageViewTracker";
 import { SOCIAL } from "@/lib/config";
 const config = zumoConfig.content.articles;
 
-type PageProps = {
-  params: Promise<{ slug: string }>;
-};
-
 export function generateStaticParams() {
   const slugs = getAllArticleSlugs();
   return slugs.map(slug => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PagePropsWithSlug): Promise<Metadata> {
   const { slug } = await params;
   const post = await getArticleBySlug(slug);
 
@@ -60,7 +55,7 @@ const breadcrumbParents: SimpleLinkItem = {
   label: "Articles",
 };
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: PagePropsWithSlug) {
   const { slug } = await params;
   const post = await getArticleWithMDX(slug);
 

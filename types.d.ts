@@ -1,8 +1,6 @@
 /*
-    Primary type definitions for the site
+    Global type declarations
 */
-
-import type { ZodType, ZodTypeAny } from "zod";
 
 // CSS Modules declarations
 declare module "*.css" {
@@ -21,6 +19,15 @@ type Params<TKeys extends string = string, TValues = string> = Promise<Record<TK
 type SearchParams<TKeys extends string = string, TValues = string> = Promise<
   Record<TKeys, TValues | undefined>
 >;
+
+type PagePropsWithSlug<TExtra extends string = never> = {
+  params: Params<"slug" | TExtra>;
+};
+
+type PagePropsWithSlugAndSearch<TExtra extends string = never, TSearch extends string = string> = {
+  params: Params<"slug" | TExtra>;
+  searchParams: SearchParams<TSearch>;
+};
 
 type NotFoundResponse = { notFound: true };
 
@@ -59,15 +66,6 @@ type ZumoConfigRecord = {
   maxTagCount?: number;
 };
 
-/**
- * Default props for most components
- */
-type SimpleComponentProps = {
-  children?: React.ReactNode;
-  className?: string;
-};
-
-//
 type ProjectRecord = {
   title: string;
   description: string;
@@ -76,21 +74,8 @@ type ProjectRecord = {
   dateRange: string;
   status: "";
   meta: PostMetadata;
-  //   slug: string;
-  //   href: string;
-  //   title: string;
-
-  //   date?: string;
-  //   createdAt?: string;
-  //   updatedAt?: string;
-
-  //   url?: string;
-  //   dateRange?: string;
-  //   status?: string;
-  // };
 };
 
-//
 type PostRecord = {
   slug: string;
   href: string;
@@ -137,7 +122,6 @@ type CardComponentProps = {
   };
 };
 
-//
 type SimpleLinkItem = {
   title?: string;
   href: string;
@@ -151,17 +135,10 @@ type PaginationProps = {
   totalPages?: number;
   baseHref?: string;
   template?: string;
-  page?: number;
 };
 
 type ProsePageProps = {
   post: FlatPost;
   next?: FlatPost;
   prev?: FlatPost;
-};
-
-type ActionFormState<T extends z.ZodType<any, any, any>> = {
-  success?: boolean;
-  message?: string;
-  errors?: z.typeToFlattenedError<z.infer<T>>["fieldErrors"];
 };

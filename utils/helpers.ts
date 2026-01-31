@@ -1,5 +1,3 @@
-import { PaginationProps } from "@@/types";
-
 /**
  * Regex for parsing headings from raw markdown
  * - note: this only parsed h4 and higher
@@ -33,9 +31,7 @@ export const REGEX_HTML_LINKS = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/gm;
 export const REGEX_HTML_RELATIVE_URLS =
   /<(?:a|img)\s+(?:[^>]*?\s+)?(?:href|src)=("|')([\/|\.].*?)\1/gim;
 
-export const REGEX_CONTENT_DIR_LINK = new RegExp(
-  /^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm,
-);
+export const REGEX_CONTENT_DIR_LINK = new RegExp(/^\/content\/(\w+)(.*)\/([\w+-]*(.mdx?))/gm);
 
 /**
  * Slugify a url string into a valid url form
@@ -59,10 +55,8 @@ type HeadingObject = {
 /**
  * Generate a Table of Contents listing based on the markdowns headings
  */
-export function generateTableOfContents(
-  text: string,
-): Array<HeadingObject> | undefined {
-  return text.match(REGEX_MARKDOWN_HEADINGS)?.map((item) => {
+export function generateTableOfContents(text: string): Array<HeadingObject> | undefined {
+  return text.match(REGEX_MARKDOWN_HEADINGS)?.map(item => {
     // strip out any links already in the heading (e.g. the anchor `#` link at the end)
     // extract the usable values (note the starting `,` in the array; this will ignore the first param)
     const [, hCount, label] = item
@@ -87,15 +81,12 @@ export function linkifyHeadings(text: string, anchorBefore?: boolean) {
   let slug: string;
 
   // locate and parse all headings in the raw markdown text
-  return text.replace(
-    REGEX_MARKDOWN_HEADINGS,
-    (_fullMatched, hCount, label) => {
-      slug = slugify(label);
+  return text.replace(REGEX_MARKDOWN_HEADINGS, (_fullMatched, hCount, label) => {
+    slug = slugify(label);
 
-      // note: this adds the anchor above the heading element
-      return `<a id="${slug}" />\n${hCount} ${label} [#](#${slug})`;
-    },
-  );
+    // note: this adds the anchor above the heading element
+    return `<a id="${slug}" />\n${hCount} ${label} [#](#${slug})`;
+  });
 }
 
 /**
@@ -112,8 +103,7 @@ export function processMarkdownLinks(content: string) {
       if (!label || !url) return fullMatched;
 
       // handle images nested inside of links (e.g. `[![image alt](http://img)](http://link)`)
-      if (label.startsWith("!"))
-        label = processMarkdownLinks(label.substring(1));
+      if (label.startsWith("!")) label = processMarkdownLinks(label.substring(1));
 
       // removed specific file extensions (".md", ".mdx", etc)
       url = url.split(/.mdx?|.html?/gi).join("");
@@ -129,10 +119,7 @@ export function processMarkdownLinks(content: string) {
 /**
  * Search and convert all relative anchor tags into their absolute equivalent
  */
-export function convertRelativeAnchorsToAbsolute(
-  content: string,
-  base: string,
-) {
+export function convertRelativeAnchorsToAbsolute(content: string, base: string) {
   // define a reusable variable
   let newUrl: string;
 

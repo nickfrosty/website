@@ -1,4 +1,3 @@
-import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
 import { parseTemplate } from "zumo";
 import Link from "next/link";
 import styles from "@/styles/article.module.css";

@@ -1,6 +1,6 @@
 "use server";
 import prisma from "@/lib/prisma/client";
-import { ActionFormState } from "@@/types";
+import { ActionFormState } from "@/lib/form-types";
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
 import { NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
