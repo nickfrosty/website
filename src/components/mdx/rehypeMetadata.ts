@@ -1,5 +1,5 @@
 // @ts-nocheck
-const CODE_BLOCK_FILENAME_REGEX = /(file|filename)=\"?([^"]+)\"?/;
+const CODE_BLOCK_FILENAME_REGEX = /(file|filename|title)=\"?([^"]+)\"?/;
 
 function visit(node, tagNames, handler) {
   if (tagNames.includes(node.tagName)) {
@@ -36,18 +36,11 @@ export const parseMetadata =
   };
 
 export const attachMetadata = () => tree => {
-  visit(tree, ["div", "pre", "figure"], node => {
-    if (
-      "data-rehype-pretty-code-fragment" in node.properties ||
-      "data-rehype-pretty-code-figure" in node.properties
-    ) {
-      // remove <figure data-rehype-pretty-code-fragment /> element that wraps <pre /> element
-      // because we'll wrap with our own <div />
-      Object.assign(node, node.children[0]);
+  visit(tree, ["pre"], node => {
+    // Transfer custom metadata to properties for React component access
+    if (node.__filename) {
+      node.properties.filename = node.__filename;
     }
-
-    node.properties.filename = node.__filename;
-    // node.properties.showCopyCode = node.__showCopyCode;
   });
 };
 

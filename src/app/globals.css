@@ -6,6 +6,14 @@
   @apply scrollbar-thin scrollbar-track-slate-700 scrollbar-thumb-slate-500;
 }
 
+/* Shiki syntax highlighting - consume CSS variables */
+pre code span {
+  color: var(--shiki-dark);
+}
+pre {
+  background-color: var(--shiki-dark-bg);
+}
+
 body {
   @apply scroller leading-snug tracking-normal;
   @apply bg-gray-950 text-gray-200;

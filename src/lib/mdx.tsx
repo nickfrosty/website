@@ -1,6 +1,23 @@
-import { compileMDX } from "@fumadocs/mdx-remote";
+import { createCompiler } from "@fumadocs/mdx-remote";
+import codeTheme from "shiki/themes/github-dark-dimmed.mjs";
 
+import { attachMetadata, parseMetadata } from "@/components/mdx/rehypeMetadata";
+
+import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { MDXComponents } from "mdx/types";
+
+// Create compiler once at module level
+const compiler = createCompiler({
+  preset: "fumadocs",
+  rehypeCodeOptions: {
+    theme: codeTheme,
+  },
+  rehypePlugins: defaults => [
+    ...defaults,
+    [parseMetadata, { defaultShowCopyCode: true }],
+    attachMetadata,
+  ],
+});
 
 const DEFAULT_MAX_COMPILE_ATTEMPTS = 5;
 
@@ -20,7 +37,7 @@ export async function compileMDXwithRenderCheck({
   maxCompileAttempts = DEFAULT_MAX_COMPILE_ATTEMPTS,
   components = {},
 }: CompileMDXwithRenderCheckProps): Promise<{
-  compiledMDX: Awaited<ReturnType<typeof compileMDX>>;
+  compiledMDX: MdxContent;
   htmlString: string;
 }> {
   // we import link this because next js gives an error when used in react server components
@@ -34,22 +51,20 @@ export async function compileMDXwithRenderCheck({
   let i = 0;
   let canRender = false;
   let htmlString = "";
-  let compiledResult: Awaited<ReturnType<typeof compileMDX>> | null = null;
+  let compiledResult: MdxContent | null = null;
 
   while (++i && i <= maxCompileAttempts && !canRender) {
     try {
-      compiledResult = await compileMDX({
+      const result = await compiler.compile({
         source: content,
-        mdxOptions: {
-          // Disable the remark-image plugin that causes path resolution issues
-          remarkImageOptions: false,
-        },
       });
 
+      compiledResult = result.body;
+
       // Render the MDX body with components
-      const MDXContent = compiledResult.body;
       const allComponents = { ...unknownComponents, ...components };
-      htmlString = ReactDomServer.renderToStaticMarkup(<MDXContent components={allComponents} />);
+      const MDXBody = result.body;
+      htmlString = ReactDomServer.renderToStaticMarkup(<MDXBody components={allComponents} />);
       canRender = true;
     } catch (err) {
       const matcher = (err as Error).message.trim().match(/^Expected component `(.*)`/i);
@@ -64,6 +79,6 @@ export async function compileMDXwithRenderCheck({
   return {
     // canRender: true,
     htmlString,
-    compiledMDX: compiledResult as Awaited<ReturnType<typeof compileMDX>>,
+    compiledMDX: compiledResult as MdxContent,
   };
 }

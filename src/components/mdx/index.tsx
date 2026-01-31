@@ -3,11 +3,11 @@ import React, { Children, useMemo, type ComponentProps } from "react";
 import Link from "next/link";
 
 import {
-  StarIcon,
   BoltIcon,
-  SparklesIcon,
-  InformationCircleIcon,
   ExclamationTriangleIcon,
+  InformationCircleIcon,
+  SparklesIcon,
+  StarIcon,
 } from "@heroicons/react/24/outline";
 
 import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
@@ -188,6 +188,6 @@ export const defaultMdxComponents: MDXComponents = {
   blockquote: Blockquote,
 };
 
-export function RenderMDX({ body: MDXContent }: { body: MdxContent }) {
-  return <MDXContent components={defaultMdxComponents} />;
+export function RenderMDX({ body: MDXBody }: { body: MdxContent }) {
+  return <MDXBody components={defaultMdxComponents} />;
 }

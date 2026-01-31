@@ -2,27 +2,40 @@ import fsSync from "fs";
 import fs from "fs/promises";
 import path from "path";
 
-import { compileMDX } from "@fumadocs/mdx-remote";
+import { createCompiler } from "@fumadocs/mdx-remote";
 import { globSync } from "glob";
 import matter from "gray-matter";
+import codeTheme from "shiki/themes/github-dark-dimmed.mjs";
+
+import { attachMetadata, parseMetadata } from "@/components/mdx/rehypeMetadata";
 
 import {
-  blogFrontmatterSchema,
   articleFrontmatterSchema,
+  blogFrontmatterSchema,
   projectFrontmatterSchema,
   tagFrontmatterSchema,
-  type Blog,
-  type Article,
-  type Project,
-  type ArticleTag,
-  type BlogFrontmatter,
   type ArticleFrontmatter,
+  type BlogFrontmatter,
   type ProjectFrontmatter,
   type TagFrontmatter,
 } from "./types";
 
 import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { ZodType } from "zod";
+
+// Create compiler once at module level
+const compiler = createCompiler({
+  preset: "fumadocs",
+  rehypeCodeOptions: {
+    theme: codeTheme,
+  },
+  // Add our custom metadata plugins after fumadocs plugins
+  rehypePlugins: defaults => [
+    ...defaults,
+    [parseMetadata, { defaultShowCopyCode: true }],
+    attachMetadata,
+  ],
+});
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -118,16 +131,13 @@ export async function getPostWithMDX<T>(
   const post = await getContentBySlug<T>(slug, contentType, schema);
   if (!post) return null;
 
-  const compiled = await compileMDX({
+  const result = await compiler.compile({
     source: post.content,
-    mdxOptions: {
-      // Disable the remark-image plugin that causes path resolution issues
-      remarkImageOptions: false,
-    },
   });
+
   return {
     frontmatter: post.frontmatter,
-    body: compiled.body,
+    body: result.body,
     content: post.content,
   };
 }
