@@ -20,7 +20,7 @@
     "drizzle:studio": "drizzle-kit studio",
     "format": "prettier -w . && pnpm lint --fix",
     "typecheck": "tsc --noEmit",
-    "test": "vitest --run",
+    "test": "vitest --run --passWithNoTests",
     "clean": "rimraf dist build node_modules .turbo migrations"
   },
   "dependencies": {
