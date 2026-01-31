@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+
 import Link from "next/link";
-import AvatarImage from "@/components/AvatarImage";
+
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import SocialIcons from "@/components/SocialIcons";
+
+import AvatarImage from "@/components/AvatarImage";
 import { PageViewTracker } from "@/components/content/PageViewTracker";
 import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
+import SocialIcons from "@/components/SocialIcons";
+
 
 export const metadata: Metadata = {
   alternates: { canonical: "/coffee" },

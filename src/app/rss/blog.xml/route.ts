@@ -1,4 +1,5 @@
 import { Feed } from "feed";
+
 import { getAllBlogs } from "@/lib/content";
 
 export const dynamic = "force-static";

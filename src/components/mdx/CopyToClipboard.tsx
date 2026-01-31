@@ -1,7 +1,8 @@
 "use client";
 
-import { CheckIcon, ClipboardIcon } from "@heroicons/react/24/outline";
 import { useCallback, useEffect, useRef, useState } from "react";
+
+import { CheckIcon, ClipboardIcon } from "@heroicons/react/24/outline";
 
 export function CopyToClipBoard({}: {}) {
   const btnRef = useRef<HTMLButtonElement | null>(null);

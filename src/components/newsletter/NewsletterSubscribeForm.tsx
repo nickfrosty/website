@@ -1,10 +1,14 @@
 "use client";
 
-import clsx from "clsx";
 import { useActionState } from "react";
+
 import { useFormStatus } from "react-dom";
+
+import clsx from "clsx";
+
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { ActionFormState } from "@/lib/form-types";
+
 
 export const NewsletterSubscribeForm = ({
   title = "Subscribe for (sometimes) weekly emails",
@@ -23,7 +27,7 @@ export const NewsletterSubscribeForm = ({
       action={formAction}
       className={clsx("card space-y-2 rounded-md px-6 py-6 shadow-lg", className)}
     >
-      {!!state.success ? (
+      {state.success ? (
         <>
           <h4 className="!mt-0 text-2xl">Last step: verify your email!</h4>
 

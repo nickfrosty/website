@@ -1,4 +1,5 @@
 import type { NextRequest } from "next/server";
+
 import { MASKED_DOMAIN, MASKED_DOMAIN_LOCALHOST } from "./constants";
 
 export type ParsedRequestData = {

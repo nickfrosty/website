@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { injectViewTrackerHeaders } from "@/lib/views/headers";
-import MaskedLinkMiddleware from "@/middleware/MaskedLinkMiddleware";
-import { parseRequest } from "@/lib/views/middleware";
+
 import { MASKED_DOMAIN } from "@/lib/views/constants";
+import { injectViewTrackerHeaders } from "@/lib/views/headers";
+import { parseRequest } from "@/lib/views/middleware";
+import MaskedLinkMiddleware from "@/middleware/MaskedLinkMiddleware";
 
 export const config = {
   matcher: [

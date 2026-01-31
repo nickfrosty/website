@@ -1,10 +1,11 @@
-import fs from "fs/promises";
 import fsSync from "fs";
+import fs from "fs/promises";
 import path from "path";
-import matter from "gray-matter";
-import { globSync } from "glob";
+
 import { compileMDX } from "@fumadocs/mdx-remote";
-import type { MdxContent } from "@fumadocs/mdx-remote/client";
+import { globSync } from "glob";
+import matter from "gray-matter";
+
 import {
   blogFrontmatterSchema,
   articleFrontmatterSchema,
@@ -19,6 +20,8 @@ import {
   type ProjectFrontmatter,
   type TagFrontmatter,
 } from "./types";
+
+import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { ZodType } from "zod";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");

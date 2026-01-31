@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import { SITE } from "@/lib/config";
+
 
 export const metadata: Metadata = {
   title: `${SITE.name} - Projects`,

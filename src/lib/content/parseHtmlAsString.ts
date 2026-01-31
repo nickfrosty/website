@@ -1,12 +1,13 @@
 import { walk } from "estree-walker";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
+import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
-import remarkRehype from "remark-rehype";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
+
 import type { MDXComponents } from "mdx/types";
 
 type ParseMDXasHtmlStringProps = {

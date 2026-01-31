@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { HashtagIcon } from "@heroicons/react/24/solid";
 import { parseTemplate, generateSlug } from "zumo";
 

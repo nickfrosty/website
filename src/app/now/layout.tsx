@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+
 import Link from "next/link";
+
 import AvatarImage from "@/components/AvatarImage";
+
 // import NowMessageNotice from "@/components/NowMessageNotice";
 
 export const metadata: Metadata = {

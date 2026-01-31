@@ -1,13 +1,14 @@
-import { parseTemplate } from "zumo";
 import Link from "next/link";
-import styles from "@/styles/article.module.css";
-import type { MdxContent } from "@fumadocs/mdx-remote/client";
+
+import { parseTemplate } from "zumo";
 
 import { ArticleMeta } from "@/components/content/ArticleMeta";
 import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import { NextPrevSection } from "@/components/content/NextPrevSection";
-
 import { RenderMDX } from "@/components/mdx";
+import styles from "@/styles/article.module.css";
+
+import type { MdxContent } from "@fumadocs/mdx-remote/client";
 
 type PostData = {
   title: string;

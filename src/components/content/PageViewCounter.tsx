@@ -1,7 +1,10 @@
-import type { PageView } from "@prisma/client";
-import { unstable_noStore } from "next/cache";
 import { Suspense } from "react";
+
+import { unstable_noStore } from "next/cache";
+
 import { getPageViewCount, incrementPageViewCount } from "@/lib/prisma/views";
+
+import type { PageView } from "@prisma/client";
 
 export async function PageViewCounter({
   route,

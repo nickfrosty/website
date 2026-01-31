@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { metadata as layoutMetadata } from "./layout";
+
 import { notFound } from "next/navigation";
+
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 import ProseLayout from "@/layouts/ProseLayout";
+import { SOCIAL } from "@/lib/config";
 import {
   getAllArticleSlugs,
   getArticleBySlug,
@@ -11,8 +14,9 @@ import {
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
-import { SOCIAL } from "@/lib/config";
+
+import { metadata as layoutMetadata } from "./layout";
+
 const config = zumoConfig.content.articles;
 
 export function generateStaticParams() {

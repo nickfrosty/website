@@ -1,4 +1,5 @@
 import { compileMDX } from "@fumadocs/mdx-remote";
+
 import type { MDXComponents } from "mdx/types";
 
 const DEFAULT_MAX_COMPILE_ATTEMPTS = 5;

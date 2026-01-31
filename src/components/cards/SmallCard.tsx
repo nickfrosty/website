@@ -1,5 +1,7 @@
-import clsx from "clsx";
 import Link from "next/link";
+
+import clsx from "clsx";
+
 import { FloatLabel } from "@/components/content/FloatLabel";
 
 export function SmallCard({

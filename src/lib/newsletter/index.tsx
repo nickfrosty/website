@@ -1,10 +1,13 @@
-import { NewsletterPost } from "@prisma/client";
-import type { MDXComponents } from "mdx/types";
-import { SITE_ADDR } from "../constants";
-import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
 import { createId } from "@paralleldrive/cuid2";
+import { NewsletterPost } from "@prisma/client";
+
+import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
+
+import { SITE_ADDR } from "../constants";
 import { compileMDXwithRenderCheck } from "../mdx";
 import { MASKED_DOMAIN } from "../views/constants";
+
+import type { MDXComponents } from "mdx/types";
 
 const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
 

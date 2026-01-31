@@ -1,14 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
+ 
 
 import Link from "next/link";
+
+import { CalendarIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import { DateTime } from "luxon";
 import { generateSlug } from "zumo";
+
 import { SmallCard } from "@/components/cards/SmallCard";
-import {
-  CalendarIcon,
-  DocumentTextIcon,
-  // HeartIcon,
-} from "@heroicons/react/24/outline";
 
 type ComponentProps = {
   className?: string;

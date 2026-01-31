@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+
 import { notFound } from "next/navigation";
+
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 import ProseLayout from "@/layouts/ProseLayout";
 import {
   getAllProjectSlugs,
@@ -10,7 +13,7 @@ import {
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+
 const config = zumoConfig.content.projects;
 
 const breadcrumbParents: SimpleLinkItem = {

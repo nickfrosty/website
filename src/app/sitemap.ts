@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
+
 import SITE from "@/lib/config";
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // list of all page routes created on the site

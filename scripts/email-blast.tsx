@@ -1,19 +1,21 @@
+import { createId } from "@paralleldrive/cuid2";
+import { NewsletterPost } from "@prisma/client";
+import * as dotenv from "dotenv";
 import { Resend } from "resend";
 
-import * as dotenv from "dotenv";
-import { prisma } from "@/lib/prisma/client";
-import type { NewsletterSubscriber, Prisma } from "@prisma/client";
+import { NEWSLETTER_EMAIL_ADDRESS, NEWSLETTER_FROM, NEWSLETTER_REPLY_TO , SITE_ADDR } from "@/lib/constants";
 import { getPostBySlug } from "@/lib/content";
-// import { preparePostForSubscriber } from "@/lib/newsletter";
-import { NEWSLETTER_EMAIL_ADDRESS, NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
-
-import { NewsletterPost } from "@prisma/client";
-import type { MDXComponents } from "mdx/types";
-import { SITE_ADDR } from "@/lib/constants";
-import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
-import { createId } from "@paralleldrive/cuid2";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
+import { prisma } from "@/lib/prisma/client";
 import { MASKED_DOMAIN } from "@/lib/views/constants";
+
+import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
+
+import type { NewsletterSubscriber, Prisma } from "@prisma/client";
+// import { preparePostForSubscriber } from "@/lib/newsletter";
+
+import type { MDXComponents } from "mdx/types";
+
 
 const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
 const CONFIG_MASK_LINKS: boolean = true;
@@ -275,7 +277,7 @@ for (let i = 0; i < subscribers.length; i++) {
   const subscriber = subscribers[i];
 
   let extraContent = "";
-  if (!!subscriber.wallet) {
+  if (subscriber.wallet) {
     // extraContent =
     //   "> Hi fren. If you are seeing this message here, it is because you subscribed " +
     //   "to my newsletter via my custom blink. I hope you thought it was cool. " +

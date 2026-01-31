@@ -1,5 +1,6 @@
 import SITE from "../config";
 import prisma from "./client";
+
 import type { PageViewCounter, Prisma } from "@prisma/client";
 
 export async function getPageViewCount(route: PageViewCounter["route"]) {

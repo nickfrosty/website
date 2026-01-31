@@ -1,7 +1,9 @@
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+
 import SITE from "@/lib/config";
 import prisma from "@/lib/prisma/client";
 import { ParsedRequestData } from "@/lib/views/middleware";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+
 import { MASKED_NEWSLETTER_PATH } from "./constants";
 
 type GetMaskedNewsletterRedirect = {

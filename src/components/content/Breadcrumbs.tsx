@@ -1,8 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
+ 
 
 import Link from "next/link";
-import clsx from "clsx";
+
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
+import clsx from "clsx";
 
 type ComponentProps = {
   className?: string;

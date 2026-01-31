@@ -1,8 +1,9 @@
-import clsx from "clsx";
 import Link from "next/link";
-import styles from "@/styles/project.module.css";
+
+import clsx from "clsx";
 
 import { type ProjectFrontmatter } from "@/lib/content";
+import styles from "@/styles/project.module.css";
 
 type ProjectData = ProjectFrontmatter & {
   href: string;

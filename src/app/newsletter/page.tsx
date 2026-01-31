@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { getAllBlogs } from "@/lib/content";
+
 import Link from "next/link";
+
 import { displayDate } from "zumo";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+
 import AvatarImage from "@/components/AvatarImage";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
 import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
+import { getAllBlogs } from "@/lib/content";
+
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {

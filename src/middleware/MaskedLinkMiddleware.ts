@@ -3,10 +3,11 @@
  * (like those used with the newsletter and short links)
  */
 
+import { NextRequest, NextResponse } from "next/server";
+
 import SITE from "@/lib/config";
 import { MASKED_API_PATH } from "@/lib/views/constants";
 import { ParsedRequestData } from "@/lib/views/middleware";
-import { NextRequest, NextResponse } from "next/server";
 
 export default async function MaskedLinkMiddleware(
   req: NextRequest,

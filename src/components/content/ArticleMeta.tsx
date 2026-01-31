@@ -1,10 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
+ 
+import Link from "next/link";
+
 import { displayDate } from "zumo";
+
 import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
-import { Tag } from "./Tag";
-import Link from "next/link";
 import { PageViewCounter } from "./PageViewCounter";
+import { Tag } from "./Tag";
 
 type ComponentProps = {
   className?: string;

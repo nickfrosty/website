@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+
 import { notFound } from "next/navigation";
+
 import { computePagination, parseTemplate } from "zumo";
-import { getAllTags, getAllArticles } from "@/lib/content";
-import { HeroSection } from "@/components/content/HeroSection";
+
 import { CardGrid } from "@/components/cards/CardGrid";
+import { HeroSection } from "@/components/content/HeroSection";
 import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { getAllTags, getAllArticles } from "@/lib/content";
+
 
 const config = {
   baseHref: "/tags/{{tag}}",

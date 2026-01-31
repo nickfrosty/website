@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import { getAllProjects } from "@/lib/content";
+
 import Link from "next/link";
-import AvatarImage from "@/components/AvatarImage";
+
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import ProjectCard from "@/components/ProjectCard";
-import { SITE } from "@/lib/config";
-import SocialIcons from "@/components/SocialIcons";
+
+import AvatarImage from "@/components/AvatarImage";
 import { PageViewTracker } from "@/components/content/PageViewTracker";
 import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
+import ProjectCard from "@/components/ProjectCard";
+import SocialIcons from "@/components/SocialIcons";
+import { SITE } from "@/lib/config";
+import { getAllProjects } from "@/lib/content";
+
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },

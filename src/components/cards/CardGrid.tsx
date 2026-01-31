@@ -1,5 +1,5 @@
-import { Pagination } from "@/components/content/Pagination";
 import { SmallCard } from "@/components/cards/SmallCard";
+import { Pagination } from "@/components/content/Pagination";
 
 type ComponentProps = {
   className?: string;

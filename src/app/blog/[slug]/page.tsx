@@ -1,16 +1,21 @@
+
+// load the config/constants file
 import type { Metadata } from "next";
-import { metadata as layoutMetadata } from "./layout";
+
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+import { ArticleMeta } from "@/components/content/ArticleMeta";
+import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { RenderMDX } from "@/components/mdx";
+import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
 import { getAllBlogSlugs, getBlogBySlug, getBlogWithMDX } from "@/lib/content";
 import styles from "@/styles/article.module.css";
 
-// load the config/constants file
 import zumoConfig from "@@/zumo.config";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ArticleMeta } from "@/components/content/ArticleMeta";
-import { RenderMDX } from "@/components/mdx";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
-import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
+
+import { metadata as layoutMetadata } from "./layout";
+
 const config = zumoConfig.content.blog;
 
 export function generateStaticParams() {

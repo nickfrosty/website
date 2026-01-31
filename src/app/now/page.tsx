@@ -1,6 +1,7 @@
 import Link from "next/link";
-import NowDetailsItem from "@/components/NowDetailsItem";
+
 import { PageViewTracker } from "@/components/content/PageViewTracker";
+import NowDetailsItem from "@/components/NowDetailsItem";
 
 export default function Page() {
   return (

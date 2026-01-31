@@ -1,10 +1,7 @@
-import type { MdxContent } from "@fumadocs/mdx-remote/client";
-import type { MDXComponents } from "mdx/types";
 import React, { Children, useMemo, type ComponentProps } from "react";
+
 import Link from "next/link";
-import { CalloutProps } from "./rehypeConfig";
-import { CustomMetadataProps } from "./rehypeMetadata";
-import { CopyToClipBoard } from "./CopyToClipboard";
+
 import {
   StarIcon,
   BoltIcon,
@@ -12,7 +9,16 @@ import {
   InformationCircleIcon,
   ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
+
 import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
+
+import { CopyToClipBoard } from "./CopyToClipboard";
+import { CalloutProps } from "./rehypeConfig";
+import { CustomMetadataProps } from "./rehypeMetadata";
+
+
+import type { MdxContent } from "@fumadocs/mdx-remote/client";
+import type { MDXComponents } from "mdx/types";
 
 function CustomLink({ ref, ...props }: ComponentProps<"a">) {
   let href = (props.href!.toString() as string)

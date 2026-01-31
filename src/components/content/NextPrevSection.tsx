@@ -1,5 +1,7 @@
 import Link from "next/link";
+
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+
 import styles from "@/styles/pagination.module.css";
 
 type ComponentProps = {

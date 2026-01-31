@@ -1,8 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
-import styles from "@/styles/article.module.css";
+ 
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+
+import styles from "@/styles/article.module.css";
 
 type ComponentProps = {
   className?: string;

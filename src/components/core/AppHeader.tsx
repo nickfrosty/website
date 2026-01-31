@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import AppNav from "@/components/core/AppNav";
 
 type ComponentProps = {

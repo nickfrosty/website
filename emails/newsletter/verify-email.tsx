@@ -1,6 +1,5 @@
-import SITE from "@/lib/config";
-import { SITE_ADDR } from "@/lib/constants";
-import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
+import * as React from "react";
+
 import {
   Body,
   Button,
@@ -15,7 +14,10 @@ import {
   Section,
   Text,
 } from "@react-email/components";
-import * as React from "react";
+
+import SITE from "@/lib/config";
+import { SITE_ADDR } from "@/lib/constants";
+import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
 
 interface NewsletterSubscriberVerifyEmailProps {
   verificationLink?: string;

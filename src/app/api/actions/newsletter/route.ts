@@ -1,5 +1,3 @@
-import { TREASURY_PUBKEY } from "@/lib/constants";
-import prisma from "@/lib/prisma/client";
 import {
   ActionGetResponse,
   ACTIONS_CORS_HEADERS,
@@ -18,6 +16,9 @@ import {
   TransactionInstruction,
 } from "@solana/web3.js";
 import { z, ZodError } from "zod";
+
+import { TREASURY_PUBKEY } from "@/lib/constants";
+import prisma from "@/lib/prisma/client";
 
 export const GET = async (req: Request) => {
   const payload: ActionGetResponse = {

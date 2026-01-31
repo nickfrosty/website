@@ -1,5 +1,7 @@
 import { Suspense } from "react";
+
 import { unstable_noStore } from "next/cache";
+
 import { recordPageView } from "@/lib/prisma/views";
 import { createPageViewPayload } from "@/lib/views";
 

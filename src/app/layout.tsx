@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
+
 import { Geist } from "next/font/google";
 
 import "./globals.css";
 
-import { SITE, SOCIAL } from "@/lib/config";
-import AppHeader from "@/components/core/AppHeader";
 import AppFooter from "@/components/core/AppFooter";
+import AppHeader from "@/components/core/AppHeader";
 import FathomAnalytics from "@/components/core/fathom-analytics";
+import { SITE, SOCIAL } from "@/lib/config";
 import { META_TITLE_SEPARATOR } from "@/lib/constants";
 
 const fontFamily = Geist({ subsets: ["latin"] });
