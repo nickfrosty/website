@@ -9,7 +9,7 @@ import {
   NEWSLETTER_REPLY_TO,
   SITE_ADDR,
 } from "@/lib/constants";
-import { getPostBySlug } from "@/lib/content";
+import { getPostBySlug } from "@@/scripts/utils/content";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
 import { prisma } from "@/lib/prisma/client";
 import { MASKED_DOMAIN } from "@/lib/views/constants";

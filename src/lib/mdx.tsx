@@ -1,26 +1,7 @@
-import { createCompiler } from "@fumadocs/mdx-remote";
-import { remarkGfm } from "fumadocs-core/mdx-plugins";
-import codeTheme from "shiki/themes/github-dark-dimmed.mjs";
-
-import { attachMetadata, parseMetadata } from "@/components/mdx/rehypeMetadata";
+import { compiler } from "@/lib/mdx/compiler";
 
 import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { MDXComponents } from "mdx/types";
-
-// Create compiler once at module level
-const compiler = createCompiler({
-  preset: "fumadocs",
-  rehypeCodeOptions: {
-    theme: codeTheme,
-  },
-  // Override remark plugins to exclude remarkImage (causes issues on Vercel serverless)
-  remarkPlugins: [remarkGfm],
-  rehypePlugins: defaults => [
-    ...defaults,
-    [parseMetadata, { defaultShowCopyCode: true }],
-    attachMetadata,
-  ],
-});
 
 const DEFAULT_MAX_COMPILE_ATTEMPTS = 5;
 

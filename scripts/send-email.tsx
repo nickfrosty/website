@@ -7,7 +7,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { Resend } from "resend";
 
 import { NEWSLETTER_EMAIL_ADDRESS, NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
-import { getAllContentFiles, readContentFile } from "@/lib/content";
+import { getAllContentFiles, readContentFile } from "@@/scripts/utils/content";
 import { parseMDXasHtmlString } from "@/lib/content/parse-html-as-string";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
 import { MASKED_DOMAIN, MASKED_NEWSLETTER_PATH } from "@/lib/views/constants";
