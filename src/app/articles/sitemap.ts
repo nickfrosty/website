@@ -3,7 +3,6 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/config";
 import { getAllArticles } from "@/lib/content";
 
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allArticles = await getAllArticles();
 

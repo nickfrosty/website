@@ -4,11 +4,10 @@ import { notFound } from "next/navigation";
 
 import { computePagination, parseTemplate } from "zumo";
 
-import { CardGrid } from "@/components/cards/CardGrid";
-import { HeroSection } from "@/components/content/HeroSection";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { CardGrid } from "@/components/cards/card-grid";
+import { HeroSection } from "@/components/content/hero-section";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
 import { getAllTags, getAllArticles } from "@/lib/content";
-
 
 const config = {
   baseHref: "/tags/{{tag}}",

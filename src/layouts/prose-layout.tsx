@@ -2,9 +2,9 @@ import Link from "next/link";
 
 import { parseTemplate } from "zumo";
 
-import { ArticleMeta } from "@/components/content/ArticleMeta";
-import { Breadcrumbs } from "@/components/content/Breadcrumbs";
-import { NextPrevSection } from "@/components/content/NextPrevSection";
+import { ArticleMeta } from "@/components/content/article-meta";
+import { Breadcrumbs } from "@/components/content/breadcrumbs";
+import { NextPrevSection } from "@/components/content/next-prev-section";
 import { RenderMDX } from "@/components/mdx";
 import styles from "@/styles/article.module.css";
 

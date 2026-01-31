@@ -9,7 +9,6 @@ import clsx from "clsx";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { ActionFormState } from "@/lib/form-types";
 
-
 export const NewsletterSubscribeForm = ({
   title = "Subscribe for (sometimes) weekly emails",
   className,

@@ -18,7 +18,7 @@
     "drizzle:generate": "drizzle-kit generate",
     "drizzle:migrate": "drizzle-kit migrate",
     "drizzle:studio": "drizzle-kit studio",
-    "format": "prettier -w .",
+    "format": "prettier -w . && pnpm lint --fix",
     "typecheck": "tsc --noEmit",
     "test": "vitest --run",
     "clean": "rimraf dist build node_modules .turbo migrations"

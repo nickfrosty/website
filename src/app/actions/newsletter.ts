@@ -10,7 +10,6 @@ import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
 
 import NewsletterSubscriberVerifyEmail from "@@/emails/newsletter/verify-email";
 
-
 const schema = z.object({
   email: z.string().trim().email("Invalid email address"),
 });

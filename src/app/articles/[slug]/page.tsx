@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
 
-import { PageViewTracker } from "@/components/content/PageViewTracker";
-import ProseLayout from "@/layouts/ProseLayout";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
+import ProseLayout from "@/layouts/prose-layout";
 import { SOCIAL } from "@/lib/config";
 import {
   getAllArticleSlugs,

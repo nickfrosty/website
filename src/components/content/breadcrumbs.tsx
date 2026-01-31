@@ -1,5 +1,3 @@
- 
-
 import Link from "next/link";
 
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import SocialIcons from "@/components/SocialIcons";
+import SocialIcons from "@/components/social-icons";
 
 type ComponentProps = {
   className?: string;
@@ -8,18 +8,18 @@ type ComponentProps = {
 
 export default function AppFooter({}: ComponentProps) {
   return (
-    <footer className="w-full pt-5 pb-8 mt-5 mb-2 overflow-hidden text-lg text-center text-gray-400">
+    <footer className="mb-2 mt-5 w-full overflow-hidden pb-8 pt-5 text-center text-lg text-gray-400">
       <div
         id="footer-divider"
-        className="w-2/3 h-px mx-auto mb-10 transform bg-gray-900 shadow-lg -rotate-1 md:w-2/3"
+        className="mx-auto mb-10 h-px w-2/3 -rotate-1 transform bg-gray-900 shadow-lg md:w-2/3"
       ></div>
 
-      <div className="items-center max-w-md px-3 mx-auto space-y-3 md:space-y-0 md:justify-between md:flex">
+      <div className="mx-auto max-w-md items-center space-y-3 px-3 md:flex md:justify-between md:space-y-0">
         <div className="">
           &copy;{new Date().getFullYear()}{" "}
           <Link
             href="/"
-            className="hover:text-black dark:hover:text-white hover:shadow-indigo"
+            className="hover:text-black hover:shadow-indigo dark:hover:text-white"
             title="Personal Website for Nick Frostbutter"
           >
             Nick Frostbutter

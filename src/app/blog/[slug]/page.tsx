@@ -1,14 +1,13 @@
-
 // load the config/constants file
 import type { Metadata } from "next";
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { ArticleMeta } from "@/components/content/ArticleMeta";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { ArticleMeta } from "@/components/content/article-meta";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
 import { RenderMDX } from "@/components/mdx";
-import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
+import { NewsletterSubscribeForm } from "@/components/newsletter/newsletter-subscribe-form";
 import { getAllBlogSlugs, getBlogBySlug, getBlogWithMDX } from "@/lib/content";
 import styles from "@/styles/article.module.css";
 

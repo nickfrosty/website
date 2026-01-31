@@ -1,12 +1,10 @@
- 
-
 import Link from "next/link";
 
 import { CalendarIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import { DateTime } from "luxon";
 import { generateSlug } from "zumo";
 
-import { SmallCard } from "@/components/cards/SmallCard";
+import { SmallCard } from "@/components/cards/small-card";
 
 type ComponentProps = {
   className?: string;

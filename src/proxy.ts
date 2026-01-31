@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { MASKED_DOMAIN } from "@/lib/views/constants";
 import { injectViewTrackerHeaders } from "@/lib/views/headers";
 import { parseRequest } from "@/lib/views/middleware";
-import MaskedLinkMiddleware from "@/middleware/MaskedLinkMiddleware";
+import MaskedLinkMiddleware from "@/middleware/masked-link-middleware";
 
 export const config = {
   matcher: [

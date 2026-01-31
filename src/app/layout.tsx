@@ -4,8 +4,8 @@ import { Geist } from "next/font/google";
 
 import "./globals.css";
 
-import AppFooter from "@/components/core/AppFooter";
-import AppHeader from "@/components/core/AppHeader";
+import AppFooter from "@/components/core/app-footer";
+import AppHeader from "@/components/core/app-header";
 import FathomAnalytics from "@/components/core/fathom-analytics";
 import { SITE, SOCIAL } from "@/lib/config";
 import { META_TITLE_SEPARATOR } from "@/lib/constants";

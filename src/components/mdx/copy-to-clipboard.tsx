@@ -19,9 +19,7 @@ export function CopyToClipBoard({}: {}) {
   }, [isCopied]);
 
   const copyToClipboard = useCallback(async () => {
-    console.log(
-      btnRef.current?.closest("pre")?.querySelector("code")?.textContent,
-    );
+    console.log(btnRef.current?.closest("pre")?.querySelector("code")?.textContent);
 
     try {
       if (!navigator?.clipboard) {
@@ -30,8 +28,7 @@ export function CopyToClipBoard({}: {}) {
       }
 
       await navigator.clipboard.writeText(
-        btnRef.current?.closest("pre")?.querySelector("code")?.textContent ||
-          "[err]",
+        btnRef.current?.closest("pre")?.querySelector("code")?.textContent || "[err]",
       );
 
       setIsCopied(true);
@@ -41,9 +38,9 @@ export function CopyToClipBoard({}: {}) {
   }, [btnRef]);
 
   const IconToUse = isCopied ? (
-    <CheckIcon className="w-4 h-4" />
+    <CheckIcon className="h-4 w-4" />
   ) : (
-    <ClipboardIcon className="w-4 h-4" />
+    <ClipboardIcon className="h-4 w-4" />
   );
 
   return (
@@ -51,10 +48,10 @@ export function CopyToClipBoard({}: {}) {
       ref={btnRef}
       type="button"
       onClick={copyToClipboard}
-      className={`!p-2 border ${
+      className={`border !p-2 ${
         isCopied
-          ? "border-green-600 !bg-green-700 hover:bg-green-700 pointer-events-none text-white"
-          : "border-gray-900 bg-slate-950 hover:text-white hover:border-indigo-600 text-gray-400"
+          ? "pointer-events-none border-green-600 !bg-green-700 text-white hover:bg-green-700"
+          : "border-gray-900 bg-slate-950 text-gray-400 hover:border-indigo-600 hover:text-white"
       }`}
     >
       {IconToUse}

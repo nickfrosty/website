@@ -1,11 +1,10 @@
 "use client";
 
-import { Suspense , useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 import { usePathname, useSearchParams } from "next/navigation";
 
 import { load, trackPageview } from "fathom-client";
-
 
 interface FathomAnalyticsProps {
   siteId: string;

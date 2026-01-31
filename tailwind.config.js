@@ -17,7 +17,7 @@ module.exports = {
     //   // ...theme("colors"),
     //   // default: theme("colors.black", "currentColor"),
     // }),
-    borderColor: (theme) => ({
+    borderColor: theme => ({
       ...theme("colors"),
       default: theme("colors.black", "currentColor"),
     }),

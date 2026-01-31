@@ -1,12 +1,11 @@
- 
 import Link from "next/link";
 
 import { displayDate } from "zumo";
 
-import AvatarImage from "../AvatarImage";
-import { FloatLabel } from "./FloatLabel";
-import { PageViewCounter } from "./PageViewCounter";
-import { Tag } from "./Tag";
+import AvatarImage from "../avatar-image";
+import { FloatLabel } from "./float-label";
+import { PageViewCounter } from "./page-view-counter";
+import { Tag } from "./tag";
 
 type ComponentProps = {
   className?: string;

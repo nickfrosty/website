@@ -1,13 +1,7 @@
-import rehypePrettyCode, {
-  Options as RehypePrettyCodeOptions,
-} from "rehype-pretty-code";
+import rehypePrettyCode, { Options as RehypePrettyCodeOptions } from "rehype-pretty-code";
 import codeTheme from "shiki/themes/github-dark-dimmed.mjs";
 
-import {
-  ParseMetadataProps,
-  attachMetadata,
-  parseMetadata,
-} from "./rehypeMetadata";
+import { ParseMetadataProps, attachMetadata, parseMetadata } from "./rehypeMetadata";
 
 /**
  *

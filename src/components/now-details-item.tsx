@@ -8,21 +8,15 @@ type ComponentProps = {
   title: string;
 };
 
-export default function NowDetailsItem({
-  className,
-  children,
-  id,
-  href,
-  title,
-}: ComponentProps) {
+export default function NowDetailsItem({ className, children, id, href, title }: ComponentProps) {
   return (
     <section className="space-y-3" id={`#${id}`}>
       <h2>
         <Link
           href={href}
-          className="inline-flex items-center space-x-4 text-4xl !font-semibold cursor-pointer reverse-link"
+          className="reverse-link inline-flex cursor-pointer items-center space-x-4 text-4xl !font-semibold"
         >
-          <span className="!font-normal text-5xl">#</span>
+          <span className="text-5xl !font-normal">#</span>
           <span>{title}</span>
         </Link>
       </h2>

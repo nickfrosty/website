@@ -1,19 +1,19 @@
 .card {
   @apply block w-full;
   @apply relative top-0 mb-5 transition-all duration-75 ease-in-out lg:mb-8;
-  @apply border rounded-xl lg:text-left;
+  @apply rounded-xl border lg:text-left;
   @apply border-white md:hover:border-indigo-200;
   @apply border-gray-900 md:hover:border-indigo-400;
 
   @apply hover:!text-white;
 
   @apply space-y-2 border-0 md:space-y-4;
-  @apply md:p-6 md:border md:shadow-md;
+  @apply md:border md:p-6 md:shadow-md;
   /* @apply md:hover:-top-2 md:hover:shadow-lg; */
 }
 
 .h2 {
-  @apply text-2xl font-bold leading-tight line-clamp-1;
+  @apply line-clamp-1 text-2xl font-bold leading-tight;
 }
 
 .inner {
@@ -25,7 +25,7 @@
 }
 
 .meta {
-  @apply justify-between flex-grow;
+  @apply flex-grow justify-between;
   @apply w-full;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .icon {
-  @apply w-12 h-12 overflow-hidden rounded;
+  @apply h-12 w-12 overflow-hidden rounded;
 }
 
 .minor,
@@ -44,30 +44,30 @@
 }
 
 .floater {
-  @apply absolute top-0 right-0 mt-4 mr-4;
+  @apply absolute right-0 top-0 mr-4 mt-4;
 }
 
 /* Style the status pills */
 .status {
-  @apply px-3 py-1 shadow-lg place-self-center;
-  @apply font-mono text-xs font-medium rounded-md;
+  @apply place-self-center px-3 py-1 shadow-lg;
+  @apply rounded-md font-mono text-xs font-medium;
 }
 .status-init {
-  @apply text-gray-900 bg-purple-200;
+  @apply bg-purple-200 text-gray-900;
 }
 .status-active {
-  @apply text-white bg-green-600;
+  @apply bg-green-600 text-white;
 }
 .status-autopilot {
-  @apply text-white bg-indigo-600;
+  @apply bg-indigo-600 text-white;
 }
 .status-opensource {
-  @apply text-black bg-yellow-400;
+  @apply bg-yellow-400 text-black;
 }
 .status-backburner {
-  @apply text-white bg-slate-700;
+  @apply bg-slate-700 text-white;
 }
 .status-graveyard,
 .status-sold {
-  @apply text-white bg-red-500;
+  @apply bg-red-500 text-white;
 }

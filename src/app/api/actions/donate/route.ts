@@ -93,9 +93,7 @@ export const POST = async (req: Request) => {
       }),
     );
     transaction.feePayer = account;
-    transaction.recentBlockhash = (
-      await connection.getLatestBlockhash()
-    ).blockhash;
+    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
 
     const payload: ActionPostResponse = await createPostResponse({
       fields: {

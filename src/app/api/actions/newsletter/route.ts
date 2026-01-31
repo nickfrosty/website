@@ -22,10 +22,7 @@ import prisma from "@/lib/prisma/client";
 
 export const GET = async (req: Request) => {
   const payload: ActionGetResponse = {
-    icon: new URL(
-      "/img/blink-newsletter.jpg",
-      new URL(req.url).origin,
-    ).toString(),
+    icon: new URL("/img/blink-newsletter.jpg", new URL(req.url).origin).toString(),
     label: "Subscribe", // expected to be ignored since `links.actions` are provided
     title: "Nick Frostbutter - Subscribe to my newsletter?",
     description:
@@ -90,19 +87,18 @@ export const POST = async (req: Request) => {
 
     // store the ref key in the database with the submitted wallet address
     try {
-      const subscriberTransaction =
-        await prisma.newsletterSubscriberTransaction.create({
-          data: {
-            email,
-            solFee: subscribeSolFee,
-            wallet: account.toBase58(),
-            referenceKey: referenceKeypair.publicKey.toBase58(),
-            // pending until we verify it using `getSignaturesForAddress` on the ref key
-            status: "PENDING",
-            // empty since we will not have this until the transaction is signed by the user
-            transactionId: "",
-          },
-        });
+      const subscriberTransaction = await prisma.newsletterSubscriberTransaction.create({
+        data: {
+          email,
+          solFee: subscribeSolFee,
+          wallet: account.toBase58(),
+          referenceKey: referenceKeypair.publicKey.toBase58(),
+          // pending until we verify it using `getSignaturesForAddress` on the ref key
+          status: "PENDING",
+          // empty since we will not have this until the transaction is signed by the user
+          transactionId: "",
+        },
+      });
 
       if (!subscriberTransaction) throw "Unable to create the subscribe record";
     } catch (err) {
@@ -140,9 +136,7 @@ export const POST = async (req: Request) => {
 
     // finalize the transaction data we need
     transaction.feePayer = account;
-    transaction.recentBlockhash = (
-      await connection.getLatestBlockhash()
-    ).blockhash;
+    transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
 
     const payload: ActionPostResponse = await createPostResponse({
       fields: {
@@ -159,8 +153,7 @@ export const POST = async (req: Request) => {
     if (typeof err == "string") message = err;
 
     if (err instanceof ZodError) {
-      message =
-        err.errors?.[0]?.message || "Input validation error. Try again.";
+      message = err.errors?.[0]?.message || "Input validation error. Try again.";
     }
 
     return Response.json(

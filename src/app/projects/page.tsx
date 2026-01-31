@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
-import { PageViewTracker } from "@/components/content/PageViewTracker";
-import ProjectCard from "@/components/ProjectCard";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
+import ProjectCard from "@/components/project-card";
 import { getAllProjects } from "@/lib/content";
-
 
 export const metadata: Metadata = {
   alternates: {

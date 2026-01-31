@@ -18,9 +18,7 @@ export function FloatLabel({
   // define the actual content to display
   const spanner: React.ReactNode = (
     <span
-      className={`inline-code text-white ${
-        overlay ? "absolute z-10 mt-3 ml-3 " : ""
-      } ${className}`}
+      className={`inline-code text-white ${overlay ? "absolute z-10 ml-3 mt-3" : ""} ${className}`}
     >
       {label}
     </span>

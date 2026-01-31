@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 
 import SITE from "@/lib/config";
 
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // list of all page routes created on the site
   const pageRoutes: string[] = [
@@ -22,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/projects/sitemap.xml",
   ];
 
-  return pageRoutes.concat(childSitemaps).map((route) => {
+  return pageRoutes.concat(childSitemaps).map(route => {
     return {
       url: `https://${SITE.domain}${route}`,
       lastModified: new Date(),

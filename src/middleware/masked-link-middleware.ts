@@ -9,10 +9,7 @@ import SITE from "@/lib/config";
 import { MASKED_API_PATH } from "@/lib/views/constants";
 import { ParsedRequestData } from "@/lib/views/middleware";
 
-export default async function MaskedLinkMiddleware(
-  req: NextRequest,
-  parsed: ParsedRequestData,
-) {
+export default async function MaskedLinkMiddleware(req: NextRequest, parsed: ParsedRequestData) {
   const { key, path } = parsed;
 
   if (key == "newsletter") {

@@ -19,8 +19,8 @@ export type ParseMetadataProps = {
 
 export const parseMetadata =
   ({ defaultShowCopyCode }: ParseMetadataProps) =>
-  (tree) => {
-    visit(tree, ["pre"], (preElem) => {
+  tree => {
+    visit(tree, ["pre"], preElem => {
       const [codeElem] = preElem.children;
       const meta: string | undefined = codeElem.data?.meta;
 
@@ -35,8 +35,8 @@ export const parseMetadata =
     });
   };
 
-export const attachMetadata = () => (tree) => {
-  visit(tree, ["div", "pre", "figure"], (node) => {
+export const attachMetadata = () => tree => {
+  visit(tree, ["div", "pre", "figure"], node => {
     if (
       "data-rehype-pretty-code-fragment" in node.properties ||
       "data-rehype-pretty-code-figure" in node.properties

@@ -12,10 +12,9 @@ import {
 
 import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
 
-import { CopyToClipBoard } from "./CopyToClipboard";
+import { CopyToClipBoard } from "./copy-to-clipboard";
 import { CalloutProps } from "./rehypeConfig";
 import { CustomMetadataProps } from "./rehypeMetadata";
-
 
 import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { MDXComponents } from "mdx/types";

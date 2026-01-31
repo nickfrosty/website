@@ -4,14 +4,13 @@ import Link from "next/link";
 
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
-import AvatarImage from "@/components/AvatarImage";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
-import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
-import ProjectCard from "@/components/ProjectCard";
-import SocialIcons from "@/components/SocialIcons";
+import AvatarImage from "@/components/avatar-image";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
+import { NewsletterSubscribeForm } from "@/components/newsletter/newsletter-subscribe-form";
+import ProjectCard from "@/components/project-card";
+import SocialIcons from "@/components/social-icons";
 import { SITE } from "@/lib/config";
 import { getAllProjects } from "@/lib/content";
-
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },

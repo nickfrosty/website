@@ -4,11 +4,10 @@ import Link from "next/link";
 
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
-import AvatarImage from "@/components/AvatarImage";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
-import { NewsletterSubscribeForm } from "@/components/newsletter/NewsletterSubscribeForm";
-import SocialIcons from "@/components/SocialIcons";
-
+import AvatarImage from "@/components/avatar-image";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
+import { NewsletterSubscribeForm } from "@/components/newsletter/newsletter-subscribe-form";
+import SocialIcons from "@/components/social-icons";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/coffee" },
@@ -22,18 +21,16 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <PageViewTracker>
-      <section className="grid items-center max-w-6xl grid-cols-1 gap-10 mx-auto mt-4 md:gap-30 lg:grid-cols-2">
-        <section className="grid items-center grid-cols-2 gap-10 md:grid-cols-3 sm:gap-5 md:gap-8 md:items-center lg:block">
-          <div className="block col-span-2 mx-auto mb-5 text-center auto-cols-auto sm:col-span-1 md:text-left">
+      <section className="mx-auto mt-4 grid max-w-6xl grid-cols-1 items-center gap-10 md:gap-30 lg:grid-cols-2">
+        <section className="grid grid-cols-2 items-center gap-10 sm:gap-5 md:grid-cols-3 md:items-center md:gap-8 lg:block">
+          <div className="col-span-2 mx-auto mb-5 block auto-cols-auto text-center sm:col-span-1 md:text-left">
             <Link href="/" className="inline-block">
-              <AvatarImage
-                sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"}
-              />
+              <AvatarImage sizeClass={"w-52 h-52 md:w-48 md:h-48 lg:w-32 lg:h-32"} />
             </Link>
           </div>
 
-          <p className="col-span-2 text-2xl whitespace-pre-line sm:text-2xl sm:col-span-2">
-            <span className="inline-block mb-5 text-3xl lg:mb-0 lg:text-2xl">
+          <p className="col-span-2 whitespace-pre-line text-2xl sm:col-span-2 sm:text-2xl">
+            <span className="mb-5 inline-block text-3xl lg:mb-0 lg:text-2xl">
               Hi! I&apos;m Nick,
             </span>
             <br className="lg:hidden" /> a{" "}
@@ -83,17 +80,17 @@ export default function Page() {
             <h2 className="my-10 text-3xl font-bold">Buy me a coffee?</h2>
 
             <p className="text-lg">
-              I drink a lot of coffee. A lot. If you are interested in
-              supporting my work, consider buying me a coffee
+              I drink a lot of coffee. A lot. If you are interested in supporting my work, consider
+              buying me a coffee
             </p>
 
             <Link
               target="_blank"
               href="https://dial.to/?action=solana-action:https://nick.af/api/actions/donate"
-              className="inline-flex space-x-3 text-lg font-medium flexer link-muted shadow-indigo"
+              className="flexer link-muted inline-flex space-x-3 text-lg font-medium shadow-indigo"
             >
               <span>Buy me a coffee with crypto</span>
-              <ArrowRightIcon className="w-5 h-5" />
+              <ArrowRightIcon className="h-5 w-5" />
             </Link>
 
             {/* <p className="py-8">

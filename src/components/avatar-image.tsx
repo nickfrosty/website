@@ -14,7 +14,7 @@ export default function AvatarImage({ className, sizeClass }: ComponentProps) {
     <span className={clsx("block rounded-full", sizeClass, className)}>
       <Image
         className={clsx(
-          "place-self-center avatar border rounded-full shadow border-gray-800",
+          "avatar place-self-center rounded-full border border-gray-800 shadow",
           sizeClass,
           className,
         )}

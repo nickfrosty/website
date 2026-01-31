@@ -2,13 +2,11 @@ import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
 
-import { CardGrid } from "@/components/cards/CardGrid";
-import { PageViewTracker } from "@/components/content/PageViewTracker";
+import { CardGrid } from "@/components/cards/card-grid";
+import { PageViewTracker } from "@/components/content/page-view-tracker";
 import { getAllArticles } from "@/lib/content";
 
 import { computePagination } from "@@/utils/helpers";
-
-
 
 // construct the seo meta data for the page
 export const metadata: Metadata = {

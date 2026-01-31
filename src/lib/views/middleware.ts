@@ -12,9 +12,7 @@ export type ParsedRequestData = {
  *
  */
 export function parseRequest(req: NextRequest): ParsedRequestData {
-  let domain = (req.headers.get("host") as string)
-    .replace(/^www\./i, "")
-    .split(":")[0];
+  let domain = (req.headers.get("host") as string).replace(/^www\./i, "").split(":")[0];
 
   let path = req.nextUrl.pathname;
   let key = decodeURIComponent(path.split("/")[1]).toLowerCase();

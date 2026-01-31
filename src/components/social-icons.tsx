@@ -5,10 +5,7 @@ type ComponentProps = {
   iconSize: string;
 };
 
-export default function SocialIcons({
-  className = "",
-  iconSize,
-}: ComponentProps) {
+export default function SocialIcons({ className = "", iconSize }: ComponentProps) {
   return (
     <div className={`flex items-center ${className}`}>
       <Link
@@ -72,14 +69,7 @@ export default function SocialIcons({
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 120 120"
         >
-          <rect
-            className="background"
-            x="0"
-            y="0"
-            height="120"
-            width="120"
-            fill=""
-          />
+          <rect className="background" x="0" y="0" height="120" width="120" fill="" />
           <g className="text" fill="hsl(210, 60%, 14%)">
             <rect className="text__i" x="27" y="34" height="52" width="12" />
             <rect className="text__h" x="51" y="34" height="52" width="12" />

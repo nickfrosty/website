@@ -30,11 +30,8 @@ export function Tag({
     }) as string;
 
   return (
-    <Link
-      href={href}
-      className={`w-min  whitespace-nowrap tag flexer ${className}`}
-    >
-      {icon && <HashtagIcon className="w-4 h-4 mx-auto" />}
+    <Link href={href} className={`tag flexer w-min whitespace-nowrap ${className}`}>
+      {icon && <HashtagIcon className="mx-auto h-4 w-4" />}
       <span className="">{tag}</span>
     </Link>
   );

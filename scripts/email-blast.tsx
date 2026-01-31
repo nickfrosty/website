@@ -3,7 +3,12 @@ import { NewsletterPost } from "@prisma/client";
 import * as dotenv from "dotenv";
 import { Resend } from "resend";
 
-import { NEWSLETTER_EMAIL_ADDRESS, NEWSLETTER_FROM, NEWSLETTER_REPLY_TO , SITE_ADDR } from "@/lib/constants";
+import {
+  NEWSLETTER_EMAIL_ADDRESS,
+  NEWSLETTER_FROM,
+  NEWSLETTER_REPLY_TO,
+  SITE_ADDR,
+} from "@/lib/constants";
 import { getPostBySlug } from "@/lib/content";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
 import { prisma } from "@/lib/prisma/client";
@@ -15,7 +20,6 @@ import type { NewsletterSubscriber, Prisma } from "@prisma/client";
 // import { preparePostForSubscriber } from "@/lib/newsletter";
 
 import type { MDXComponents } from "mdx/types";
-
 
 const CONFIG_LINK_MASKER_URL = `https://${MASKED_DOMAIN}`;
 const CONFIG_MASK_LINKS: boolean = true;

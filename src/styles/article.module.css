@@ -43,14 +43,14 @@
   }
 
   ul:not(.list-none) {
-    @apply pl-0 ml-10 text-lg list-disc;
+    @apply ml-10 list-disc pl-0 text-lg;
     li {
       @apply mb-1;
     }
   }
 
   ol {
-    @apply pl-0 mb-8 ml-10 text-lg list-decimal;
+    @apply mb-8 ml-10 list-decimal pl-0 text-lg;
     li {
       @apply mb-1;
     }
@@ -59,17 +59,17 @@
   /* triple ` code snippets get wrapped in a pre tag */
   :not(pre) > code {
     @apply mx-[1px] px-[5px] py-[4px];
-    @apply text-slate-100 bg-slate-800 !text-sm border border-gray-800 rounded-md;
+    @apply rounded-md border border-gray-800 bg-slate-800 !text-sm text-slate-100;
   }
 
   table {
-    @apply w-full mb-8 text-sm text-left border-2 border-collapse;
+    @apply mb-8 w-full border-collapse border-2 text-left text-sm;
     th {
-      @apply p-4 text-xl font-bold border-t-4 border-b;
+      @apply border-b border-t-4 p-4 text-xl font-bold;
     }
 
     td {
-      @apply p-4 border-b;
+      @apply border-b p-4;
     }
 
     p {
@@ -79,5 +79,5 @@
 }
 
 .content section > *:first-child {
-  @apply pt-0 mt-0;
+  @apply mt-0 pt-0;
 }
