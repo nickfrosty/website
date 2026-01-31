@@ -2,14 +2,55 @@
     Primary type definitions for the site
 */
 
-import type {
-  Article,
-  Blog,
-  Project,
-  DocumentTypes,
-} from "contentlayer/generated";
-
 import type { ZodType, ZodTypeAny } from "zod";
+
+// CSS Modules declarations
+declare module "*.css" {
+  const content: any;
+  export default content;
+}
+
+type Option<T> = T | undefined;
+
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]];
+}[keyof T][];
+
+type Params<TKeys extends string = string, TValues = string> = Promise<Record<TKeys, TValues>>;
+
+type SearchParams<TKeys extends string = string, TValues = string> = Promise<
+  Record<TKeys, TValues | undefined>
+>;
+
+type NotFoundResponse = { notFound: true };
+
+type SimpleComponentProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
+type ImageSize = {
+  width: number;
+  height: number;
+};
+
+// Flattened post type (used by UI components that expect transformed data)
+type FlatPost = {
+  slug: string;
+  href: string;
+  title: string;
+  date?: string;
+  description?: string;
+  draft?: boolean;
+  featured?: boolean;
+  tags?: string[];
+  image?: string;
+  imageFocus?: "center" | "left" | "right";
+  updatedAt?: string;
+  nextPage?: string;
+  prevPage?: string;
+  blurb?: string;
+};
 
 type ZumoConfigRecord = {
   baseHref?: string;
@@ -88,7 +129,7 @@ type CardComponentProps = {
   className?: string;
   children?: React.ReactNode;
   baseHref?: string;
-  post: Blog | Article;
+  post: FlatPost;
   imageFocus?: "center" | "left" | "right";
   actionButton?: {
     href: string;
@@ -114,9 +155,9 @@ type PaginationProps = {
 };
 
 type ProsePageProps = {
-  post: DocumentTypes;
-  next?: DocumentTypes;
-  prev?: DocumentTypes;
+  post: FlatPost;
+  next?: FlatPost;
+  prev?: FlatPost;
 };
 
 type ActionFormState<T extends z.ZodType<any, any, any>> = {

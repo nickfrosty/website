@@ -2,21 +2,31 @@ import type { SimpleLinkItem, ZumoConfigRecord } from "@@/types";
 import { parseTemplate } from "zumo";
 import Link from "next/link";
 import styles from "@/styles/article.module.css";
+import type { MdxContent } from "@fumadocs/mdx-remote/client";
 
 import { ArticleMeta } from "@/components/content/ArticleMeta";
 import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import { NextPrevSection } from "@/components/content/NextPrevSection";
 
-import { type DocumentTypes } from "contentlayer/generated";
 import { RenderMDX } from "@/components/mdx";
+
+type PostData = {
+  title: string;
+  slug: string;
+  href: string;
+  date?: string;
+  tags?: string[];
+  description?: string;
+  body: MdxContent;
+};
 
 type LayoutProps = {
   className?: string;
 
   config: ZumoConfigRecord;
-  post: DocumentTypes;
-  next?: DocumentTypes;
-  prev?: DocumentTypes;
+  post: PostData;
+  next?: PostData;
+  prev?: PostData;
 
   breadcrumbParents?: SimpleLinkItem[];
   breadcrumbShowHome?: boolean;
@@ -65,7 +75,7 @@ export default function ProseLayout({
         />
 
         <article className={styles.article}>
-          <RenderMDX source={post.body.raw} />
+          <RenderMDX body={post.body} />
         </article>
       </main>
 

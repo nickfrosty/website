@@ -4,18 +4,14 @@ import * as dotenv from "dotenv";
 import { getAllContentFiles, readContentFile } from "@/lib/content";
 import { join } from "path";
 import { readFileSync } from "fs";
-import { compileMDX, type MDXRemoteProps } from "next-mdx-remote/rsc";
+import type { MDXComponents } from "mdx/types";
 import { renderToStaticMarkup } from "react-dom/server";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
 import { parseMDXasHtmlString } from "@/lib/content/parseHtmlAsString";
 import { MASKED_DOMAIN, MASKED_NEWSLETTER_PATH } from "@/lib/views/constants";
 
 import { createId } from "@paralleldrive/cuid2";
-import {
-  NEWSLETTER_EMAIL_ADDRESS,
-  NEWSLETTER_FROM,
-  NEWSLETTER_REPLY_TO,
-} from "@/lib/constants";
+import { NEWSLETTER_EMAIL_ADDRESS, NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
 
 dotenv.config();
 
@@ -61,7 +57,7 @@ const fileContents = readFileSync(files[10], "utf-8");
 
 const links = new Map<string, string>();
 
-const componentsForEmail: MDXRemoteProps["components"] = {
+const componentsForEmail: MDXComponents = {
   img: ({ src, ...props }) => {
     // console.log(props);
     if (!src) return null;
@@ -85,10 +81,7 @@ const componentsForEmail: MDXRemoteProps["components"] = {
      */
 
     const cuid = createId();
-    const maskedUrl = new URL(
-      `${MASKED_NEWSLETTER_PATH}/${cuid}`,
-      `https://${MASKED_DOMAIN}`,
-    );
+    const maskedUrl = new URL(`${MASKED_NEWSLETTER_PATH}/${cuid}`, `https://${MASKED_DOMAIN}`);
 
     links.set(href, maskedUrl.toString());
     return <a {...props} href={maskedUrl.toString()} />;

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import type { DocumentTypes } from "contentlayer/generated";
+import type { FlatPost } from "@@/types";
 import { displayDate } from "zumo";
 import AvatarImage from "../AvatarImage";
 import { FloatLabel } from "./FloatLabel";
@@ -9,7 +9,7 @@ import { PageViewCounter } from "./PageViewCounter";
 
 type ComponentProps = {
   className?: string;
-  post: DocumentTypes;
+  post: FlatPost;
   baseHref?: string;
   tagHrefTemplate?: string;
 };
@@ -22,29 +22,27 @@ export function ArticleMeta({
 }: ComponentProps) {
   return (
     <section className={`space-y-4 ${className}`}>
-      <div className="items-center tracking-wide text-gray-100 md:space-x-4 md:flex">
+      <div className="items-center tracking-wide text-gray-100 md:flex md:space-x-4">
         <Link
           href="https://twitter.com/nickfrosty"
           target="_blank"
-          className={"transition space-x-3 text-xl font-medium flexer group"}
+          className={"flexer group space-x-3 text-xl font-medium transition"}
         >
           <AvatarImage
             sizeClass={"w-14 h-14"}
-            className={
-              "group-hover:border-indigo-400 border border-transparent"
-            }
+            className={"border border-transparent group-hover:border-indigo-400"}
           />
-          <span className="group-hover:shadow-indigo group-hover:text-yellow-400">
+          <span className="group-hover:text-yellow-400 group-hover:shadow-indigo">
             Nick Frostbutter
           </span>
         </Link>
 
-        <span className="hidden w-1 h-1 mr-2 bg-gray-500 rounded-full md:block"></span>
+        <span className="mr-2 hidden h-1 w-1 rounded-full bg-gray-500 md:block"></span>
 
-        <div className="flex items-center mt-4 space-x-4 md:justify-between md:mt-0">
+        <div className="mt-4 flex items-center space-x-4 md:mt-0 md:justify-between">
           <DisplayDate date={post?.date} updatedAt={post?.updatedAt} />
           {/* <span>{parseInt("456789").toLocaleString()} views</span> */}
-          <span className="block w-1 h-1 mr-2 bg-gray-500 rounded-full"></span>
+          <span className="mr-2 block h-1 w-1 rounded-full bg-gray-500"></span>
           <PageViewCounter route={post.href} />
         </div>
       </div>
@@ -55,13 +53,8 @@ export function ArticleMeta({
 
         {Array.isArray(post?.tags) && post.tags?.length > 0 && (
           <>
-            {post.tags.map((tag) => (
-              <Tag
-                key={tag}
-                tag={tag}
-                baseHref={baseHref}
-                hrefTemplate={tagHrefTemplate}
-              />
+            {post.tags.map(tag => (
+              <Tag key={tag} tag={tag} baseHref={baseHref} hrefTemplate={tagHrefTemplate} />
             ))}
           </>
         )}
@@ -77,18 +70,11 @@ type DisplayDateProps = {
   createdAt?: string;
 };
 
-function DisplayDate({
-  className = "",
-  date,
-  updatedAt,
-  createdAt,
-}: DisplayDateProps) {
+function DisplayDate({ className = "", date, updatedAt, createdAt }: DisplayDateProps) {
   if (date) return <span className={className}>{displayDate(date)}</span>;
   else if (updatedAt && updatedAt !== createdAt)
     return <span className={className}>Updated {displayDate(updatedAt)}</span>;
   else if (!date && createdAt)
-    return (
-      <span className={className}>Published {displayDate(createdAt)}</span>
-    );
+    return <span className={className}>Published {displayDate(createdAt)}</span>;
   else return <></>;
 }

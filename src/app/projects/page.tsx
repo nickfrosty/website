@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { allProjects } from "contentlayer/generated";
+import { getAllProjects } from "@/lib/content";
 import ProjectCard from "@/components/ProjectCard";
 import { PageViewTracker } from "@/components/content/PageViewTracker";
 
@@ -13,12 +13,14 @@ export const metadata: Metadata = {
     "projects and previous projects that I stopped working on for various reasons.",
 };
 
-export default function Page() {
+export default async function Page() {
+  const allPosts = await getAllProjects();
+
   // filter for only non `active` projects from the listing
-  const projects = allProjects.filter((item) => item.status != "active");
+  const projects = allPosts.filter(item => item.frontmatter.status != "active");
 
   // extract the `active` projects
-  const featured = allProjects.filter((item) => item.status == "active");
+  const featured = allPosts.filter(item => item.frontmatter.status == "active");
 
   // todo: sort the projects by their `sortDate`
 
@@ -28,15 +30,20 @@ export default function Page() {
         <h1>Active Projects</h1>
 
         <p className="text-lg">
-          I&apos;m always working on something. These are my main active
-          projects right now.
+          I&apos;m always working on something. These are my main active projects right now.
         </p>
       </header>
 
       {!!featured.length && (
-        <section className="grid max-w-5xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 md:grid-cols-2 sm:mt-8">
-          {featured.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+        <section className="mx-auto mb-3 mt-4 grid max-w-5xl grid-cols-1 gap-5 sm:mt-8 md:grid-cols-2">
+          {featured.map(project => (
+            <ProjectCard
+              key={project.frontmatter.title}
+              project={{
+                ...project.frontmatter,
+                href: project.href,
+              }}
+            />
           ))}
         </section>
       )}
@@ -45,7 +52,7 @@ export default function Page() {
         <hr />
       </section>
 
-      <section className="max-w-2xl mx-auto mb-12 text-center">
+      <section className="mx-auto mb-12 max-w-2xl text-center">
         <h2 className="mb-5 text-4xl font-bold">
           Other Projects, <br className="block sm:hidden" />
           Various States
@@ -58,9 +65,15 @@ export default function Page() {
         </p>
       </section>
 
-      <section className="grid max-w-2xl grid-cols-1 gap-5 mx-auto mt-4 mb-3 sm:mt-8">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+      <section className="mx-auto mb-3 mt-4 grid max-w-2xl grid-cols-1 gap-5 sm:mt-8">
+        {projects.map(project => (
+          <ProjectCard
+            key={project.frontmatter.title}
+            project={{
+              ...project.frontmatter,
+              href: project.href,
+            }}
+          />
         ))}
       </section>
     </PageViewTracker>

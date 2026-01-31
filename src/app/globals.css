@@ -3,16 +3,16 @@
 @tailwind components;
 
 .scroller {
-  @apply scrollbar-thin scrollbar-thumb-slate-500 scrollbar-track-slate-700;
+  @apply scrollbar-thin scrollbar-track-slate-700 scrollbar-thumb-slate-500;
 }
 
 body {
-  @apply leading-snug tracking-normal scroller;
-  @apply text-gray-200 bg-gray-950;
+  @apply scroller leading-snug tracking-normal;
+  @apply bg-gray-950 text-gray-200;
   @apply font-body;
 }
 a {
-  @apply !no-underline transition cursor-pointer;
+  @apply cursor-pointer !no-underline transition;
 }
 
 /* Default form elements */
@@ -21,16 +21,16 @@ input[type="email"],
 input[type="url"],
 textarea,
 textbox {
-  @apply block px-4 py-3 border rounded-md;
-  @apply bg-black border border-gray-900;
+  @apply block rounded-md border px-4 py-3;
+  @apply border border-gray-900 bg-black;
 }
 
 button,
 input[type="submit"],
 input[type="button"],
 .button {
-  @apply block px-4 py-3 border border-transparent rounded-md cursor-pointer;
-  @apply text-white bg-indigo-500 hover:bg-indigo-600;
+  @apply block cursor-pointer rounded-md border border-transparent px-4 py-3;
+  @apply bg-indigo-500 text-white hover:bg-indigo-600;
 }
 
 /* Define the custom component styles for use on the site */
@@ -74,7 +74,7 @@ h3 code {
   /* @apply whitespace-nowrap; */
 }
 .flexer .icon {
-  @apply inline-block w-4 h-4;
+  @apply inline-block h-4 w-4;
 }
 
 .flexer-spacer {
@@ -83,19 +83,19 @@ h3 code {
 }
 
 .container-inner {
-  @apply md:max-w-6xl md:mx-auto;
+  @apply md:mx-auto md:max-w-6xl;
 }
 .container {
   @apply container-inner;
-  @apply gap-8 p-5 mx-auto space-y-4 md:space-y-8 md:py-10 md:px-4;
+  @apply mx-auto gap-8 space-y-4 p-5 md:space-y-8 md:px-4 md:py-10;
   @apply justify-between;
 }
 
 .focus-area {
   @apply container-inner;
-  @apply items-center w-full text-center md:text-left;
+  @apply w-full items-center text-center md:text-left;
   @apply grid justify-between gap-8 md:flex;
-  @apply mx-auto space-y-10 md:space-y-0 md:space-x-8 md:flex;
+  @apply mx-auto space-y-10 md:flex md:space-x-8 md:space-y-0;
   @apply px-4 py-8;
 }
 .focus-image {
@@ -114,7 +114,7 @@ svg {
 
 hr {
   /* @apply my-3 text-indigo-500; */
-  @apply w-2/3 h-px mx-auto text-indigo-500 transform bg-indigo-500 my-14 md:my-20 md:w-2/3 rotate-1;
+  @apply mx-auto my-14 h-px w-2/3 rotate-1 transform bg-indigo-500 text-indigo-500 md:my-20 md:w-2/3;
 }
 
 /*
@@ -127,30 +127,30 @@ hr {
   @apply group-hover:underline group-hover:text-hot-pink;
 } */
 .reverse-link {
-  @apply font-semibold underline cursor-pointer;
+  @apply cursor-pointer font-semibold underline;
   @apply hover:text-yellow-400 hover:shadow-indigo;
 }
 
 .link,
 .summary a,
 article a {
-  @apply text-yellow-400 hover:text-indigo-400 hover:shadow-yellow shadow-indigo;
+  @apply text-yellow-400 shadow-indigo hover:text-indigo-400 hover:shadow-yellow;
 }
 
 .link-active {
   @apply link;
   @apply hover:text-indigo-500 hover:shadow-yellow !important;
-  @apply shadow-indigo text-yellow-400 !important;
+  @apply text-yellow-400 shadow-indigo !important;
 }
 .link-passive {
   @apply link;
   @apply text-indigo-500 hover:text-yellow-400 !important;
 }
 .link-muted {
-  @apply hover:text-yellow-400 shadow-indigo hover:shadow-indigo;
+  @apply shadow-indigo hover:text-yellow-400 hover:shadow-indigo;
 }
 h1 a {
-  @apply text-transparent from-yellow-400 to-rose-600 hover:text-yellow-400 bg-clip-text bg-gradient-to-r;
+  @apply bg-gradient-to-r from-yellow-400 to-rose-600 bg-clip-text text-transparent hover:text-yellow-400;
   @apply shadow-none hover:!shadow-indigo-lg;
 }
 
@@ -170,25 +170,25 @@ h5 {
 
 .avatar {
   @apply rounded-full;
-  @apply flex-shrink-0 block overflow-hidden bg-gray-400;
+  @apply block flex-shrink-0 overflow-hidden bg-gray-400;
 }
 .avatar img {
   @apply w-full;
 }
 .avatar-sm {
-  @apply w-16 h-16;
+  @apply h-16 w-16;
 }
 .avatar-base {
-  @apply w-24 h-24;
+  @apply h-24 w-24;
 }
 .avatar-md {
-  @apply w-16 h-16 md:w-32 md:h-32;
+  @apply h-16 w-16 md:h-32 md:w-32;
 }
 .avatar-lg {
-  @apply w-22 h-22 md:w-48 md:h-48;
+  @apply h-22 w-22 md:h-48 md:w-48;
 }
 .avatar-xl {
-  @apply md:w-80 md:h-80;
+  @apply md:h-80 md:w-80;
   @apply w-full;
   /* @apply w-22 h-22; */
 }
@@ -206,17 +206,17 @@ h5 {
   @apply text-gray-800 hover:text-gray-800;
 }
 .icon-xs {
-  @apply w-3 h-3;
+  @apply h-3 w-3;
 }
 .icon-sm {
-  @apply w-5 h-5;
+  @apply h-5 w-5;
 }
 .icon-base,
 .icon-md {
-  @apply w-6 h-6;
+  @apply h-6 w-6;
 }
 .icon-lg {
-  @apply w-9 h-9;
+  @apply h-9 w-9;
 }
 
 /*
@@ -233,7 +233,7 @@ h5 {
 
 .hover-outline {
   @apply transition;
-  @apply hover:outline hover:outline-offset-[5px] hover:outline-2 hover:outline-yellow-400;
+  @apply hover:outline hover:outline-2 hover:outline-offset-[5px] hover:outline-yellow-400;
   @apply hover:border-indigo-400;
 }
 .featured-outline {
@@ -255,21 +255,21 @@ h5 {
 */
 
 .tag {
-  @apply px-2 py-1 mr-3 space-x-[3px] rounded-md cursor-pointer;
+  @apply mr-3 cursor-pointer space-x-[3px] rounded-md px-2 py-1;
   @apply border border-gray-900;
-  @apply text-gray-300 bg-slate-900;
+  @apply bg-slate-900 text-gray-300;
   @apply hover:border-gray-400 hover:text-white;
 }
 .inline-code {
-  @apply px-3 py-1 ml-1 mr-2 rounded-lg;
+  @apply ml-1 mr-2 rounded-lg px-3 py-1;
   @apply font-mono text-base tracking-wide;
-  @apply bg-slate-900 border border-gray-600 text-white !important;
+  @apply border border-gray-600 bg-slate-900 text-white !important;
 }
 
 .inline-code-link {
   @apply inline-code;
   @apply cursor-pointer;
-  @apply hover:bg-slate-700 hover:border-slate-500 !important;
+  @apply hover:border-slate-500 hover:bg-slate-700 !important;
 }
 
 .callout {
@@ -279,14 +279,14 @@ h5 {
   @apply text-white bg-slate-800 border-slate-700; */
 
   :not(pre) > code {
-    @apply !bg-slate-700 !border-slate-600 -mt-1;
+    @apply -mt-1 !border-slate-600 !bg-slate-700;
   }
 }
 .callout .callout-icon {
-  @apply absolute p-[10px] rounded-full bg-gray-950 -left-5 -top-3;
+  @apply absolute -left-5 -top-3 rounded-full bg-gray-950 p-[10px];
 
   svg {
-    @apply w-6 h-6;
+    @apply h-6 w-6;
   }
 }
 .callout a {
@@ -296,11 +296,11 @@ h5 {
   @apply text-lg font-semibold;
 }
 .callout .callout-content {
-  @apply px-6 py-6 !space-y-2 border-l-4 rounded-r-lg;
+  @apply !space-y-2 rounded-r-lg border-l-4 px-6 py-6;
   @apply border-indigo-500 bg-slate-800;
 }
 .callout .callout-content p {
-  @apply py-0 my-0 leading-normal !important;
+  @apply my-0 py-0 leading-normal !important;
 }
 .callout.yellow,
 .callout.caution,
@@ -311,7 +311,7 @@ h5 {
     @apply shadow-indigo;
   }
   :not(pre) > code {
-    @apply !bg-orange-900 !border-orange-700;
+    @apply !border-orange-700 !bg-orange-900;
   }
   .callout-content {
     @apply !border-yellow-400;
@@ -324,7 +324,7 @@ h5 {
 .callout.error {
   /* @apply border-red-800 bg-red-950; */
   :not(pre) > code {
-    @apply !bg-red-900 !border-red-700;
+    @apply !border-red-700 !bg-red-900;
   }
   .callout-content {
     @apply !border-red-600;
@@ -337,7 +337,7 @@ h5 {
 .callout.success {
   /* @apply bg-green-900 border-green-700; */
   :not(pre) > code {
-    @apply !bg-green-800 !border-green-700;
+    @apply !border-green-700 !bg-green-800;
   }
   .callout-content {
     @apply !border-green-700;
@@ -350,7 +350,7 @@ h5 {
 .callout.indigo {
   /* @apply border-indigo-800 bg-indigo-950; */
   :not(pre) > code {
-    @apply !bg-indigo-900 !border-indigo-600 !-mt-1;
+    @apply !-mt-1 !border-indigo-600 !bg-indigo-900;
   }
   .callout-content {
     @apply !border-indigo-500;
@@ -364,7 +364,7 @@ h5 {
 .callout.blue {
   /* @apply border-blue-800 bg-blue-950; */
   :not(pre) > code {
-    @apply !bg-blue-900 !border-blue-600;
+    @apply !border-blue-600 !bg-blue-900;
   }
   .callout-content {
     @apply !border-blue-600;
@@ -375,16 +375,16 @@ h5 {
 }
 
 .box {
-  @apply p-8 rounded-2xl sm:p-6 xl:p-8;
+  @apply rounded-2xl p-8 sm:p-6 xl:p-8;
   @apply border-2 border-gray-700;
 }
 .box .inner-box {
-  @apply space-y-4 text-lg text-center;
+  @apply space-y-4 text-center text-lg;
   /* @apply sm:p-6 xl:p-8 2xl:col-span-2; */
 }
 
 .label {
-  @apply block mb-2 font-semibold tracking-wide;
+  @apply mb-2 block font-semibold tracking-wide;
   /* @apply text-gray-600; */
   /* @apply text-gray-200; */
 }

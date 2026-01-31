@@ -1,18 +1,21 @@
-import "@/styles/globals.css";
-import type { Metadata } from "next";
-import { SITE, SOCIAL } from "@/lib/config";
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
 
+import "./globals.css";
+
+import { SITE, SOCIAL } from "@/lib/config";
 import AppHeader from "@/components/core/AppHeader";
 import AppFooter from "@/components/core/AppFooter";
-import FathomAnalytics from "@/components/core/FathomAnalytics";
+import FathomAnalytics from "@/components/core/fathom-analytics";
 import { META_TITLE_SEPARATOR } from "@/lib/constants";
 
-// import { Inter } from "next/font/google";
+const fontFamily = Geist({ subsets: ["latin"] });
 
-// const font = Inter({
-//   subsets: ["latin"],
-//   variable: "--font-theme",
-// });
+export const viewport: Viewport = {
+  // themeColor: META_THEME_COLORS.light,
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${SITE.domain}`),
@@ -47,20 +50,12 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      {/* <style jsx global>
-        {`
-          :root {
-            --font-theme: ${font.style.fontFamily};
-          }
-        `}
-      </style> */}
-
-      <body>
+      <body className={`${fontFamily.className} overflow-x-clip`}>
         <FathomAnalytics />
 
         <AppHeader />
 
-        <section className={"container px-6 py-12 mx-auto"}>{children}</section>
+        <section className={"container mx-auto px-6 py-12"}>{children}</section>
 
         <AppFooter />
       </body>

@@ -1,12 +1,12 @@
-import type { DocumentTypes } from "contentlayer/generated";
+import type { FlatPost } from "@@/types";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import styles from "@/styles/pagination.module.css";
 
 type ComponentProps = {
   className?: string;
-  next?: DocumentTypes;
-  prev?: DocumentTypes;
+  next?: FlatPost;
+  prev?: FlatPost;
   hrefBase?: string;
   icon?: boolean;
 };
@@ -26,10 +26,7 @@ export function NextPrevSection({
   return (
     <section className={styles.nextPrevSection}>
       {prev && prev?.slug ? (
-        <Link
-          href={`${hrefBase}/${prev.slug}`}
-          className={`${styles.button} ${styles.prev}`}
-        >
+        <Link href={`${hrefBase}/${prev.slug}`} className={`${styles.button} ${styles.prev}`}>
           <ArrowLeftIcon className={styles.svg} />
           <span className="line-clamp-1">{prev?.title || "Previous"}</span>
         </Link>
@@ -38,10 +35,7 @@ export function NextPrevSection({
       )}
 
       {next && next?.slug ? (
-        <Link
-          href={`${hrefBase}/${next.slug}`}
-          className={`${styles.button} ${styles.next}`}
-        >
+        <Link href={`${hrefBase}/${next.slug}`} className={`${styles.button} ${styles.next}`}>
           <p className="line-clamp-1">{next?.title || "Next"}</p>
           <ArrowRightIcon className={styles.svg} />
         </Link>

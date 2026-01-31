@@ -17,8 +17,7 @@ export const config = {
        * 6. /media/ (website media files)
        * 7. Static files (e.g. /favicon.ico, /sitemap.xml, /robots.txt, etc.)
        */
-      source:
-        "/((?!api/|_next/|_proxy/|_static|_vercel|media/|[\\w-]+\\.\\w+).*)",
+      source: "/((?!api/|_next/|_proxy/|_static|_vercel|media/|[\\w-]+\\.\\w+).*)",
       /**
        * These could be used to ignore prefetch requests from "next/link" components
        */
@@ -30,7 +29,7 @@ export const config = {
   ],
 };
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const parsed = parseRequest(req);
 
   if (parsed.domain == MASKED_DOMAIN) {

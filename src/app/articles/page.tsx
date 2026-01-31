@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { allArticles } from "contentlayer/generated";
+import { getAllArticles } from "@/lib/content";
 import { CardGrid } from "@/components/cards/CardGrid";
 import { SmallCard } from "@/components/cards/SmallCard";
 import { computePagination } from "@@/utils/helpers";
@@ -34,46 +34,34 @@ const metadataConfig = {
   paginationTemplate: "/articles/browse/{{id}}",
 };
 
-function preparePage(currentPage: string = "1") {
+async function preparePage(currentPage: string = "1") {
+  const allArticles = await getAllArticles();
+
   // get a listing of regular posts (hiding drafts)
   let posts = allArticles
-    .filter((post) =>
-      process?.env?.NODE_ENV == "development" ? true : post.draft !== true,
+    .filter(post =>
+      process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true,
     )
     // sort newest to oldest
     .sort(
       (a, b) =>
-        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
+        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
     );
-  // strip the `body` to send less data to the client
-  // .map((post) => {
-  //   // @ts-ignore
-  //   // delete post.body.html;
-  //   return post;
-  // });
 
   // get a listing of featured posts
   const featured = allArticles
-    .filter((post) => post.featured === true && !post.draft)
+    .filter(post => post.frontmatter.featured === true && !post.frontmatter.draft)
     .slice(0, 2)
     // sort newest to oldest
     .sort(
       (a, b) =>
-        new Date(b?.date ?? "").getTime() - new Date(a?.date ?? "").getTime(),
+        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
     );
-  // strip the `body` to send less data to the client
-  // .map((post) => {
-  //   // @ts-ignore
-  // delete post.body.html;
-  //   return post;
-  // });
 
   // remove the selected `featured` from the `posts`
   if (Array.isArray(featured) && featured?.length > 0)
     posts = posts?.filter(
-      (item) =>
-        item.slug !==
-        featured.filter((ft) => ft.slug === item?.slug)?.[0]?.slug,
+      item => item.slug !== featured.filter(ft => ft.slug === item?.slug)?.[0]?.slug,
     );
 
   // construct the `pagination` data object
@@ -99,10 +87,23 @@ type PageProps = {
   };
 };
 
-export default function Page({ params: { page } }: PageProps) {
+export default async function Page({ params: { page } }: PageProps) {
   const {
     props: { posts, featured, pagination },
-  } = preparePage(page);
+  } = await preparePage(page);
+
+  // Transform posts for CardGrid (expects old format)
+  const transformedPosts = posts.map(p => ({
+    ...p.frontmatter,
+    slug: p.slug,
+    href: p.href,
+  }));
+
+  const transformedFeatured = featured.map(p => ({
+    ...p.frontmatter,
+    slug: p.slug,
+    href: p.href,
+  }));
 
   return (
     <PageViewTracker>
@@ -112,19 +113,13 @@ export default function Page({ params: { page } }: PageProps) {
           {/* <p></p> */}
         </header>
 
-        {!!featured?.length &&
-          pagination &&
-          (pagination?.page as number) <= 1 && (
-            <section className="double-wide-cards">
-              {featured?.map((post) => (
-                <SmallCard
-                  key={post.slug}
-                  post={post}
-                  baseHref={metadataConfig.baseHref}
-                />
-              ))}
-            </section>
-          )}
+        {!!transformedFeatured?.length && pagination && (pagination?.page as number) <= 1 && (
+          <section className="double-wide-cards">
+            {transformedFeatured?.map(post => (
+              <SmallCard key={post.slug} post={post} baseHref={metadataConfig.baseHref} />
+            ))}
+          </section>
+        )}
 
         <section className="pt-8">
           <h2 className="text-4xl font-bold">Latest articles</h2>
@@ -132,7 +127,7 @@ export default function Page({ params: { page } }: PageProps) {
         </section>
 
         <CardGrid
-          posts={posts}
+          posts={transformedPosts}
           baseHref={metadataConfig.baseHref}
           pagination={pagination}
         />

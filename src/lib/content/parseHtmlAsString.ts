@@ -7,15 +7,13 @@ import remarkRehype from "remark-rehype";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import remarkFrontmatter from "remark-frontmatter";
-import { MDXRemoteProps } from "next-mdx-remote/rsc";
+import type { MDXComponents } from "mdx/types";
 
 type ParseMDXasHtmlStringProps = {
   content: string;
 };
 
-export async function parseMDXasHtmlString({
-  content,
-}: ParseMDXasHtmlStringProps) {
+export async function parseMDXasHtmlString({ content }: ParseMDXasHtmlStringProps) {
   const unknownElements = new Map<string, boolean>();
 
   const htmlAsString: string = (
@@ -23,7 +21,7 @@ export async function parseMDXasHtmlString({
       .use(remarkParse)
       .use(remarkGfm)
       // !note: must go before `remarkRehype`
-      .use(() => (tree) => {
+      .use(() => tree => {
         function recursiveWalk(tree: any) {
           walk(tree as any, {
             enter(node) {
@@ -52,7 +50,7 @@ export async function parseMDXasHtmlString({
       .process(content)
   ).value as string;
 
-  const unknownComponents: MDXRemoteProps["components"] = {
+  const unknownComponents: MDXComponents = {
     EmptyComponent: () => null,
   };
 

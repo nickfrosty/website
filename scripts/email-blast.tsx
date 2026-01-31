@@ -5,14 +5,10 @@ import { prisma } from "@/lib/prisma/client";
 import type { NewsletterSubscriber, Prisma } from "@prisma/client";
 import { getPostBySlug } from "@/lib/content";
 // import { preparePostForSubscriber } from "@/lib/newsletter";
-import {
-  NEWSLETTER_EMAIL_ADDRESS,
-  NEWSLETTER_FROM,
-  NEWSLETTER_REPLY_TO,
-} from "@/lib/constants";
+import { NEWSLETTER_EMAIL_ADDRESS, NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
 
 import { NewsletterPost } from "@prisma/client";
-import { MDXRemoteProps } from "next-mdx-remote/rsc";
+import type { MDXComponents } from "mdx/types";
 import { SITE_ADDR } from "@/lib/constants";
 import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
 import { createId } from "@paralleldrive/cuid2";
@@ -69,7 +65,7 @@ export async function preparePostForSubscriber({
   // list o' links that are in the post
   let links = new Map<string, string>();
 
-  const componentsForEmail: MDXRemoteProps["components"] = {
+  const componentsForEmail: MDXComponents = {
     blockquote: ({ children, ...props }) => {
       return (
         <div style={{ padding: "0 6px" }}>
@@ -100,9 +96,7 @@ export async function preparePostForSubscriber({
       // todo: do we want to mask links for images?
       // links.set(src, "image");
 
-      src = src
-        .replace(/^(https?:\/\/)?nick.af\//gi, "/")
-        .replace(/^\/?(content|public)\//i, "/");
+      src = src.replace(/^(https?:\/\/)?nick.af\//gi, "/").replace(/^\/?(content|public)\//i, "/");
 
       if (src.startsWith("/") || src.startsWith(".")) {
         src = src.replace(REGEX_CONTENT_DIR_LINK, "/$1/$3");
@@ -137,15 +131,9 @@ export async function preparePostForSubscriber({
        * - handle local hash routes for the page being viewed (i.e. `#example`)
        */
 
-      if (
-        href.startsWith("/") ||
-        href.startsWith(".") ||
-        href.startsWith("#")
-      ) {
+      if (href.startsWith("/") || href.startsWith(".") || href.startsWith("#")) {
         // reformat paths like `/content/article/sub-dir/doc.md`
-        href = href
-          .replace(REGEX_CONTENT_DIR_LINK, "/$1/$3")
-          .replace(/(.mdx?)$/gi, "");
+        href = href.replace(REGEX_CONTENT_DIR_LINK, "/$1/$3").replace(/(.mdx?)$/gi, "");
 
         if (href.startsWith("#")) {
           console.log("not supported:", href);
@@ -156,10 +144,7 @@ export async function preparePostForSubscriber({
 
       if (maskLinks) {
         const cuid = createId();
-        const maskedUrl = new URL(
-          `/newsletter/${cuid}`,
-          CONFIG_LINK_MASKER_URL,
-        ).toString();
+        const maskedUrl = new URL(`/newsletter/${cuid}`, CONFIG_LINK_MASKER_URL).toString();
 
         // todo: can and should we note what text is being rendered?
         links.set(cuid, href);
@@ -237,9 +222,7 @@ if (!subscribers.length) {
 }
 
 if (DRAFT_ONLY_MODE) {
-  subscribers = subscribers.filter(
-    (item) => item.id == 1 && item.twitter == "nickfrosty",
-  );
+  subscribers = subscribers.filter(item => item.id == 1 && item.twitter == "nickfrosty");
 
   if (subscribers.length != 1) {
     console.warn("Failed to filter subscribers for draft mode");
@@ -421,13 +404,8 @@ for (let i = 0; i < subscribers.length; i++) {
         },
       });
 
-      if (
-        !postForSubscriber ||
-        postForSubscriber.emailId !== emailResponse!.data!.id
-      ) {
-        throw Error(
-          `Unable to store the post's email id: ${emailResponse!.data!.id}`,
-        );
+      if (!postForSubscriber || postForSubscriber.emailId !== emailResponse!.data!.id) {
+        throw Error(`Unable to store the post's email id: ${emailResponse!.data!.id}`);
       }
 
       // note: the api key must have permission

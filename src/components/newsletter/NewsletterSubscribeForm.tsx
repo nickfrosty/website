@@ -1,7 +1,8 @@
 "use client";
 
 import clsx from "clsx";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { ActionFormState } from "@@/types";
 
@@ -12,7 +13,7 @@ export const NewsletterSubscribeForm = ({
   title?: string;
   className?: string;
 }) => {
-  const [state, formAction] = useFormState(subscribeToNewsletter, {
+  const [state, formAction] = useActionState(subscribeToNewsletter, {
     success: false,
     message: "",
   });
@@ -20,10 +21,7 @@ export const NewsletterSubscribeForm = ({
   return (
     <form
       action={formAction}
-      className={clsx(
-        "px-6 py-6 space-y-2 rounded-md shadow-lg card",
-        className,
-      )}
+      className={clsx("card space-y-2 rounded-md px-6 py-6 shadow-lg", className)}
     >
       {!!state.success ? (
         <>
@@ -47,41 +45,28 @@ export const NewsletterSubscribeForm = ({
   );
 };
 
-const NewsletterSubscribeFormInner = ({
-  state,
-}: {
-  state: ActionFormState<any>;
-}) => {
+const NewsletterSubscribeFormInner = ({ state }: { state: ActionFormState<any> }) => {
   const { pending } = useFormStatus();
 
   return (
     <>
-      <section className="grid items-center w-full gap-4 md:flex">
+      <section className="grid w-full items-center gap-4 md:flex">
         <input
           type="email"
           name="email"
           required={true}
           placeholder="Your email address"
-          className={`flex-grow ${
-            Object.hasOwn(state.errors || {}, "email") && "!border-red-500"
-          }`}
+          className={`flex-grow ${Object.hasOwn(state.errors || {}, "email") && "!border-red-500"}`}
           disabled={pending}
           aria-disabled={pending}
         />
-        <button
-          type="submit"
-          disabled={pending}
-          aria-disabled={pending}
-          className="flex-shrink-0"
-        >
+        <button type="submit" disabled={pending} aria-disabled={pending} className="flex-shrink-0">
           Subscribe
         </button>
       </section>
 
       {state.errors || state.message ? (
-        <p className="text-red-500">
-          {state.errors?.email?.join(". ") || state.message}
-        </p>
+        <p className="text-red-500">{state.errors?.email?.join(". ") || state.message}</p>
       ) : (
         <p className="text-gray-500">
           {/* * after subscribing, you must verify your email address */}

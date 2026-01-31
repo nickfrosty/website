@@ -1,15 +1,12 @@
-import {
-  compileMDX,
-  CompileMDXResult,
-  MDXRemoteProps,
-} from "next-mdx-remote/rsc";
+import { compileMDX } from "@fumadocs/mdx-remote";
+import type { MDXComponents } from "mdx/types";
 
 const DEFAULT_MAX_COMPILE_ATTEMPTS = 5;
 
 type CompileMDXwithRenderCheckProps = {
   content: string;
   maxCompileAttempts?: number;
-  components?: MDXRemoteProps["components"];
+  components?: MDXComponents;
 };
 
 /**
@@ -22,42 +19,39 @@ export async function compileMDXwithRenderCheck({
   maxCompileAttempts = DEFAULT_MAX_COMPILE_ATTEMPTS,
   components = {},
 }: CompileMDXwithRenderCheckProps): Promise<{
-  compiledMDX: CompileMDXResult;
+  compiledMDX: Awaited<ReturnType<typeof compileMDX>>;
   htmlString: string;
 }> {
   // we import link this because next js gives an error when used in react server components
   // even though its on the server side :/
   const ReactDomServer = (await import("react-dom/server")).default;
 
-  const unknownComponents: MDXRemoteProps["components"] = {
+  const unknownComponents: MDXComponents = {
     EmptyComponent: () => null,
   };
 
   let i = 0;
   let canRender = false;
   let htmlString = "";
-  let htmlComponents: CompileMDXResult | null = null;
+  let compiledResult: Awaited<ReturnType<typeof compileMDX>> | null = null;
 
   while (++i && i <= maxCompileAttempts && !canRender) {
     try {
-      htmlComponents = await compileMDX({
+      compiledResult = await compileMDX({
         source: content,
-        // ! todo: this is super bad for memory! fix it late!
-        components: { ...unknownComponents, ...components },
-        options: {
-          parseFrontmatter: true,
-          mdxOptions: {
-            // development: true,
-          },
+        mdxOptions: {
+          // Disable the remark-image plugin that causes path resolution issues
+          remarkImageOptions: false,
         },
       });
 
-      htmlString = ReactDomServer.renderToStaticMarkup(htmlComponents.content);
+      // Render the MDX body with components
+      const MDXContent = compiledResult.body;
+      const allComponents = { ...unknownComponents, ...components };
+      htmlString = ReactDomServer.renderToStaticMarkup(<MDXContent components={allComponents} />);
       canRender = true;
     } catch (err) {
-      const matcher = (err as Error).message
-        .trim()
-        .match(/^Expected component `(.*)`/i);
+      const matcher = (err as Error).message.trim().match(/^Expected component `(.*)`/i);
       if (matcher?.[1]) {
         unknownComponents[matcher?.[1]] = unknownComponents.EmptyComponent;
       }
@@ -69,6 +63,6 @@ export async function compileMDXwithRenderCheck({
   return {
     // canRender: true,
     htmlString,
-    compiledMDX: htmlComponents as CompileMDXResult,
+    compiledMDX: compiledResult as Awaited<ReturnType<typeof compileMDX>>,
   };
 }

@@ -18,7 +18,7 @@ export async function createSHA256hash(input: string) {
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
 
   return Array.from(new Uint8Array(hashBuffer))
-    .map((b) => b.toString(16).padStart(2, "0"))
+    .map(b => b.toString(16).padStart(2, "0"))
     .join("");
 }
 
@@ -37,11 +37,7 @@ export function isBot(userAgent: string | undefined = ""): boolean {
  * By default, we prefix with the current year and month in order to track
  * "unique visitors per month"
  */
-export async function createIdentityHash(
-  ip: string,
-  ua: string,
-  prefix?: string,
-) {
+export async function createIdentityHash(ip: string, ua: string, prefix?: string) {
   if (!prefix) {
     const date = new Date();
     prefix = `${date.getFullYear() + date.getMonth()}`;
@@ -54,7 +50,7 @@ export async function createIdentityHash(
  * Gather all the desired data to record a page view in the db
  */
 export async function createPageViewPayload() {
-  const headers = getHeaders();
+  const headers = await getHeaders();
   const pathname = headers.get(HEADER_PATHNAME) || "";
   const referer = headers.get(HEADER_REFERER) || "";
   const ip = headers.get(HEADER_IP) || HEADER_IP_LOCALHOST;

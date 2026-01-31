@@ -3,7 +3,12 @@ import { metadata as layoutMetadata } from "./layout";
 import { notFound } from "next/navigation";
 import type { SimpleLinkItem } from "@@/types";
 import ProseLayout from "@/layouts/ProseLayout";
-import { type Article, allArticles } from "contentlayer/generated";
+import {
+  getAllArticleSlugs,
+  getArticleBySlug,
+  getArticleWithMDX,
+  getAllArticles,
+} from "@/lib/content";
 
 // load the config/constants file
 import zumoConfig from "@@/zumo.config";
@@ -12,37 +17,33 @@ import { SOCIAL } from "@/lib/config";
 const config = zumoConfig.content.articles;
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return allArticles
-    .filter((post) => post.draft !== true)
-    .map((post) => ({
-      slug: post.slug as string,
-    }));
+  const slugs = getAllArticleSlugs();
+  return slugs.map(slug => ({ slug }));
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: PageProps): Promise<Metadata> {
-  const post = allArticles.filter((post) => post.slug == slug)?.[0];
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getArticleBySlug(slug);
 
   if (!post) {
     return notFound();
   }
 
   return {
-    title: post.title,
-    description: post.description || layoutMetadata.description,
+    title: post.frontmatter.title,
+    description: post.frontmatter.description || layoutMetadata.description,
     alternates: {
       canonical: post.href,
     },
-    openGraph: post.image
+    openGraph: post.frontmatter.image
       ? {
           images: {
-            url: post.image,
-            alt: post.title,
+            url: post.frontmatter.image,
+            alt: post.frontmatter.title,
           },
         }
       : undefined,
@@ -59,38 +60,39 @@ const breadcrumbParents: SimpleLinkItem = {
   label: "Articles",
 };
 
-export default function Page({ params: { slug } }: PageProps) {
-  const post = allArticles.filter((post) => post.slug == slug)?.[0];
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
+  const post = await getArticleWithMDX(slug);
 
   if (!post) {
     return notFound();
   }
 
   // give 404 for `draft` pages in all non dev envs
-  if (!!post.draft && process?.env?.NODE_ENV !== "development") {
+  if (post.frontmatter.draft && process?.env?.NODE_ENV !== "development") {
     return notFound();
   }
 
   // parse out the `next` and `prev` articles, when defined by the current post
-  let next: Article | undefined = undefined;
-  let prev: Article | undefined = undefined;
+  let next: Awaited<ReturnType<typeof getArticleBySlug>> = null;
+  let prev: Awaited<ReturnType<typeof getArticleBySlug>> = null;
 
-  if (!!post.nextPage) {
-    next = allArticles.find((record) => record.slug == post.nextPage);
+  if (post.frontmatter.nextPage) {
+    next = await getArticleBySlug(post.frontmatter.nextPage);
     if (!next) {
       console.warn(
         `\n[warning]`,
-        `Article nextPage slug of '${post.nextPage}' not found\n`,
+        `Article nextPage slug of '${post.frontmatter.nextPage}' not found\n`,
       );
     }
   }
 
-  if (!!post.prevPage) {
-    prev = allArticles.find((record) => record.slug == post.prevPage);
+  if (post.frontmatter.prevPage) {
+    prev = await getArticleBySlug(post.frontmatter.prevPage);
     if (!prev) {
       console.warn(
         `\n[warning]`,
-        `Article prevPage slug of '${post.prevPage}' not found\n`,
+        `Article prevPage slug of '${post.frontmatter.prevPage}' not found\n`,
       );
     }
   }
@@ -98,9 +100,12 @@ export default function Page({ params: { slug } }: PageProps) {
   return (
     <PageViewTracker>
       <ProseLayout
-        post={post}
-        // next={next}
-        // prev={prev}
+        post={{
+          ...post.frontmatter,
+          slug,
+          href: `/articles/${slug}`,
+          body: post.body,
+        }}
         config={config}
         breadcrumbParents={[breadcrumbParents]}
         breadcrumbShowHome={false}

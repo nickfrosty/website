@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import type { DocumentTypes } from "contentlayer/generated";
-import type { SimpleLinkItem } from "@@/types";
+import type { SimpleLinkItem, FlatPost } from "@@/types";
 
 import Link from "next/link";
 import clsx from "clsx";
@@ -9,7 +8,7 @@ import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 type ComponentProps = {
   className?: string;
   href: string;
-  post: DocumentTypes;
+  post: FlatPost;
   parents?: SimpleLinkItem[];
   includeHome?: boolean;
 };
@@ -33,13 +32,13 @@ export function Breadcrumbs({
     <section className={clsx(`text-base font-medium tracking-wide`, className)}>
       {parents &&
         parents?.length > 0 &&
-        parents.map((item) => (
+        parents.map(item => (
           <span key={item.href}>
             <Link href={item.href} className="link-muted">
               {item?.label || item?.title || "Parent"}
             </Link>
 
-            <ChevronDoubleRightIcon className="inline-block mx-2 icon-xs" />
+            <ChevronDoubleRightIcon className="icon-xs mx-2 inline-block" />
           </span>
         ))}
 

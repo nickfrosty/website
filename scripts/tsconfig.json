@@ -16,7 +16,6 @@
     "incremental": true,
     "baseUrl": "..",
     "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"],
       "@/*": ["./src/*"],
       "@@/*": ["./*"]
     },
@@ -32,7 +31,6 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.css",
-    ".contentlayer/generated",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]

@@ -2,20 +2,19 @@ import clsx from "clsx";
 import Link from "next/link";
 import styles from "@/styles/project.module.css";
 
-import { type Project } from "contentlayer/generated";
+import { type ProjectFrontmatter } from "@/lib/content";
+
+type ProjectData = ProjectFrontmatter & {
+  href: string;
+};
 
 type ComponentProps = {
   className?: string;
-  project: Project;
+  project: ProjectData;
   showDateRange?: boolean;
 };
 
-export default function ProjectCard({
-  project,
-  showDateRange = true,
-}: ComponentProps) {
-  const isLocalPage = true;
-
+export default function ProjectCard({ project, showDateRange = true }: ComponentProps) {
   return (
     <Link
       href={project.href}
@@ -34,17 +33,17 @@ export default function ProjectCard({
         )}
 
         <span className={styles.meta}>
-          <span className="items-center block space-y-1">
+          <span className="block items-center space-y-1">
             <h3 className={styles.link}>{project?.title}</h3>
 
-            <span className="justify-between w-full flexer">
+            <span className="flexer w-full justify-between">
               {showDateRange && project.dateRange && (
                 <span className={styles.date}>{project.dateRange}</span>
               )}
 
               <span
                 className={clsx(
-                  "md:hidden block",
+                  "block md:hidden",
                   styles.status,
                   styles[`status-${project?.status}`],
                 )}
@@ -67,9 +66,7 @@ export default function ProjectCard({
         </span>
       </span>
 
-      {project?.description && (
-        <p className={styles.description}>{project.description}</p>
-      )}
+      {project?.description && <p className={styles.description}>{project.description}</p>}
     </Link>
   );
 }
