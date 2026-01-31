@@ -1,4 +1,5 @@
 import { createCompiler } from "@fumadocs/mdx-remote";
+import { remarkGfm } from "fumadocs-core/mdx-plugins";
 import codeTheme from "shiki/themes/github-dark-dimmed.mjs";
 
 import { attachMetadata, parseMetadata } from "@/components/mdx/rehypeMetadata";
@@ -12,10 +13,8 @@ const compiler = createCompiler({
   rehypeCodeOptions: {
     theme: codeTheme,
   },
-  remarkImageOptions: {
-    // Ignore errors when image files can't be found (e.g., on Vercel serverless)
-    onError: "ignore",
-  },
+  // Override remark plugins to exclude remarkImage (causes issues on Vercel serverless)
+  remarkPlugins: [remarkGfm],
   rehypePlugins: defaults => [
     ...defaults,
     [parseMetadata, { defaultShowCopyCode: true }],
