@@ -53,12 +53,7 @@ export default function ProseLayout({
   return (
     <>
       {/* Bread crumbs area */}
-      <Breadcrumbs
-        post={post}
-        includeHome={breadcrumbShowHome}
-        parents={breadcrumbParents}
-        href={href}
-      />
+      <Breadcrumbs includeHome={breadcrumbShowHome} parents={breadcrumbParents} />
 
       {/* Primary content area */}
       <main className="space-y-6">

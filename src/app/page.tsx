@@ -102,7 +102,7 @@ export default async function Page() {
 
               <Link
                 href="/projects"
-                className="flexer link-muted shadow-indigo inline-flex space-x-3 text-lg font-medium"
+                className="flexer link-muted shadow-indigo inline-flex w-fit space-x-3 text-lg font-medium"
               >
                 <span>View more projects</span>
                 <ArrowRightIcon className="h-5 w-5" />

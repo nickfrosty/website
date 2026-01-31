@@ -12,6 +12,10 @@ const compiler = createCompiler({
   rehypeCodeOptions: {
     theme: codeTheme,
   },
+  remarkImageOptions: {
+    // Ignore errors when image files can't be found (e.g., on Vercel serverless)
+    onError: "ignore",
+  },
   rehypePlugins: defaults => [
     ...defaults,
     [parseMetadata, { defaultShowCopyCode: true }],

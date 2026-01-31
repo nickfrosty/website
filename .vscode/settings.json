@@ -2,10 +2,7 @@
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit",
-    "source.sortMembers": "explicit",
-    "source.removeUnusedImports": "explicit"
+    "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnPaste": true,
   "editor.formatOnType": false,

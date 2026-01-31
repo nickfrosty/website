@@ -35,7 +35,7 @@ export default async function Page() {
       <main className="mx-auto max-w-5xl space-y-20 px-3">
         <header className="space-y-3">
           <h1>
-            <Link href="/blog" className="link-muted text-white shadow-none">
+            <Link href="/blog" className="text-white hover:text-yellow-400">
               All blog posts
             </Link>
           </h1>
@@ -46,7 +46,7 @@ export default async function Page() {
           {posts.map((post, key) => (
             <div
               key={key}
-              className={`relative rounded-md border border-transparent p-2 ${
+              className={`relative rounded-md border border-transparent py-2 ${
                 post.frontmatter.draft === true ? "!border-red-900" : ""
               }`}
             >
@@ -61,7 +61,7 @@ export default async function Page() {
                 </Link>
               </h3>
 
-              <div className="minor flex items-center whitespace-nowrap md:inline-block">
+              <div className="minor mt-2 flex items-center whitespace-nowrap md:inline-block">
                 {post.frontmatter.draft === true && (
                   <span className="tag absolute right-0 bottom-2 font-mono text-sm">draft</span>
                 )}

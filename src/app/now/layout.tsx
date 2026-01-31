@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Link>
 
             <h1 className="md:hidden">
-              <Link href="/now" className="link-muted text-6xl text-white shadow-none">
+              <Link href="/now" className="text-6xl text-white hover:text-yellow-400">
                 /now
               </Link>
             </h1>
@@ -40,7 +40,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <h1 className="">
               <Link
                 href="/now"
-                className="link-muted hidden text-6xl text-white shadow-none md:inline-block"
+                className="hidden text-6xl text-white hover:text-yellow-400 md:inline-block"
               >
                 /now
               </Link>
