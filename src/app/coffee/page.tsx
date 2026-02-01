@@ -85,10 +85,10 @@ export default function Page() {
 
             <Link
               target="_blank"
-              href="https://dial.to/?action=solana-action:https://nick.af/api/actions/donate"
+              href="https://decal.link/pay/nickfrosty"
               className="flexer link-muted shadow-indigo inline-flex space-x-3 text-lg font-medium"
             >
-              <span>Buy me a coffee with crypto</span>
+              <span>Buy me a coffee</span>
               <ArrowRightIcon className="h-5 w-5" />
             </Link>
 

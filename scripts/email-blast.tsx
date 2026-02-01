@@ -285,15 +285,7 @@ for (let i = 0; i < subscribers.length; i++) {
   let hasDatabaseEntry = false;
   const subscriber = subscribers[i];
 
-  let extraContent = "";
-  if (subscriber.wallet) {
-    // extraContent =
-    //   "> Hi fren. If you are seeing this message here, it is because you subscribed " +
-    //   "to my newsletter via my custom blink. I hope you thought it was cool. " +
-    //   "I sure did :). I have some fun ideas of what something like this could " +
-    //   "look like in the future. Stay tuned!";
-    // extraContent += "\n\n";
-  }
+  const extraContent = "";
 
   console.log("-----------------------------------");
   console.log(`  To: ${subscriber.email}`);

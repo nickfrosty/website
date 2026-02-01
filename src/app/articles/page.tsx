@@ -13,19 +13,6 @@ export const metadata: Metadata = {
   description:
     `Collection of "how-to" style tutorials and technical writings. ` +
     `Mostly centered around coding, devops, and content creators.`,
-  twitter: {
-    card: "app",
-    site: "@nickfrosty",
-    app: {
-      id: {
-        googleplay: "solana:https://nick.af/api/actions/newsletter",
-      },
-      name: "Solana",
-      url: {
-        googleplay: "solana:https://nick.af/api/actions/newsletter",
-      },
-    },
-  },
 };
 
 const paginationConfig = {
