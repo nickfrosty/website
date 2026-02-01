@@ -5,9 +5,8 @@ import Link from "next/link";
 import { displayDate } from "zumo";
 
 import { PageViewTracker } from "@/components/content/page-view-tracker";
-import { getAllBlogs } from "@/lib/content";
+import { getAllBlogs, filterDrafts, sortByDate } from "@/lib/content";
 
-// construct the seo meta data for the page
 export const metadata: Metadata = {
   alternates: {
     canonical: "/blog",
@@ -19,16 +18,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  // get a listing of regular posts (hiding drafts)
   const allPosts = await getAllBlogs();
-  const posts = allPosts
-    .filter(post =>
-      process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true,
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
+  const posts = sortByDate(filterDrafts(allPosts));
 
   return (
     <PageViewTracker>

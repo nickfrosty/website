@@ -7,9 +7,8 @@ import { displayDate } from "zumo";
 import AvatarImage from "@/components/avatar-image";
 import { PageViewTracker } from "@/components/content/page-view-tracker";
 import { NewsletterSubscribeForm } from "@/components/newsletter/newsletter-subscribe-form";
-import { getAllBlogs } from "@/lib/content";
+import { getAllBlogs, filterDrafts, sortByDate, filterByCategory } from "@/lib/content";
 
-// construct the seo meta data for the page
 export const metadata: Metadata = {
   alternates: {
     canonical: "/newsletter",
@@ -22,18 +21,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const allPosts = await getAllBlogs();
-
-  // get a listing of regular posts (hiding drafts)
-  const posts = allPosts
-    .filter(
-      post =>
-        (process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true) &&
-        post.frontmatter.category == "newsletter",
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
+  const posts = sortByDate(filterByCategory(filterDrafts(allPosts), "newsletter"));
 
   return (
     <PageViewTracker>

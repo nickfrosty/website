@@ -3,11 +3,8 @@ import type { Metadata } from "next";
 import { CardGrid } from "@/components/cards/card-grid";
 import { SmallCard } from "@/components/cards/small-card";
 import { PageViewTracker } from "@/components/content/page-view-tracker";
-import { getAllArticles } from "@/lib/content";
+import { getAllArticles, getPaginatedContent, toCardFormat } from "@/lib/content";
 
-import { computePagination } from "@@/utils/helpers";
-
-// construct the seo meta data for the page
 export const metadata: Metadata = {
   alternates: {
     canonical: "/articles",
@@ -31,57 +28,11 @@ export const metadata: Metadata = {
   },
 };
 
-const metadataConfig = {
+const paginationConfig = {
   baseHref: "/articles",
-  paginationTemplate: "/articles/browse/{{id}}",
+  template: "/articles/browse/{{id}}",
+  perPage: 9,
 };
-
-async function preparePage(currentPage: string = "1") {
-  const allArticles = await getAllArticles();
-
-  // get a listing of regular posts (hiding drafts)
-  let posts = allArticles
-    .filter(post =>
-      process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true,
-    )
-    // sort newest to oldest
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
-
-  // get a listing of featured posts
-  const featured = allArticles
-    .filter(post => post.frontmatter.featured === true && !post.frontmatter.draft)
-    .slice(0, 2)
-    // sort newest to oldest
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
-
-  // remove the selected `featured` from the `posts`
-  if (Array.isArray(featured) && featured?.length > 0)
-    posts = posts?.filter(
-      item => item.slug !== featured.filter(ft => ft.slug === item?.slug)?.[0]?.slug,
-    );
-
-  // construct the `pagination` data object
-  const pagination = computePagination(
-    posts.length, // record length
-    currentPage, // current page
-    "/articles", // baseHref
-    "/articles/browse/{{id}}", // template
-    9, // perPage
-  );
-
-  // chunk out the posts for the current page
-  posts = posts.slice(pagination.start, pagination.end);
-
-  return {
-    props: { posts, featured, pagination },
-  };
-}
 
 type PageProps = {
   params: {
@@ -90,22 +41,15 @@ type PageProps = {
 };
 
 export default async function Page({ params: { page } }: PageProps) {
-  const {
-    props: { posts, featured, pagination },
-  } = await preparePage(page);
+  const allArticles = await getAllArticles();
+  const { posts, featured, pagination } = getPaginatedContent(
+    allArticles,
+    page ?? "1",
+    paginationConfig,
+  );
 
-  // Transform posts for CardGrid (expects old format)
-  const transformedPosts = posts.map(p => ({
-    ...p.frontmatter,
-    slug: p.slug,
-    href: p.href,
-  }));
-
-  const transformedFeatured = featured.map(p => ({
-    ...p.frontmatter,
-    slug: p.slug,
-    href: p.href,
-  }));
+  const transformedPosts = toCardFormat(posts);
+  const transformedFeatured = toCardFormat(featured);
 
   return (
     <PageViewTracker>
@@ -118,7 +62,7 @@ export default async function Page({ params: { page } }: PageProps) {
         {!!transformedFeatured?.length && pagination && (pagination?.page as number) <= 1 && (
           <section className="double-wide-cards">
             {transformedFeatured?.map(post => (
-              <SmallCard key={post.slug} post={post} baseHref={metadataConfig.baseHref} />
+              <SmallCard key={post.slug} post={post} baseHref={paginationConfig.baseHref} />
             ))}
           </section>
         )}
@@ -130,7 +74,7 @@ export default async function Page({ params: { page } }: PageProps) {
 
         <CardGrid
           posts={transformedPosts}
-          baseHref={metadataConfig.baseHref}
+          baseHref={paginationConfig.baseHref}
           pagination={pagination}
         />
       </main>

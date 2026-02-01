@@ -2,6 +2,7 @@ import React, { Children, useMemo, type ComponentProps } from "react";
 
 import Link from "next/link";
 
+import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
 import {
   BoltIcon,
   ExclamationTriangleIcon,
@@ -12,9 +13,7 @@ import {
 
 import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
 
-import { CopyToClipBoard } from "./copy-to-clipboard";
 import { CalloutProps } from "./rehypeConfig";
-import { CustomMetadataProps } from "./rehypeMetadata";
 
 import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { MDXComponents } from "mdx/types";
@@ -154,24 +153,6 @@ function Line(props: ComponentProps<"hr">) {
   );
 }
 
-function Pre({ children, ...props }: ComponentProps<"pre"> & CustomMetadataProps) {
-  return (
-    <div className="relative overflow-clip rounded-lg border border-slate-700">
-      {!!props.filename && (
-        <div className="border-b border-slate-700 bg-slate-700 px-3 pt-3 pb-2 font-mono text-sm leading-none font-medium">
-          {props.filename}
-        </div>
-      )}
-      <pre {...props} className="scroller overflow-auto rounded-b-lg p-3 [&>code]:leading-normal">
-        {children}
-        <div className="absolute top-[7px] right-2">
-          <CopyToClipBoard />
-        </div>
-      </pre>
-    </div>
-  );
-}
-
 export const defaultMdxComponents: MDXComponents = {
   // convert h1 to h2 since the layout will ship the h1
   h1: (props: any) => <AnchorHeading as="h2" {...props} />,
@@ -181,7 +162,11 @@ export const defaultMdxComponents: MDXComponents = {
   h5: (props: any) => <AnchorHeading as="h5" {...props} />,
   h6: (props: any) => <AnchorHeading as="h6" {...props} />,
   hr: Line,
-  pre: Pre,
+  pre: ({ children, ...props }) => (
+    <CodeBlock {...props}>
+      <Pre>{children}</Pre>
+    </CodeBlock>
+  ),
   a: CustomLink,
   Callout: Callout,
   img: CustomImage,

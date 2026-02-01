@@ -3,8 +3,6 @@ import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { parseTemplate } from "zumo";
 
-import styles from "@/styles/pagination.module.css";
-
 export function Pagination({
   page = 1,
   totalPages = 1,
@@ -22,18 +20,18 @@ export function Pagination({
   const prevPage = page - 1;
 
   return (
-    <section className={styles.pagination}>
+    <section className="pagination-nav">
       {prevPage >= 1 && (
-        <Link href={href(prevPage)} className={styles.button}>
-          <ArrowLeftIcon className={styles.svg} />
+        <Link href={href(prevPage)} className="pagination-button">
+          <ArrowLeftIcon className="h-4 w-4 text-white" />
           <span>Prev</span>
         </Link>
       )}
 
       {nextPage <= totalPages ? (
-        <Link href={href(nextPage)} className={styles.button}>
+        <Link href={href(nextPage)} className="pagination-button">
           <span>Next</span>
-          <ArrowRightIcon className={styles.svg} />
+          <ArrowRightIcon className="h-4 w-4 text-white" />
         </Link>
       ) : null}
     </section>

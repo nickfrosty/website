@@ -4,6 +4,11 @@
 /* Source paths for class detection */
 @source "../**/*.{js,jsx,ts,tsx}";
 
+/* Fumadocs imports. */
+@import "fumadocs-ui/css/neutral.css";
+/* @import "fumadocs-ui/css/preset.css"; */
+@source "../../node_modules/fumadocs-ui/dist/**/*.js";
+
 /* Theme customizations migrated from tailwind.config.js */
 @theme {
   /* Custom colors */
@@ -152,6 +157,39 @@
 
   /* Animation */
   --animate-spin-slow: spin 3s linear infinite;
+
+  /* Fumadocs color overrides for dark mode */
+  /* --color-fd-card: var(--color-slate-800); */
+  --color-fd-border: var(--color-slate-700);
+  --color-fd-muted-foreground: var(--color-gray-400);
+}
+
+/* Fumadocs code block styling overrides */
+figure[data-rehype-pretty-code-figure],
+.shiki {
+  @apply rounded-lg border-slate-700 text-base;
+}
+
+/* Code block pre padding */
+figure[data-rehype-pretty-code-figure] pre,
+.shiki pre {
+  @apply p-5;
+}
+
+/* Override fumadocs code block scroll container styles */
+figure[data-rehype-pretty-code-figure] .fd-scroll-container,
+.shiki .fd-scroll-container {
+  @apply py-0 text-base;
+}
+
+/* Code block copy button size fix */
+figure[data-rehype-pretty-code-figure] button,
+.shiki button {
+  @apply p-1;
+}
+figure[data-rehype-pretty-code-figure] button svg,
+.shiki button svg {
+  @apply h-4 w-4;
 }
 
 /* Scrollbar styles (replacing tailwind-scrollbar plugin) */
@@ -174,9 +212,6 @@
 /* Shiki syntax highlighting - consume CSS variables */
 pre code span {
   color: var(--shiki-dark);
-}
-pre {
-  background-color: var(--shiki-dark-bg);
 }
 
 body {
@@ -580,5 +615,191 @@ h5 {
 /* .box .label {
   @apply text-gray-100;
 } */
+
+/* ============================================
+   Article content styles (from article.module.css)
+   ============================================ */
+.article-content {
+  @apply !space-y-5 break-words;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-none font-medium;
+    @apply tracking-tight no-underline;
+  }
+
+  em > strong,
+  strong > em {
+    @apply underline;
+  }
+
+  h1,
+  h1 a {
+    @apply text-4xl no-underline;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  p {
+    @apply text-lg leading-relaxed;
+  }
+  > p:first-of-type {
+    @apply text-xl md:text-2xl;
+  }
+
+  img {
+    @apply mx-auto my-10;
+    @apply overflow-hidden rounded-lg;
+    @apply border border-gray-900 shadow-lg;
+  }
+
+  ul:not(.list-none) {
+    @apply ml-10 list-disc pl-0 text-lg;
+    li {
+      @apply mb-1;
+    }
+  }
+
+  ol {
+    @apply mb-8 ml-10 list-decimal pl-0 text-lg;
+    li {
+      @apply mb-1;
+    }
+  }
+
+  /* triple ` code snippets get wrapped in a pre tag */
+  :not(pre) > code {
+    @apply mx-[1px] px-[5px] py-[4px];
+    @apply rounded-md border border-gray-800 bg-slate-800 !text-sm text-slate-100;
+  }
+
+  table {
+    @apply mb-8 w-full border-collapse border-2 text-left text-sm;
+    th {
+      @apply border-t-4 border-b p-4 text-xl font-bold;
+    }
+
+    td {
+      @apply border-b p-4;
+    }
+
+    p {
+      @apply leading-normal;
+    }
+  }
+}
+
+.article-content-section > *:first-child {
+  @apply mt-0 pt-0;
+}
+
+/* ============================================
+   Pagination styles (from pagination.module.css)
+   ============================================ */
+.pagination-button {
+  @apply flex w-fit items-center gap-3 rounded-md border px-5 py-2;
+  @apply border-indigo-800 bg-indigo-950 text-white;
+  @apply hover:bg-indigo-800;
+}
+.pagination-button.prev {
+  @apply place-self-start;
+}
+.pagination-button.next {
+  @apply justify-end place-self-end self-end;
+}
+.pagination-button svg {
+  @apply h-4 w-4 text-white;
+}
+
+.pagination-nav {
+  @apply mx-auto flex w-full items-center justify-center space-x-5 text-center;
+}
+
+.next-prev-section {
+  @apply grid w-full gap-8 md:grid-cols-2;
+}
+
+/* ============================================
+   Project card styles (from project.module.css)
+   ============================================ */
+.project-card {
+  @apply block w-full;
+  @apply relative top-0 mb-5 transition-all duration-75 ease-in-out lg:mb-8;
+  @apply rounded-xl border lg:text-left;
+  @apply border-white md:hover:border-indigo-200;
+  @apply border-gray-900 md:hover:border-indigo-400;
+  @apply hover:!text-white;
+  @apply space-y-2 border-0 md:space-y-4;
+  @apply md:border md:p-6 md:shadow-md;
+}
+
+.project-card-h2 {
+  @apply line-clamp-1 text-2xl leading-tight font-bold;
+}
+
+.project-card-inner {
+  @apply flex items-center gap-4;
+}
+
+.project-card-description {
+  /* empty - placeholder for future use */
+}
+
+.project-card-meta {
+  @apply flex-grow justify-between;
+  @apply w-full;
+}
+
+.project-card-link {
+  @apply text-2xl font-bold;
+}
+
+.project-card-icon {
+  @apply h-12 w-12 overflow-hidden rounded;
+}
+
+.project-card-minor,
+.project-card-date {
+  @apply block text-gray-500 md:text-sm;
+}
+
+.project-card-floater {
+  @apply absolute top-0 right-0 mt-4 mr-4;
+}
+
+/* Project status pills */
+.project-status {
+  @apply place-self-center px-3 py-1 shadow-lg;
+  @apply rounded-md font-mono text-xs font-medium;
+}
+.project-status-init {
+  @apply bg-purple-200 text-gray-900;
+}
+.project-status-active {
+  @apply bg-green-600 text-white;
+}
+.project-status-autopilot {
+  @apply bg-indigo-600 text-white;
+}
+.project-status-opensource {
+  @apply bg-yellow-400 text-black;
+}
+.project-status-backburner {
+  @apply bg-slate-700 text-white;
+}
+.project-status-graveyard,
+.project-status-sold {
+  @apply bg-red-500 text-white;
+}
 
 /* Utilities are included via @import "tailwindcss" above */

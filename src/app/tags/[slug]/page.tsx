@@ -7,7 +7,7 @@ import { computePagination, parseTemplate } from "zumo";
 import { CardGrid } from "@/components/cards/card-grid";
 import { HeroSection } from "@/components/content/hero-section";
 import { PageViewTracker } from "@/components/content/page-view-tracker";
-import { getAllTags, getAllArticles } from "@/lib/content";
+import { getAllTags, getAllArticles, filterDrafts, sortByDate, filterByTag } from "@/lib/content";
 
 const config = {
   baseHref: "/tags/{{tag}}",
@@ -20,7 +20,6 @@ async function preparePage(slug: string, currentPage: number = 1) {
   const allTags = await getAllTags();
   const allPosts = await getAllArticles();
 
-  // retrieve the current `tag` document, when it exists
   const tagMeta = allTags.filter(
     item => item.slug?.toLowerCase().replace(/\s+/g, "-") == slug,
   )?.[0] || {
@@ -31,52 +30,25 @@ async function preparePage(slug: string, currentPage: number = 1) {
     href: `/tags/${slug.toLowerCase().replace(/\s+/g, "-")}`,
   };
 
-  // parse and update the `baseHref` to include the current tag
   const baseHref = parseTemplate(config?.baseHref, {
     baseHref: config.baseHref,
     tag: slug.toLowerCase(),
   });
 
-  // get the listing of `posts` for the current `tag`
-  let posts = allPosts
-    .filter(post => (process?.env?.NODE_ENV == "development" ? true : !post.frontmatter.draft))
-    .filter(({ frontmatter }) => {
-      let tags = frontmatter.tags;
-      if (typeof tags == "string") {
-        tags = (tags as string).split(",").map(t => t.trim());
-      }
+  let posts = sortByDate(filterByTag(filterDrafts(allPosts), slug));
 
-      if (Array.isArray(tags)) {
-        return tags.find(
-          (tag: string) =>
-            tag.toLowerCase() == slug.toLocaleLowerCase() ||
-            tag.toLowerCase().replace(/\s+/g, "-") == slug.toLocaleLowerCase().replace(/\s+/g, "-"),
-        );
-      }
-    })
-    // sort newest to oldest
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
-
-  // give the 404 page when no `posts` were found
   if (!(posts && Array.isArray(posts))) {
     return notFound();
   }
 
-  // retrieve the latest and featured articles
   const latestPost = posts?.[0] || false;
   const featured = posts.filter(item => item.frontmatter.featured === true)?.[0] || latestPost;
 
-  // construct the `pagination` data object
   const pagination =
     computePagination(posts.length, currentPage, baseHref, config?.paginationTemplate) || undefined;
 
-  // remove the `featured` article from the overall `posts` listing
   posts = posts.filter(item => item.slug !== featured?.slug);
 
-  // chunk out the posts for the current page
   // @ts-ignore
   posts = posts.slice(pagination.start, pagination.end);
 

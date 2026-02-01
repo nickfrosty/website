@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${fontFamily.className} overflow-x-clip`}>
         <FathomAnalytics />
 
