@@ -16,10 +16,10 @@
     "incremental": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@@/*": ["./*"],
       "@drizzle": ["./drizzle"],
-      "@drizzle/*": ["./drizzle/*"]
+      "@drizzle/*": ["./drizzle/*"],
+      "@/*": ["./src/*"],
+      "@@/*": ["./*"]
     },
     "plugins": [
       {
