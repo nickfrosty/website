@@ -19,7 +19,7 @@ figure[data-rehype-pretty-code-figure],
 /* Code block pre padding */
 figure[data-rehype-pretty-code-figure] pre,
 .shiki pre {
-  @apply p-5;
+  @apply px-5 py-4;
 }
 
 /* Override fumadocs code block scroll container styles */
@@ -189,100 +189,6 @@ h1 a {
   @apply mr-2 ml-1 rounded-lg px-3 py-1;
   @apply font-mono text-base tracking-wide;
   @apply !border !border-gray-600 !bg-slate-900 !text-white;
-}
-
-.callout {
-  @apply relative;
-
-  :not(pre) > code {
-    @apply -mt-1 !border-slate-600 !bg-slate-700;
-  }
-}
-.callout .callout-icon {
-  @apply absolute -top-3 -left-5 rounded-full bg-gray-950 p-[10px];
-
-  svg {
-    @apply h-6 w-6;
-  }
-}
-.callout a {
-  @apply shadow-yellow text-white;
-}
-.callout .callout-title {
-  @apply text-lg font-semibold;
-}
-.callout .callout-content {
-  @apply !space-y-2 rounded-r-lg border-l-4 px-6 py-6;
-  @apply border-indigo-500 bg-slate-800;
-}
-.callout .callout-content p {
-  @apply !my-0 !py-0 !leading-normal;
-}
-.callout.yellow,
-.callout.caution,
-.callout.warn,
-.callout.warning {
-  a {
-    @apply shadow-indigo;
-  }
-  :not(pre) > code {
-    @apply !border-orange-700 !bg-orange-900;
-  }
-  .callout-content {
-    @apply !border-yellow-400;
-  }
-  .callout-icon {
-    @apply !bg-yellow-400 text-yellow-900;
-  }
-}
-.callout.red,
-.callout.error {
-  :not(pre) > code {
-    @apply !border-red-700 !bg-red-900;
-  }
-  .callout-content {
-    @apply !border-red-600;
-  }
-  .callout-icon {
-    @apply !bg-red-600;
-  }
-}
-.callout.green,
-.callout.success {
-  :not(pre) > code {
-    @apply !border-green-700 !bg-green-800;
-  }
-  .callout-content {
-    @apply !border-green-700;
-  }
-  .callout-icon {
-    @apply !bg-green-700;
-  }
-}
-.callout.purple,
-.callout.indigo {
-  :not(pre) > code {
-    @apply !-mt-1 !border-indigo-600 !bg-indigo-900;
-  }
-  .callout-content {
-    @apply !border-indigo-500;
-  }
-  .callout-icon {
-    @apply !bg-indigo-500;
-  }
-}
-.callout.pro,
-.callout.note,
-.callout.blue {
-  :not(pre) > code {
-    @apply !border-blue-600 !bg-blue-900;
-  }
-  .callout-content {
-    @apply !border-blue-600;
-  }
-  .callout-icon {
-    @apply !bg-blue-600;
-  }
 }
 
 .box {
