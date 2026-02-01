@@ -11,7 +11,7 @@ export async function PageViewCounter({ route, className }: { route: string; cla
 
   return (
     <Suspense>
-      <div className={className}>{views} views</div>
+      <div className={className}>{views.toLocaleString()} views</div>
     </Suspense>
   );
 }
