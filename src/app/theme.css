@@ -98,7 +98,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Color palettes and design tokens (migrated from tailwind.config.js) */
+/* Color palettes and design tokens */
 @theme {
   /* Custom colors */
   --color-hot-pink: #fd2d78;
@@ -215,11 +215,6 @@
   --shadow-indigo: 0px 2px 0px 0px #7596ff;
   --shadow-indigo-lg: 0px 4px 0px 0px #7596ff;
 
-  /* Custom font */
-  --font-body:
-    var(--font-theme), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-
   /* Custom spacing (non-standard values) */
   --spacing-22: 5.5rem;
   --spacing-26: 6.5rem;
@@ -277,23 +272,74 @@
 
   body {
     @apply bg-background text-foreground box-border;
-  }
+    @apply leading-snug tracking-normal;
 
-  .underline,
-  .underline:hover {
-    @apply underline-offset-3;
+    /* Scrollbar styles */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-slate-500) var(--color-slate-700);
   }
-
-  .link {
-    @apply text-primary hover:text-accent underline;
+  body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
-  .link-ghost {
-    @apply hover:text-primary underline;
+  body::-webkit-scrollbar-track {
+    background: var(--color-slate-700);
+  }
+  body::-webkit-scrollbar-thumb {
+    background: var(--color-slate-500);
+    border-radius: 4px;
   }
 }
 
-/* @layer base {
-  * {
-    @apply border-border outline-ring/50;
+/* Default theming for common HTML elements */
+@layer base {
+  a {
+    @apply cursor-pointer no-underline! transition;
   }
-} */
+
+  h1 {
+    @apply text-4xl font-bold md:text-5xl;
+  }
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-semibold;
+  }
+
+  hr {
+    @apply mx-auto my-14 h-px w-2/3 rotate-1 transform bg-indigo-500 text-indigo-500 md:my-20 md:w-2/3;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1280px) {
+    max-width: 1280px;
+  }
+}
+
+@utility min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+@utility h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+@utility underline {
+  text-decoration: underline;
+  text-decoration-color: rgba(99, 102, 241, 1);
+  text-underline-offset: 3px;
+}
+
+@utility flexer {
+  display: flex;
+  align-items: center;
+}
