@@ -1,6 +1,6 @@
 "use server";
-import { z } from "zod";
 import pg from "pg";
+import { z } from "zod";
 
 import { db, newsletterSubscribers } from "@/db";
 import { ActionFormState } from "@/lib/form-types";

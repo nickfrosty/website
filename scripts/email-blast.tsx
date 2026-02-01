@@ -1,8 +1,7 @@
 import { createId } from "@paralleldrive/cuid2";
 import * as dotenv from "dotenv";
-import { Resend } from "resend";
-
 import { eq } from "drizzle-orm";
+import { Resend } from "resend";
 
 import {
   db,
@@ -20,10 +19,10 @@ import {
   NEWSLETTER_REPLY_TO,
   SITE_ADDR,
 } from "@/lib/constants";
-import { getPostBySlug } from "@@/scripts/utils/content";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
 import { MASKED_DOMAIN } from "@/lib/views/constants";
 
+import { getPostBySlug } from "@@/scripts/utils/content";
 import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
 
 import type { MDXComponents } from "mdx/types";

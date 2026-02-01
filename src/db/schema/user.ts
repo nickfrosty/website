@@ -12,6 +12,7 @@ import {
   unique,
   serial,
 } from "drizzle-orm/pg-core";
+
 import { userTypeEnum, statusEnum } from "./enums";
 
 export const users = pgTable(

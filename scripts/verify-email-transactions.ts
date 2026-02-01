@@ -1,7 +1,6 @@
 import { findReference } from "@solana/actions";
 import { ConfirmedSignatureInfo, Connection, PublicKey } from "@solana/web3.js";
 import * as dotenv from "dotenv";
-
 import { eq } from "drizzle-orm";
 
 import { db, newsletterSubscriberTransactions, newsletterSubscribers } from "@/db";

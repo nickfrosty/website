@@ -1,5 +1,5 @@
-import { InferInsertModel, InferSelectModel } from "drizzle-orm";
 import { createId } from "@paralleldrive/cuid2";
+import { InferInsertModel, InferSelectModel } from "drizzle-orm";
 import {
   pgTable,
   varchar,
@@ -11,6 +11,7 @@ import {
   serial,
   doublePrecision,
 } from "drizzle-orm/pg-core";
+
 import { statusEnum, emailStatusEnum } from "./enums";
 
 export const newsletterSubscribers = pgTable("NewsletterSubscriber", {

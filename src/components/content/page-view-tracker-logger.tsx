@@ -2,8 +2,8 @@ import { Suspense } from "react";
 
 import { unstable_noStore } from "next/cache";
 
-import { recordPageView } from "@/lib/views/tracking";
 import { createPageViewPayload } from "@/lib/views";
+import { recordPageView } from "@/lib/views/tracking";
 
 export async function PageViewTrackerLogger() {
   unstable_noStore();

@@ -1,6 +1,7 @@
 import { createId } from "@paralleldrive/cuid2";
 
 import type { NewsletterPost } from "@/db";
+
 import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
 
 import { SITE_ADDR } from "../constants";
