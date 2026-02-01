@@ -318,7 +318,8 @@ h1 a {
 }
 
 .project-card-icon {
-  @apply h-12 w-12 overflow-hidden rounded;
+  @apply h-12 w-12 shrink-0 overflow-hidden rounded;
+  @apply aspect-square object-contain;
 }
 
 .project-card-minor,

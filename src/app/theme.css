@@ -308,7 +308,7 @@
   }
 
   hr {
-    @apply mx-auto my-14 h-px w-2/3 rotate-1 transform bg-indigo-500 text-indigo-500 md:my-20 md:w-2/3;
+    @apply mx-auto my-14 h-0.5 w-2/3 rotate-1 transform bg-indigo-500 text-indigo-500 md:my-20 md:w-2/3;
   }
 }
 

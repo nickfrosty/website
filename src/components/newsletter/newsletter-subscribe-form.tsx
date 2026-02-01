@@ -11,7 +11,7 @@ import { Button, Input } from "@/components/ui";
 import { ActionFormState } from "@/lib/form-types";
 
 export const NewsletterSubscribeForm = ({
-  title = "Subscribe for (sometimes) weekly emails",
+  title = "Get my (sometimes) weekly emails",
   className,
 }: {
   title?: string;
@@ -40,7 +40,11 @@ export const NewsletterSubscribeForm = ({
         <>
           <h4 className="!mt-0 text-xl">{title}</h4>
 
-          <p>Devlog and assorted tech things. ~7min read.</p>
+          <p>
+            Shipping products, creating startups, and sharing it all.
+            <br />
+            Building in public. ~5min read.
+          </p>
 
           <NewsletterSubscribeFormInner state={state} />
         </>

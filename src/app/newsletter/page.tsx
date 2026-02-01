@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   },
   title: `Newsletter`,
   description:
-    "Various personal thoughts and anecdotes from over the years, including sharing " +
-    "my experiences of building in public and things I find interesting.",
+    "Shipping products, building startups, and sharing it all in public. " +
+    "Tech insights and real lessons from the journey of creating software and businesses.",
 };
 
 export default async function Page() {
@@ -57,7 +57,7 @@ export default async function Page() {
               </h1>
 
               <p className="text-center text-lg text-gray-400 md:text-left">
-                Building in public, sharing as I go.
+                Dev logs, building in public, and tech things. ~5min read.
               </p>
             </div>
           </div>

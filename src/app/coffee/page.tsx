@@ -61,10 +61,7 @@ export default function Page() {
             . */}
           </p>
 
-          <NewsletterSubscribeForm
-            className="col-span-full md:mt-10 xl:mt-14"
-            title="Subscribe to my newsletter?"
-          />
+          <NewsletterSubscribeForm className="col-span-full md:mt-10 xl:mt-14" />
 
           {/* <SocialIcons
             className="space-x-6 text-gray-300 md:pt-8"
@@ -102,7 +99,6 @@ export default function Page() {
 
           {/* <NewsletterSubscribeForm
             className="col-span-full md:mt-10 xl:mt-14"
-            title="Subscribe to my newsletter?"
           /> */}
         </section>
       </section>

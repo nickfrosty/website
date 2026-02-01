@@ -74,10 +74,7 @@ export default async function Page() {
             posts.
           </p>
 
-          <NewsletterSubscribeForm
-            className="col-span-full md:mt-10 xl:mt-14"
-            title="Subscribe to my newsletter?"
-          />
+          <NewsletterSubscribeForm className="col-span-full md:mt-10 xl:mt-14" />
         </section>
 
         <section className="grid gap-8 xl:gap-12">
