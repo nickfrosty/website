@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import { Geist } from "next/font/google";
 
-import "./globals.css";
+import "./styles.css";
 
 import AppFooter from "@/components/core/app-footer";
 import AppHeader from "@/components/core/app-header";

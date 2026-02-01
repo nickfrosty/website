@@ -1,0 +1,299 @@
+/* Theme configuration */
+
+/* Semantic color scheme - Dark theme only */
+:root {
+  --radius: 0.625rem;
+
+  /* Core colors - mapped to site color palette */
+  --background: #111111; /* gray-950 */
+  --foreground: #d1d1d1; /* gray-200 */
+
+  /* Primary - Indigo */
+  --primary: #617bff; /* indigo-500 */
+  --primary-foreground: #ffffff;
+
+  /* Secondary - Gray */
+  --secondary: #454545; /* gray-800 */
+  --secondary-foreground: #d1d1d1; /* gray-200 */
+
+  /* Muted - Gray */
+  --muted: #3d3d3d; /* gray-900 */
+  --muted-foreground: #888888; /* gray-400 */
+
+  /* Accent - Yellow */
+  --accent: #ffb220; /* yellow-400 */
+  --accent-foreground: #111111; /* gray-950 */
+
+  /* Destructive - Red */
+  --destructive: #ef476f; /* red-500 */
+
+  /* Card/Popover - same as background */
+  --card: #111111; /* gray-950 */
+  --card-foreground: #d1d1d1; /* gray-200 */
+  --popover: #111111; /* gray-950 */
+  --popover-foreground: #d1d1d1; /* gray-200 */
+
+  /* Borders and inputs */
+  --border: #3d3d3d; /* gray-900 */
+  --input: #3d3d3d; /* gray-900 */
+  --ring: #7596ff; /* indigo-400 */
+
+  /* Chart colors */
+  --chart-1: #617bff; /* indigo-500 */
+  --chart-2: #0fa968; /* green-600 */
+  --chart-3: #ffb220; /* yellow-400 */
+  --chart-4: #b439ff; /* purple-500 */
+  --chart-5: #ef476f; /* red-500 */
+
+  /* Sidebar */
+  --sidebar: #111111; /* gray-950 */
+  --sidebar-foreground: #d1d1d1; /* gray-200 */
+  --sidebar-primary: #617bff; /* indigo-500 */
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #3d3d3d; /* gray-900 */
+  --sidebar-accent-foreground: #d1d1d1; /* gray-200 */
+  --sidebar-border: #3d3d3d; /* gray-900 */
+  --sidebar-ring: #7596ff; /* indigo-400 */
+}
+
+/* Tailwind CSS variable mappings for shadcn components */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Color palettes and design tokens (migrated from tailwind.config.js) */
+@theme {
+  /* Custom colors */
+  --color-hot-pink: #fd2d78;
+  --color-twitter: #1d9bf0;
+  --color-linkedin: #0a66c2;
+
+  /* Gray palette */
+  --color-gray-50: #f6f6f6;
+  --color-gray-100: #e7e7e7;
+  --color-gray-200: #d1d1d1;
+  --color-gray-300: #b0b0b0;
+  --color-gray-400: #888888;
+  --color-gray-500: #6d6d6d;
+  --color-gray-600: #5d5d5d;
+  --color-gray-700: #4f4f4f;
+  --color-gray-800: #454545;
+  --color-gray-900: #3d3d3d;
+  --color-gray-950: #111111;
+
+  /* Indigo palette */
+  --color-indigo-50: #ecf4ff;
+  --color-indigo-100: #ddeaff;
+  --color-indigo-200: #c2d8ff;
+  --color-indigo-300: #9cbcff;
+  --color-indigo-400: #7596ff;
+  --color-indigo-500: #617bff;
+  --color-indigo-600: #3646f5;
+  --color-indigo-700: #2a36d8;
+  --color-indigo-800: #2531ae;
+  --color-indigo-900: #263189;
+  --color-indigo-950: #161a50;
+
+  /* Yellow palette */
+  --color-yellow-50: #fffaeb;
+  --color-yellow-100: #fff0c6;
+  --color-yellow-200: #ffdf88;
+  --color-yellow-300: #ffd166;
+  --color-yellow-400: #ffb220;
+  --color-yellow-500: #f98f07;
+  --color-yellow-600: #dd6802;
+  --color-yellow-700: #b74706;
+  --color-yellow-800: #94360c;
+  --color-yellow-900: #7a2e0d;
+  --color-yellow-950: #461502;
+
+  /* Green palette */
+  --color-green-50: #effef7;
+  --color-green-100: #dafeef;
+  --color-green-200: #b8fadd;
+  --color-green-300: #81f4c3;
+  --color-green-400: #43e5a0;
+  --color-green-500: #1acd81;
+  --color-green-600: #0fa968;
+  --color-green-700: #108554;
+  --color-green-800: #126945;
+  --color-green-900: #11563a;
+  --color-green-950: #03301f;
+
+  /* Red palette */
+  --color-red-50: #fff1f3;
+  --color-red-100: #fee5e9;
+  --color-red-200: #fdced7;
+  --color-red-300: #faa7b7;
+  --color-red-400: #f77591;
+  --color-red-500: #ef476f;
+  --color-red-600: #db2357;
+  --color-red-700: #b9174a;
+  --color-red-800: #9b1644;
+  --color-red-900: #85163f;
+  --color-red-950: #4a071e;
+
+  /* Blue palette */
+  --color-blue-50: #f0f8ff;
+  --color-blue-100: #e0f0fe;
+  --color-blue-200: #bae2fd;
+  --color-blue-300: #7dcbfc;
+  --color-blue-400: #47b7f8;
+  --color-blue-500: #0f98e8;
+  --color-blue-600: #0378c6;
+  --color-blue-700: #0360a1;
+  --color-blue-800: #075185;
+  --color-blue-900: #0c446e;
+  --color-blue-950: #082b49;
+
+  /* Tarawera palette */
+  --color-tarawera-50: #ebffff;
+  --color-tarawera-100: #cefdff;
+  --color-tarawera-200: #a3f8fe;
+  --color-tarawera-300: #63f1fd;
+  --color-tarawera-400: #1ddff3;
+  --color-tarawera-500: #01c2d9;
+  --color-tarawera-600: #039bb7;
+  --color-tarawera-700: #0b7b93;
+  --color-tarawera-800: #126378;
+  --color-tarawera-900: #145265;
+  --color-tarawera-950: #073b4c;
+
+  /* Purple palette */
+  --color-purple-50: #fbf3ff;
+  --color-purple-100: #f4e4ff;
+  --color-purple-200: #ecceff;
+  --color-purple-300: #dda7ff;
+  --color-purple-400: #c86fff;
+  --color-purple-500: #b439ff;
+  --color-purple-600: #a213ff;
+  --color-purple-700: #8d04ec;
+  --color-purple-800: #7209b7;
+  --color-purple-900: #62099a;
+  --color-purple-950: #430074;
+
+  /* Custom shadows */
+  --shadow-yellow: 0px 2px 0px 0px #ffb220;
+  --shadow-yellow-lg: 0px 4px 0px 0px #ffb220;
+  --shadow-indigo: 0px 2px 0px 0px #7596ff;
+  --shadow-indigo-lg: 0px 4px 0px 0px #7596ff;
+
+  /* Custom font */
+  --font-body:
+    var(--font-theme), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Custom spacing (non-standard values) */
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+  --spacing-34: 8.5rem;
+  --spacing-38: 9.5rem;
+  --spacing-68: 17rem;
+  --spacing-76: 19rem;
+  --spacing-88: 22rem;
+  --spacing-104: 26rem;
+  --spacing-110: 28rem;
+  --spacing-118: 30rem;
+  --spacing-126: 32rem;
+  --spacing-132: 34rem;
+  --spacing-140: 36rem;
+
+  /* Custom font sizes */
+  --font-size-7xl: 5rem;
+  --font-size-8xl: 6rem;
+  --font-size-9xl: 7rem;
+
+  /* Custom border radius */
+  --radius-xl: 0.75rem;
+
+  /* Animation */
+  --animate-spin-slow: spin 3s linear infinite;
+
+  /* Fumadocs color overrides for dark mode */
+  /* --color-fd-card: var(--color-slate-800); */
+  --color-fd-border: var(--color-slate-700);
+  --color-fd-muted-foreground: var(--color-gray-400);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border, currentcolor);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  body {
+    @apply bg-background text-foreground box-border;
+  }
+
+  .underline,
+  .underline:hover {
+    @apply underline-offset-3;
+  }
+
+  .link {
+    @apply text-primary hover:text-accent underline;
+  }
+  .link-ghost {
+    @apply hover:text-primary underline;
+  }
+}
+
+/* @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+} */
