@@ -4,7 +4,7 @@ import path from "path";
 import { globSync } from "glob";
 import matter from "gray-matter";
 
-import { mdxCompiler } from "@/lib/mdx/compiler";
+import { mdxCompiler, stripHtmlComments } from "@/lib/mdx/compiler";
 
 import {
   articleFrontmatterSchema,
@@ -115,7 +115,7 @@ export async function getPostWithMDX<T>(
   if (!post) return null;
 
   const result = await mdxCompiler.compile({
-    source: post.content,
+    source: stripHtmlComments(post.content),
   });
 
   return {
