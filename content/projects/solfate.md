@@ -1,9 +1,8 @@
 ---
-homepage: true
-status: active
+status: autopilot
 title: "Solfate Podcast"
 url: https://solfate.com/podcast
-dateRange: "July 2022 - current"
+dateRange: "July 2022 - Dec 2025"
 date: 2022-07-01
 description: "Interviews with builders and founders in the Solana ecosystem"
 logo: "/media/projects/solfate/solfate.svg"
