@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { parseTemplate } from "zumo";
 
 export function Pagination({
@@ -23,7 +23,7 @@ export function Pagination({
     <section className="pagination-nav">
       {prevPage >= 1 && (
         <Link href={href(prevPage)} className="pagination-button">
-          <ArrowLeftIcon className="h-4 w-4 text-white" />
+          <ArrowLeft className="h-4 w-4 text-white" />
           <span>Prev</span>
         </Link>
       )}
@@ -31,7 +31,7 @@ export function Pagination({
       {nextPage <= totalPages ? (
         <Link href={href(nextPage)} className="pagination-button">
           <span>Next</span>
-          <ArrowRightIcon className="h-4 w-4 text-white" />
+          <ArrowRight className="h-4 w-4 text-white" />
         </Link>
       ) : null}
     </section>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 type ComponentProps = {
   className?: string;
@@ -26,7 +26,7 @@ export function NextPrevSection({
     <section className="next-prev-section">
       {prev && prev?.slug ? (
         <Link href={`${hrefBase}/${prev.slug}`} className="pagination-button prev">
-          <ArrowLeftIcon className="h-4 w-4 text-white" />
+          <ArrowLeft className="h-4 w-4 text-white" />
           <span className="line-clamp-1">{prev?.title || "Previous"}</span>
         </Link>
       ) : (
@@ -36,7 +36,7 @@ export function NextPrevSection({
       {next && next?.slug ? (
         <Link href={`${hrefBase}/${next.slug}`} className="pagination-button next">
           <p className="line-clamp-1">{next?.title || "Next"}</p>
-          <ArrowRightIcon className="h-4 w-4 text-white" />
+          <ArrowRight className="h-4 w-4 text-white" />
         </Link>
       ) : (
         <div></div>

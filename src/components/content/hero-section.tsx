@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { CalendarIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
+import { Calendar, FileText } from "lucide-react";
 import { DateTime } from "luxon";
 import { generateSlug } from "zumo";
 
@@ -45,7 +45,7 @@ export function HeroSection({
         <p className="flexer space-x-6">
           {count && (
             <span className="flexer-spacer">
-              <DocumentTextIcon className="icon-md" />
+              <FileText className="icon-md" />
               <span className="">
                 {parseInt(count).toLocaleString()} {countLabel}
               </span>
@@ -54,7 +54,7 @@ export function HeroSection({
 
           {metadata?.date && (
             <span className="flexer-spacer">
-              <CalendarIcon className="icon-md" />
+              <Calendar className="icon-md" />
               <span className="">{DateTime.fromISO(metadata.date).toRelativeCalendar()}</span>
             </span>
           )}

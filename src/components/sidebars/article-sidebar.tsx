@@ -1,11 +1,5 @@
 // import { SmallCard } from "@/components/cards/small-card";
-import {
-  // HeartIcon,
-  HandThumbUpIcon,
-  ShareIcon,
-  DocumentDuplicateIcon,
-  ChatBubbleBottomCenterTextIcon,
-} from "@heroicons/react/24/outline";
+import { Copy, MessageSquareText, Share2, ThumbsUp } from "lucide-react";
 
 type ComponentProps = {
   className?: string;
@@ -18,7 +12,7 @@ export default function ArticleSidebar({}: ComponentProps) {
       <section className="grid w-full grid-cols-2 gap-6">
         <button className="hover-outline items-center space-y-3 rounded-2xl bg-gray-700 px-4 py-7 text-center">
           <div className="icon-base mx-auto text-white">
-            <HandThumbUpIcon className="mx-auto" />
+            <ThumbsUp className="mx-auto" />
           </div>
           <p className="text-xl font-bold">
             {"32"}
@@ -28,8 +22,7 @@ export default function ArticleSidebar({}: ComponentProps) {
         </button>
         <button className="hover-outline items-center space-y-3 rounded-2xl bg-gray-700 px-4 py-7 text-center">
           <div className="icon-base mx-auto text-white">
-            <ChatBubbleBottomCenterTextIcon className="mx-auto" />
-            {/* <HeartIcon className="mx-auto" /> */}
+            <MessageSquareText className="mx-auto" />
           </div>
           <p className="text-xl font-bold">
             {"7"}
@@ -43,10 +36,10 @@ export default function ArticleSidebar({}: ComponentProps) {
       {/* Share buttons */}
       <section className="flex w-full justify-center space-x-4">
         <button className="text-gray-500 hover:text-white">
-          <ShareIcon className="icon-base mx-auto" />
+          <Share2 className="icon-base mx-auto" />
         </button>
         <button className="text-gray-500 hover:text-white">
-          <DocumentDuplicateIcon className="icon-base mx-auto" />
+          <Copy className="icon-base mx-auto" />
         </button>
       </section>
 

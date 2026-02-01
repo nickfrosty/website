@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
+import { ChevronsRight } from "lucide-react";
 
 type ComponentProps = {
   className?: string;
@@ -28,9 +28,7 @@ export function Breadcrumbs({ className, parents, includeHome = true }: Componen
               {item?.label || item?.title || "Parent"}
             </Link>
 
-            {index < parents.length - 1 && (
-              <ChevronDoubleRightIcon className="icon-xs mx-2 inline-block" />
-            )}
+            {index < parents.length - 1 && <ChevronsRight className="icon-xs mx-2 inline-block" />}
           </span>
         ))}
     </section>

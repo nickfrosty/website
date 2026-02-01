@@ -4,8 +4,9 @@ import Link from "next/link";
 
 import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
 
-import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
 import { Callout } from "@/components/ui";
+
+import { REGEX_CONTENT_DIR_LINK, slugify } from "@@/utils/helpers";
 
 import type { MdxContent } from "@fumadocs/mdx-remote/client";
 import type { MDXComponents } from "mdx/types";

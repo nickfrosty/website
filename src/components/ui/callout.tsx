@@ -1,13 +1,7 @@
 import * as React from "react";
 
 import { cva, type VariantProps } from "class-variance-authority";
-import {
-  BoltIcon,
-  ExclamationTriangleIcon,
-  InformationCircleIcon,
-  SparklesIcon,
-  StarIcon,
-} from "@heroicons/react/24/outline";
+import { Info, type LucideIcon, Sparkles, Star, TriangleAlert, Zap } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -28,7 +22,7 @@ const calloutVariants = cva("relative", {
 });
 
 const calloutIconVariants = cva(
-  "absolute -top-3 -left-5 rounded-full bg-gray-950 p-[10px] [&>svg]:h-6 [&>svg]:w-6",
+  "absolute -top-3 -left-5 rounded-full bg-gray-950 p-[10px] [&>svg]:h-5 [&>svg]:w-5",
   {
     variants: {
       variant: {
@@ -89,13 +83,13 @@ type LegacyCalloutType =
 
 type CalloutVariant = NonNullable<VariantProps<typeof calloutVariants>["variant"]>;
 
-const iconMap: Record<CalloutVariant, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
-  default: InformationCircleIcon,
-  warning: ExclamationTriangleIcon,
-  error: ExclamationTriangleIcon,
-  success: StarIcon,
-  info: BoltIcon,
-  sparkles: SparklesIcon,
+const iconMap: Record<CalloutVariant, LucideIcon> = {
+  default: Info,
+  warning: TriangleAlert,
+  error: TriangleAlert,
+  success: Star,
+  info: Zap,
+  sparkles: Sparkles,
 };
 
 /** Maps legacy type values to canonical variants */

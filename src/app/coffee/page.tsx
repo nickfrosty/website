@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ArrowRight } from "lucide-react";
 
 import AvatarImage from "@/components/avatar-image";
 import { PageViewTracker } from "@/components/content/page-view-tracker";
@@ -89,7 +89,7 @@ export default function Page() {
               className="flexer link-muted shadow-indigo inline-flex space-x-3 text-lg font-medium"
             >
               <span>Buy me a coffee</span>
-              <ArrowRightIcon className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5" />
             </Link>
 
             {/* <p className="py-8">
