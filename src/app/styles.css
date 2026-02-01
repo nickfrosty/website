@@ -1,47 +1,13 @@
 /* Tailwind v4 */
 @import "tailwindcss";
 @import "tw-animate-css";
+
+/* Local imports */
 @import "./theme.css";
+@import "./fumadocs.css";
+
 @custom-variant dark (&:is(.dark *));
 @source "../**/*.{js,jsx,ts,tsx}";
-
-/* Fumadocs imports. */
-@import "fumadocs-ui/css/neutral.css";
-/* @import "fumadocs-ui/css/preset.css"; */
-@source "../../node_modules/fumadocs-ui/dist/**/*.js";
-
-/* Fumadocs code block styling overrides */
-figure[data-rehype-pretty-code-figure],
-.shiki {
-  @apply rounded-lg border-slate-700 text-base;
-}
-
-/* Code block pre padding */
-figure[data-rehype-pretty-code-figure] pre,
-.shiki pre {
-  @apply px-5 py-4;
-}
-
-/* Override fumadocs code block scroll container styles */
-figure[data-rehype-pretty-code-figure] .fd-scroll-container,
-.shiki .fd-scroll-container {
-  @apply py-0 text-base;
-}
-
-/* Code block copy button size fix */
-figure[data-rehype-pretty-code-figure] button,
-.shiki button {
-  @apply p-1;
-}
-figure[data-rehype-pretty-code-figure] button svg,
-.shiki button svg {
-  @apply h-4 w-4;
-}
-
-/* Shiki syntax highlighting - consume CSS variables */
-pre code span {
-  color: var(--shiki-dark);
-}
 
 .flexer .icon {
   @apply inline-block h-4 w-4;

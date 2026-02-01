@@ -1,0 +1,75 @@
+/**
+ * Fumadocs styling overrides
+ *
+ * Custom styles for fumadocs components, code blocks, and syntax highlighting.
+ */
+
+/* Fumadocs imports */
+@import "fumadocs-ui/css/neutral.css";
+/* @import "fumadocs-ui/css/preset.css"; */
+@source "../../node_modules/fumadocs-ui/dist/**/*.js";
+
+/* Code block container styling */
+figure[data-rehype-pretty-code-figure],
+.shiki {
+  @apply rounded-lg border-slate-700 text-base;
+}
+
+/* Code block pre padding */
+figure[data-rehype-pretty-code-figure] pre,
+.shiki pre {
+  @apply px-5 py-4;
+}
+
+/* Override fumadocs code block scroll container styles */
+figure[data-rehype-pretty-code-figure] .fd-scroll-container,
+.shiki .fd-scroll-container {
+  @apply py-0 text-base;
+}
+
+/* Code block copy button styling */
+figure[data-rehype-pretty-code-figure] > div:has(button),
+.shiki > div:has(button) {
+  @apply top-2.5 right-3;
+  /* Hide by default, show on hover */
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Show copy button on hover (desktop) */
+figure[data-rehype-pretty-code-figure]:hover > div:has(button),
+.shiki:hover > div:has(button) {
+  opacity: 1;
+}
+
+/* Touch devices: always show copy button + extra padding for it */
+@media (hover: none) {
+  figure[data-rehype-pretty-code-figure] > div:has(button),
+  .shiki > div:has(button) {
+    opacity: 1;
+  }
+  figure[data-rehype-pretty-code-figure] pre,
+  .shiki pre {
+    @apply pr-14;
+  }
+}
+
+figure[data-rehype-pretty-code-figure] button,
+.shiki button {
+  @apply border p-2;
+}
+figure[data-rehype-pretty-code-figure] button svg,
+.shiki button svg {
+  @apply h-4 w-4;
+}
+
+/* Shiki syntax highlighting - consume CSS variables */
+pre code span {
+  color: var(--shiki-dark);
+}
+
+/* Preserve empty lines in code blocks (spans collapse without content) */
+pre code .line {
+  display: block;
+  min-height: 1lh;
+}
