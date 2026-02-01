@@ -17,8 +17,8 @@ import {
 } from "@solana/web3.js";
 import { z, ZodError } from "zod";
 
+import { db, newsletterSubscriberTransactions } from "@/db";
 import { TREASURY_PUBKEY } from "@/lib/constants";
-import prisma from "@/lib/prisma/client";
 
 export const GET = async (req: Request) => {
   const payload: ActionGetResponse = {
@@ -87,8 +87,9 @@ export const POST = async (req: Request) => {
 
     // store the ref key in the database with the submitted wallet address
     try {
-      const subscriberTransaction = await prisma.newsletterSubscriberTransaction.create({
-        data: {
+      const [subscriberTransaction] = await db
+        .insert(newsletterSubscriberTransactions)
+        .values({
           email,
           solFee: subscribeSolFee,
           wallet: account.toBase58(),
@@ -97,8 +98,8 @@ export const POST = async (req: Request) => {
           status: "PENDING",
           // empty since we will not have this until the transaction is signed by the user
           transactionId: "",
-        },
-      });
+        })
+        .returning();
 
       if (!subscriberTransaction) throw "Unable to create the subscribe record";
     } catch (err) {

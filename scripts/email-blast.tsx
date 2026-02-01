@@ -1,8 +1,19 @@
 import { createId } from "@paralleldrive/cuid2";
-import { NewsletterPost } from "@prisma/client";
 import * as dotenv from "dotenv";
 import { Resend } from "resend";
 
+import { eq } from "drizzle-orm";
+
+import {
+  db,
+  newsletterSubscribers,
+  newsletterPosts,
+  newsletterPostsForSubscribers,
+  newsletterPostLinksForSubscribers,
+  type NewsletterPost,
+  type NewsletterSubscriber,
+  type NewNewsletterPostLinkForSubscriber,
+} from "@/db";
 import {
   NEWSLETTER_EMAIL_ADDRESS,
   NEWSLETTER_FROM,
@@ -11,13 +22,9 @@ import {
 } from "@/lib/constants";
 import { getPostBySlug } from "@@/scripts/utils/content";
 import { compileMDXwithRenderCheck } from "@/lib/mdx";
-import { prisma } from "@/lib/prisma/client";
 import { MASKED_DOMAIN } from "@/lib/views/constants";
 
 import { REGEX_CONTENT_DIR_LINK } from "@@/utils/helpers";
-
-import type { NewsletterSubscriber, Prisma } from "@prisma/client";
-// import { preparePostForSubscriber } from "@/lib/newsletter";
 
 import type { MDXComponents } from "mdx/types";
 
@@ -211,14 +218,11 @@ if (TEST_SEND_ONLY_MODE) {
   process.exit();
 }
 
-let subscribers = await prisma.newsletterSubscriber.findMany({
-  where: {
-    status: "ACTIVE",
-    id: DRAFT_ONLY_MODE ? 1 : undefined,
-  },
-  orderBy: {
-    id: "asc",
-  },
+let subscribers = await db.query.newsletterSubscribers.findMany({
+  where: DRAFT_ONLY_MODE
+    ? eq(newsletterSubscribers.id, 1)
+    : eq(newsletterSubscribers.status, "ACTIVE"),
+  orderBy: (table, { asc }) => [asc(table.id)],
 });
 console.log("subscriber count:", subscribers.length);
 
@@ -261,13 +265,15 @@ if (DRAFT_ONLY_MODE === true) {
 // console.log("STOPPING HERE");
 // process.exit();
 
-const newsletterPost = await prisma.newsletterPost.create({
-  data: {
+const [newsletterPost] = await db
+  .insert(newsletterPosts)
+  .values({
     name: "",
     content: rawPost.content,
     blastStatus: DRAFT_ONLY_MODE ? "DRAFT" : "IDLE",
-  },
-});
+    dateUpdated: new Date(),
+  })
+  .returning();
 
 if (!newsletterPost) {
   console.warn("Failed to create new newsletter post record");
@@ -304,13 +310,13 @@ for (let i = 0; i < subscribers.length; i++) {
     // console.log(links);
     // console.log(htmlString);
 
-    const linksToCreate: Prisma.NewsletterPostLinkForSubscriberCreateManyPostForSubscriberInput[] =
-      [];
+    const linksToCreate: NewNewsletterPostLinkForSubscriber[] = [];
 
     links.forEach((value, key) => {
       linksToCreate.push({
         id: key,
         destination: value,
+        postForSubscriberId: 0, // Will be set after post creation
       });
     });
 
@@ -318,22 +324,27 @@ for (let i = 0; i < subscribers.length; i++) {
     //   console.log("linksToCreate:", linksToCreate);
     // }
 
-    let postForSubscriber = await prisma.newsletterPostForSubscriber.create({
-      data: {
+    // Create post for subscriber
+    let [postForSubscriber] = await db
+      .insert(newsletterPostsForSubscribers)
+      .values({
         postId: newsletterPost.id,
         subscriberId: subscriber.id,
         content: htmlString,
         status: DRAFT_ONLY_MODE ? "DRAFT" : "IDLE",
-        links: {
-          createMany: {
-            data: linksToCreate,
-          },
-        },
-      },
-      //   include: {
-      //     links: true,
-      //   },
-    });
+        dateUpdated: new Date(),
+      })
+      .returning();
+
+    // Create links for the post
+    if (linksToCreate.length > 0) {
+      await db.insert(newsletterPostLinksForSubscribers).values(
+        linksToCreate.map(link => ({
+          ...link,
+          postForSubscriberId: postForSubscriber.id,
+        })),
+      );
+    }
 
     if (!postForSubscriber) {
       throw Error("Unable to create post for subscriber");
@@ -360,17 +371,15 @@ for (let i = 0; i < subscribers.length; i++) {
       html: htmlString,
     });
 
-    await prisma.newsletterPostForSubscriber.update({
-      where: {
-        id: postForSubscriber.id,
-        // note: we only update from idle state to cover the race condition
-        // - the email provider might give a response faster than we update the db
-        status: DRAFT_ONLY_MODE ? "DRAFT" : "IDLE",
-      },
-      data: {
+    // Update status to PENDING after email is sent
+    // note: we only update from idle state to cover the race condition
+    // - the email provider might give a response faster than we update the db
+    await db
+      .update(newsletterPostsForSubscribers)
+      .set({
         status: DRAFT_ONLY_MODE ? "DRAFT" : "PENDING",
-      },
-    });
+      })
+      .where(eq(newsletterPostsForSubscribers.id, postForSubscriber.id));
 
     // ]).then((results) => {
     //   if (results[0].status == "fulfilled") {
@@ -397,22 +406,19 @@ for (let i = 0; i < subscribers.length; i++) {
       // todo: store the status in the db, including the error
       console.log("emailId:", emailResponse?.data?.id);
 
-      // @ts-ignore
-      postForSubscriber = await prisma.newsletterPostForSubscriber.update({
-        where: {
-          id: postForSubscriber.id,
-          // note: we only update from idle state to cover the race condition
-          // - the email provider might give a response faster than we update the db
-          // status: "IDLE",
-        },
-        data: {
+      const [updatedPost] = await db
+        .update(newsletterPostsForSubscribers)
+        .set({
           emailId: emailResponse!.data!.id,
-        },
-      });
+        })
+        .where(eq(newsletterPostsForSubscribers.id, postForSubscriber.id))
+        .returning();
 
-      if (!postForSubscriber || postForSubscriber.emailId !== emailResponse!.data!.id) {
+      if (!updatedPost || updatedPost.emailId !== emailResponse!.data!.id) {
         throw Error(`Unable to store the post's email id: ${emailResponse!.data!.id}`);
       }
+
+      postForSubscriber = updatedPost;
 
       // note: the api key must have permission
       // const email = await resend.emails.get(res.data.id);

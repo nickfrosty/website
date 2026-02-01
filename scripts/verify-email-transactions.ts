@@ -1,9 +1,10 @@
-import { Status } from "@prisma/client";
 import { findReference } from "@solana/actions";
 import { ConfirmedSignatureInfo, Connection, PublicKey } from "@solana/web3.js";
 import * as dotenv from "dotenv";
 
-import { prisma } from "@/lib/prisma/client";
+import { eq } from "drizzle-orm";
+
+import { db, newsletterSubscriberTransactions, newsletterSubscribers } from "@/db";
 
 dotenv.config();
 
@@ -12,15 +13,9 @@ if (!SOLANA_RPC_URL) throw "Unable to find RPC url...awkward...";
 const connection = new Connection(SOLANA_RPC_URL);
 
 // get all the un validated subscribe transactions
-const records = await prisma.newsletterSubscriberTransaction.findMany({
-  where: {
-    status: {
-      equals: "PENDING",
-    },
-  },
-  orderBy: {
-    dateAdded: "asc",
-  },
+const records = await db.query.newsletterSubscriberTransactions.findMany({
+  where: eq(newsletterSubscriberTransactions.status, "PENDING"),
+  orderBy: (table, { asc }) => [asc(table.dateAdded)],
 });
 
 // track the number that were actually updated
@@ -49,7 +44,7 @@ for (let i = 0; i < records.length; i++) {
     continue;
   }
 
-  let newStatus: Status = "PENDING";
+  let newStatus: "PENDING" | "ACTIVE" | "FAILED" = "PENDING";
 
   // ensure the recorded wallet is a signer
   if (
@@ -60,18 +55,21 @@ for (let i = 0; i < records.length; i++) {
     console.log("is signer");
 
     // create the new subscriber record
-    const subscriber = await prisma.newsletterSubscriber.upsert({
-      where: { email: record.email },
-      update: {
-        wallet: record.wallet,
-        status: "ACTIVE",
-      },
-      create: {
+    const [subscriber] = await db
+      .insert(newsletterSubscribers)
+      .values({
         email: record.email,
         wallet: record.wallet,
         status: "ACTIVE",
-      },
-    });
+      })
+      .onConflictDoUpdate({
+        target: newsletterSubscribers.email,
+        set: {
+          wallet: record.wallet,
+          status: "ACTIVE",
+        },
+      })
+      .returning();
 
     if (subscriber) newStatus = "ACTIVE";
     else console.log("Failed to update record:", record.id);
@@ -81,15 +79,14 @@ for (let i = 0; i < records.length; i++) {
   }
 
   console.log("Updating the status...");
-  const updated = await prisma.newsletterSubscriberTransaction.update({
-    where: {
-      id: record.id,
-    },
-    data: {
+  const [updated] = await db
+    .update(newsletterSubscriberTransactions)
+    .set({
       transactionId: confirmedSig.signature,
       status: newStatus,
-    },
-  });
+    })
+    .where(eq(newsletterSubscriberTransactions.id, record.id))
+    .returning();
 
   if (updated) {
     console.log("Updated record:", record.id);

@@ -1,14 +1,9 @@
 "use server";
-import { Prisma } from "@prisma/client";
-import { Resend } from "resend";
 import { z } from "zod";
+import pg from "pg";
 
-import { NEWSLETTER_FROM, NEWSLETTER_REPLY_TO } from "@/lib/constants";
+import { db, newsletterSubscribers } from "@/db";
 import { ActionFormState } from "@/lib/form-types";
-import prisma from "@/lib/prisma/client";
-import { MASKED_DOMAIN_LOCALHOST } from "@/lib/views/constants";
-
-import NewsletterSubscriberVerifyEmail from "@@/emails/newsletter/verify-email";
 
 const schema = z.object({
   email: z.string().trim().email("Invalid email address"),
@@ -30,23 +25,20 @@ export async function subscribeToNewsletter(
   }
 
   try {
-    const dateAdded = new Date().toISOString();
+    const dateAdded = new Date();
 
-    const subscriber = await prisma.newsletterSubscriber.upsert({
-      where: {
-        email: input.data.email,
-      },
-      update: {
-        // todo: we should track somehow if a person was already on the list
-      },
-      create: {
-        dateAdded: dateAdded,
+    const [subscriber] = await db
+      .insert(newsletterSubscribers)
+      .values({
         email: input.data.email,
         status: "ACTIVE",
-        // pending so the user must perform the double opt-in
-        // status: "PENDING",
-      },
-    });
+        dateAdded: dateAdded,
+      })
+      .onConflictDoUpdate({
+        target: newsletterSubscribers.email,
+        set: { updatedAt: new Date() },
+      })
+      .returning();
 
     // console.log("subscriber");
     // console.log(subscriber);
@@ -56,11 +48,11 @@ export async function subscribeToNewsletter(
     if (!subscriber) throw "Unable to add subscriber";
 
     // todo: handle if this email is already on the list
-    // if they are, what should be do?
+    // if they are, what should we do?
     // we return the same generic message to the user so they cannot guess people on the list
-    if (dateAdded == subscriber.dateAdded.toISOString()) {
+    if (dateAdded.getTime() !== subscriber.dateAdded.getTime()) {
       console.warn(`email already on list:`, subscriber.email);
-      // todo: make we send a different email with a "you have resubscribed" type of message?
+      // todo: maybe we send a different email with a "you have resubscribed" type of message?
       return {
         success: true,
       };
@@ -121,19 +113,16 @@ export async function subscribeToNewsletter(
 
     let message = "An unknown error occurred";
 
-    if (err instanceof Prisma.PrismaClientKnownRequestError) {
-      // handle unique key constraint: `email`
-      if (err.code === "P2002") {
-        /**
-         * todo: we should handle the case of a person already existed in the database, but is in a non active state
-         *
-         */
+    // Handle PostgreSQL unique constraint violation (code 23505)
+    if (err instanceof pg.DatabaseError && err.code === "23505") {
+      /**
+       * todo: we should handle the case of a person already existed in the database, but is in a non active state
+       */
 
-        // return a success to not allow people to enumerate the email list
-        return {
-          success: true,
-        };
-      }
+      // return a success to not allow people to enumerate the email list
+      return {
+        success: true,
+      };
     }
 
     return {

@@ -16,8 +16,6 @@
     "incremental": false,
     "baseUrl": ".",
     "paths": {
-      "@drizzle": ["./drizzle"],
-      "@drizzle/*": ["./drizzle/*"],
       "@/*": ["./src/*"],
       "@@/*": ["./*"]
     },

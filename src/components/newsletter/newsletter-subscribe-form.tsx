@@ -8,6 +8,7 @@ import clsx from "clsx";
 
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { ActionFormState } from "@/lib/form-types";
+import { Button, Input } from "@/components/ui";
 
 export const NewsletterSubscribeForm = ({
   title = "Subscribe for (sometimes) weekly emails",
@@ -54,7 +55,7 @@ const NewsletterSubscribeFormInner = ({ state }: { state: ActionFormState<any> }
   return (
     <>
       <section className="grid w-full items-center gap-4 md:flex">
-        <input
+        <Input
           type="email"
           name="email"
           required={true}
@@ -63,9 +64,9 @@ const NewsletterSubscribeFormInner = ({ state }: { state: ActionFormState<any> }
           disabled={pending}
           aria-disabled={pending}
         />
-        <button type="submit" disabled={pending} aria-disabled={pending} className="flex-shrink-0">
+        <Button type="submit" disabled={pending} aria-disabled={pending} className="flex-shrink-0">
           Subscribe
-        </button>
+        </Button>
       </section>
 
       {state.errors || state.message ? (
