@@ -4,16 +4,21 @@ import { notFound } from "next/navigation";
 
 import { CardGrid } from "@/components/cards/card-grid";
 import { PageViewTracker } from "@/components/content/page-view-tracker";
-import { getAllArticles } from "@/lib/content";
+import { getAllArticles, filterDrafts, getPaginatedContent, toCardFormat } from "@/lib/content";
 
 import { computePagination } from "@@/utils/helpers";
 
-// construct the seo meta data for the page
 export const metadata: Metadata = {
   title: "Articles, Tutorials, and Guides",
   description:
     `Collection of "how-to" style tutorials and technical writings. ` +
     `Mostly centered around coding, devops, and content creators.`,
+};
+
+const paginationConfig = {
+  baseHref: "/articles",
+  template: "/articles/browse/{{id}}",
+  perPage: 9,
 };
 
 type PageProps = {
@@ -24,24 +29,14 @@ type PageProps = {
 
 export async function generateStaticParams() {
   const allPosts = await getAllArticles();
+  const posts = filterDrafts(allPosts);
 
-  let posts = allPosts
-    .filter(post =>
-      process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true,
-    )
-    // sort newest to oldest
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
-
-  // construct the `pagination` data object
   const pagination = computePagination(
-    posts.length, // record length
-    1, // current page
-    "/articles", // baseHref
-    "/articles/browse/{{id}}", // template
-    9, // perPage
+    posts.length,
+    1,
+    paginationConfig.baseHref,
+    paginationConfig.template,
+    paginationConfig.perPage,
   );
 
   return new Array(pagination.totalPages).fill(null).map((_, page) => ({
@@ -54,38 +49,13 @@ export default async function Page({ params }: PageProps) {
   const pageNum = page?.[0] || "1";
 
   const allPosts = await getAllArticles();
-
-  // get a listing of regular posts (hiding drafts)
-  let posts = allPosts
-    .filter(post =>
-      process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true,
-    )
-    // sort newest to oldest
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
-
-  // construct the `pagination` data object
-  const pagination = computePagination(
-    posts.length, // record length
-    pageNum, // current page
-    "/articles", // baseHref
-    "/articles/browse/{{id}}", // template
-    9, // perPage
-  );
-
-  // chunk out the posts for the current page
-  posts = posts.slice(pagination.start, pagination.end);
+  const { posts, pagination } = getPaginatedContent(allPosts, pageNum, paginationConfig, {
+    includeFeatured: false,
+  });
 
   if (!posts.length) return notFound();
 
-  // Transform posts for CardGrid (expects old format)
-  const transformedPosts = posts.map(p => ({
-    ...p.frontmatter,
-    slug: p.slug,
-    href: p.href,
-  }));
+  const transformedPosts = toCardFormat(posts);
 
   return (
     <PageViewTracker>

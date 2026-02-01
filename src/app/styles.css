@@ -1,0 +1,359 @@
+/* Tailwind v4 */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Local imports */
+@import "./theme.css";
+@import "./fumadocs.css";
+
+@custom-variant dark (&:is(.dark *));
+@source "../**/*.{js,jsx,ts,tsx}";
+
+.flexer .icon {
+  @apply inline-block h-4 w-4;
+}
+
+.flexer-spacer {
+  @apply flex items-center;
+  @apply space-x-2;
+}
+
+.focus-area {
+  @apply md:mx-auto md:max-w-6xl;
+  @apply w-full items-center text-center md:text-left;
+  @apply grid justify-between gap-8 md:flex;
+  @apply mx-auto space-y-10 md:flex md:space-y-0 md:space-x-8;
+  @apply px-4 py-8;
+}
+.focus-image {
+  @apply block px-10 md:max-h-76 md:px-0;
+}
+
+.social-icon {
+  @apply text-white;
+  @apply hover:text-hot-pink;
+}
+
+.reverse-link {
+  @apply cursor-pointer font-semibold underline;
+  @apply hover:shadow-indigo hover:text-yellow-400;
+}
+
+.link,
+.summary a,
+article a {
+  @apply shadow-indigo hover:shadow-yellow text-yellow-400 hover:text-indigo-400;
+}
+
+.link-active {
+  @apply shadow-indigo hover:shadow-yellow text-yellow-400 hover:text-indigo-400;
+  @apply hover:!shadow-yellow hover:!text-indigo-500;
+  @apply !shadow-indigo !text-yellow-400;
+}
+.link-passive {
+  @apply shadow-indigo hover:shadow-yellow text-yellow-400 hover:text-indigo-400;
+  @apply !text-indigo-500 hover:!text-yellow-400;
+}
+.link-muted {
+  @apply shadow-indigo hover:shadow-indigo hover:text-yellow-400;
+}
+h1 a {
+  @apply bg-gradient-to-r from-yellow-400 to-rose-600 bg-clip-text text-transparent hover:text-yellow-400;
+  @apply hover:!shadow-indigo-lg shadow-none;
+}
+
+.minor {
+  @apply leading-tight text-gray-400;
+}
+
+.avatar {
+  @apply rounded-full;
+  @apply block flex-shrink-0 overflow-hidden bg-gray-400;
+}
+.avatar img {
+  @apply w-full;
+}
+.avatar-sm {
+  @apply h-16 w-16;
+}
+.avatar-base {
+  @apply h-24 w-24;
+}
+.avatar-md {
+  @apply h-16 w-16 md:h-32 md:w-32;
+}
+.avatar-lg {
+  @apply h-22 w-22 md:h-48 md:w-48;
+}
+.avatar-xl {
+  @apply md:h-80 md:w-80;
+  @apply w-full;
+  /* @apply w-22 h-22; */
+}
+
+.default-view-small {
+  @apply block lg:hidden;
+}
+.default-view-big {
+  @apply hidden lg:block;
+}
+
+.icon {
+  @apply h-6 w-6;
+  /* @apply text-gray-100 hover:text-gray-100; */
+  @apply text-gray-800 hover:text-gray-800;
+}
+.icon-xs {
+  @apply h-3 w-3;
+}
+.icon-sm {
+  @apply h-5 w-5;
+}
+.icon-base,
+.icon-md {
+  @apply h-6 w-6;
+}
+.icon-lg {
+  @apply h-9 w-9;
+}
+
+.card {
+  @apply block w-full overflow-hidden rounded-xl;
+  @apply border border-gray-900 shadow-lg;
+}
+
+.card-error {
+  @apply border-red-600;
+}
+
+.hover-outline {
+  @apply transition;
+  @apply hover:outline hover:outline-2 hover:outline-offset-[5px] hover:outline-yellow-400;
+  @apply hover:border-indigo-400;
+}
+.featured-outline {
+  @apply border-2 border-yellow-400;
+}
+.double-wide-cards {
+  @apply grid grid-cols-1 gap-12 lg:grid-cols-2;
+}
+.side-heavy-cards {
+  @apply grid grid-cols-1 gap-5 lg:grid-cols-5;
+}
+.card-listing {
+  @apply grid grid-cols-1 gap-6;
+  @apply sm:grid-cols-2 md:grid-cols-3;
+}
+
+.tag {
+  @apply mr-3 cursor-pointer space-x-[3px] rounded-md px-2 py-1;
+  @apply border border-gray-900;
+  @apply bg-slate-900 text-gray-300;
+  @apply hover:border-gray-400 hover:text-white;
+}
+.inline-code {
+  @apply mr-2 ml-1 rounded-lg px-3 py-1;
+  @apply font-mono text-base tracking-wide;
+  @apply !border !border-gray-600 !bg-slate-900 !text-white;
+}
+
+.box {
+  @apply rounded-2xl p-8 sm:p-6 xl:p-8;
+  @apply border-2 border-gray-700;
+}
+.box .inner-box {
+  @apply space-y-4 text-center text-lg;
+}
+
+.label {
+  @apply mb-2 block font-semibold tracking-wide;
+}
+
+/* ============================================
+   Article content styles (from article.module.css)
+   ============================================ */
+.article-content {
+  @apply !space-y-5 break-words;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-none font-medium;
+    @apply tracking-tight no-underline;
+  }
+
+  em > strong,
+  strong > em {
+    @apply underline;
+  }
+
+  h1,
+  h1 a {
+    @apply text-4xl no-underline;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  p {
+    @apply text-lg leading-relaxed;
+  }
+  > p:first-of-type {
+    @apply text-xl md:text-2xl;
+  }
+
+  img {
+    @apply mx-auto my-10;
+    @apply overflow-hidden rounded-lg;
+    @apply border border-gray-900 shadow-lg;
+  }
+
+  ul:not(.list-none) {
+    @apply ml-10 list-disc pl-0 text-lg;
+    li {
+      @apply mb-1;
+    }
+  }
+
+  ol {
+    @apply mb-8 ml-10 list-decimal pl-0 text-lg;
+    li {
+      @apply mb-1;
+    }
+  }
+
+  /* triple ` code snippets get wrapped in a pre tag */
+  :not(pre) > code {
+    @apply mx-[1px] px-[5px] py-[4px];
+    @apply rounded-md border border-gray-800 bg-slate-800 !text-sm text-slate-100;
+  }
+
+  table {
+    @apply mb-8 w-full border-collapse border-2 text-left text-sm;
+    th {
+      @apply border-t-4 border-b p-4 text-xl font-bold;
+    }
+
+    td {
+      @apply border-b p-4;
+    }
+
+    p {
+      @apply leading-normal;
+    }
+  }
+}
+
+.article-content-section > *:first-child {
+  @apply mt-0 pt-0;
+}
+
+/* ============================================
+   Pagination styles (from pagination.module.css)
+   ============================================ */
+.pagination-button {
+  @apply flex w-fit items-center gap-3 rounded-md border px-5 py-2;
+  @apply border-indigo-800 bg-indigo-950 text-white;
+  @apply hover:bg-indigo-800;
+}
+.pagination-button.prev {
+  @apply place-self-start;
+}
+.pagination-button.next {
+  @apply justify-end place-self-end self-end;
+}
+.pagination-button svg {
+  @apply h-4 w-4 text-white;
+}
+
+.pagination-nav {
+  @apply mx-auto flex w-full items-center justify-center space-x-5 text-center;
+}
+
+.next-prev-section {
+  @apply grid w-full gap-8 md:grid-cols-2;
+}
+
+/* ============================================
+   Project card styles (from project.module.css)
+   ============================================ */
+.project-card {
+  @apply block w-full;
+  @apply relative top-0 mb-5 transition-all duration-75 ease-in-out lg:mb-8;
+  @apply rounded-xl border lg:text-left;
+  @apply border-white md:hover:border-indigo-200;
+  @apply border-gray-900 md:hover:border-indigo-400;
+  @apply hover:!text-white;
+  @apply space-y-2 border-0 md:space-y-4;
+  @apply md:border md:p-6 md:shadow-md;
+}
+
+.project-card-h2 {
+  @apply line-clamp-1 text-2xl leading-tight font-bold;
+}
+
+.project-card-inner {
+  @apply flex items-center gap-4;
+}
+
+.project-card-description {
+  /* empty - placeholder for future use */
+}
+
+.project-card-meta {
+  @apply flex-grow justify-between;
+  @apply w-full;
+}
+
+.project-card-link {
+  @apply text-2xl font-bold;
+}
+
+.project-card-icon {
+  @apply h-12 w-12 shrink-0 overflow-hidden rounded;
+  @apply aspect-square object-contain;
+}
+
+.project-card-minor,
+.project-card-date {
+  @apply block text-gray-500 md:text-sm;
+}
+
+.project-card-floater {
+  @apply absolute top-0 right-0 mt-4 mr-4;
+}
+
+/* Project status pills */
+.project-status {
+  @apply place-self-center px-3 py-1 shadow-lg;
+  @apply rounded-md font-mono text-xs font-medium;
+}
+.project-status-init {
+  @apply bg-purple-200 text-gray-900;
+}
+.project-status-active {
+  @apply bg-green-600 text-white;
+}
+.project-status-autopilot {
+  @apply bg-indigo-600 text-white;
+}
+.project-status-opensource {
+  @apply bg-yellow-400 text-black;
+}
+.project-status-backburner {
+  @apply bg-slate-700 text-white;
+}
+.project-status-graveyard,
+.project-status-sold {
+  @apply bg-red-500 text-white;
+}
+
+/* Utilities are included via @import "tailwindcss" above */

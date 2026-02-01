@@ -7,10 +7,11 @@ import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
+import { Button, Input } from "@/components/ui";
 import { ActionFormState } from "@/lib/form-types";
 
 export const NewsletterSubscribeForm = ({
-  title = "Subscribe for (sometimes) weekly emails",
+  title = "Get my (sometimes) weekly emails",
   className,
 }: {
   title?: string;
@@ -39,7 +40,11 @@ export const NewsletterSubscribeForm = ({
         <>
           <h4 className="!mt-0 text-xl">{title}</h4>
 
-          <p>Devlog and assorted tech things. ~7min read.</p>
+          <p>
+            Shipping products, creating startups, and sharing it all.
+            <br />
+            Building in public. ~5min read.
+          </p>
 
           <NewsletterSubscribeFormInner state={state} />
         </>
@@ -54,7 +59,7 @@ const NewsletterSubscribeFormInner = ({ state }: { state: ActionFormState<any> }
   return (
     <>
       <section className="grid w-full items-center gap-4 md:flex">
-        <input
+        <Input
           type="email"
           name="email"
           required={true}
@@ -63,9 +68,9 @@ const NewsletterSubscribeFormInner = ({ state }: { state: ActionFormState<any> }
           disabled={pending}
           aria-disabled={pending}
         />
-        <button type="submit" disabled={pending} aria-disabled={pending} className="flex-shrink-0">
+        <Button type="submit" disabled={pending} aria-disabled={pending} className="flex-shrink-0">
           Subscribe
-        </button>
+        </Button>
       </section>
 
       {state.errors || state.message ? (

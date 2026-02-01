@@ -3,7 +3,6 @@ import Link from "next/link";
 import clsx from "clsx";
 
 import { type ProjectFrontmatter } from "@/lib/content";
-import styles from "@/styles/project.module.css";
 
 type ProjectData = ProjectFrontmatter & {
   href: string;
@@ -20,12 +19,12 @@ export default function ProjectCard({ project, showDateRange = true }: Component
     <Link
       href={project.href}
       target={project.href.startsWith("http") ? "_blank" : "_self"}
-      className={`${styles.card} hover-outline`}
+      className="project-card hover-outline"
     >
-      <span className={styles.inner}>
+      <span className="project-card-inner">
         {project?.logo && (
           <img
-            className={styles.icon}
+            className="project-card-icon"
             src={project.logo}
             alt={project.title}
             width={96}
@@ -33,20 +32,20 @@ export default function ProjectCard({ project, showDateRange = true }: Component
           />
         )}
 
-        <span className={styles.meta}>
+        <span className="project-card-meta">
           <span className="block items-center space-y-1">
-            <h3 className={styles.link}>{project?.title}</h3>
+            <h3 className="project-card-link">{project?.title}</h3>
 
             <span className="flexer w-full justify-between">
               {showDateRange && project.dateRange && (
-                <span className={styles.date}>{project.dateRange}</span>
+                <span className="project-card-date">{project.dateRange}</span>
               )}
 
               <span
                 className={clsx(
                   "block md:hidden",
-                  styles.status,
-                  styles[`status-${project?.status}`],
+                  "project-status",
+                  `project-status-${project?.status}`,
                 )}
               >
                 {project?.status}
@@ -57,9 +56,9 @@ export default function ProjectCard({ project, showDateRange = true }: Component
           <span
             className={clsx(
               "hidden md:block",
-              styles.floater,
-              styles.status,
-              styles[`status-${project?.status}`],
+              "project-card-floater",
+              "project-status",
+              `project-status-${project?.status}`,
             )}
           >
             {project?.status}
@@ -67,7 +66,7 @@ export default function ProjectCard({ project, showDateRange = true }: Component
         </span>
       </span>
 
-      {project?.description && <p className={styles.description}>{project.description}</p>}
+      {project?.description && <p className="project-card-description">{project.description}</p>}
     </Link>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import { Geist } from "next/font/google";
 
-import "./globals.css";
+import "./styles.css";
 
 import AppFooter from "@/components/core/app-footer";
 import AppHeader from "@/components/core/app-header";
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${fontFamily.className} overflow-x-clip`}>
         <FathomAnalytics />
 

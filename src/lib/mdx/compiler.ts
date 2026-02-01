@@ -1,7 +1,4 @@
 import { createCompiler } from "@fumadocs/mdx-remote";
-import codeTheme from "shiki/themes/github-dark-dimmed.mjs";
-
-import { attachMetadata, parseMetadata } from "@/components/mdx/rehypeMetadata";
 
 /**
  * MDX compiler instance for the entire application.
@@ -9,14 +6,16 @@ import { attachMetadata, parseMetadata } from "@/components/mdx/rehypeMetadata";
 export const mdxCompiler = createCompiler({
   preset: "fumadocs",
   rehypeCodeOptions: {
-    theme: codeTheme,
+    themes: {
+      dark: "github-dark-dimmed",
+      light: "github-dark-dimmed",
+    },
   },
   // Custom rehype plugins for code block metadata (copy button, etc.)
-  rehypePlugins: defaults => [
-    ...defaults,
-    [parseMetadata, { defaultShowCopyCode: true }],
-    attachMetadata,
-  ],
+  // rehypePlugins: defaults => [
+  //   ...defaults,
+  //   // Custom plugins here
+  // ],
   // Disables static imports and ignores filesystem errors for serverless.
   // See: https://fumadocs.dev/docs/headless/mdx/remark-image
   remarkImageOptions: {
@@ -24,3 +23,15 @@ export const mdxCompiler = createCompiler({
     onError: "ignore",
   },
 });
+
+/**
+ * Strips HTML comments from markdown content.
+ * MDX uses JSX parsing which doesn't support HTML-style comments (`<!-- -->`).
+ *
+ * This enables using HTML comments in markdown for:
+ * - `<!-- prettier-ignore -->` to prevent Prettier from formatting code blocks
+ * - `<!-- TODO: notes -->` for author notes that won't render
+ */
+export function stripHtmlComments(content: string = ""): string {
+  return content.trim().replace(/<!--[\s\S]*?-->/g, "");
+}

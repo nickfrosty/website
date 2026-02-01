@@ -1,7 +1,7 @@
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import { eq, sql } from "drizzle-orm";
 
+import { db, newsletterPostLinksForSubscribers } from "@/db";
 import SITE from "@/lib/config";
-import prisma from "@/lib/prisma/client";
 import { ParsedRequestData } from "@/lib/views/middleware";
 
 import { MASKED_NEWSLETTER_PATH } from "./constants";
@@ -27,39 +27,33 @@ export async function getMaskedNewsletterRedirect(
     const linkId = parsed.path.replace(`/${parsed.key}`, "--").replace(/^--\/?/i, "");
 
     /**
-     * since we want to also record a visit, and prisma will return the record when updating
+     * since we want to also record a visit, and drizzle will return the record when updating
      * we can simply update and catch an error if it did not exist
      * (1 less database query, yay!)
      */
-    const newsletterLink = await prisma.newsletterPostLinkForSubscriber.update({
-      where: {
-        id: linkId,
-      },
-      data: {
+    const [newsletterLink] = await db
+      .update(newsletterPostLinksForSubscribers)
+      .set({
         clickCount: incrementViewCounter
-          ? {
-              increment: 1,
-            }
+          ? sql`${newsletterPostLinksForSubscribers.clickCount} + 1`
           : undefined,
         lastOpened: incrementViewCounter ? new Date() : undefined,
-      },
-    });
+      })
+      .where(eq(newsletterPostLinksForSubscribers.id, linkId))
+      .returning();
 
-    // we should never trigger this error manually (since prisma will throw first)
-    if (!newsletterLink) throw PrismaClientKnownRequestError;
-
-    if (newsletterLink.destination.startsWith("/")) {
-      newsletterLink.destination = new URL(newsletterLink.destination, SITE.url).toString();
+    if (!newsletterLink) {
+      // Link not found, redirect to newsletter page
+      return { url: `${SITE.url}${MASKED_NEWSLETTER_PATH}` };
     }
 
-    return { url: newsletterLink.destination };
+    let destination = newsletterLink.destination;
+    if (destination.startsWith("/")) {
+      destination = new URL(destination, SITE.url).toString();
+    }
+
+    return { url: destination };
   } catch (err) {
-    if (err instanceof PrismaClientKnownRequestError) {
-      // todo: we should likely create some sort of "link not found" page
-      // that is specific to the newsletter post maybe?
-      // return new Response("not found");
-    }
-
     console.warn("Error::");
     console.warn(err);
 

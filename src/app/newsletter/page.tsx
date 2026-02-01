@@ -7,33 +7,21 @@ import { displayDate } from "zumo";
 import AvatarImage from "@/components/avatar-image";
 import { PageViewTracker } from "@/components/content/page-view-tracker";
 import { NewsletterSubscribeForm } from "@/components/newsletter/newsletter-subscribe-form";
-import { getAllBlogs } from "@/lib/content";
+import { getAllBlogs, filterDrafts, sortByDate, filterByCategory } from "@/lib/content";
 
-// construct the seo meta data for the page
 export const metadata: Metadata = {
   alternates: {
     canonical: "/newsletter",
   },
   title: `Newsletter`,
   description:
-    "Various personal thoughts and anecdotes from over the years, including sharing " +
-    "my experiences of building in public and things I find interesting.",
+    "Shipping products, building startups, and sharing it all in public. " +
+    "Tech insights and real lessons from the journey of creating software and businesses.",
 };
 
 export default async function Page() {
   const allPosts = await getAllBlogs();
-
-  // get a listing of regular posts (hiding drafts)
-  const posts = allPosts
-    .filter(
-      post =>
-        (process?.env?.NODE_ENV == "development" ? true : post.frontmatter.draft !== true) &&
-        post.frontmatter.category == "newsletter",
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date ?? "").getTime() - new Date(a.frontmatter.date ?? "").getTime(),
-    );
+  const posts = sortByDate(filterByCategory(filterDrafts(allPosts), "newsletter"));
 
   return (
     <PageViewTracker>
@@ -69,7 +57,7 @@ export default async function Page() {
               </h1>
 
               <p className="text-center text-lg text-gray-400 md:text-left">
-                Building in public, sharing as I go.
+                Dev logs, building in public, and tech things. ~5min read.
               </p>
             </div>
           </div>

@@ -6,7 +6,6 @@ import { ArticleMeta } from "@/components/content/article-meta";
 import { Breadcrumbs } from "@/components/content/breadcrumbs";
 import { NextPrevSection } from "@/components/content/next-prev-section";
 import { RenderMDX } from "@/components/mdx";
-import styles from "@/styles/article.module.css";
 
 import type { MdxContent } from "@fumadocs/mdx-remote/client";
 
@@ -69,7 +68,7 @@ export default function ProseLayout({
           tagHrefTemplate={config.tagHrefTemplate}
         />
 
-        <article className={styles.article}>
+        <article className="article-content">
           <RenderMDX body={post.body} />
         </article>
       </main>

@@ -9,7 +9,6 @@ import { PageViewTracker } from "@/components/content/page-view-tracker";
 import { RenderMDX } from "@/components/mdx";
 import { NewsletterSubscribeForm } from "@/components/newsletter/newsletter-subscribe-form";
 import { getAllBlogSlugs, getBlogBySlug, getBlogWithMDX } from "@/lib/content";
-import styles from "@/styles/article.module.css";
 
 import zumoConfig from "@@/zumo.config";
 
@@ -76,7 +75,7 @@ export default async function Page({ params }: PagePropsWithSlug) {
           tagHrefTemplate={config.tagHrefTemplate}
         />
 
-        <article className={styles.article}>
+        <article className="article-content">
           <RenderMDX body={post.body} />
         </article>
 

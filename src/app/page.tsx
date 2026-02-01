@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ArrowRight } from "lucide-react";
 
 import AvatarImage from "@/components/avatar-image";
 import { PageViewTracker } from "@/components/content/page-view-tracker";
@@ -74,10 +74,7 @@ export default async function Page() {
             posts.
           </p>
 
-          <NewsletterSubscribeForm
-            className="col-span-full md:mt-10 xl:mt-14"
-            title="Subscribe to my newsletter?"
-          />
+          <NewsletterSubscribeForm className="col-span-full md:mt-10 xl:mt-14" />
         </section>
 
         <section className="grid gap-8 xl:gap-12">
@@ -105,7 +102,7 @@ export default async function Page() {
                 className="flexer link-muted shadow-indigo inline-flex w-fit space-x-3 text-lg font-medium"
               >
                 <span>View more projects</span>
-                <ArrowRightIcon className="h-5 w-5" />
+                <ArrowRight className="h-5 w-5" />
               </Link>
             </div>
           )}

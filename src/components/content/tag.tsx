@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { HashtagIcon } from "@heroicons/react/24/solid";
+import { Hash } from "lucide-react";
 import { parseTemplate, generateSlug } from "zumo";
 
 type ComponentProps = {
@@ -31,7 +31,7 @@ export function Tag({
 
   return (
     <Link href={href} className={`tag flexer w-min whitespace-nowrap ${className}`}>
-      {icon && <HashtagIcon className="mx-auto h-4 w-4" />}
+      {icon && <Hash className="mx-auto h-4 w-4" />}
       <span className="">{tag}</span>
     </Link>
   );

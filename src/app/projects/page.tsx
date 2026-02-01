@@ -18,12 +18,22 @@ export default async function Page() {
   const allPosts = await getAllProjects();
 
   // filter for only non `active` projects from the listing
-  const projects = allPosts.filter(item => item.frontmatter.status != "active");
+  const projects = allPosts
+    .filter(item => item.frontmatter.status != "active")
+    .sort((a, b) => {
+      const dateA = a.frontmatter.date ? new Date(a.frontmatter.date).getTime() : 0;
+      const dateB = b.frontmatter.date ? new Date(b.frontmatter.date).getTime() : 0;
+      return dateB - dateA; // newest first
+    });
 
   // extract the `active` projects
-  const featured = allPosts.filter(item => item.frontmatter.status == "active");
-
-  // todo: sort the projects by their `sortDate`
+  const featured = allPosts
+    .filter(item => item.frontmatter.status == "active")
+    .sort((a, b) => {
+      const dateA = a.frontmatter.date ? new Date(a.frontmatter.date).getTime() : 0;
+      const dateB = b.frontmatter.date ? new Date(b.frontmatter.date).getTime() : 0;
+      return dateB - dateA; // newest first
+    });
 
   return (
     <PageViewTracker>
