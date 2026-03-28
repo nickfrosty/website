@@ -1,6 +1,6 @@
 # Nick Frostbutter's Personal Website
 
-My personal website.
+My personal website. 🐾
 
 Home of my various projects, technical writings, and personal blogging.
 
