@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { parseTemplate } from "zumo";
+import { parseTemplate } from "@/lib/formatting";
 
 export function Pagination({
   page = 1,

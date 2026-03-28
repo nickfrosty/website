@@ -10,11 +10,11 @@ import { RenderMDX } from "@/components/mdx";
 import { NewsletterSubscribeForm } from "@/components/newsletter/newsletter-subscribe-form";
 import { getAllBlogSlugs, getBlogBySlug, getBlogWithMDX } from "@/lib/content";
 
-import zumoConfig from "@@/zumo.config";
+import siteConfig from "@/lib/site-config";
 
 import { metadata as layoutMetadata } from "./layout";
 
-const config = zumoConfig.content.blog;
+const config = siteConfig.content.blog;
 
 export function generateStaticParams() {
   const slugs = getAllBlogSlugs();

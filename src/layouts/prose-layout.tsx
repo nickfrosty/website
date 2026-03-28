@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { parseTemplate } from "zumo";
+import { parseTemplate } from "@/lib/formatting";
 
 import { ArticleMeta } from "@/components/content/article-meta";
 import { Breadcrumbs } from "@/components/content/breadcrumbs";

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
 
-import { computePagination, parseTemplate } from "zumo";
+import { computePagination, parseTemplate } from "@/lib/formatting";
 
 import { CardGrid } from "@/components/cards/card-grid";
 import { HeroSection } from "@/components/content/hero-section";

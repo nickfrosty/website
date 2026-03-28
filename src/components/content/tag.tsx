@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Hash } from "lucide-react";
-import { parseTemplate, generateSlug } from "zumo";
+import { parseTemplate, generateSlug } from "@/lib/formatting";
 
 type ComponentProps = {
   className?: string;

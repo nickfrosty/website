@@ -11,10 +11,9 @@ import {
   getAllProjects,
 } from "@/lib/content";
 
-// load the config/constants file
-import zumoConfig from "@@/zumo.config";
+import siteConfig from "@/lib/site-config";
 
-const config = zumoConfig.content.projects;
+const config = siteConfig.content.projects;
 
 const breadcrumbParents: SimpleLinkItem = {
   href: "/projects",
