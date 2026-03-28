@@ -12,12 +12,11 @@ import {
   getAllArticles,
 } from "@/lib/content";
 
-// load the config/constants file
-import zumoConfig from "@@/zumo.config";
+import siteConfig from "@/lib/site-config";
 
 import { metadata as layoutMetadata } from "./layout";
 
-const config = zumoConfig.content.articles;
+const config = siteConfig.content.articles;
 
 export function generateStaticParams() {
   const slugs = getAllArticleSlugs();

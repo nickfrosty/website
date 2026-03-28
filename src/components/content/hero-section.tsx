@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Calendar, FileText } from "lucide-react";
 import { DateTime } from "luxon";
-import { generateSlug } from "zumo";
+import { generateSlug } from "@/lib/formatting";
 
 import { SmallCard } from "@/components/cards/small-card";
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { displayDate } from "zumo";
+import { displayDate } from "@/lib/formatting";
 
 import AvatarImage from "../avatar-image";
 import { FloatLabel } from "./float-label";

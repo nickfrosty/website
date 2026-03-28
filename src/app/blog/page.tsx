@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import { displayDate } from "zumo";
+import { displayDate } from "@/lib/formatting";
 
 import { PageViewTracker } from "@/components/content/page-view-tracker";
 import { getAllBlogs, filterDrafts, sortByDate } from "@/lib/content";
