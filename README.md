@@ -10,7 +10,6 @@ The current home for my personal site is [nick.af](https://nick.af), but it has 
 years. This one is hands down my favorite domain ever, and I plan to keep it forever 😁 🥰
 
 - [@nickfrosty on Twitter](https://twitter.com/nickfrosty)
-- [@nickfrosty on IndieHackers](https://indiehackers.com/nickfrosty)
 
 - [@nickfrosty on GitHub](https://github.com/nickfrosty)
 - [@nickfrosty on NPM](https://npmjs.com/~nickfrosty)
