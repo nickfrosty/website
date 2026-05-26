@@ -6,6 +6,19 @@ const nextConfig = {
   reactStrictMode: true,
   webpack: config => {
     config.resolve.fallback = { fs: false, path: false };
+    // Externalize sharp to prevent webpack from bundling it
+    if (isServer) {
+      config.externals = config.externals || [];
+      config.externals.push("sharp");
+    }
+
+    // Inject __DEV__ as a compile-time constant (like React Native)
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __DEV__: process.env.NODE_ENV === "development",
+      }),
+    );
+
     return config;
   },
   images: {

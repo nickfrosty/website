@@ -12,8 +12,9 @@ export const metadata: Metadata = {
   },
   title: "What I'm working on now",
   description:
-    "Here are some high level snapshots of what I am working on now. " +
-    "From the various side projects, official work projects, and even podcasting.",
+    "A snapshot of what I'm working on right now — primarily building Decal, " +
+    "my Solana-based stablecoin payments startup for local merchants. " +
+    "But also still hacking on side projects.",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

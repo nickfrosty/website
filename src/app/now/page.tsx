@@ -6,145 +6,58 @@ import NowDetailsItem from "@/components/now-details-item";
 export default function Page() {
   return (
     <PageViewTracker>
-      <NowDetailsItem id="solana" href="#solana" title="Solana Foundation (DevRel)">
+      <NowDetailsItem id="decal" href="#decal" title="Decal">
         <p>
-          In March 2023, I started{" "}
-          <a
-            href="https://twitter.com/nickfrosty/status/1630207372479045637"
-            target="_blank"
-            className="link"
-            rel="noreferrer"
-          >
-            full time
-          </a>{" "}
-          at the Solana Foundation, joining the Developer Relations team. Where I am focused on
-          improving the official{" "}
-          <a href="https://solana.com/docs" className="link" target="_blank" rel="noreferrer">
-            Solana blockchain&apos;s documentation
-          </a>
-          . From writing new articles and content, to reorganizing the content itself. And yes, even
-          the janitorial tasks like updating npm packages.
-        </p>
-
-        <p>
-          PS: Here you can find the list of all{" "}
-          <Link
-            className="link"
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/solana-labs/solana/commits?author=nickfrosty"
-          >
-            my merged PRs
-          </Link>{" "}
-          into the Solana monorepo on github.
-        </p>
-
-        <p>
-          I am also focused on building out the{" "}
-          <Link
-            className="link"
-            target="_blank"
-            rel="noreferrer"
-            href={"https://solana.com/developers"}
-          >
-            Solana Developers Hub
+          My primary focus these days is{" "}
+          <Link href="https://usedecal.com" target="_blank" rel="noreferrer" className="link">
+            Decal
           </Link>
-          , a one stop shop for anyone to learn how to build on the Solana blockchain.
+          , my own startup! Decal is a Solana-based payments and loyalty platform for local
+          merchants &mdash; replacing legacy credit card processing with stablecoin rails. That
+          means instant settlement, fees closer to 1% (vs. the 2.5&ndash;3.5% merchants get squeezed
+          by today), and no chargebacks.
         </p>
-      </NowDetailsItem>
 
-      <NowDetailsItem id="solfate" href="#solfate" title="Solfate Podcast">
         <p>
-          The{" "}
-          <Link href="https://solfate.com" target="_blank" rel="noreferrer" className="link">
-            Solfate Podcast
-          </Link>{" "}
-          is an audio commentary with my friend{" "}
+          The catch is that none of that should actually be visible to the people using it &mdash;
+          merchants don&apos;t need to know what a blockchain is, and neither do their customers.
+          The two pieces I&apos;m most proud of so far are{" "}
           <Link
-            href="https://twitter.com/jamesrp13"
-            className="link"
+            href="https://usedecal.com/blog/smart-payments"
             target="_blank"
             rel="noreferrer"
+            className="link"
           >
-            @jamesrp13
-          </Link>{" "}
-          and myself. Each episode, we explore deeper into the Solana ecosystem by having
-          conversations with founders and builders in the ecosystem.
+            Smart Payments
+          </Link>
+          , which aggregates whatever stablecoins a customer has into one spendable balance (no
+          thinking about which token to pay with, no wallet switching), and{" "}
+          <Link
+            href="https://usedecal.com/blog/stored-value"
+            target="_blank"
+            rel="noreferrer"
+            className="link"
+          >
+            Stored Value
+          </Link>
+          , a modern loyalty program where prepaid balances earn yield that funds the rewards. Both
+          are live, and we&apos;re shipping more on top of them constantly &mdash; you can see
+          what&apos;s new on the{" "}
+          <Link
+            href="https://usedecal.com/changelog"
+            target="_blank"
+            rel="noreferrer"
+            className="link"
+          >
+            changelog
+          </Link>
+          , or read longer-form launch posts on the{" "}
+          <Link href="https://usedecal.com/blog" target="_blank" rel="noreferrer" className="link">
+            blog
+          </Link>
+          .
         </p>
-
-        <p>
-          We have had so many amazing conversations with some of the top teams and founders in the
-          Solana community, including founders from Phantom, Drip, Solflare, Triton, Helius,
-          Backpack, Dialect, and even Toly himself.
-        </p>
-
-        <p>
-          You can explore the podcast yourself on it&apos;s own website, where ever you get your
-          podcasts, or from the links below:
-        </p>
-        <ul className="mx-3 list-inside list-disc space-y-2 md:mx-10">
-          <li className="">
-            <Link
-              className="link"
-              target="_blank"
-              rel="noreferrer"
-              href="https://solfate.com/podcast"
-            >
-              Browse all the episodes on Solfate.com
-            </Link>
-          </li>
-          <li className="">
-            <Link
-              className="link"
-              target="_blank"
-              rel="noreferrer"
-              href="https://feeds.transistor.fm/solfate"
-            >
-              Good ole&apos; fashion RSS
-            </Link>
-          </li>
-          <li className="">
-            <Link
-              className="link"
-              target="_blank"
-              rel="noreferrer"
-              href="https://twitter.com/SolfatePod"
-            >
-              @SolfatePod on Twitter
-            </Link>
-          </li>
-          <li className="">
-            <Link
-              className="link"
-              target="_blank"
-              rel="noreferrer"
-              href="https://youtube.com/@SolfatePod"
-            >
-              @SolfatePod on YouTube
-            </Link>
-          </li>
-        </ul>
       </NowDetailsItem>
-
-      {/* <NowDetailsItem id="logdotfm" href="#logdotfm" title="log.fm">
-          <p>
-            Building this podcast exploration app,{" "}
-            <a
-              href="https://log.fm"
-              target="_blank"
-              rel="noreferrer"
-              className="link"
-            >
-              log.fm
-            </a>
-            , to help build the podcast exploration experience.
-          </p>
-
-          <p>
-            Right now, I am finishing up the last of the re-write to swap from a
-            NuxtJS(Vue) to a NextJS(React) base app.
-          </p>
-        </NowDetailsItem> */}
     </PageViewTracker>
   );
 }
