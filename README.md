@@ -4,6 +4,14 @@ My personal website.
 
 Home of my various projects, technical writings, and personal blogging.
 
+## About Nick
+
+Nick is a software engineer and co-founder of [Decal](https://usedecal.com) — a stablecoin
+payments platform that helps merchants accept payments with lower fees, instant settlement, and
+built-in stored value loyalty. Decal integrates with existing point-of-sale systems and lets
+businesses earn interest on customer balances, making it a drop-in upgrade over traditional
+card processing.
+
 ## Find me online
 
 The current home for my personal site is [nick.af](https://nick.af), but it has changed over the
